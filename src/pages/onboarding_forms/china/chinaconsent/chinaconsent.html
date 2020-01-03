@@ -1,0 +1,224 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <div ion-fixed class="selectLanguageDiv" *ngIf="showLangPopUp==true">
+    <div class="LanguageDiv">
+      <ion-row text-center class="langHead"><ion-col col-12><h6 no-margin>Please select a language to continue</h6></ion-col></ion-row>
+      <ion-list no-margin radio-group [(ngModel)]="finalselect" padding-horizontal>
+        <ion-row class="radioDiv">
+          <ion-col col-12 *ngFor="let data of language; let j= index;">
+            <ion-item  >
+              <ion-label class="genderlable">{{data}}</ion-label>
+              <ion-radio  [value]="data" ></ion-radio>
+            </ion-item>
+          </ion-col>          
+        </ion-row>
+      </ion-list>
+      <ion-row padding-horizontal>
+        <ion-col col-12 text-center><button ion-button class="btn" tappable (click)="hideLangPopUp('hide')">Done</button></ion-col>
+      </ion-row>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+    <ion-row>
+        <ion-col col-12 text-right>
+          <button ion-button class="btn" tappable (click)="hideLangPopUp('show')">Change Language &nbsp;&nbsp;<ion-icon name="ios-arrow-down"></ion-icon></button>
+          <!-- <div class="inputDiv">
+            <ion-list no-margin radio-group [(ngModel)]="finalselect" >
+              <ion-row class="radioDiv">
+                <ion-col col-6 *ngFor="let data of language; let j= index;">
+                  <ion-item  >
+                    <ion-label class="genderlable">{{data}}</ion-label>
+                    <ion-radio  [value]="data" ></ion-radio>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-list>
+          </div> -->
+        </ion-col>
+      </ion-row>
+
+
+<div class="newOverlay">
+
+      <div *ngIf="finalselect=='English'" class="para4" [innerHTML]="englishdiscrip"></div>
+      <div *ngIf="finalselect=='Chinese'" class="para4" [innerHTML]="chinadiscrip"> </div>
+
+      <div class="pageDiv" *ngFor="let data of allData; let j= index;">
+
+        <div class="customCardDiv">
+
+          <p *ngIf="j==0 && finalselect=='English'" class="para3" [innerHTML]="englishdata.part_A"></p>
+          <p *ngIf="j==0 && finalselect=='Chinese'" class="para3" [innerHTML]="chinadata.part_A"></p>
+
+          <p *ngIf="j==1 && finalselect=='English'" class="para3" [innerHTML]="englishdata.part_B"></p>
+          <p *ngIf="j==1 && finalselect=='Chinese'" class="para3" [innerHTML]="chinadata.part_B"></p>
+        
+          <div  *ngFor="let value of data; let i= index;" >
+
+      <div class="bordercss" *ngIf="value.language==finalselect" id="{{value?.auto_id}}"
+      [ngClass]="{'redBorder':scrollDivId==value?.auto_id}">
+            <p class="para3">Question: &nbsp;{{ ((i+1)%(data.length/language.length) == 0 ) ? ((i+1)%(data.length/language.length) + (data.length/language.length) ) : ((i+1)%(data.length/language.length)) }}</p>
+            <p>{{value.question}}</p>
+          
+            <ion-row *ngIf="value.userResponse==true" class="AnswerDiv">
+              <ion-col col-5 (click)=checkfun(true,i,j,data)>
+              <div text-center class="fillBg">
+                  <span *ngIf="finalselect=='English'">Yes</span>
+                  <span *ngIf="finalselect=='Chinese'">是</span>
+              </div>
+                <!-- <p >
+                  <span *ngIf="finalselect=='English'">Yes</span>
+                  <span *ngIf="finalselect=='Chinese'">是</span>
+                  <span *ngIf="value.userResponse">
+                    &nbsp;&nbsp;
+                    <img class="hcss" src="../../../assets/imgs/radio button.png" />
+                  </span>
+                  <span *ngIf="!value.userResponse">
+                    &nbsp;&nbsp;
+                    <img class="hcss" src="../../assets/imgs/radio buttonempty.png" />
+                  </span>
+                </p> -->
+              </ion-col>
+              <ion-col col-2></ion-col>
+              <ion-col col-5 (click)=checkfun(false,i,j,data)>
+                  <div text-center class="emptyBg">
+                      <span *ngIf="finalselect=='English'">No</span>
+                      <span *ngIf="finalselect=='Chinese'">没有</span>
+                  </div>
+                <!-- <p >
+                  <span *ngIf="finalselect=='English'">No</span>
+                  <span *ngIf="finalselect=='Chinese'">没有</span>
+                  <span *ngIf="!value.userResponse">
+                    &nbsp;&nbsp;
+                    <img class="hcss" src="../../../assets/imgs/radio button.png" />
+                  </span>
+                  <span *ngIf="value.userResponse">
+                    &nbsp;&nbsp;
+                    <img class="hcss" src="../../assets/imgs/radio buttonempty.png" />
+                  </span>
+                </p> -->
+              </ion-col>
+            </ion-row>
+            <ion-row *ngIf="value.userResponse==false" class="AnswerDiv">
+              <ion-col col-5 (click)=checkfun(true,i,j,data)>
+                  <div text-center class="emptyBg">
+                      <span *ngIf="finalselect=='English'">Yes</span>
+                      <span *ngIf="finalselect=='Chinese'">是</span>
+                  </div>
+                <!-- <p>
+                    <span *ngIf="finalselect=='English'">Yes</span>
+                    <span *ngIf="finalselect=='Chinese'">是</span>
+                  <span *ngIf="value.userResponse">
+                    &nbsp;&nbsp;
+                    <img class="hcss" src="../../../assets/imgs/radio button.png" />
+                  </span>
+                  <span *ngIf="!value.userResponse">
+                    &nbsp;&nbsp;
+                    <img class="hcss" src="../../assets/imgs/radio buttonempty.png" />
+                  </span>
+                </p> -->
+              </ion-col>
+              <ion-col col-2></ion-col>
+              <ion-col col-5 (click)=checkfun(false,i,j,data)>
+                  <div text-center class="fillBg">
+                      <span *ngIf="finalselect=='English'">No</span>
+                      <span *ngIf="finalselect=='Chinese'">没有</span>
+                  </div>
+                <!-- <p>
+                    <span *ngIf="finalselect=='English'">No</span>
+                    <span *ngIf="finalselect=='Chinese'">没有</span>
+                  <span *ngIf="!value.userResponse">
+                    &nbsp;&nbsp;
+                    <img class="hcss" src="../../../assets/imgs/radio button.png" />
+                  </span>
+                  <span *ngIf="value.userResponse">
+                    &nbsp;&nbsp;
+                    <img class="hcss" src="../../assets/imgs/radio buttonempty.png" />
+                  </span>
+                </p> -->
+              </ion-col>
+            </ion-row>
+            <ion-row *ngIf="value.userResponse=='3'" class="AnswerDiv">
+              <ion-col col-5 (click)=checkfun(true,i,j,data)>
+                  <div text-center class="emptyBg">
+                      <span *ngIf="finalselect=='English'">Yes</span>
+                      <span *ngIf="finalselect=='Chinese'">是</span>
+                  </div>
+                <!-- <p>
+                    <span *ngIf="finalselect=='English'">Yes</span>
+                    <span *ngIf="finalselect=='Chinese'">是</span>
+                  <span>
+                    &nbsp;&nbsp;
+                    <img class="hcss" src="../../assets/imgs/radio buttonempty.png" />
+                  </span>
+                </p> -->
+
+              </ion-col>
+              <ion-col col-2></ion-col>
+              <ion-col col-5 (click)=checkfun(false,i,j,data)>
+                  <div text-center class="emptyBg">
+                      <span *ngIf="finalselect=='English'">No</span>
+                      <span *ngIf="finalselect=='Chinese'">没有</span>
+                  </div>
+                <!-- <p>
+                    <span *ngIf="finalselect=='English'">No</span>
+                    <span *ngIf="finalselect=='Chinese'">没有</span>
+                  <span>
+                    &nbsp;&nbsp;
+                    <img class="hcss" src="../../assets/imgs/radio buttonempty.png" />
+                  </span>
+                </p> -->
+              </ion-col>
+            </ion-row>
+
+        
+          </div>
+
+        </div>
+      </div>
+      </div>
+
+
+
+      <div class="pageDiv">
+        <div class="customCardDiv">
+          <p *ngIf="finalselect=='English'" [innerHTML]="englishdata?.part_C"></p>
+          <p *ngIf="finalselect=='Chinese'" [innerHTML]="chinadata?.part_C"></p>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+  <div *ngIf="finalselect=='English' && form_status=='enable' && fillstatus==0"  class="btndiv">
+    <button ion-button class="btn" (click)="update()">Submit</button>
+  </div>
+  <div *ngIf="finalselect=='Chinese' && form_status=='enable' && fillstatus==0"  class="btndiv">
+      <button ion-button class="btn" (click)="update()">提交</button>
+    </div>
+
+    <div *ngIf="finalselect=='English' && form_status=='enable' && fillstatus==1"  class="btndiv">
+        <button ion-button class="btn" (click)="update()">Update</button>
+      </div>
+      <div *ngIf="finalselect=='Chinese' && form_status=='enable' && fillstatus==1"  class="btndiv">
+          <button ion-button class="btn" (click)="update()">更新</button>
+        </div>
+
+</ion-content>

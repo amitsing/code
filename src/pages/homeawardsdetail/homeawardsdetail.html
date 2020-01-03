@@ -1,0 +1,166 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Award Detail</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+
+<ion-content>
+  <div  *ngIf="peopleRewarded">
+      <div class="singleTop" *ngIf="team==false">
+          <ion-row class="badge">
+            <ion-col col-4 >
+              <!-- <img  class="userimg" src="assets/watermark/watermark.png" srcset="{{userimg}}"> -->
+            </ion-col>
+            <ion-col col-5 style="text-align:center;">
+              <p class="paracss">{{peopleRewarded?.award_name}}</p>
+            </ion-col>
+            <ion-col col-3 style="text-align:center;">
+              <img #img2 (click)="pp(img2)" class="silverAbso" onError="this.src='assets/watermark/watermark.png';" [src]="peopleRewarded?.award_icon">
+            </ion-col>
+          </ion-row>
+        
+          <div class="userDiv" *ngIf="userdata">
+              <ion-row  class="userRow">
+                  <ion-col col-4 >
+                    <div class="parent">
+                      <div class="child">
+                        <img #img1 (click)="pp(img1)" class="userimg" [src]="userdata[0]?.user_image" >                  
+                      </div>
+                    </div>
+                  </ion-col>
+                  <ion-col col-8 >
+                    <p class="paracss1">{{userdata[0]?.user_name}}</p>
+                  </ion-col>
+                </ion-row>
+          </div>
+          
+        
+          
+          <div *ngIf="nomoinatedByDetails">
+              <ion-row>
+                  <ion-col col-12>
+                      <div class="divcss"> 
+                          <p class="paracss2">{{nomoinatedByDetails?.remark}}</p>
+                        </div>
+                  </ion-col>
+                  <ion-col col-8></ion-col>
+                  <ion-col col-4 text-center>
+                      <div style="text-align:end; padding: 0px 12px;"> 
+                          <img  class="userimg small" #img (click)="pp(img)" onError="this.src='assets/watermark/watermark.png';" [src]="nomoinatedByDetails?.action_by_image">
+                          <p class="paracss2 clrWhite" >{{ nomoinatedByDetails?.action_by }}</p>
+                      </div>      
+                  </ion-col>
+                </ion-row>      
+          </div>
+       </div>
+       <div *ngIf="team==true" class="teamTop">
+          <ion-row class="badge">
+              <ion-col col-4 >
+                <!-- <img  class="userimg" src="assets/watermark/watermark.png" srcset="{{userimg}}"> -->
+              </ion-col>
+              <ion-col col-5 style="text-align:center;">
+                <p class="paracss">{{peopleRewarded?.award_name}}</p>
+              </ion-col>
+              <ion-col col-3 style="text-align:center;">
+                <img  class="silverAbso" #img4 (click)="pp(img4)" onError="this.src='assets/watermark/watermark.png';" [src]="peopleRewarded?.award_icon">
+              </ion-col>
+          </ion-row>
+          <ion-row class="nameRow">
+            <ion-col col-12 text-center class="nameCol">
+              <h2 class="teamTital">{{peopleRewarded?.nomination_name}}</h2>
+              <img class="teamTitalHeader" src="../../assets/imgs/teamTitleheader.png" alt="">
+            </ion-col>
+          </ion-row>
+          <ion-row class="userData" *ngFor="let user of userdata">
+            <ion-col col-8 class="parent">
+              <div class="child">
+                  <p>{{ user?.user_name }}</p>
+                  <p>{{ user?.designation }}</p>
+              </div>
+            </ion-col>
+            <ion-col col-4>
+              <img class="userImage" #img5 (click)="pp(img5)" [src]="user?.user_image" onError="this.src='../../assets/watermark/watermark.png'" alt="">
+            </ion-col>
+          </ion-row>
+          <div *ngIf="nomoinatedByDetails">
+              <ion-row>
+                  <ion-col col-12>
+                          <p class="remark">{{nomoinatedByDetails?.remark}}</p>
+                  </ion-col>
+                  <ion-col col-8></ion-col>
+                  <ion-col col-4 text-center>
+                      <div style="text-align:end; padding: 0px 12px;"> 
+                          <img  class="userimg small" #img6 (click)="pp(img6)" onError="this.src='assets/watermark/watermark.png';" [src]="nomoinatedByDetails?.action_by_image">
+                          <p class="action" >{{ nomoinatedByDetails?.action_by }}</p>
+                      </div>      
+                  </ion-col>
+                </ion-row>      
+          </div>
+       </div>
+
+       <ion-row class="margincss">
+          <ion-col col-auto class="bordercss"  (click)="gotolikelist()">
+            <!-- <p *ngIf="peopleRewarded?.total_like==0"><ion-icon ios="ios-thumbs-up" md="md-thumbs-up"></ion-icon>&nbsp;fgh</p> -->
+            <p class="likeunlike" *ngIf="peopleRewarded?.total_like==1"><ion-icon ios="ios-thumbs-up" md="md-thumbs-up"></ion-icon>&nbsp;{{peopleRewarded?.total_like}}&nbsp;Like</p>
+            <p class="likeunlike" *ngIf="peopleRewarded?.total_like>1"><ion-icon ios="ios-thumbs-up" md="md-thumbs-up"></ion-icon>&nbsp;{{peopleRewarded?.total_like}}&nbsp;Likes</p>
+          </ion-col>
+          <ion-col col-auto class="bordercss">
+            <p class="likeunlike" *ngIf="peopleRewarded?.total_comment==1"><ion-icon ios="ios-text" md="md-text"></ion-icon>&nbsp;{{peopleRewarded?.total_comment}}&nbsp;Comment</p>
+            <p class="likeunlike" *ngIf="peopleRewarded?.total_comment>1"><ion-icon ios="ios-text" md="md-text"></ion-icon>&nbsp;{{peopleRewarded?.total_comment}}&nbsp;Comments</p>
+          </ion-col>
+          <hr>
+        </ion-row>
+       
+        <ion-row class="margincss brdr">
+            <ion-col col-4 class="bordercss" (click)="goforlike()">
+              <p class="themeClr" *ngIf="peopleRewarded.like_status==1"><span> <ion-icon ios="ios-thumbs-up" md="md-thumbs-up"></ion-icon></span>&nbsp;Like</p>
+              <p class="grayClr" *ngIf="peopleRewarded.like_status==0"><span> <ion-icon ios="ios-thumbs-up-outline" md="ios-thumbs-up-outline"></ion-icon></span>&nbsp;Like</p>
+            </ion-col>
+            <ion-col col-4 class="bordercss" (click)="goforcomment()">
+                <p><span><ion-icon ios="ios-text" md="md-text"></ion-icon></span>&nbsp;Comment</p>
+            </ion-col>
+        </ion-row>
+
+        <ion-row class="margincss comment" *ngFor="let cmt of commentdata">
+            <ion-col col-2>
+                <div class="commentimg">
+                    <img class="imgcss2" #img7 (click)="pp(img7)" onError="this.src='assets/watermark/watermark.png';" [src]="cmt.comment_by_image">
+                </div>
+            </ion-col>
+            <ion-col col-10 class="colcolor">
+              <ion-row>
+                <ion-col col-7 no-padding>
+                    <p class="mrtop">{{cmt.comment_by_name}}</p>
+                </ion-col>
+                <ion-col col-5 no-padding>
+                    <p class="mrtop1">{{cmt.date_time}}</p>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col col-12>
+                    <p class="mrtop" [innerHTML]="cmt.comment" (click)="handleClick($event)"></p>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+        </ion-row>
+  </div>
+</ion-content>
+<ion-footer  *ngIf="displayBox==true">
+    <form #f="ngForm" style="background-color: white;">
+      <ion-row class="rowborder">
+        <ion-col col-11>
+          <div class="footerdiv">
+            <ion-textarea style="border-radius:20px;" type="text" class="textButton" [(ngModel)]="mycomment" name="mycomment" placeholder="Write your comments..."
+              required>
+            </ion-textarea>
+          </div>
+        </ion-col>
+        <ion-col col-1 class="sendButtonColCss parent" *ngIf="mycomment!= null || mycomment!= undefined" (tap)="sendComment(f)">
+          <ion-icon class="sendButtonCss child" name="send"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-footer>

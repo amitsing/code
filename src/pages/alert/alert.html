@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Alerts</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+<!-- <div *ngIf="allData?.length==0 || !allData">
+    <img  src="assets/imgs/noNoti.png" srcset="{{onedaydata?.icon}}" />
+</div> -->
+
+<div *ngIf="allData?.length==0 && bgImageViewer">
+    <img  src="assets/imgs/No NotificationImage.png" srcset="{{onedaydata?.icon}}" />
+</div>
+  <!-- <div *ngIf="allData">
+  <ion-card *ngFor="let data of allData; let j=index" (click)="gotonext(data.href,data)">
+    <ion-row [ngClass]="{'stylecolorgrey':(data.read_status=='1'),
+  'appstylecolor':( data.read_status=='0')}">
+      <ion-col col-12>
+        <p [ngClass]="{'font':(data.read_status=='1')}">{{data.description}}</p>
+        <p class="para">Date:{{data.created_date}}</p>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+</div> -->
+  <!-- <div *ngIf="!allData">
+    <img  src="../../assets/imgs/skelton/alert.png" class="textSkelton" />
+  </div> -->
+
+
+  <div *ngFor="let alertdata of allData; let j=index">
+
+      <ion-row>
+        <ion-col col-12 class="colclass">
+          <div><p class="paddingcss">{{alertdata.date}}</p></div>
+        </ion-col>
+      </ion-row>
+      <ion-row style="border-bottom: 1px solid lightgray;" *ngFor="let onedaydata of alertdata.data;" 
+      (click)="gotonext(onedaydata.href,onedaydata)">
+        <!-- <ion-col col-2>
+          <img  src="../../assets/imgs/skelton/alert.png" class="textSkelton" />
+        </ion-col> -->
+        <ion-col col-9>
+          <div class="divcss">
+            <p class="margintopbtm">{{onedaydata.description}}</p>
+            <p class="margintopbtm2">{{onedaydata.actual_date}}</p>
+            <!-- <p class="margintopbtm1">{{onedaydata.created_date}}</p> -->
+          </div>
+        </ion-col>
+        <ion-col col-3>
+          <div *ngIf="onedaydata.button_applicable=='1'" class="btncss">
+              <div class="buttonclass">
+                  {{onedaydata.button_text}}
+              </div>
+          </div>
+        </ion-col>
+      </ion-row>
+      </div>
+
+
+
+
+
+  <ion-infinite-scroll *ngIf="hideInfiniteScroll==false && allData" (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

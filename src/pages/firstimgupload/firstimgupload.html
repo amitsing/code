@@ -1,0 +1,101 @@
+<!--
+  Generated template for the FirstimguploadPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Image Upload</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="bgColor">
+
+  <div>
+    <ion-card class="mycard">
+      <p>Please upload your picture to continue.</p>
+      <div class="new">
+          <ion-row>
+            <ion-col col-12 >
+                <img srcset="{{userImage}}" src="assets/imgs/usericon.png" class="userImage"/>
+                <img class="camIcon" src="assets/imgs/uploadImg.png" (tap)="addimage()">
+            </ion-col>
+          </ion-row>
+        </div>
+        <ion-row *ngIf="buttonshow==1">
+            <ion-col col-12>
+              <div class="cntr" (click)="submitFunc()">
+                <button ion-button class="btn" round>Submit</button>
+              </div>
+            </ion-col>
+          </ion-row>
+    </ion-card>
+  </div>
+
+
+
+  <!-- <div class="relativeDIV">
+    <div class="profileBGImage" [style.background-image]="'url(' +userImageBg+ ')'" >
+        <div class="maindiv">
+            <ion-icon class="seticon" (click)="showlog(log)" name="more"></ion-icon>
+            <div *ngIf="log==true" class="setlog" (click)="signOut()">
+              <p>Sign out</p>
+            </div>
+          </div> 
+
+    </div> -->
+    <!-- <div class="blackTransparent"></div>
+    <img src=" " class="userImage"/>
+    <div class="absoDIV">
+        <ion-row>
+          <ion-col col-auto>
+              <img srcset="{{userImage}}" src="../../assets/watermark/watermark.png" class="userImage"/>
+              <img class="camIcon" src="assets/imgs/uploadImg.png" (tap)="addimage()">
+          </ion-col>
+          <ion-col>
+            <h6 class="userName">{{userName}}</h6>
+            <!-- <p class="userDesignation">{{designation}} <span *ngIf="userlocation!=''">|</span> {{userlocation}}</p> 
+          </ion-col>
+        </ion-row>
+      </div>
+  </div> -->
+
+
+  <div *ngIf="showCustomActionSheet==true">
+    <div class="transparentLayerActionsheet" (tap)="hideActionsheet()"></div>
+    <div class="customActionsheetDIV">
+      <ion-grid>
+        <ion-row><ion-col><h2>Profile Picture</h2></ion-col></ion-row>
+        <ion-row>
+          <ion-col col-6 class="centerData" (click)="usingCamera('camera')">
+            <img src="assets/imgs/camera.png" class="actionSheetIcon"/>
+              <h4>Camera</h4>
+          </ion-col>
+          <ion-col col-6 class="centerData" (click)="usingCamera('gallery')">
+            <img src="assets/imgs/album.png"class="actionSheetIcon"/>
+            <h4>Gallery</h4>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+
+<!-- 
+  <div *ngIf="buttonshow==1" style="text-align: -webkit-center;">
+    <button  ion-button full class="buttonCss" (tap)="submitFunc()">
+     Submit
+    </button>
+  </div> -->
+
+  <!-- <ion-row *ngIf="buttonshow==1"> -->
+    <!-- <ion-row>
+    <ion-col col-12>
+      <div class="cntr" (click)="submitFunc()">
+        <button ion-button class="btn" round>Submit</button>
+      </div>
+    </ion-col>
+  </ion-row> -->
+
+
+</ion-content>

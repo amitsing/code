@@ -1,0 +1,98 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ formData.form_name }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="bg">
+  <div *ngIf="data" [ngClass]="{'newOverlay': formData.form_status != 'enable'}"> 
+  
+    <ion-row #form>
+      <ion-col col-12>
+        <!-------------- userform ------------------>
+        <div class="formDiv">
+            <show-html [htmlData]="des"></show-html>
+        </div>
+        <!-------------- Education Record ------------------>
+        <div class="formDiv">
+            <ion-row class="cardHeader">
+                <ion-col col-12 text-left>
+                  <p class="heading">Personal Details</p>
+                </ion-col>
+            </ion-row>
+  
+          <customInput
+            label="Work Location (City)"
+            [data]="data.work_location"
+            type="text"
+            [otherStatus]="isSubmited"
+          ></customInput>
+  
+          <customInput
+            label="Passport Number"
+            [data]="data.passport"
+            type="number"
+            [otherStatus]="isSubmited"
+          ></customInput>
+  
+          <customInput
+            label="Visa Type"
+            [data]="data.visa_type"
+            type="text"
+            [otherStatus]="isSubmited"
+          ></customInput>
+  
+          <customInput
+            label="Visa Expiry Date"
+            [data]="data.visa_expiry_date"
+            type="date"
+            [maxDate] = "getFutureDate()"
+            [minDate] = "getCutrrentDate()"
+            dateFormat = "DD/MMM/YYYY"
+            [otherStatus]="isSubmited"
+          ></customInput>
+  
+          <customInput
+            label="Right to work Documentation"
+            [data]="data.right_to_work_doc"
+            type="text"
+            [otherStatus]="isSubmited"
+          ></customInput>
+  
+          <customInput
+            label="Contract Type"
+            [data]="data.contract_type"
+            type="text"
+            [otherStatus]="isSubmited"
+          ></customInput>
+  
+          <customInput
+            label="Job Title"
+            [data]="data.job_title"
+            type="text"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+        </div>
+
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="formData && formData.form_status == 'enable'">
+      <ion-col col-6 *ngIf="fill_status == '0'">
+        <div class="btndiv">
+          <button [ngClass]="{'w-80': (fill_status == 0)}" ion-button class="btn" (click)="save()">Save</button>
+        </div>
+      </ion-col>
+      <ion-col
+        [attr.col-12]="fill_status == '1' ? '' : null"
+        [attr.col-6]="fill_status == '0' ? '' : null"
+      >
+        <div class="btndiv">
+          <button [ngClass]="{'w-80': (fill_status == 0)}" ion-button class="btn" (click)="submit()">{{ fill_status=='1' ? 'Update' : 'Submit'  }}</button>
+        </div>
+      </ion-col>
+    </ion-row>
+  
+  </div>
+</ion-content>

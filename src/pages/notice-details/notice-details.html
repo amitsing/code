@@ -1,0 +1,26 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{noticeDetailsData?.title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
+  <div [style.backgroundImage]="'url(' + noticeDetailsData?.media + ')'" class="bgImageDiv">
+  <ion-row class="contentData">
+      <ion-col col-12 text-center> <p class="title">{{noticeDetailsData?.title}}</p>  </ion-col>
+      <ion-col col-12 text-right> <p class="date">{{noticeDetailsData?.notice_date}}</p>  </ion-col>
+  </ion-row>
+  <div class="transparentLayer"></div>
+  </div>
+
+<ion-row>
+  <ion-col col-12>
+    <div [innerHTML]="noticeDetailsData?.content" (click)="handleClick($event)"class="data_constent"></div>
+  </ion-col>
+</ion-row>
+
+<div *ngIf="noticeDetailsData?.length==0">
+    <img src="assets/imgs/No NoticeImage.png"  style="width:100%">
+  </div>
+</ion-content>

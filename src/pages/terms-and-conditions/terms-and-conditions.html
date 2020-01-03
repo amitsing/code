@@ -1,0 +1,33 @@
+
+<ion-header>
+  <!-- <ion-navbar>
+    <ion-title>Terms and Conditions</ion-title>
+  </ion-navbar> -->
+
+  <ion-toolbar color="headColor">
+    <!-- <ion-buttons left>
+      <button ion-button clear>
+            <ion-icon name="close" style="    font-size: 2em;
+            color: white;    " ></ion-icon>
+          </button>
+    </ion-buttons> -->
+    <ion-title style="text-align:center;">Consent Form</ion-title>
+  </ion-toolbar>
+
+
+</ion-header>
+
+<ion-content padding>
+  <ion-row *ngFor="let data of allData">
+    <ion-col>
+        <div (click)="handleClick($event)" [innerHTML]="data?.term_condition" ></div>
+    </ion-col>
+  </ion-row>    
+  <div style="bottom:10px;width:100%;">
+    <ion-row>
+        <ion-col col-6 *ngIf="showbutton==true" class=""><button ion-button round class="btn centerDataInDiv" (click)="disagree()">Disagree</button></ion-col>
+        <ion-col col-6 *ngIf="showbutton==true" class=""><button ion-button class="btn centerDataInDiv" (click)="agree()">Agree</button></ion-col>
+    </ion-row>
+  </div>
+<br><br><br><br>
+</ion-content>

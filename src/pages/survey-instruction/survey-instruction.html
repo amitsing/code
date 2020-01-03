@@ -1,0 +1,19 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Instruction</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<ion-row>
+  <ion-col col-12>
+    <div [innerHTML]="previousepageData?.instruction" (click)="handleClick($event)"></div>
+    <button ion-button  class="btn" tappable (click)="gotoSurveydetails(previousepageData)">Next</button>
+
+  </ion-col>
+</ion-row>
+
+
+
+</ion-content>

@@ -1,0 +1,169 @@
+page-homeawardsdetail {
+    p{
+        color: #2d2d2d;
+    }
+    .margincss{margin: 8px;}
+    .imgcss2{    height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        object-fit: cover;}
+        .colcolor{    background: lightgray;
+            border-radius: 4px;}
+        .mrtop{margin-top: 0px;margin-bottom: 0px;} 
+            .mrtop1{margin-top: 0px;font-size: 10px; margin-bottom: 0px;} 
+            .bordercss{
+                // border-bottom: 1px solid lightgray; 
+                // border-top: 1px solid lightgray;
+            }
+   
+            .bordercss1{text-align: left;}   
+            
+            
+            .myview{
+                background-image: url('../assets/imgs/DetailedPagebanner.png');
+                background-repeat: no-repeat;
+                background-size: cover;
+                min-height: 200px;
+                
+           }
+.userimg{    height: 80px;
+    width: 80px;
+    object-fit: cover;border-radius:50%;}
+ .colcss{text-align:center;margin-top: -30px;} 
+ .paracss{    font-weight: 600;
+    font-size: 19px;
+    color: red;}  
+
+.paracss1{    font-weight: 500;
+    font-size: 19px;
+    color: white;}
+.divcss{    margin: 0 20px;
+    background: white;
+    border-radius: 5px;
+    margin-top: 0px;}    
+.paracss2{margin: 0px;padding: 4px;}
+.bordercss p,.bordercss1 p{
+    margin: 0;
+}
+.clrWhite{
+    color: white;
+    text-align: center;
+    font-size: 1rem;
+}
+.userimg.small{
+width: 40px;
+height: 40px;
+margin: auto;
+display: block;
+}
+.userImage{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: auto;
+    display: block;
+}
+.userData{
+    margin: 10px 0 0 50px;
+    border-bottom: 1px solid #bcaec8;
+    padding-bottom: 5px;
+    .parent{
+        position: relative;
+        .child{
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            p{
+                margin: 0;
+            }
+        }
+    }
+    &:last-child{
+        border-bottom: none;
+    }
+}
+.teamTop{
+    background-color: #f5f2f6;
+    .badge{
+        background-color: #fff;
+        margin-right: 7px;
+        border-bottom-right-radius: 40px;
+    }
+}
+.nameRow{
+    background-color: #fff;
+    .nameCol{
+        background-color: #f5f2f6;
+        border-top-left-radius: 20px;
+    }
+}
+.remark{
+    background-color: #542e56;
+    color: #fff;
+    margin: 30px 20px 0;
+    padding: 10px;
+    border-radius: 10px;
+    border-bottom-right-radius: 0;
+}
+.action{
+    margin-top: 0px;
+    padding: 4px;
+    text-align: center;
+    font-size: 1rem;
+}
+.parent{
+    position: relative;
+    .child{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+.comment:last-child{
+    margin-bottom: 80px
+}
+.singleTop{
+    background-color: #542e56;
+    .badge{
+        background-color: #fff;
+        margin-right: 7px;
+        border-bottom-right-radius: 40px;
+    }
+    .userDiv{
+        background-color: #fff;
+            .userRow{
+                background-color: #542e56;
+            .parent{
+                .child{
+                    left: 25%;
+                }
+            }
+        }
+    }
+}
+.teamTital{
+margin: 10px 0 0 0;
+font-size: 1.8rem;
+font-weight: 600;
+color: #0e0e0e;
+}
+.teamTitalHeader{
+margin: -20px -60px 0 0;
+}
+.brdr{
+    border-top: 0.23rem solid #e2e1e1;
+    border-bottom: 0.23rem solid #e2e1e1;
+    padding: 0 20px;
+}
+.likeunlike{
+    font-size: 12px;
+    color: #444;
+}
+.themeClr{
+    color: #542e56;
+}
+.grayClr{
+    color: #444;
+}
+}

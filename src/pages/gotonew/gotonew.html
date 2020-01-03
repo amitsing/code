@@ -1,0 +1,16 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="iframeDiv">
+
+  <!-- <iframe [src]="sessiionurl|safe" frameborder="0" width="100%" height="100%" allowfullscreen class="holds-the-iframe"></iframe> -->
+
+  <iframe [src]="sanitizer.bypassSecurityTrustResourceUrl(url)" frameborder="0"
+  width="100%" height="100%" allowfullscreen class="holds-the-iframe"></iframe>
+
+
+</ion-content>

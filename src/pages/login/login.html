@@ -1,0 +1,74 @@
+
+
+
+<ion-content class="{{contentClassBg}}">
+<!-- <div>
+    <button class="back-button disable-hover bar-button bar-button-md back-button-md bar-button-default bar-button-default-md show-back-button" ion-button="bar-button" ng-reflect-klass="back-button" ng-reflect-ng-class="back-button-md"><span class="button-inner"><ion-icon class="back-button-icon icon icon-md back-button-icon-md ion-md-arrow-back" role="img" ng-reflect-klass="back-button-icon" ng-reflect-ng-class="back-button-icon-md" aria-label="arrow back" ng-reflect-name="md-arrow-back"></ion-icon><span class="back-button-text back-button-text-md" ng-reflect-klass="back-button-text" ng-reflect-ng-class="back-button-text-md"></span></span><div class="button-effect"></div></button>
+</div> -->
+
+
+  <div class="iconeval">
+    <img src="assets/imgs/logologin.png" class="imgss"/>
+  </div>
+      <img src="assets/imgs/clientLogo.png" class="clientLogo"/>
+   
+  <!-- <div class="welcome">
+    <h3 class="wlcmtxt">Welcome to REACH</h3>
+    <h6 class="logintxt">Login to continue    </h6>
+  </div> -->
+  <!-- <div class="welcome">
+    <h5 class="labelcls">Email</h5>
+    <ion-row class="bottomLine">
+      <ion-col col-12>
+          <ion-list no-margin>
+              <ion-item style="padding-left: 1px;" class="item_place">
+                <ion-input  style="background-color: transparent;
+                 font-size: 17px;" type="email" autocomplete=“true” autocorrect="true" spellcheck=“true” autocomplete=“on” autocorrect=“on” [(ngModel)]="emailId" (ngModelChange)="validateEmail(emailId)" 
+                 placeholder="Enter your email address" clearInput autofocus="true"
+                  name="email" (ionFocus)="checkFocus()" (ionBlur)="checkBlur()"></ion-input>
+              </ion-item>  
+          </ion-list>
+      </ion-col>
+    </ion-row>
+   </div> -->
+  <div class="welcome">
+    <h5 class="labelcls">Password</h5>
+    
+    <ion-row style="border-bottom: 1px solid #9e9798;"> 
+      <ion-col col-10>
+          <ion-item class="passwordField">
+        <ion-input class="bottomLine" *ngIf="passwordIsShowing==false" type="password" placeholder="Enter your password" clearOnEdit="false" autocorrect="on" autocapitalize="none"  [(ngModel)]="password" class="inputcls"(ionBlur)="checkBlur()"  (ionFocus)="checkFocus()"></ion-input>
+        <ion-input class="bottomLine" *ngIf="passwordIsShowing==true" type="text" placeholder="Enter your password" clearOnEdit="false" autocorrect="on" autocapitalize="none"  [(ngModel)]="password" class="inputcls"(ionBlur)="checkBlur()"  (ionFocus)="checkFocus()"></ion-input>
+     </ion-item>
+
+      </ion-col>
+      <ion-col col-2 class="centerDataInDiv" (click)="viewPass(passwordIsShowing)">
+          <ion-item class="passwordField">
+        <ion-icon *ngIf="passwordIsShowing==false" name="ios-eye-off-outline" class="eyeIcon"></ion-icon>
+        <ion-icon *ngIf="passwordIsShowing==true" name="ios-eye-outline" class="eyeIcon"></ion-icon>
+      </ion-item>
+      </ion-col>
+    </ion-row>
+    
+<!-- <p (click)="goToForgotPasswrd()" class="forgotPasswordText">Forgot password?</p>     -->
+</div>
+
+<div class="btndiv">
+
+  <!-- <button ion-button [disabled]="password.trim()==''|| emailIsOk==false" class="btn" (click)="login(emailId,password)">{{btnText}}</button> -->
+
+  <button ion-button  [disabled]="password.trim()==''" *ngIf="previousePageData=='applicant'" class="btn" (click)="applicent(password)">{{btnText}}</button>
+
+ <button ion-button  [disabled]="password.trim()==''" *ngIf="previousePageData=='employee'" class="btn" (click)="employee(password)">{{btnText}}</button>
+</div>
+<!-- <ion-row>
+    <ion-col col-12>
+        <p text-center class="instext" (click)="goBack()"> <ion-icon name="arrow-round-back"></ion-icon>
+          Go back</p>
+    </ion-col>
+  </ion-row> -->
+
+<!-- <div *ngIf="poweredByImagehide==false" class="powered_by"><img src="assets/imgs/powered_by.png" class="benepikCopyRight"/></div> -->
+
+<div class="powered_by"><img src="assets/imgs/powered_by.png" class="benepikCopyRight"/></div>
+</ion-content>    

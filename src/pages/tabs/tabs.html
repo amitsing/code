@@ -1,0 +1,29 @@
+<!-- <ion-tabs *ngIf="tabsArray" [selectedIndex]="myIndex">
+  <ion-tab *ngFor="let mytabs of tabsArray" [root]="mytabs?.page" tabTitle="{{mytabs?.pageName}}" tabIcon="{{mytabs?.pageIcon}}"></ion-tab>
+</ion-tabs> -->
+
+
+<!-- <ion-header>
+  <ion-navbar>
+    <ion-title>tabs</ion-title>
+  </ion-navbar>
+</ion-header>-->
+
+<ion-content >
+  
+    <ion-tabs *ngIf="tabsArray" [selectedIndex]="myIndex">
+        <ion-tab *ngFor="let mytabs of tabsArray" [root]="mytabs?.page" tabBadge="{{mytabs?.num}}" 
+        tabIcon="{{mytabs?.pageIcon}}">
+        <!-- tabTitle="{{mytabs?.pageName}}" -->
+          <!-- <p>4</p> -->
+        </ion-tab>
+      </ion-tabs>
+
+      <table *ngIf="!tabsArray" id="wrapper">
+          <tr>
+            <td> <img src="assets/imgs/clientLogo.png"class="dummyScreenIcon"></td>
+          </tr>
+        </table>
+      <p *ngIf="!tabsArray" class="dummyScreenWaitText">Please wait, your data is preparing...</p>
+     
+</ion-content> 

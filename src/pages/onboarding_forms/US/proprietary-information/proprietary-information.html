@@ -1,0 +1,280 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Proprietary Information Agreement</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="commonFormDiv">
+  <div [ngClass]="{'newOverlay':form_status != 'enable'}">
+
+    <div *ngIf="is_invention && exhibit_A && exhibit_B" class="WebFormDiv">
+      <div class="newCardDiv">
+        <!-- <div class="newHeading"><h4 no-margin>EVALUESERVE, INC.</h4></div> -->
+        <div class="newHeading">
+          <h4 no-margin>
+            <show-html [htmlData]="evalueserv?.title"></show-html>
+          </h4>
+        </div>
+        <div class="customCardDiv">
+          <div>
+            <show-html [htmlData]="evalueserv?.content"></show-html>
+          </div>
+        </div>
+      </div>
+      <div class="newCardDiv">
+        <!-- <div class="newHeading"><h4 no-margin>EXHIBIT A</h4></div> -->
+        <div class="newHeading">
+          <h4 no-margin [innerHTML]="exhibit_A?.title"></h4>
+        </div>
+
+        <div class="customCardDiv">
+
+          <ion-row>
+            <ion-col col-12>
+              <div class="contentDiv" [innerHTML]="exhibit_A?.content">
+
+              </div>
+            </ion-col>
+          </ion-row>
+        </div>
+      </div>
+
+
+
+      <div class="newCardDiv">
+        <!-- <div class="newHeading"><h4 no-margin>EXHIBIT B</h4></div> -->
+        <div class="newHeading">
+          <h4 no-margin [innerHTML]="exhibit_B?.title"></h4>
+        </div>
+        <div class="customCardDiv">
+
+          <ion-row>
+            <ion-col col-12>
+              <div class="headingDiv" [innerHTML]="exhibit_B?.content">
+              </div>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col col-12>
+              <div class="contentDiv">
+                <p [innerHTML]="exhibit_B?.question1"></p>
+
+              </div>
+            </ion-col>
+          </ion-row>
+
+
+          <ion-row [id]="'2'">
+            <ion-col col-12>
+              <!-- <div class="contentDiv">
+  
+                   <p [innerHTML]="exhibit_B?.question1"></p>
+
+            </div> -->
+
+              <div>
+                <ion-row>
+                  <ion-col col-12>
+                    <div class="inputDiv">
+                      <div class="checkBoxDiv">
+                        <ion-row>
+                          <ion-col col-12>
+                            <label>
+                              <ion-checkbox [(checked)]="is_invention?.is_invention1.value" [(ngModel)]="is_invention?.is_invention1.value" (ionChange)="updatecheck(is_invention?.is_invention1.value)"></ion-checkbox>
+                              <small>No inventions or improvements.</small>
+                            </label>
+                          </ion-col>
+                        </ion-row>
+                      </div>
+                    </div>
+                  </ion-col>
+                  <ion-col col-12>
+                    <div *ngIf="!is_invention?.is_invention1.value" class="inputDiv no-margin">
+                      <ion-row>
+                        <ion-col col-12 no-padding>
+                          <!-- <ion-item> -->
+                          <ion-textarea class="msd-elastic" type="text" [ngClass]="{'redborder':tarea}" [(ngModel)]="is_invention?.invention_detail.value"
+                            placeholder="Enter Inventions or Improvements"></ion-textarea>
+                          <!-- </ion-item> -->
+                        </ion-col>
+                      </ion-row>
+                    </div>
+                  </ion-col>
+                </ion-row>
+
+              </div>
+
+              <!-- </div> -->
+            </ion-col>
+          </ion-row>
+          <!-- <p><b>2. </b>Due to a prior confidentiality agreement, I cannot complete the disclosure under Section 1 above with respect to inventions or improvements generally listed below, the proprietary rights and duty of confidentiality with respect to which I owe to the following party(ies):</p> -->
+          <p [innerHTML]="exhibit_B?.question1"></p>
+          <ion-row>
+            <ion-col col-12>
+              <div class="contentDiv">
+                <!-- <p><b>1. </b>Except as listed in Section 2 below, the following is a complete list of all inventions or improvements that have been made or conceived or first reduced to practice by me alone or jointly with others prior to my engagement by Evalueserve, Inc. that I consider to be my property or the property of third parties and that I wish to have excluded from the scope of this Agreement.</p> -->
+                <ion-row>
+                  <ion-col col-12>
+                    <div class="inputDiv">
+                      <div class="checkBoxDiv">
+                        <ion-row>
+                          <ion-col col-12>
+                            <label>
+                              <ion-checkbox [(checked)]="is_invention?.is_invention2.value" [(ngModel)]="is_invention?.is_invention2.value"></ion-checkbox>
+                              <small>No prior confidentiality agreements for inventions or improvements</small>
+                            </label>
+                          </ion-col>
+                        </ion-row>
+                      </div>
+                    </div>
+                  </ion-col>
+                </ion-row>
+              </div>
+            </ion-col>
+          </ion-row>
+
+          <div class="right" *ngIf="submit_dump_data?.length<3">
+            <ion-row margin-top>
+              <ion-col col-12 text-right>
+                <button (click)=formcreate() [disabled]="is_invention?.is_invention2.value" ion-button icon-end round small class="mybtn">
+                  Add Details
+                  <ion-icon name="ios-add-circle-outline"></ion-icon>
+                </button>
+              </ion-col>
+            </ion-row>
+          </div>
+
+
+          <div [id]="'1'" *ngFor="let data of editArray; let j= index;">
+            <!-- <ion-row>
+                  <ion-col col-12> -->
+            <div class="">
+
+              <ion-row (click)="deleteform()">
+                <ion-col col-12>
+                  <div class="right">
+                    <ion-icon name="ios-close-circle-outline" class="closeBTN"></ion-icon>
+                  </div>
+                </ion-col>
+              </ion-row>
+
+              <!-- <p><b>2. </b>Due to a prior confidentiality agreement, I cannot complete the disclosure under Section 1 above with respect to inventions or improvements generally listed below, the proprietary rights and duty of confidentiality with respect to which I owe to the following party(ies):</p> -->
+              <ion-row>
+                <ion-col col-12>
+                  <div class="inputDiv">
+                    <ion-label>Invention or Improvement
+                      <sup class="redText">*</sup>
+                      <i *ngIf="data?.invention_is_mandatory_hint_applicable" [tooltip]="data?.invention_hint" positionV="top" arrow='true'>
+                        <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon>
+                      </i>
+                    </ion-label>
+                    <!-- <ion-input type="text" placeholder="Enter Invention or Improvement"></ion-input> -->
+                    <ion-input type="text" [ngClass]="{'redborder':invention}" name="{{data.invention}}" [(ngModel)]="data.invention"></ion-input>
+                  </div>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col col-12>
+                  <div class="inputDiv">
+                    <ion-label>Party
+                      <sup class="redText">*</sup>
+                      <i *ngIf="data?.party_is_mandatory_hint_applicable" [tooltip]="data?.party_is_hint" positionV="top" arrow='true'>
+                        <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon>
+                      </i>
+                    </ion-label>
+                    <ion-input type="text" [ngClass]="{'redborder':party}" name="{{data.party}}" [(ngModel)]="data.party"></ion-input>
+                  </div>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col col-12>
+                  <div class="inputDiv">
+                    <ion-label>Relationship
+                      <sup class="redText">*</sup>
+                      <i *ngIf="data?.relation_is_mandatory_hint_applicable" [tooltip]="data?.relation_hint" positionV="top" arrow='true'>
+                        <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon>
+                      </i>
+                    </ion-label>
+                    <ion-input type="text" [ngClass]="{'redborder':relation}" name="{{data.relation}}" [(ngModel)]="data.relation"></ion-input>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </div>
+            <!-- </ion-col>
+                </ion-row> -->
+
+            <div class="btndiv" *ngIf="buttomtxtcheck=='1' && form_status=='enable'">
+              <button ion-button class="btn" (click)="fun(1)">Save</button>
+            </div>
+
+            <div class="btndiv" *ngIf="buttomtxtcheck=='2' && form_status=='enable'">
+              <button ion-button class="btn" (click)="fun(0)">Update</button>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+      <!-- 
+      </div>
+    </div> -->
+
+      <div *ngIf="first_attempt!=1">
+        <div class="pageDiv" *ngFor="let data of is_invention?.invention_2_data; let k= index;">
+          <ion-row class="numEmrRow">
+            <ion-col col-8 class="numEmrRowText">
+              Nominee Details
+            </ion-col>
+            <ion-col col-2 class="colcss1" *ngIf="form_status=='enable'" (click)="editform(data,k)">
+              <div class="iconcss1">
+                <ion-icon name="ios-create-outline" class="iconcss"></ion-icon>
+              </div>
+            </ion-col>
+            <ion-col col-2 class="colcss1" *ngIf="form_status=='enable'" (click)="predelete(data,k)">
+              <div class="iconcss1">
+                <ion-icon name="ios-trash-outline" class="iconcss"></ion-icon>
+              </div>
+            </ion-col>
+          </ion-row>
+          <div class="customCardDiv">
+            <ion-row class="bod_bot">
+              <ion-col col-6>
+                <p class="para2">Invention or Improvement</p>
+              </ion-col>
+              <ion-col col-6>
+                <p class="para3">{{data.invention.value}}</p>
+              </ion-col>
+            </ion-row>
+            <ion-row class="bod_bot">
+              <ion-col col-6>
+                <p class="para2">Party</p>
+              </ion-col>
+              <ion-col col-6>
+                <p class="para3">{{data.party.value}}</p>
+              </ion-col>
+            </ion-row>
+            <ion-row class="bod_bot">
+              <ion-col col-6>
+                <p class="para2">Relationship</p>
+              </ion-col>
+              <ion-col col-6>
+                <p class="para3">{{data.relation.value}}</p>
+              </ion-col>
+            </ion-row>
+          </div>
+        </div>
+
+      </div>
+
+      <br>
+      <br>
+      <div class="btndiv" *ngIf="(isSubmit && first_attempt==0) && form_status=='enable'">
+        <button ion-button class="btn" (click)="submit()">Submit</button>
+      </div>
+      <br>
+      <br>
+    </div>
+  </div>
+</ion-content>

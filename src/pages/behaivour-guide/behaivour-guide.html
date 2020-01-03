@@ -1,0 +1,14 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Behavior Guide</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
+    <ion-slides pager="true">
+        <ion-slide *ngFor="let data of allData">
+          <img src="{{data?.images}}"  #myImage (click)="presentImage(myImage)" class="slideImage"/>
+        </ion-slide>
+    </ion-slides>
+    </ion-content>

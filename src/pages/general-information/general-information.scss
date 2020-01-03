@@ -1,0 +1,16 @@
+page-general-information {
+    ion-content{background:#eaeaea;}
+    .pageDiv{padding:15px 10px;
+        .customCardDiv{background:#f5f5f5;border-radius:0px;min-height:450px;
+        }
+        .inputDiv{border:2px solid map-get($colors,themecol);border-radius:10px;padding:0px 10px;
+            position:relative;margin:15px 0px;background:#eaeaea;
+            ion-label{position:absolute;margin:0px;top:-10px;left:10px;background:#f5f5f5;
+                font-weight:bold;width:auto;padding:0px 5px;
+                small{font-weight:normal;}
+            }
+            input{width:100%;margin:5px 0px;padding:3px;font-size:12px;}
+            .input-cover{position:static;}
+        }
+    }
+}

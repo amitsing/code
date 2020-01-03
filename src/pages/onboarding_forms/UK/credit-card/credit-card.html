@@ -1,0 +1,254 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ formData.form_name }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="bg">
+  <div *ngIf="data" [ngClass]="{'newOverlay': formData.form_status != 'enable'}"> 
+  
+    <ion-row #form>
+      <ion-col col-12>
+
+        <div class="formDiv">
+          <ion-row class="cardHeader">
+            <ion-col col-12 text-left>
+              <p class="heading">Personal Details</p>
+            </ion-col>
+          </ion-row>
+
+          <customInput
+            label="Title"
+            [data]="data.credit_detail.title"
+            type="select"
+            [options] = "titleOption"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+          <customInput *ngIf="data.credit_detail.title.value == 'other'"
+            label="Others"
+            [data]="data.credit_detail.other"
+            type="text"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+          <customInput
+            label="Surname"
+            [data]="data.userData.last_name"
+            type="text"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+          <customInput
+            label="First Name"
+            [data]="data.userData.first_name"
+            type="text"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+          <customInput
+            label="Gender"
+            [data]="data.userData.gender"
+            type="radio"
+            [options] = "genderOption"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+          <customInput
+            label="Date of birth"
+            [data]="data.userData.date_of_birth"
+            type="date"
+            [maxDate] = "getCutrrentDate()"
+            dateFormat = "DD/MMM/YYYY"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+          <customInput
+            label="Buisness Name"
+            [data]="data.credit_detail.business_name"
+            type="text"
+            [otherStatus]="isSubmited"
+         ></customInput>
+
+          <customInput
+            label="Cardholder Name"
+            [data]="data.credit_detail.card_name"
+            type="text"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+          <customInput
+            label="Mobile number"
+            [data]="data.userData.contact"
+            type="number"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+          <customInput
+            label="E-mail id"
+            [data]="data.userData.email_id"
+            type="text"
+            [otherStatus]="isSubmited"
+          ></customInput>
+        </div>
+
+
+        <div class="formDiv">
+          <ion-row class="cardHeader">
+              <ion-col col-12 text-left>
+                <p class="heading">Security Details</p>
+              </ion-col>
+          </ion-row>
+        
+  
+          <customInput
+            label="Memorble word (max. 8 characters)"
+            [data]="data.credit_detail.memorable_word"
+            type="text"
+            [wordCount] = "data.credit_detail.memorable_word.checkWordCount(8)"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+          <p *ngIf="data.credit_detail.memorable_word.checkWordCount(8)" style="color: red; margin: 0; padding: 0 10px;">Maximum 8 characters are allowed</p>
+
+          <p>(We need this information for security reasons and to help us identify you when speaking to you on the telephone.)</p>
+        </div>
+
+
+        <div class="formDiv">
+          <ion-row class="cardHeader">
+              <ion-col col-12 text-left>
+                <p class="heading">Present Address</p>
+              </ion-col>
+          </ion-row>
+  
+          <customInput
+            label="Home Address"
+            [data]="data.present_address.address"
+            type="textArea"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+          <customInput
+            label="Postal code"
+            [data]="data.present_address.postal_code"
+            type="text"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+          <customInput
+            label="Move Date"
+            [data]="data.present_address.move_date"
+            type="date"
+            [maxDate] = "getCutrrentDate()"
+            dateFormat = "DD/MMM/YYYY"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+          <customInput
+            label="Telephone number"
+            [data]="data.present_address.telephone_number"
+            type="text"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+        </div>
+
+        <div class="formDiv">
+          <ion-row class="cardHeader">
+              <ion-col col-12 text-left>
+                <p class="heading">Previous Address</p>
+              </ion-col>
+          </ion-row>
+    
+
+          <customInput
+            label="Have you lived at your present address for less than two years?"
+            [data]="data.previous_address.has_previous_address"
+            type="radio"
+            [options]="yesNoOption"
+            [otherStatus]="isSubmited"
+          ></customInput>
+  
+          <customInput *ngIf="data.previous_address.has_previous_address.value == 'true'"
+            label="Home Address"
+            [data]="data.previous_address.address"
+            type="textArea"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+          <customInput *ngIf="data.previous_address.has_previous_address.value == 'true'"
+            label="Postal code"
+            [data]="data.previous_address.postal_code"
+            type="text"
+            [otherStatus]="isSubmited"
+          ></customInput>
+          
+        </div>
+
+        <div class="formDiv">
+          <ion-row class="cardHeader">
+              <ion-col col-12 text-left>
+                <p class="heading">Account Details</p>
+              </ion-col>
+          </ion-row>
+        
+  
+          <customInput
+            label="Are you an existing HSBC personal customer?"
+            [data]="data.credit_detail.existing_customer"
+            type="radio"
+            [options]="yesNoOption"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+          <customInput *ngIf="data.credit_detail.existing_customer.value == 'true'"
+            label="Sort-code"
+            [data]="data.credit_detail.sort_code"
+            type="text"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+          <customInput *ngIf="data.credit_detail.existing_customer.value == 'true'"
+            label="Account number"
+            [data]="data.credit_detail.account_number"
+            type="text"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+          <div *ngIf="data.credit_detail.existing_customer.value == 'true'"  [ngClass]="{'error': !data.credit_detail.share_pin.valueStatus()}">
+            <p>In order to benefit fully from the services available with your Card you will be sent a Personal Identification Number (PIN).</p>
+            <ion-item class="custom">
+                <ion-checkbox [checked]="data.credit_detail.share_pin.value == 'true'" (ionChange)="datachanged($event )"></ion-checkbox>
+               <ion-label>
+                  If you are unable to use a PIN for reasons of disability, then please tick this box. (If this box is ticked then we shall issue you with a Chip card without a PIN).
+               </ion-label>
+            </ion-item>
+            <p><strong>Please note that you will be able to use your Card and PIN to obtain cash from the cash machine if the Business has authorised
+                this.</strong></p>
+          </div>
+          
+        </div>
+
+
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="formData && formData.form_status == 'enable'">
+      <ion-col col-6 *ngIf="fill_status == '0'">
+        <div class="btndiv">
+          <button [ngClass]="{'w-80': (fill_status == 0)}" ion-button class="btn" (click)="save()">Save</button>
+        </div>
+      </ion-col>
+      <ion-col
+        [attr.col-12]="fill_status == '1' ? '' : null"
+        [attr.col-6]="fill_status == '0' ? '' : null"
+      >
+        <div class="btndiv">
+          <button [ngClass]="{'w-80': (fill_status == 0)}" ion-button class="btn" (click)="submit()">{{ fill_status=='1' ? 'Update' : 'Submit'  }}</button>
+        </div>
+      </ion-col>
+    </ion-row>
+  
+  </div>
+</ion-content>

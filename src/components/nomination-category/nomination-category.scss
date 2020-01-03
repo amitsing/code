@@ -1,0 +1,43 @@
+nomination-category {
+    .padd{padding: 8px;float:left;width:100%;background:#d8d8d8;}
+    
+    .cardDiv {
+        width: 100%;
+        background: #ffffff;
+        padding: 10px;
+        float: left;
+        margin: 0px 0px 15px 0px;
+    }   
+
+    .people {
+        .headDiv{
+            float:left;width:100%;padding:0px 5px;
+            h1 {
+                width: 200px;
+                height: 20px;
+                float: left;
+                margin: 0;
+            }
+        }
+        .one {
+            float: left;
+            width: 50%;
+            padding: 0px 5px;
+            margin: 0px;
+            height: 150px;
+            h2 {
+                height: 100px;
+                left: initial;
+                width: 100%;
+                margin: 10px 0px;
+            }
+            p {
+                height: 20px;
+                left: initial;
+                width: 100%;
+                margin: 0px;
+            }
+        }
+    }
+
+}

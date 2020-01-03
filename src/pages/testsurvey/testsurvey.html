@@ -1,0 +1,155 @@
+<!--
+  Generated template for the TestsurveyPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{previousepageData?.title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content  class="mandatoryContent">
+  <div *ngIf="recurementQuestions">
+
+    <ion-grid>
+      <ion-row>
+          <ion-col>
+              <p class="surveyNotation">{{changeQuestionIndex+1}}/{{totalFeedbackQuestion}}</p>
+          </ion-col>
+      </ion-row>
+  </ion-grid>
+
+<ion-card >
+  <ion-card-content>
+
+
+    <p class="feedbackQuestion">  {{recurementQuestions[changeQuestionIndex]?.question}}</p>
+   <!-- this view is for radio button only -->
+    <div *ngIf="recurementQuestions[changeQuestionIndex]?.option_type=='1'" class="radioTypeQuestions">        
+        <ion-row *ngFor="let options of recurementQuestions[changeQuestionIndex]?.options, let optionIndex=index" 
+         (tap)="mySelectedOption(options?.option_id,
+         recurementQuestions[changeQuestionIndex]?.question_id,
+         recurementQuestions[changeQuestionIndex]?.option_type)" [ngClass]="(options?.option_id==myOption)?'customRadioBTNblue':'customRadioBTN'">
+            <ion-col col-auto class="centerData">
+            {{optionIndex+1}}. 
+            </ion-col>
+            <ion-col  class="centerData">
+                {{options?.options}}
+            </ion-col>
+        </ion-row>
+    </div>
+
+
+    <div *ngIf="recurementQuestions[changeQuestionIndex]?.option_type=='2'">
+        <ion-item *ngFor="let options of recurementQuestions[changeQuestionIndex]?.options, let optionIndex=index" >
+            <ion-label class="fullOptionShow">{{options?.options}}</ion-label>
+            <ion-checkbox [(ngModel)]="options.answer" (ionChange)="updateCheckboxAns(
+              recurementQuestions[changeQuestionIndex]?.options,
+              recurementQuestions[changeQuestionIndex]?.question_id,
+              recurementQuestions[changeQuestionIndex]?.option_type
+              )"></ion-checkbox>
+          </ion-item>
+    </div>
+
+        <!-- this view is for emoji only -->
+        <div *ngIf="recurementQuestions[changeQuestionIndex]?.option_type=='3'" class="radioTypeQuestions">  
+          <ion-row>
+                  <ion-col col-3 class="centerData" >
+                      <img src="{{sadEmoji}}"class="emojiIcons" (tap)="mySelectedEmoji(1,'s1',
+                      recurementQuestions[changeQuestionIndex]?.question_id,
+                      recurementQuestions[changeQuestionIndex]?.option_type)"/>
+                  </ion-col>
+                  <ion-col col-3 class="centerData" >
+                      <img src="{{normalEmoji}}"class="emojiIcons" (tap)="mySelectedEmoji(2,'a1',
+                      recurementQuestions[changeQuestionIndex]?.question_id,
+                      recurementQuestions[changeQuestionIndex]?.option_type)"/>
+                  </ion-col>
+                  <ion-col col-3 class="centerData" >
+                      <img src="{{happyEmoji}}"class="emojiIcons" (tap)="mySelectedEmoji(3,'h1',
+                      recurementQuestions[changeQuestionIndex]?.question_id,
+                      recurementQuestions[changeQuestionIndex]?.option_type)"/>
+                  </ion-col>
+                  <ion-col col-3 class="centerData" >
+                      <img src="{{veryHappyEmoji}}"class="emojiIcons" (tap)="mySelectedEmoji(4,'es1',
+                      recurementQuestions[changeQuestionIndex]?.question_id,
+                      recurementQuestions[changeQuestionIndex]?.option_type)"/>
+                  </ion-col>
+          </ion-row>
+          <br>
+          </div>
+
+
+ <!-- this view is for range only -->
+ <div *ngIf="recurementQuestions[changeQuestionIndex]?.option_type=='4'" class="radioTypeQuestions">  
+  <ion-list class="range">
+      <ion-item>
+          <ion-range min="0" max="10" step="1" pin="true" color="danger" snaps="true" [(ngModel)]="val" (ionChange)="selectedRangeAns(val,
+          recurementQuestions[changeQuestionIndex]?.question_id,
+          recurementQuestions[changeQuestionIndex]?.option_type)" >
+             <img range-left src="{{leftSideRangeIcon}}"class="smallEmojiRange"/>
+             <img range-right src="{{rightSideRangeIcon}}"class="smallEmojiRange"/>
+          </ion-range> 
+          <div><p>{{myAnswerForfeedback[this.changeQuestionIndex].answer}}</p>
+         
+        </div>
+      </ion-item>
+  </ion-list>
+ <div *ngIf="val>='1'" class="valclass"><p>{{val}}</p></div>
+  <br>
+</div>
+
+ <!-- for star  -->
+ 
+  <div *ngIf="recurementQuestions[changeQuestionIndex]?.option_type=='5'" class="radioTypeQuestions">        
+      <!-- this is option type {{option_type}} -->
+    <ion-row>
+          <ion-col col-1></ion-col>
+    <ion-col col-2 *ngFor="let options of emptyStar, let optionIndex=index"
+     (click)="fillStarData(optionIndex+1,
+    recurementQuestions[changeQuestionIndex]?.question_id,
+    recurementQuestions[changeQuestionIndex]?.option_type)">
+
+<!-- {{options?.status}} -->
+
+      <ion-icon name="ios-star-outline" class="starDesign" *ngIf="options?.status==false"></ion-icon>
+      <ion-icon name="ios-star" class="fillStarDesign" *ngIf="options?.status==true"></ion-icon>
+    </ion-col>
+
+    <ion-col col-1></ion-col>
+    </ion-row>
+</div>
+
+
+  <!-- this view is for textarea only -->        
+  <div *ngIf="recurementQuestions[changeQuestionIndex]?.option_type=='6'" class="radioTypeQuestions">  
+      <textarea placeholder="Write your feedback here.." #myInput id="myInput"   (keyup)="resize()" [(ngModel)]="comment" (ngModelChange)="myTextareaAns(comment,
+      recurementQuestions[changeQuestionIndex]?.question_id,
+      recurementQuestions[changeQuestionIndex]?.option_type)"></textarea>
+</div>
+
+
+
+    <ion-row style="margin-top:25px">
+      <ion-col *ngIf="changeQuestionIndex-1!=-1">
+              <button ion-button class="centerData commonButton1" (click)="previousQuestion(recurementQuestions[changeQuestionIndex])"><ion-icon name="arrow-round-back"></ion-icon></button>
+      </ion-col>
+      <ion-col *ngIf="changeQuestionIndex+1!=totalFeedbackQuestion">
+          <button  [disabled]="myAnswerForfeedback[changeQuestionIndex]?.submitted==false"   ion-button class="centerData commonButton2" tappable (click)="NextQuestion(recurementQuestions[changeQuestionIndex])"><ion-icon name="arrow-round-forward"></ion-icon></button>
+      </ion-col>
+  </ion-row>
+
+  <button  *ngIf="changeQuestionIndex+1==totalFeedbackQuestion"  [disabled]="ansSelected!=1"   ion-button class="centerData btnmy" tappable (click)="submitRecurementFeedback()">Submit</button>
+
+</ion-card-content>
+</ion-card>
+
+  </div>
+
+
+  <!-- <div *ngIf="bgImageViewer">
+        <img src="assets/imgs/No SurveyImage.png"  style="width:100%">
+      </div>  -->
+
+</ion-content>

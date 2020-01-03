@@ -1,0 +1,48 @@
+<!--
+  Generated template for the QuizsummaryPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>quizsummary</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+
+  <ion-slides #slides speed="500" shouldLockSwipes=true; class="asstest" spaceBetween="10" slidesPerView="1"  (ionSlideDidChange)="slideChanged()">
+
+    <ion-slide *ngFor="let attendant of quizdata;let j=index" style="overflow-y:scroll;">
+ 
+      <ion-row>
+        <ion-col col-12><h6 margin-top >{{attendant.question_text}}</h6></ion-col>
+        <ion-col  col-12><img  (click)="zoomImage(attendant?.file,attendant.question)" class="imgclass"  margin-top margin-bottom src="{{attendant?.question_image}}"></ion-col>
+        <ion-col col-12 no-padding>
+          <ion-row>
+          <ion-col *ngFor="let answer of attendant?.options let i = index" (tap)="optiondata(i,answer.auto_id,attendant.auto_id,j,attendant.question_duration)" 
+           class="options" col-6  >
+          <div [ngClass]="{'stylecolorgrey':(this.colorclass!=i),
+          'stylecolorred':(attendant.user_answer==answer.auto_id),'stylecolorgreen':(attendant.right_answer==answer.auto_id)}">
+          <ion-label style="white-space: normal;">{{answer?.option_text}}</ion-label> 
+           </div>
+
+          </ion-col>
+        </ion-row>
+        </ion-col>
+      </ion-row>
+      <div >
+          <!-- <button ion-button round class="btn3" *ngIf="showsubmit==true || totallength==1" (click)="submit(j)">Submit</button> -->
+          <button ion-button round class="btn3" *ngIf="currentIndex==true" (click)="done()">done</button>
+       
+        </div>
+      <br><br>
+
+         
+    </ion-slide>
+  </ion-slides>
+
+
+</ion-content>

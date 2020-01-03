@@ -1,0 +1,26 @@
+
+<ion-header>
+
+  <ion-toolbar>
+
+    <ion-title style="text-align:center;">Terms of Use</ion-title>
+  </ion-toolbar>
+
+
+</ion-header>
+
+<ion-content padding>
+  <ion-row>
+    <ion-col>
+        <div [innerHTML]="allData" (click)="handleClick($event)"></div>
+    </ion-col>
+  </ion-row>    
+  <!-- <div ion-fixed style="bottom:10px;width:100%;"> -->
+  <div style="bottom:10px;width:100%;">
+    <ion-row>
+        <ion-col col-6 *ngIf="showbutton==true" class=""><button ion-button round class="btn centerDataInDiv" (click)="disagree()">Disagree</button></ion-col>
+        <ion-col col-6 *ngIf="showbutton==true" class=""><button ion-button class="btn centerDataInDiv" (click)="agree()">Agree</button></ion-col>
+    </ion-row>
+  </div>
+<br><br><br><br>
+</ion-content>

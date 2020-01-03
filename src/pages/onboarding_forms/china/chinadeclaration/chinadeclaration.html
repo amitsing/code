@@ -1,0 +1,100 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Declaration</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+    <div class="pageDiv">
+        <div class="customCardDiv">
+          <!-- <div class="right">
+            <span *ngIf="isDisabled==true" (click)=enable()>
+              <ion-icon name="ios-create-outline" class="iconcss"></ion-icon>
+            </span>
+            <span *ngIf="isDisabled==false" (click)=enable()>
+              <ion-icon name="ios-close-circle-outline" class="iconcss"></ion-icon>
+            </span>
+          </div> -->
+          <p class="para4">Declaration</p>
+          <p class="innercss" [innerHTML]="message_top"></p>
+          <ion-row>
+            <ion-col col-12>
+              <div class="inputDiv">
+                <ion-label>Did you have multiple nationalities?
+                  <sup class="redText">*</sup>
+                </ion-label>
+                <ion-list no-margin radio-group [(ngModel)]="nationalities">
+                  <ion-row class="radioDiv">
+                    <ion-col col-6>
+                      <ion-item>
+                        <ion-label class="genderlable">yes</ion-label>
+                        <ion-radio  value="nationalities_yes"></ion-radio>
+                      </ion-item>
+                    </ion-col>
+                    <ion-col col-6>
+                      <ion-item>
+                        <ion-label class="genderlable">No</ion-label>
+                        <ion-radio  value="nationalities_no"></ion-radio>
+                      </ion-item>
+                    </ion-col>
+                  </ion-row>
+                </ion-list>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="nationalities=='nationalities_yes'">
+            <ion-col col-12>
+              <div [ngClass]="{'inputDiv':(i==1),'inputDiv2':(i==2)}">
+                <ion-label>Share Details
+                  <sup class="redText">*</sup>
+                </ion-label>
+                <ion-input type="text" name="nDetails" [(ngModel)]="nDetails" (ngModelChange)="change($event,nDetails,1)"></ion-input>
+              </div>
+            </ion-col>
+          </ion-row>
+          <p class="innercss" [innerHTML]="message_bottom"></p>
+          <ion-row>
+            <ion-col col-12>
+              <div class="inputDiv">
+                <ion-label>Select
+                  <sup class="redText">*</sup>
+                </ion-label>
+                <ion-list no-margin radio-group [(ngModel)]="finalselect">
+                  <ion-row class="radioDiv">
+                    <ion-col col-6>
+                      <ion-item>
+                        <ion-label class="genderlable">yes</ion-label>
+                        <ion-radio  value="finalselect_yes" ></ion-radio>
+                      </ion-item>
+                    </ion-col>
+                    <ion-col col-6>
+                      <ion-item>
+                        <ion-label class="genderlable">No</ion-label>
+                        <ion-radio  value="finalselect_no"></ion-radio>
+                      </ion-item>
+                    </ion-col>
+                  </ion-row>
+                </ion-list>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="finalselect=='finalselect_yes'">
+            <ion-col col-12>
+              <div   [ngClass]="{'inputDiv':(j==1),'inputDiv2':(j==3)}">
+                <ion-label>Share Details
+                  <sup class="redText">*</sup>
+                </ion-label>
+                <ion-input type="text" name="fDetails" [(ngModel)]="fDetails" (ngModelChange)="change1($event,fDetails,2)"></ion-input>
+              </div>
+            </ion-col>
+          </ion-row>
+        </div>
+      </div>
+    
+      
+      <div class="btndiv">
+        <button ion-button class="btn" (click)="update()">Update</button>
+      </div>
+</ion-content>

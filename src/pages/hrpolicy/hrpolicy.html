@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar color="themecol" class="leftIt" hideBackButton="false">
+    <ion-title>HR Policies</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="BGHR">
+  <div class="blackTint">
+    <div class="HrPolicyContainer">
+    <div *ngFor="let policy of HRPolicyData" (tap)="goToHRDetails(policy)">
+      <div class="PerHrPolicyDiv">
+        <div class="HrPolicyImg">
+          <img class="imageCss" [src]="policy?.cover_image"
+               onerror="src='img/default.png'"/>
+        </div>
+        <div class="HrPolicyTitle" *ngIf="policy?.policy_title.length<35">{{policy?.policy_title |limit35}}</div>
+        <div class="HrPolicyTitle" *ngIf="policy.policy_title.length>35">{{policy.policy_title | limit35}}</div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <span *ngIf="apiSuccess==0"><div class="homePageNotPostAvailable">{{message0}}</div></span>
+</ion-content>

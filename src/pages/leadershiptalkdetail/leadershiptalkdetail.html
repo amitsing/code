@@ -1,0 +1,51 @@
+
+<ion-header>
+  <ion-navbar>
+    <!-- <ion-title>{{title}}</ion-title> -->
+    <ion-title [innerHTML]="title"></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
+<div>
+    <!-- <img *ngIf="mediatype=='1'" class="imgcss" src="../../assets/watermark/watermark.png" srcset="{{userimage}}"> -->
+
+    <!-- <img *ngIf="mediatype=='1'" class="imgcss" onerror="this.src='assets/watermark/watermark.png'" #myImage
+    src="{{userimage}}" (click)="presentImage(myImage)"   [style.background-image]="'url(' +userimage+ ')'"> -->
+
+    <img *ngIf="mediatype=='1'" class="imgcss2" style="height: 180px;
+    width: 100%;
+    object-fit: contain;"  #myImage  src="{{userimage}}"  onError="this.src='assets/watermark/watermark.png'" (click)="presentImage(myImage)">
+
+    <!-- <img *ngIf="data.media_type=='2'" class="imgcss" style="border-radius: 18px;" src="../../assets/watermark/watermark.png" srcset="{{data?.thumbnail_image}}"> -->
+<div  *ngIf="mediatype=='3'">
+    <iframe  width="100%" style="height:180px;"
+    [src]="userimage+'?autoplay=0'|safe" autostart="0"
+    allowfullscreen frameborder="0" scrolling="no"></iframe>
+</div>
+     
+<div *ngIf="mediatype=='2'">
+
+    <video [src]="userimage|safe" height="180px"  width="100%" #videoPlayer   poster="{{thumbnail_image}}" controls controlsList="nodownload" type="video/*">
+    </video>
+
+    <!-- <video [src]="userimage|safe" style="height:180px;width:100%"  #videoPlayer   controls controlsList="nodownload" type="video/*">
+    </video> -->
+  </div>
+
+<p class="titlePost" [innerHTML]="title"></p>
+
+</div>
+
+  <p class="para">{{name}}</p>
+<div class="mr">
+    <!-- <p class="para1">{{about}}</p> -->
+
+    <p (click)="handleClick($event)"  [innerHTML]="contentdata?.content" ></p>
+</div>
+
+<!-- <div *ngIf="succ==0">
+    <h1 style="text-align:center">{{msg}}</h1>
+  </div>  -->
+
+</ion-content>

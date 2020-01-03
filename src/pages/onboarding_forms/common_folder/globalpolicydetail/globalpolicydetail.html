@@ -1,0 +1,70 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
+  <div *ngIf="firstdiv && alldata">
+   <div class="pageDiv" *ngFor="let data of alldata; let i= index;">
+  <div class="customCardDiv">
+<!-- <div class="padd" *ngFor="let data of alldata; let i=index"> -->
+  <div *ngIf="data?.content_type=='text'" [innerHTML]="data?.content"></div>
+<!-- <p *ngIf="data?.content_type=='text'" [innerHTML]="data?.content"></p> -->
+<!-- <img *ngIf="data?.content_type=='image'" class="imgcss"  onError="this.src='../../assets/watermark/watermark.png'" 
+ [src]="data?.content"/> -->
+
+ <img *ngIf="data?.content_type=='image'" src="{{data?.content}}"   #myImage (click)="presentImage(myImage)"  />
+
+</div>
+</div>
+<!-- 
+<div *ngIf="hidenext!='complete'" class="btndiv">
+    <button ion-button class="btn" (click)="submit()">{{btncheckdata.btnText}}</button>
+  </div> -->
+
+
+  <div  class="btndiv">
+    <button ion-button class="btn" [disabled]="!btncheckdata.enable" (click)="submit()">{{btncheckdata.btnText}}</button>
+  </div>
+
+</div>
+
+<div *ngIf="quiz_data.length>=1 && quizdiv==true" class="pageDiv">
+    <div class="customCardDiv2">
+  <div class="padd" *ngFor="let qdata of quiz_data; let j=index">
+<ion-row>
+  <ion-col col-1 >
+    {{j+1}})
+  </ion-col>
+  <ion-col col-11>
+    <div class="qcss" [innerHTML]="qdata?.question">
+    </div>
+  </ion-col>
+</ion-row>
+
+  <ion-list radio-group>
+      <ion-item *ngFor="let optionsdata of qdata.options; let k=index">
+         <ion-label> {{optionsdata.options}}</ion-label>
+         <ion-radio value=" {{optionsdata.options}}" (click)="radioClicked(qdata,j,optionsdata)" >
+         </ion-radio>
+       </ion-item>
+     </ion-list>
+
+</div>
+    <!-- </div> -->
+   <div class="btndiv">
+      <button ion-button class="btn" (click)="submit_quiz()">submit</button>
+    </div>
+  </div>
+  </div>
+
+  <!-- <div *ngIf="quiz_data.length>=1 && quizdiv==true" class="pageDiv">
+      <div class="customCardDiv">
+        <p></p>
+      </div>
+  </div> -->
+
+
+</ion-content>

@@ -1,0 +1,60 @@
+<!--
+  Generated template for the ShowAllCommentPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title *ngIf="previousData?.comment_count==1">{{previousData?.comment_count}}  &nbsp;Comment</ion-title>
+    <ion-title *ngIf="previousData?.comment_count>1">{{previousData?.comment_count}} &nbsp;Comments</ion-title>
+    <ion-title *ngIf="previousData?.comment_count<1">No Comments To Display</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-row class="margincss" *ngFor="let cmt of commentdata">
+    <ion-col col-2>
+        <div class="commentimg" >
+            <img class="imgcss2" onErrro="this.src='assets/watermark/watermark.png';" [src]="cmt.comment_by_image" #imgs (click)="pp(imgs)">
+        </div>
+    </ion-col>
+    <ion-col col-10 class="colcolor">
+      <ion-row>
+          <ion-col col-7 no-padding>
+              <p class="mrtop uName">{{cmt.comment_by_name}}</p>
+          </ion-col>
+          <ion-col col-5 no-padding>
+              <p style="font-size: 10px;" class="mrtop1">{{cmt.date_time}}</p>
+          </ion-col>
+      </ion-row>
+      <ion-row>
+          <ion-col col-12 no-padding>
+              <p class="mrtop" [innerHTML]="cmt.comment" (click)="handleClick($event)"></p>
+          </ion-col>
+      </ion-row>
+    </ion-col>
+</ion-row>
+</ion-content>
+<ion-footer style="margin-bottom:-3px;">
+  <form #f="ngForm" style="background-color: white;">
+    <ion-row style="
+                     border-top: 1px solid grey;">
+      <ion-col col-11>
+        <div style="background-color: white;
+                
+                  border-radius: 15px;
+                  ">
+                  <ion-item>
+                      <ion-textarea msd-elastic style="border-radius:20px;" type="text" class="textButton" [(ngModel)]="mycomment" name="mycomment" placeholder="Write your comments..."
+                      required>
+                    </ion-textarea>
+                  </ion-item>
+        </div>
+      </ion-col>
+      <ion-col col-1 class="sendButtonColCss" *ngIf="mycomment!= null || mycomment!= undefined" (tap)="sendComment(f)">
+        <ion-icon class="sendButtonCss" name="send"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-footer>

@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card padding class="relative">
+    <ion-row>
+      <ion-col col-12 class="absolute"><img srcset="{{image}}" src="../../assets/watermark/watermark.png"></ion-col>
+      <ion-col col-9><h3>{{name}}</h3></ion-col>
+      <ion-col col-12>
+        <p margin-vertical  [innerHTML]="information">{{information}}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row class="likes" padding-top>
+      <ion-col col-6>
+        <ion-row>
+          <ion-col col-2>
+              <ion-icon name="pin"></ion-icon>
+          </ion-col>
+          <ion-col >
+              <p>{{place}}</p>
+          </ion-col>
+        </ion-row>
+        
+      </ion-col>
+      <ion-col col-6>
+        <ion-row>
+          <ion-col col-2>
+              <ion-icon name="game-controller-b"></ion-icon>
+          </ion-col>
+          <ion-col >
+              <p>{{passtime}}</p>
+          </ion-col>
+        </ion-row>
+       </ion-col>
+      <ion-col col-6>
+          <ion-row>
+            <ion-col col-2>
+                <!-- <ion-icon name="beer"></ion-icon> -->
+
+                <img class="hobbiIcon" src="../../assets/imgs/favFood1.png">
+
+            </ion-col>
+            <ion-col >
+                <p>{{food}}</p>
+            </ion-col>
+          </ion-row>  </ion-col>
+    </ion-row>
+  </ion-card>
+  <ion-row>
+    <ion-col col-6 text-center>
+      <div class="abslink">
+        <button ion-button (click)="Edit()">Edit</button>
+      </div>
+    </ion-col>
+    <ion-col col-6 text-center>
+      <div class="abslink">
+        <button ion-button [disabled]="enableSubmitBtn==false" (click)="gotohome()">{{btnText}}</button>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-content>

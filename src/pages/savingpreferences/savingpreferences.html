@@ -1,0 +1,30 @@
+<!--
+  Generated template for the SavingpreferencesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Saving Preferences</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<div class="divcss" *ngFor="let data of allData ; let i = index">
+<ion-row >
+  <ion-col col-8>
+<p>{{data.lable}}</p>
+  </ion-col>
+  <ion-col col-4>
+    <p class="mrbottom">{{data.value}}</p>
+    <p class="mrtop">2000 per anum</p>
+  </ion-col>
+</ion-row>
+</div>
+
+<br><br>
+  <!-- <div class="centr">
+      <button ion-button  round  class="btn1"  (click)="submit(emailId,password)">Next</button>
+    </div> -->
+</ion-content>

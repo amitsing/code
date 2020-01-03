@@ -1,0 +1,82 @@
+team-awesome {
+    .padd{padding: 8px;float:left;width:100%;background:#d8d8d8;}
+    .topSlider{
+        width:100%;height:250px;background:#d7d7d7;
+        .tS1{float:left;width:100%;height:100%;}
+    }
+    .cardDiv {
+        width: 100%;
+        background: #ffffff;
+        padding: 10px;
+        float: left;
+        margin: 0px 0px 15px 0px;
+    }
+    .One{
+        h2{
+            float: left;
+            width: 160px;
+            height: 40px;
+            margin: -10px 0px 0px -10px;
+        }
+        p{
+            float: left;
+            width: 100%;
+            height: 100px;
+            margin: 20px 0px;
+        }
+        .span{
+            float: left;
+            width: 100%;
+            margin: 10px 0px 0 0;
+            text-align: center;
+            .Circle{
+                float: none;
+                width: 150px;
+                height: 150px;
+                margin: 0px auto;
+                border-radius: 50%;
+            }
+            span{
+                width: 150px;
+                height: 30px;
+                display: inline-block;
+            }
+        }
+    }
+
+    .people {
+        h1 {
+            width: 200px;
+            height: 20px;
+            float: left;
+            margin: 0;
+        }
+        h4 {
+            float: left;
+            width: 300px;
+            height: 20px;
+            margin: 10px 0 0 0;
+        }
+        .one {
+            float: left;
+            width: 33.33%;
+            padding: 0px 5px;
+            margin: 0px;
+            height: 150px;
+            h2 {
+                height: 100px;
+                left: initial;
+                width: 100%;
+                margin: 10px 0px;
+            }
+            p {
+                height: 20px;
+                left: initial;
+                width: 100%;
+                margin: 0px;
+            }
+        }
+    }
+    .botBtn{float: left;width:100%;height:50px;}
+    
+}

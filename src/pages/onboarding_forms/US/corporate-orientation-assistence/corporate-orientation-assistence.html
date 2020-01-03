@@ -1,0 +1,100 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>corporateOrientationAssistence</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="container">
+    <div class="row">
+      <input
+        type="hidden"
+        id="url"
+        value="https://benepik.in/reach/Onboarding_Forms/US_Forms/attendence_sheet_form.php?89"
+      />
+      <input type="hidden" value="69" id="mas_form_id" />
+      <input type="hidden" value="89" id="employee_id" />
+      <input type="hidden" value="7" id="country_id" />
+      <div
+        class="col-md-12 col-xs-12 col-sm-12"
+        id="formDiv"
+        style="display: block;"
+      >
+        <div class="formDiv">
+          <div class="inputDiv">
+            <label>Employee Name<sup class="mendatFild">*</sup></label>
+            <input
+              type="text"
+              readonly=""
+              style="background-color: lightgray"
+              value="Reach Test"
+            />
+          </div>
+          <strong style="font-size: 17px;">Functional Area</strong>
+          <div>
+            <strong>Human Resources</strong>
+            <div class="inputDiv">
+              <label>Attended On<sup class="mendatFild">*</sup></label>
+              <input
+                type="text"
+                id="human_date"
+                class="dateDiv"
+                value="2019-10-15"
+                readonly="readonly"
+              />
+            </div>
+          </div>
+          <div>
+            <strong>IT and Information Security</strong>
+            <div class="inputDiv">
+              <label>Attended On<sup class="mendatFild">*</sup></label>
+              <input
+                type="text"
+                id="it_date"
+                class="dateDiv"
+                value="2019-10-15"
+                readonly="readonly"
+              />
+            </div>
+          </div>
+          <div>
+            <strong>Administration</strong>
+            <div class="inputDiv">
+              <label>Attended On<sup class="mendatFild">*</sup></label>
+              <input
+                type="text"
+                id="administration_date"
+                class="dateDiv"
+                value="2019-10-15"
+                readonly="readonly"
+              />
+            </div>
+          </div>
+        </div>
+        <div text-center class="submitBtn" id="submit">
+          <button
+            type="submit"
+            id="submitFinal"
+            value="update"
+            name="submitFinal"
+            onclick="submitForm(this.value);"
+          >
+            Update
+          </button>
+        </div>
+      </div>
+      <div class="row" style="display: none;" id="alertForm">
+        <div
+          class="col-md-6 col-lg-6 col-xs-6"
+          style="position: absolute; text-align: center; top: 46%; left: 29%;"
+        >
+          <div class="inputDiv" style="background-color: white">
+            Oop's Something went wrong. <br />Please go back and try again after
+            some time.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

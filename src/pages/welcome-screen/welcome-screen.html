@@ -1,0 +1,34 @@
+
+
+<ion-content style="background:url('assets/imgs/bg/welcomeBG.png'); background-size:cover;">
+  <div *ngIf="welcomeMessage" >
+  <ion-row padding text-center>
+    <ion-col col-12><img src="assets/imgs/welcome1.png" class="welcomImg"></ion-col>
+    <ion-col col-12>
+      <h1>{{welcomeMessage?.title}}</h1>
+      <p style="font-size: 19px;line-height: 30px;margin-bottom: 35px;" [innerHTML]="welcomeMessage?.message"></p>
+    </ion-col>
+    <ion-col col-12>
+      <div class="abslink"><button ion-button text-capitalize (click)="imageUpload()">Let's Get Started</button></div>
+    </ion-col>
+  </ion-row> 
+</div>
+
+<div *ngIf="!welcomeMessage" >
+  
+  <ion-row padding text-center>
+    <ion-col col-12><div class="imageSkelton"></div></ion-col>
+    <ion-col col-12>
+      <h1 class="nameSkelton"></h1>
+      <p class="messageSkelton"></p>
+      <p class="messageSkelton"></p>
+      <p class="messageSkelton"></p>
+      <p class="messageSkelton messageShortSkelton"></p>
+    </ion-col>
+    <ion-col col-12>
+      <div class=" messageSkelton btnSkelton"></div>
+    </ion-col>
+  </ion-row> 
+</div>
+
+</ion-content>

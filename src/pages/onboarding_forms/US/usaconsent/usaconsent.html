@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding *ngIf="allData">
+  <div [ngClass]="{'newOverlay':form_status != 'enable'}">
+    <div class="pageDiv" *ngFor="let data of allData; let j= index;">
+      <div class="customCardDiv">
+        <p *ngIf="j==0" [innerHTML]="partdata_a.description"></p>
+        <p *ngIf="j==0" class="para3" [innerHTML]="partdata_a.data_A"></p>
+        <p *ngIf="j==1" class="para3" [innerHTML]="partdata_a.data_B"></p>
+        <p *ngIf="j==2" [innerHTML]="partdata_b.description"></p>
+        <p *ngIf="j==2" class="para3" [innerHTML]="partdata_b.data_A"></p>
+        <div *ngFor="let value of data; let i= index;">
+          <div class="bordercss" id="{{value?.auto_id}}" [ngClass]="{'redBorder':scrollDivId==value?.auto_id}">
+            <p class="para3">Question: &nbsp;{{i+1}}</p>
+            <p [innerHTML]="value.question"></p>
+            <ion-row *ngIf="value.userResponse==true" class="AnswerDiv">
+              <ion-col col-5 (click)=checkfun(true,i,j,data)>
+                <div text-center class="fillBg">
+                  <span>Yes</span>
+                </div>
+              </ion-col>
+              <ion-col col-2></ion-col>
+              <ion-col col-5 (click)=checkfun(false,i,j,data)>
+                <div text-center class="emptyBg">
+                  <span>No</span>
+                </div>
+              </ion-col>
+            </ion-row>
+            <ion-row *ngIf="value.userResponse==false" class="AnswerDiv">
+              <ion-col col-5 (click)=checkfun(true,i,j,data)>
+                <div text-center class="emptyBg">
+                  <span>Yes</span>
+                </div>
+              </ion-col>
+              <ion-col col-2></ion-col>
+              <ion-col col-5 (click)=checkfun(false,i,j,data)>
+                <div text-center class="fillBg">
+                  <span>No</span>
+                </div>
+              </ion-col>
+            </ion-row>
+            <ion-row *ngIf="value.userResponse=='3'" class="AnswerDiv">
+              <ion-col col-5 (click)=checkfun(true,i,j,data)>
+                <div text-center class="emptyBg">
+                  <span>Yes</span>
+                </div>
+              </ion-col>
+              <ion-col col-2></ion-col>
+              <ion-col col-5 (click)=checkfun(false,i,j,data)>
+                <div text-center class="emptyBg">
+                  <span>No</span>
+                </div>
+              </ion-col>
+            </ion-row>
+          </div>
+        </div>
+        <p *ngIf="j==2" class="" [innerHTML]="partdata_b.data_B"></p>
+      </div>
+    </div>
+    <div>
+      <div class="" [innerHTML]="partdata_c?.description"></div>
+      <div *ngIf="form_status=='enable' && fillstatus==0" class="btndiv">
+        <button ion-button class="btn" (click)="update()">Submit</button>
+      </div>
+      <div *ngIf="form_status=='enable' && fillstatus==1" class="btndiv">
+        <button ion-button class="btn" (click)="update()">Update</button>
+      </div>
+    </div>
+
+  </div>
+</ion-content>

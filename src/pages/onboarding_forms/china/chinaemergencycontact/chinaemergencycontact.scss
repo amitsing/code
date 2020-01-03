@@ -1,0 +1,212 @@
+page-chinaemergencycontact {
+
+    .list-ios {
+        margin: -1px 0 0px;
+    }
+
+    .item-ios {
+        padding-left: 16px;
+        padding-left: 16px;
+        border-radius: 0;
+        position: relative;
+        font-size: 1.7rem;
+        color: #000;
+        background-color: transparent;
+        -webkit-transition: background-color 200ms linear;
+        transition: background-color 200ms linear;
+    }
+    .titlepara{text-align: center;font-weight: bold;}
+    .iconcss{    font-size: 1.8em;  }
+    .right{text-align: right;}
+    .btndiv{
+        width: 100%;text-align: center;
+    }
+    .btn{
+      height: 30px;
+      width: 33%;
+      border-radius: 20px;
+      font-size: 10px;
+      background: #e22550;
+    }
+    .list-md {
+        margin: -1px 0 0px;
+    }
+    .pad0{padding-top: 0px;padding-bottom: 0px;}
+    .item.item-md .checkbox-md {
+        position: static;
+        display: block;
+        margin: 9px 14px 9px -14px;
+    }
+    .item-md {
+        padding-left: 16px;
+        padding-right: 0;
+        position: relative;
+        font-size: 1.6rem;
+        font-weight: normal;
+        text-transform: none;
+        color: #000;
+        background-color: transparent;; 
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        -webkit-transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+        transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .paracss{margin-top: 0px;margin-bottom: 0px;
+        font-weight: bold;}
+    .genderlable{font-size: 13px;font-weight: normal;}
+    .add{font-size: 17px;font-weight: bold;}
+    .para{font-size: 14px;
+        font-weight: bold;
+        padding-left: 6px;
+        margin: 6px 6% 6px 0px;}
+    // ion-content{background:#eaeaea;}
+    .pageDiv{padding:5px 10px;
+        .customCardDiv{background: #fff;
+            border-radius: 5px;
+            padding: 5px;
+            box-shadow: 1px 1px 3px 1px #dcdcdc;        
+        }
+        .inputDiv{border:2px solid #4d2748 map-get($colors,themecol);border-radius:10px;padding:0px 10px;
+            position:relative;margin:15px 0px;background:#eaeaea;
+            ion-label{position:absolute;margin:0px;top:-10px;left:10px;background:#f5f5f5;
+                font-weight:bold;width:auto;padding:0px 5px;
+                small{font-weight:normal;}
+            }
+            input{width:100%;margin:5px 0px;padding:3px;font-size:12px;}
+            .input-cover{position:static;}
+        }
+
+        .redBorder{border:2px solid red map-get($colors,themecol);border-radius:10px;padding:0px 10px;
+            position:relative;margin:15px 0px;background:#eaeaea;
+            ion-label{position:absolute;margin:0px;top:-10px;left:10px;background:#f5f5f5;
+                font-weight:bold;width:auto;padding:0px 5px;
+                small{font-weight:normal;}
+            }
+            input{width:100%;margin:5px 0px;padding:3px;font-size:12px;}
+            .input-cover{position:static;}
+        }
+
+        .radioDiv {
+            ion-label{position:static;background:transparent;}
+            ion-item{background:transparent;}
+        }
+        .inputDiv1{border:2px solid #4d2748 map-get($colors,themecol);border-radius:10px;padding:0px 10px;
+            position:relative;margin:15px 0px;
+            ion-label{position:absolute;margin:0px;top:-10px;left:10px;background:#f5f5f5;
+                font-weight:bold;width:auto;padding:0px 5px;z-index: 1;
+                small{font-weight:normal;}
+            }
+            input{width:100%;margin:5px 0px;padding:3px;font-size:12px;}
+            .input-cover{position:static;}
+
+            .checklevel{position: inherit;    white-space: normal;
+                font-size: 11px;}
+        }
+
+
+        .inputDiv4{border:2px solid red map-get($colors,themecol);border-radius:10px;padding:0px 10px;
+            position:relative;margin:15px 0px;
+            ion-label{position:absolute;margin:0px;top:-10px;left:10px;background:#f5f5f5;
+                font-weight:bold;width:auto;padding:0px 5px;z-index: 1;
+                small{font-weight:normal;}
+            }
+            input{width:100%;margin:5px 0px;padding:3px;font-size:12px;}
+            .input-cover{position:static;}
+
+            .checklevel{position: inherit;    white-space: normal;
+                font-size: 11px;}
+        }
+
+    }
+
+    .list-ios > .item-block:last-child, .list-ios > .item-wrapper:last-child .item-block {
+        border-bottom: 0px  #c8c7cc;
+    }
+    .list-ios > .item-block:first-child {
+        border-top: 0px  #c8c7cc;
+    }
+
+
+    ion-content{
+        background-color: #f7f7f7 !important;
+.numEmrRow{
+    background: #563251;
+    color: #fff;
+    .numEmrRowText{
+        display: block;
+        margin: auto;
+    }
+}
+.bod_bot{ border-bottom: 1px solid #f1f1f1;}
+.bod_bot .para3,.bod_bot .para2{
+    margin: 0;
+    padding: 5px 2px;
+}
+p.para2 {
+    font-weight: bold;
+}
+p.para3, p.para2 {
+    font-size: 12px; color: #444;
+}
+    }
+.mybtn{
+    min-height: 30px;
+    min-width: 33%;
+    border-radius: 20px;
+    font-size: 10px;
+    padding: 0 1.0rem;
+    background: #e22550;
+}
+.closeBTN{
+    position: absolute;
+    margin-top: -12px;
+    right: 8px;
+    font-size: 34px;
+}
+.onboardingIonItems {
+    ion-select{padding:8px 10px !important;}
+}
+
+
+.onboardingInputField{
+    border: 1px solid #444;
+}
+.onboardingInputField, .onboardingInputFieldRED{
+    margin-top: 5px;
+    border-radius: 5px;padding: 0 10px;
+}
+.onboardingInputFieldRED{
+    border: 1px solid red;
+}
+ion-item.onboardingIonItems{
+    padding-left: 0 !important;
+    .item-inner{
+    padding-right: 0 !important;
+    border-bottom-color: transparent !important;
+    box-shadow: none !important;
+    ion-label{
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
+    }
+    }
+}
+.my_relativeDIV p{
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
+}
+ion-select.rel_selectbox{
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 12px  !important;
+    button.item-cover{
+        height: 45px !important;
+
+    top: 50px !important;
+    }
+}
+
+
+
+}

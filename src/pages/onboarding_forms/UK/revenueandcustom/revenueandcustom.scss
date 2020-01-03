@@ -1,0 +1,79 @@
+page-revenueandcustom {
+     .pageDiv .radioDiv ion-label {
+        position: static;
+        background: transparent;
+        white-space: normal;
+    }
+    .mrtop{margin-top: 0px;}
+    .para4{font-size: 15px;font-weight: bold;text-align: center;}
+    .para3{font-size: 13px;font-weight: bold;}
+    .fontcss{font-size:12px; }
+    .iconcss{font-size: 1.8em;    padding-right: 10px;
+        padding-top: 8px;}
+    .right{text-align: right;}
+    .btndiv{
+        width: 100%;text-align: center;
+    }
+    .btn{
+      height: 30px;
+      width: 33%;
+      border-radius: 20px;
+      font-size: 10px;
+      background: #e22550;
+    }
+    .list-md {
+        margin: -1px 0 0px;
+    }
+    .pad0{padding-top: 0px;padding-bottom: 0px;}
+    .item.item-md .checkbox-md {
+        position: static;
+        display: block;
+        margin: 9px 14px 9px -14px;
+    }
+    .item-md {
+        padding-left: 16px;
+        padding-right: 0;
+        position: relative;
+        font-size: 1.6rem;
+        font-weight: normal;
+        text-transform: none;
+        color: #000;
+        background-color: transparent;; 
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        -webkit-transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+        transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .paracss{margin-top: 0px;margin-bottom: 0px;
+        font-weight: bold;}
+    .genderlable{font-size: 13px;font-weight: normal;}
+    .para{font-size: 17px;font-weight: bold;padding-left: 6px;}
+    ion-content{background:#eaeaea;}
+    .pageDiv{padding:15px 10px;
+        .customCardDiv{background:#f5f5f5;border-radius:5px;padding: 5px;
+            // min-height:450px;
+        }
+        .inputDiv{border:2px solid #4d2748 map-get($colors,themecol);border-radius:10px;padding:0px 10px;
+            position:relative;margin:15px 0px;background:#eaeaea;
+            ion-label{position:absolute;margin:0px;top:-10px;left:10px;background:#f5f5f5;
+                font-weight:bold;width:auto;padding:0px 5px;
+                small{font-weight:normal;}
+            }
+            input{width:100%;margin:5px 0px;padding:3px;font-size:12px;}
+            .input-cover{position:static;}
+        }
+        .radioDiv {
+            ion-label{position:static;background:transparent;}
+            ion-item{background:transparent;}
+        }
+        .inputDiv1{border:2px solid #4d2748 map-get($colors,themecol);border-radius:10px;padding:0px 10px;
+            position:relative;margin:15px 0px;
+            ion-label{position:absolute;margin:0px;top:-10px;left:10px;background:#f5f5f5;
+                font-weight:bold;width:auto;padding:0px 5px;z-index: 1;
+                small{font-weight:normal;}
+            }
+            input{width:100%;margin:5px 0px;padding:3px;font-size:12px;}
+            .input-cover{position:static;}
+        }
+    }
+}

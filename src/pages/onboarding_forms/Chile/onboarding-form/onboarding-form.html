@@ -1,0 +1,265 @@
+<!--
+  Generated template for the OnboardingFormPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{page_title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="bg">
+        <div [ngClass]="{'newOverlay':formD.form_status != 'enable'}"> 
+    <div class="container">
+        <div class="row" *ngIf="formData" #form>
+            <div class="col-md-12 col-xs-12 col-sm-12" id="formDiv">
+                <div class="formDiv">
+                    <div>
+                        <h4> Personal Information </h4>
+                     </div>
+                     <customInput
+                        label="Employee Name"
+                        [data]="formData.userData.userName"
+                        type="text"
+                        [otherStatus]="isSubmited"
+                     ></customInput>
+
+                     <customInput
+                        label="Gender"
+                        [data]="formData.userData.gender"
+                        type="radio"
+                        [options] = "genderOptions"
+                        [otherStatus]="isSubmited"
+                     ></customInput>
+
+                     <customInput
+                        label="Phone Number"
+                        [data]="formData.userData.contact"
+                        type="number"
+                        [otherStatus]="isSubmited"
+                     ></customInput>
+
+                     <customInput
+                        label="Father Name"
+                        [data]="formData.userData.father_name"
+                        type="text"
+                        [otherStatus]="isSubmited"
+                     ></customInput>
+
+                     <customInput
+                        label="RUT Number"
+                        [data]="formData.rutData.rut_number"
+                        type="text"
+                        [otherStatus]="isSubmited"
+                     ></customInput>
+
+                     <customInput
+                        label="Passport Number"
+                        [data]="formData.passport.passport"
+                        type="text"
+                        [otherStatus]="isSubmited"
+                     ></customInput>
+
+                     <customInput
+                        label="Date of Birth ( dd/mm/yyyy)"
+                        [data]="formData.userData.date_of_birth"
+                        type="date"
+                        dateFormat = "MM/DD/YYYY"
+                        [otherStatus]="isSubmited"
+                     ></customInput>
+
+                     <customInput
+                        label="Place of Birth"
+                        [data]="formData.userData.place_of_birth"
+                        type="text"
+                        [otherStatus]="isSubmited"
+                     ></customInput>
+
+                     <customInput
+                        label="Nationality"
+                        [data]="formData.userData.nationality_name"
+                        type="text"
+                        [otherStatus]="isSubmited"
+                     ></customInput>
+
+                     <customInput
+                        label="Marital Status"
+                        [data]="formData.userData.marital_status"
+                        type="text"
+                        [otherStatus]="isSubmited"
+                     ></customInput>
+
+                     <customInput
+                        label="Emergency Contact Name"
+                        [data]="formData.emgData.emg_contact_name"
+                        type="text"
+                        [otherStatus]="isSubmited"
+                     ></customInput>
+
+                     <customInput
+                        label="Emergency Contact Telephone"
+                        [data]="formData.emgData.emg_contact_number"
+                        type="number"
+                        [otherStatus]="isSubmited"
+                    ></customInput>
+
+                    <customInput
+                        label="University"
+                        [data]="formData.eduData.university_name"
+                        type="text"
+                        [otherStatus]="isSubmited"
+                     ></customInput>
+
+                     <customInput
+                        label="University Degree"
+                        [data]="formData.eduData.education_specialization_id"
+                        type="select"
+                        [options] = "universityDropDown"
+                        [otherStatus]="isSubmited"
+                     ></customInput>
+
+                     <customInput
+                        label="Education Level"
+                        [data]="formData.eduData.level_of_education"
+                        type="select"
+                        [options]="eduDropDown"
+                        [otherStatus]="isSubmited"
+                     ></customInput>
+
+                     <customInput
+                        label="E-mail Id "
+                        [data]="formData.userData.email_id"
+                        type="text"
+                        [otherStatus]="isSubmited"
+                    ></customInput>
+
+              
+                </div>
+
+             <div class="formDiv">
+                    <div>
+                        <h4> HR Information </h4>
+                     </div>
+
+                     <customInput
+                        label="Designation "
+                        [data]="formData.userData.designation"
+                        type="text"
+                        [otherStatus]="isSubmited"
+                     ></customInput>
+
+                     <customInput
+                        label="Department "
+                        [data]="formData.userData.department"
+                        type="text"
+                        [otherStatus]="isSubmited"
+                    ></customInput>
+
+                    <customInput
+                        label="RM"
+                        [data]="formData.rmDetail.contact_person"
+                        type="text"
+                        [otherStatus]="isSubmited"
+                    ></customInput>
+
+                    <customInput
+                        label="Date of Joining (dd/mm/yyyy)"
+                        [data]="formData.userData.date_of_joining"
+                        type="date"
+                        dateFormat ="MM/DD/YYYY"
+                        [otherStatus]="isSubmited"
+                    ></customInput>
+
+               
+             </div>
+
+             <div class="formDiv">
+                    <div>
+                        <h4> Residential Information </h4>
+                     </div>
+
+                     <customInput
+                        label="Permanent Address"
+                        [data]="formData.address.address"
+                        type="text"
+                        [otherStatus]="isSubmited"
+                    ></customInput> 
+
+                    <customInput
+                        label="Zip Code"
+                        [data]="formData.address.zipcode"
+                        type="text"
+                        [otherStatus]="isSubmited"
+                    ></customInput> 
+
+                    <customInput
+                        label="City"
+                        [data]="formData.address.city"
+                        type="text"
+                        [otherStatus]="isSubmited"
+                    ></customInput> 
+
+                    <customInput
+                        label="State / Reg"
+                        [data]="formData.address.state"
+                        type="text"
+                        [otherStatus]="isSubmited"
+                    ></customInput> 
+
+                    <customInput
+                        label="Country"
+                        [data]="formData.address.country"
+                        type="text"
+                        [otherStatus]="isSubmited"
+                    ></customInput> 
+
+                    <customInput
+                        label="Residence Since (mm/yy)"
+                        [data]="formData.address.residing_since"
+                        type="date"
+                        dateForrmat = "MM/YYYY"
+                        [otherStatus]="isSubmited"
+                    ></customInput> 
+
+                    <customInput
+                        label="Nature of Location"
+                        [data]="formData.address.nature_of_location"
+                        type="select"
+                        [options] = "locationDropDowns"
+                        [otherStatus]="isSubmited"
+                    ></customInput> 
+
+                    <customInput
+                        label="Address in Chile"
+                        [data]="formData.address.chile_address"
+                        type="text"
+                        [otherStatus]="isSubmited"
+                    ></customInput> 
+
+                   
+             </div>
+             <div class="formDiv">
+                <show-html [htmlData]="msg"></show-html>
+            </div>
+              
+            </div>
+        </div>
+    </div>
+    <ion-row *ngIf="formD && formD.form_status == 'enable'">
+        <ion-col text-center col-6 *ngIf="fill_status == '0'">
+                <div class="btndiv">
+                        <button ion-button class="btn" (click)=" save()">Save</button>
+                </div>
+        </ion-col>
+        <ion-col [attr.col-12]="fill_status == '1' ? '' : null"
+                 [attr.col-6]="fill_status == '0' ? '' : null">
+      
+          <div class="btndiv">
+                <button ion-button class="btn" (click)="submit()">{{ fill_status=='1' ? 'Update' : 'Submit'  }}</button>
+          </div>
+        </ion-col>
+      </ion-row>
+        </div>
+</ion-content>

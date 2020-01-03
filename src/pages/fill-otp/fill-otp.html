@@ -1,0 +1,78 @@
+<!--
+  Generated template for the TakeMobileNumberPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Verification Code</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="themeBg">
+  <div class="customCardView">
+    <ion-row>
+      <ion-col>
+        <img src="../../assets/imgs/otpIcon.png" class="mobIcon centerDataInDiv" />
+        <p class="heading" text-center>Please enter verification code sent to your Mobile Number.</p>
+      </ion-col>
+    </ion-row>
+    <!-- <table>
+          <tr>
+            <td>
+              <ion-input type="text" #otp1 class="otp" pattern="[0-9]{6}" maxlength="1" size="1" (keyup)="moveFocus(otp2)">
+              </ion-input>
+            </td>
+            <td>
+              <ion-input type="text" #otp2 class="otp" pattern="[0-9]{6}" maxlength="1" size="1" (keyup)="moveFocus(otp3)">
+              </ion-input>
+            </td>
+            <td>
+              <ion-input type="text" #otp3 class="otp" pattern="[0-9]{6}" maxlength="1" size="1" (keyup)="moveFocus(otp4)">
+              </ion-input>
+            </td>
+            <td>
+              <ion-input type="text" #otp4 class="otp" pattern="[0-9]{6}" maxlength="1" size="1">
+              </ion-input>
+            </td>
+          </tr>
+        </table> -->
+    <ion-row>
+      <ion-col col-3>
+        <ion-input type="tel" #otp1 placeholder="*" class="bodBottom" pattern="[0-9]{6}" maxlength="1"
+        (ionFocus)="checkFocus(1)"  (keyup)="moveFocus(otp2, myotp1, '1')" [(ngModel)]="myotp1" ></ion-input>
+      </ion-col>
+      <ion-col col-3>
+        <ion-input type="tel" #otp2 placeholder="*" class="bodBottom" pattern="[0-9]{6}" maxlength="1"
+        (ionFocus)="checkFocus(2)" (keyup)="moveFocus(otp3, myotp2, '2')" [(ngModel)]="myotp2" ></ion-input>
+      </ion-col>
+      <ion-col col-3>
+        <ion-input type="tel" #otp3 class="bodBottom" pattern="[0-9]{6}" maxlength="1"
+        (ionFocus)="checkFocus(3)" placeholder="*" (keyup)="moveFocus(otp4, myotp3, '3')" [(ngModel)]="myotp3" ></ion-input>
+      </ion-col>
+      <ion-col col-3>
+        <ion-input type="tel" #otp4 placeholder="*" class="bodBottom" pattern="[0-9]{6}" maxlength="1"
+        (ionFocus)="checkFocus(4)" (keyup)="moveFocus(otp4, myotp4, '4')" [(ngModel)]="myotp4"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <br>
+        <button ion-button [disabled]="submitBtnDisable==true" class="btn centerDataInDiv" (click)="submitOtp(myotp1,myotp2,myotp3,myotp4)">{{submitBtnText}}</button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <button ion-button [disabled]="resendBtnDisable==true" clear class=" centerDataInDiv" (click)="resendOTP()">{{resendOTPText}}</button>
+      </ion-col>
+    </ion-row><br><br>
+    <div *ngIf="profilekey=='0' && show_skip==1">
+      <!--   <button ion-button  class="btn centerDataInDiv"  tappable (click)="skiptc()">{{skipbtnText}}</button> -->
+  
+      <p class="skipcss" (click)="showeAlert()">{{skipbtnText}}</p>
+    </div>
+
+  </div>
+  <!-- </div> -->
+</ion-content>

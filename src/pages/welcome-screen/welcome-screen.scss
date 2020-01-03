@@ -1,0 +1,59 @@
+page-welcome-screen {
+    .toolbar-background-md {
+        border-color: #542e56;
+        background: #542e56;
+    }
+    .back-button.show-back-button {
+        display: inline-block;
+        color: #ffffff;
+    }
+    .toolbar-title {
+        color: #ffffff;
+    }
+
+    .abslink button {
+        background: black;
+        background-image: linear-gradient(to bottom, #bf2548 , #e22550);
+        padding: 20px 45px;
+        border-radius: 15px;
+    }
+.welcomImg{
+
+    width: 59% !important;
+    margin-bottom: 16%;
+    margin-top: 40%;
+
+}
+
+//skelton codeing*******************
+.imageSkelton, h1.nameSkelton,.messageSkelton{
+    background: rgba(206, 206, 206, 0.76);
+    filter: blur(2px);
+}
+.imageSkelton{width: 100%;
+    height: 187px;
+}
+h1.nameSkelton{
+width:100%;
+height: 31px;
+}
+.messageSkelton{
+    width:100%;
+    height: 25px;
+}
+.messageShortSkelton{
+    width:70%;
+    display: block;
+    margin: auto;
+}
+.btnSkelton{
+    width:40%;
+    height: 45px;
+    border-radius: 20px;
+    display: block;
+    margin: auto;
+}
+//skelton codeing end*****************************
+
+
+}

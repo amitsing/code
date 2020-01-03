@@ -1,0 +1,98 @@
+page-welcome-onboard-details {
+    .mrtop{margin-top: 0px;}
+    .footerdiv{background-color: white;
+        // margin-bottom: 12px!important;
+        border-radius: 15px;
+        // margin-top: 11px;
+    }
+    .mrtop{margin-top: 0px;margin-bottom: 0px;} 
+    .colcolor{    background: lightgray;
+        border-radius: 4px;}
+    .imgcss2{    height: 42px;
+        width: 42px;
+        border: 1px solid #b1b1b1;
+        border-radius: 50%;
+        object-fit: cover;}
+    .margincss{margin: 8px;}
+    .bordercss1{text-align: left;}
+    .bordercss{border-bottom: 1px solid lightgray;}
+    .relative {
+        position: relative;
+        // background: #e6e9f5;
+        width: 100%;
+        margin: 70px 0 25px 0;
+        overflow: visible;
+        padding: 16px;
+    }
+    .contentHolder{background: #dadada}
+    .wowBadgename{
+        font-size: 10px;
+        font-weight: 600;
+        color: #444;
+        margin: 2px;
+        @include line-clamp(2);
+    }
+    .myQuote{
+        font-size: 15px;
+        font-weight: bold;
+        text-align: center;color:#444
+    }
+    .customCardView{
+        background: #fff;
+        margin-bottom: 13px;
+        border-radius: 5px;
+    }
+    .Wd_Designation{
+    margin: 0px;
+    font-size: 12px;
+    color: #444;
+    @include line-clamp(1);
+    }
+    
+    .absolute {
+        position: absolute;
+        top: -50px;
+        right: 0px;
+        width: 110px;
+    }
+    .absolute img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 1px solid $theme-titlecolor;
+    }
+    .relative h3 {
+        font-size: 16px;
+        font-weight: bold;
+        @include line-clamp(1);
+        color: $theme-titlecolor;
+    }
+    .hobbiIcon{width: 80%;
+        position: absolute;}
+
+
+    .likes {
+        border-top: 1px solid $theme-titlecolor;
+    }
+    .likes img {
+        width: 20px;
+        float: left;
+    }
+    .abslink button {
+        background: #b7b7b7;
+        background-image: linear-gradient(to bottom, $theme-titlecolor, #e22550);
+        padding: 20px 45px;
+        border-radius: 15px;
+    }
+
+    .mod_title{
+        font-size: 15px;
+        font-weight: 600;
+        color: $theme-titlecolor;
+    }
+
+img.wowAwards{ max-width: 70px;}
+
+
+}

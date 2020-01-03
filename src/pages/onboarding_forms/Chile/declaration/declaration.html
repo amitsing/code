@@ -1,0 +1,96 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{page_title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<!-- *ngIf="declarationData && declarationData.length>0" -->
+<ion-content padding class="bg">
+        <div [ngClass]="{'newOverlay':formData.form_status != 'enable'}"> 
+  <ion-row >
+    <ion-col col-12>
+        <div class="formDiv">
+            <div class="cont">
+                <ion-row>
+                    <ion-col col-12 *ngFor="let item of declarationData">
+                        <div *ngIf="item.content_type == 'text'">
+                            <show-html [htmlData]="item.content" ></show-html>
+                        </div>
+                        <div *ngIf="item.content_type == 'image'">
+                            <customImage [imageSrc]="item.content" [customClass]="['imageCSS']"></customImage>
+                        </div>
+                    </ion-col>
+                </ion-row>
+            </div>
+            <ion-row>
+                <ion-col col-12>
+                  <ion-label>
+                    Date 
+                      <sup class="mendatFild">*</sup>
+                  </ion-label>
+                </ion-col>
+                <ion-col col-12>
+                    <ion-datetime [(ngModel)]="data.currunt_date" disabled displayFormat="MM/DD/YYYY"></ion-datetime>
+                </ion-col>
+            </ion-row>
+            <div class="headingDiv">
+                <p>Have you ever been known by another name?</p>
+            </div>
+            <div class="inputDiv" [ngClass]="{'error': !data.name_check.trim() && isSubmited}"><label>Check<sup class="mendatFild">*</sup>
+                </label>
+                <div class="genderDiv">
+                    <ion-list radio-group [(ngModel)]="data.name_check">
+                        <ion-row class="radioNewDiv">
+                            <ion-col col-6>
+                                <ion-item>
+                                    <ion-label>Yes</ion-label>
+                                    <ion-radio value="true"></ion-radio>
+                                </ion-item>
+                            </ion-col>
+                            <ion-col col-6>
+                                <ion-item>
+                                    <ion-label>No</ion-label>
+                                    <ion-radio value="false"></ion-radio>
+                                </ion-item>
+                            </ion-col>
+                        </ion-row>
+                    </ion-list>
+                </div>
+            </div>
+            <div *ngIf="data.name_check == 'true'"  id="otherNameDiv" style="display: block;">
+                <div class="headingDiv">
+                    <p>If Yes, please share the name and duration since it changed</p>
+                </div>
+                <ion-row>
+                    <ion-col col-12>
+                        <ion-label>
+                            Other Name 
+                                <sup class="mendatFild">*</sup>
+                        </ion-label>
+                        <ion-input
+                            type="text"  
+                            [ngClass]="{'error': !data.other_name.trim() && isSubmited}"
+                            [(ngModel)]="data.other_name" >
+                        </ion-input>
+                    </ion-col>
+                    <ion-col col-12>
+                        <ion-label>
+                            Date 
+                            <sup class="mendatFild">*</sup>
+                        </ion-label>
+                        <ion-datetime 
+                            [ngClass]="{'error': !data.other_date.trim() && isSubmited}"
+                            [(ngModel)]="data.other_date" 
+                            displayFormat="MM/DD/YYYY">
+                        </ion-datetime>
+                    </ion-col>
+                </ion-row>
+            </div>
+        </div>
+        <div class="btndiv" *ngIf="formData && formData.form_status == 'enable'">
+            <button ion-button class="btn" (click)="submit()">Submit</button>
+        </div>
+    </ion-col>
+  </ion-row>
+        </div>
+</ion-content>

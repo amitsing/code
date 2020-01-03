@@ -1,0 +1,100 @@
+<!--
+  Generated template for the AddcummunitypostPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Add Community Post</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item style="    background-color: #f2f2f2; margin-bottom:0px;">
+      <ion-avatar item-start >
+
+          <img class="imgcss" onerror="this.src='../../assets/watermark/watermark.png'" #myImage 
+          src="{{user_image}}" (click)="presentImage(myImage)"  >
+          
+
+        <!-- <img *ngIf="user_image!=''" [src]="user_image" #myImage (click)="pp(myImage)" style="    border: 1px solid #0074A6;"> -->
+        <!-- <img  *ngIf="user_image==''" src="{{ 'http://admin.benepik.com/employee/rajesh/a2z/'+(firstName[0])+'.jpg' |lowercase}} " #myImage1
+          (click)="pp(myImage1)"> -->
+      </ion-avatar>
+      <!-- <h2>{{firstName}} {{lastName}}</h2> -->
+
+      <!-- <goto-profile class="flag2Txt1" name={{firstName}} empid={{employeeId}}></goto-profile>   -->
+      <p class="user">{{ firstName }} {{ lastName }}</p>
+<!-- 
+      <button *ngIf="comment==undefined || comment==''" ion-button medium style="float: right;    background-color: #345da4ba;
+    color: white;">Publish</button>
+      <button *ngIf="comment!=undefined && comment!=''" ion-button medium style="float: right;    background-color: #345da4;
+    color: white;" (click)="publish()">Publish</button> -->
+
+
+    <button [disabled]="comment==undefined || comment==''" ion-button medium style="float: right;    background-color: #345da4;
+    color: white;" (click)="publish()">Publish</button>
+    </ion-item>
+  </ion-list>
+
+
+  <form>
+    <ion-textarea autocomplete=“true” autocorrect="true" spellcheck=“true” autocomplete=“on” autocorrect=“on”  style="border: 1px solid grey;" rows="10" name="comment " [(ngModel)]="comment" placeholder="Write something here*">
+    </ion-textarea>
+
+
+
+    <div *ngIf="url!=undefined" style="  margin-top: 25px; text-align: center;">
+      <iframe width="300" height="300" [src]="url">
+      </iframe> <button (click)="closeData()" ion-button icon-only style="  margin-left: -59px;
+margin-top: 5px;
+position: absolute;
+border-radius: 34%;
+height: 30px;
+"><ion-icon name="close-circle" style="font-size: 2.2em;
+
+" ></ion-icon></button> </div>
+
+  </form>
+  <ion-scroll scrollX="true" *ngIf="justShowImage.length>0" class="scroldata" style="      height: 34%;">
+
+    <div class="scroll-item" *ngFor="let li of justShowImage let i=index;" >
+      <img class="scroll-item bageScrollImage1234" [src]="li.link" onError="this.src='../../assets/watermark/watermark.png';" imageViewer [ngClass]="{'blur':(!li.status),'normal':(li.status)}"/>
+      <ion-spinner *ngIf="!li.status && !li.showRetry " class="spinnerdesign" name="crescent"></ion-spinner>
+      <ion-icon class="retry" (tap)="retry(i)" *ngIf="li.showRetry" name="cloud-upload">
+        <p class="retrytext">
+          Retry
+        </p>
+      </ion-icon>
+      <span style="float: right;" (click)="imageAlbumDelete(i)"> 
+      <ion-icon name="close-circle" style="    font-size: 2.1em; margin-left: -28px;position: absolute;"></ion-icon></span>
+    </div>
+  </ion-scroll>
+
+
+  <div style="text-align: left;    margin-top: 8px;
+         background-color: gainsboro;">
+    <button style="    padding-top: 1px;" icon-only clear ion-button (click)="showCameraDiv()" *ngIf="!shoeCameraIcon"> <ion-icon name="camera" style="    color: #6699ff;">
+                <br><span style="     font-size: 12px;
+                color: #999;">Camera</span>  </ion-icon></button>
+
+    <button style="    padding-top: 1px;" icon-only clear ion-button (click)="showPrompt()">  <ion-icon name="logo-youtube" style="    color: red;">
+                    <br><span style="      font-size: 12px;
+                    color: #999;">YouTube</span></ion-icon></button>
+  </div>
+
+  <div *ngIf="showCamera">
+    <button ion-button class="camPhoto" (click)="Confirmation('camera')"><ion-icon name="camera">
+                   <br><span style="    font-size: 12px;">Camera</span>
+               </ion-icon>
+               </button>
+    <button ion-button class="camPhoto" (click)="Confirmation('images')"><ion-icon name="images"> 
+                 <br><span style="    font-size: 12px;">All Photos</span></ion-icon></button>
+
+  </div>
+
+
+
+</ion-content>

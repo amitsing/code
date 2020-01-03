@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "927754356978",
+    "firebase_url": "https://my-eval-29dce.firebaseio.com",
+    "project_id": "my-eval-29dce",
+    "storage_bucket": "my-eval-29dce.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:927754356978:android:a6d3c650cdb35097",
+        "android_client_info": {
+          "package_name": "connect.myeval"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "927754356978-1om4fgbn11nc2tj7jh3mk86spha9d62o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiSQZTW3cV7CTavB6NfJmrrzMp0CqbdLY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "927754356978-1om4fgbn11nc2tj7jh3mk86spha9d62o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

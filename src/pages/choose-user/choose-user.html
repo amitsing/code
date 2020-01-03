@@ -1,0 +1,41 @@
+
+
+<ion-content class="{{contentClassBg}}">
+ 
+        
+          <div class="iconeval">
+            <img src="assets/imgs/logologin.png" class="imgss"/>
+          </div>
+        
+              <img src="assets/imgs/clientLogo.png" class="clientLogo"/>
+           
+          <div class="welcome">
+
+                <ion-row>
+                        <ion-col col-12>
+                           <ion-list no-margin>
+                              <!-- autofocus="true" -->
+                               <ion-item style="padding-left: 1px;" class="item_place">
+                                 <ion-input  style="background-color: transparent;
+                                  font-size: 17px;" type="email" autocomplete=“true” autocorrect="true" spellcheck=“true” autocomplete=“on” autocorrect=“on” autocapitalize="none" [(ngModel)]="emailId" (ngModelChange)="validateEmail(emailId)" 
+                                  placeholder="Enter your email address" clearInput
+                                   name="email" (ionFocus)="checkFocus()" (ionBlur)="checkBlur()"></ion-input>
+                               </ion-item>  
+                           </ion-list>
+                        </ion-col>
+                      </ion-row>
+                     
+                       
+                       <ion-row>
+                           <ion-col col-12>
+                     
+                     <div class="btndiv">
+                        <button ion-button   class="btn" (click)="goToLogin(emailId)">Next</button>
+                     </div>
+                     
+                   </ion-col>
+                   </ion-row>
+          </div>
+        <div class="powered_by"><img src="assets/imgs/powered_by.png" class="benepikCopyRight"/></div>
+        </ion-content>    
+        

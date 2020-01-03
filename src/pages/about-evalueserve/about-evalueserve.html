@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title> Evalueserve</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="aboutEvalueserve">
+      <ion-row>
+          <ion-col no-padding col-12><img [src]="bannerImage"></ion-col>
+        </ion-row>
+      
+        <ion-row >
+          <ion-col col-12 *ngFor="let AboutData of aboutEvalueserve" (click)="IntroEvalueserve(AboutData)">
+            <ion-card no-margin>
+              <ion-row class="paddLR-10">
+                <ion-col col-10 style="margin:auto;"> 
+                  <div [innerHTML]="AboutData.category_name"></div>            
+                </ion-col>
+                <ion-col col-2 text-right class="arrow"><ion-icon name="ios-arrow-forward"></ion-icon></ion-col>
+              </ion-row>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+    </div>
+
+
+
+    <div *ngIf="!aboutEvalueserve">
+        <ion-row>
+            <ion-col no-padding col-12><div class="skeletonBg aboutBennerSkelton"></div></ion-col>
+          </ion-row>
+        
+          <ion-row >
+            <ion-col col-12 *ngFor="let AboutData of [1,2,3,4,5]" >
+              <ion-card no-margin class="textSkelton">
+                <ion-row class="paddLR-10">
+                  <ion-col col-10 style="margin:auto;"> 
+                    <div class="textSkelton">
+                        What is Lorem Ipsum?
+                    </div>            
+                  </ion-col>
+                  <ion-col col-2 text-right class="arrow textSkelton"><ion-icon name="ios-arrow-forward"></ion-icon></ion-col>
+                </ion-row>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+      </div>
+ 
+
+
+</ion-content>

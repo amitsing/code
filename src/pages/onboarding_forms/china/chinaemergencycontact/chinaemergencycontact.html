@@ -1,0 +1,244 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<!-- *ngIf="btncheck==0" -->
+<ion-content>
+    <div *ngIf="btncheck==0" class="right" (click)=formcreate()>
+    <ion-row>
+      <ion-col col-12 text-right>
+          <button ion-button icon-end round  small class="mybtn">
+              Add Emergency Contact 
+              <ion-icon name="ios-add-circle-outline"></ion-icon>
+            </button>
+      </ion-col>
+      <!-- <ion-col col-2></ion-col>
+      <ion-col col-8> <p class="add">Add Emergency Contact  <ion-icon name="ios-add-circle-outline" class="iconcss"></ion-icon></p></ion-col>
+      <ion-col col-2>   <ion-icon name="ios-add-circle-outline" class="iconcss"></ion-icon></ion-col> -->
+    </ion-row>
+
+  </div>
+
+
+  <div *ngIf="first_attempt!=1">
+  <div class="pageDiv" *ngFor="let data of alldata; let k= index;">
+      <ion-row class="numEmrRow">
+          <ion-col col-8 class="numEmrRowText">
+           {{k+1}}. Emergency Contact
+          </ion-col>
+          <ion-col col-2 class="colcss1" *ngIf="form_status=='enable'" (click)="editform(data,k)">
+            <div class="iconcss1">
+              <ion-icon name="ios-create-outline" class="iconcss"></ion-icon>
+            </div>
+          </ion-col>
+          <ion-col col-2 class="colcss1" *ngIf="form_status=='enable'" (click)="showConfirm(data,k)">
+            <div class="iconcss1">
+              <ion-icon name="ios-trash-outline" class="iconcss"></ion-icon>
+            </div>
+          </ion-col>
+        </ion-row>
+    <div class="customCardDiv">
+     
+   
+
+      <!-- <p class="para">Emergency Contact</p> -->
+      <ion-row class="bod_bot">
+        
+          <ion-col col-6> <p class="para2">Name</p></ion-col>
+          <ion-col col-6><p class="para3">{{data.emg_contact_name.value}}</p></ion-col>
+      </ion-row>
+      <ion-row class="bod_bot">
+          <ion-col col-6> <p class="para2">Address</p></ion-col>
+          <ion-col col-6> <p class="para3">{{data.emg_contact_address.value}}</p></ion-col>
+      </ion-row>
+      <ion-row class="bod_bot">
+          <ion-col col-6><p class="para2">Contact Number</p></ion-col>
+          <ion-col col-6> <p class="para3">{{data.emg_contact_number.value}}</p></ion-col>
+      </ion-row>
+      <ion-row class="bod_bot">
+          <ion-col col-6><p class="para2">Relationship</p></ion-col>
+          <ion-col col-6> <p class="para3">{{data.emg_contact_relation.value}}</p></ion-col>
+      </ion-row>
+     
+
+    </div>
+  </div>
+
+</div>
+
+
+
+    <div class="pageDiv"  *ngFor="let data of editArray; let j= index;">
+        <div class="customCardDiv">
+          <div class="right" (click)="deleteform()">
+            <ion-icon name="ios-close-circle-outline" class="closeBTN"></ion-icon>
+          </div>
+          <p class="para">Emergency Contact Form</p>
+        <!-- <p>{{data.CPersontooltip}}</p> -->
+          <ion-row>
+            <ion-col col-12>
+                 
+                <!-- <ion-item class="onboardingIonItems">
+                  
+                  <ion-label stacked>Contact Person 
+                      <i *ngIf="data.CPersonhintapplicable" [tooltip]="data.CPersontooltip" positionV="top" arrow='true'>  
+                        <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon></i>
+                        <sup class="redText">*</sup>
+                      </ion-label>
+                      <ion-input type="text" name="{{data.CPerson}}"  [(ngModel)]="data.CPerson" class="onboardingInputField"
+                      [ngClass]="{'onboardingInputFieldRED':((data.CPerson.length<=0) && (classkey==0)), 'onboardingInputField': ((data.CPerson.length>=1) && (classkey!=0)) || data.CPerson.length<=0 || ((data.CPerson.length>=1) && (classkey==0))}"
+                      ></ion-input>
+                </ion-item> -->
+            
+                <div class="my_relativeDIV"> 
+                   <p> Contact Person<sup class="redText">*</sup> 
+                            <i *ngIf="data.CPersonhintapplicable" [tooltip]="data.CPersontooltip" positionV="top" arrow='true'>  
+                              <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon></i>
+                              
+                            </p>
+                            <ion-item class="onboardingIonItems">
+                            <ion-input type="text" name="{{data.CPerson}}"  [(ngModel)]="data.CPerson" class="onboardingInputField"
+                            [ngClass]="{'onboardingInputFieldRED':((data.CPerson.length<=0) && (classkey==0)), 'onboardingInputField': ((data.CPerson.length>=1) && (classkey!=0)) || data.CPerson.length<=0 || ((data.CPerson.length>=1) && (classkey==0))}"
+                            ></ion-input>
+                          </ion-item>
+                </div>
+              <!-- <div  
+              [ngClass]="{'redBorder':((data.CPerson.length<=0) && (classkey==0)), 'inputDiv': ((data.CPerson.length>=1) && (classkey!=0)) || data.CPerson.length<=0 || ((data.CPerson.length>=1) && (classkey==0))}"
+              >
+              
+                <ion-label>Contact Person <i *ngIf="data.CPersonhintapplicable" [tooltip]="data.CPersontooltip" positionV="top" arrow='true'>  
+                  <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon></i>
+                  <sup class="redText">*</sup>
+                </ion-label>
+                <ion-input type="text" name="{{data.CPerson}}"  [(ngModel)]="data.CPerson"></ion-input>
+              </div> -->
+            </ion-col>
+          </ion-row>
+    
+           <ion-row>
+              <ion-col col-12>
+                  
+                  <!-- <ion-item class="onboardingIonItems">
+                      <ion-label stacked>Relationship <sup class="redText">*</sup>
+                        <i *ngIf="data.drpdatahintapplicable" [tooltip]="data.drpdatatooltip" positionV="top" arrow='true'>  
+                            <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon></i>
+                      </ion-label>
+                      
+                        <ion-select [(ngModel)]="data.drpdata" placeholder="--Select--" 
+                        [ngClass]="{'onboardingInputFieldRED':((data.drpdata.length<=0) && (classkey==0)), 'onboardingInputField': ((data.drpdata.length>=1) && (classkey!=0)) || data.drpdata.length<=0 || ((data.drpdata.length>=1) && (classkey==0))}"
+                        >
+                          <ion-option *ngFor="let relationdata of dropdown_data;" [value]="relationdata.relation">{{relationdata.relation}}</ion-option>
+                        </ion-select>
+                      
+                  </ion-item> -->
+                  <div class="my_relativeDIV"> 
+                      <p>Relationship<sup class="redText">*</sup>
+                        <i *ngIf="data.drpdatahintapplicable" [tooltip]="data.drpdatatooltip" positionV="top" arrow='true'>  
+                            <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon></i>
+                    </p>
+                    
+                    <ion-select [(ngModel)]="data.drpdata" placeholder="Select relationship" class="rel_selectbox"
+                    [ngClass]="{'onboardingInputFieldRED':((data.drpdata.length<=0) && (classkey==0)), 'onboardingInputField': ((data.drpdata.length>=1) && (classkey!=0)) || data.drpdata.length<=0 || ((data.drpdata.length>=1) && (classkey==0))}"
+                    >
+                      <ion-option *ngFor="let relationdata of dropdown_data;" [value]="relationdata.relation">{{relationdata.relation}}</ion-option>
+                    </ion-select>
+                      </div>
+
+                <!-- <div    [ngClass]="{'inputDiv4':((data.drpdata.length<=0) && (classkey==0)), 'inputDiv1': ((data.drpdata.length>=1) && (classkey!=0)) || data.drpdata.length<=0 || ((data.drpdata.length>=1) && (classkey==0))}">
+                  <ion-label>Relationship <i *ngIf="data.drpdatahintapplicable" [tooltip]="data.drpdatatooltip" positionV="top" arrow='true'>  
+                      <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon></i>
+                    <sup class="redText">*</sup>
+                  </ion-label>
+                  <ion-item style="background-color: transparent;">
+                    <ion-label stacked>--Select--<sup>*</sup>
+                    </ion-label>
+                    <ion-select [(ngModel)]="data.drpdata" placeholder="--Select--">
+                      <ion-option *ngFor="let relationdata of dropdown_data;" [value]="relationdata.relation">{{relationdata.relation}}</ion-option>
+                    </ion-select>
+                  </ion-item>
+                </div> -->
+              </ion-col>
+            </ion-row> 
+          
+          <ion-row>
+            <ion-col col-12>
+                <!-- <ion-item class="onboardingIonItems">
+                    <ion-label stacked>Contact number <i  *ngIf="data.Cnumberhintapplicable"  [tooltip]="data.Cnumbertooltip" positionV="top" arrow='true'>  
+                        <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon></i>
+                      <sup class="redText">*</sup>
+                    </ion-label>
+                    <ion-input type="number" name="data.Cnumber" [(ngModel)]="data.Cnumber" class="onboardingInputField"
+                    [ngClass]="{'onboardingInputFieldRED':((data.Cnumber.length<=0) && (classkey==0)), 'onboardingInputField': ((data.Cnumber.length>=1) && (classkey!=0)) || data.Cnumber.length>=1|| data.Cnumber.length==0}"   
+                    ></ion-input>
+                </ion-item> -->
+                <div class="my_relativeDIV"> 
+                    <p>Contact number<sup class="redText">*</sup> <i  *ngIf="data.Cnumberhintapplicable"  [tooltip]="data.Cnumbertooltip" positionV="top" arrow='true'>  
+                            <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon></i>                          
+                    </p>
+                    <ion-item class="onboardingIonItems">
+                    <ion-input type="number" name="data.Cnumber" [(ngModel)]="data.Cnumber" class="onboardingInputField"
+                    [ngClass]="{'onboardingInputFieldRED':((data.Cnumber.length<=0) && (classkey==0)), 'onboardingInputField': ((data.Cnumber.length>=1) && (classkey!=0)) || data.Cnumber.length>=1|| data.Cnumber.length==0}"   
+                    ></ion-input>
+                    </ion-item>
+                    </div>
+
+              <!-- <div 
+              [ngClass]="{'redBorder':((data.Cnumber.length<=0) && (classkey==0)), 'inputDiv': ((data.Cnumber.length>=1) && (classkey!=0)) || data.Cnumber.length>=1|| data.Cnumber.length==0}"            
+              >
+                <ion-label>Contact number <i  *ngIf="data.Cnumberhintapplicable"  [tooltip]="data.Cnumbertooltip" positionV="top" arrow='true'>  
+                    <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon></i>
+                  <sup class="redText">*</sup>
+                </ion-label>
+                <ion-input type="number" name="data.Cnumber" [(ngModel)]="data.Cnumber" ></ion-input>
+              </div> -->
+            </ion-col>
+          </ion-row>
+         
+          <ion-row>
+              <ion-col col-12>
+                  <!-- <ion-item class="onboardingIonItems">
+
+                      <ion-label stacked>Current Address <i *ngIf="data.cAddresshintapplicable" [tooltip]="data.cAddresstooltip" positionV="top" arrow='true'>  
+                          <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon></i>
+                        <sup class="redText">*</sup>
+                      </ion-label>
+                      <ion-textarea type="text" name="data.cAddress" [(ngModel)]="data.cAddress"  class="custom-class-text" id="comment" rows="2" [ngClass]="{'onboardingInputFieldRED':((data.cAddress.length<=0) && (classkey==0)), 'onboardingInputField': ((data.cAddress.length>=1) && (classkey!=0)) || data.cAddress.length>=1 || data.cAddress.length==0 }" ></ion-textarea>
+                  </ion-item> -->
+                  <div class="my_relativeDIV"> 
+                      <p>Current Address<sup class="redText">*</sup> <i *ngIf="data.cAddresshintapplicable" [tooltip]="data.cAddresstooltip" positionV="top" arrow='true'>  
+                          <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon></i>
+                        </p>
+                        <ion-item class="onboardingIonItems">
+                        <ion-textarea type="text" name="data.cAddress" [(ngModel)]="data.cAddress"  class="custom-class-text" id="comment" rows="2" [ngClass]="{'onboardingInputFieldRED':((data.cAddress.length<=0) && (classkey==0)), 'onboardingInputField': ((data.cAddress.length>=1) && (classkey!=0)) || data.cAddress.length>=1 || data.cAddress.length==0 }" ></ion-textarea>
+                        </ion-item>
+                  </div>
+                <!-- <div
+                [ngClass]="{'redBorder':((data.cAddress.length<=0) && (classkey==0)), 'inputDiv': ((data.cAddress.length>=1) && (classkey!=0)) || data.cAddress.length>=1 || data.cAddress.length==0 }"            
+                
+                >
+                  <ion-label>Current Address <i *ngIf="data.cAddresshintapplicable" [tooltip]="data.cAddresstooltip" positionV="top" arrow='true'>  
+                      <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon></i>
+                    <sup class="redText">*</sup>
+                  </ion-label>
+                  <ion-textarea type="text" name="data.cAddress" [(ngModel)]="data.cAddress"  class="custom-class-text" id="comment" rows="2"></ion-textarea>
+                </div> -->
+              </ion-col>
+            </ion-row>
+        </div>
+
+
+        <div class="btndiv" *ngIf="buttomtxtcheck=='1' && form_status=='enable'">
+            <button ion-button class="btn" (click)="save()">{{buttomtxt}}</button>
+          </div>
+
+      </div>
+    
+      
+      <div class="btndiv" *ngIf="buttomtxtcheck=='2' && form_status=='enable'">
+        <button ion-button class="btn" (click)="submit()">{{buttomtxt}}</button>
+      </div>
+
+
+</ion-content>

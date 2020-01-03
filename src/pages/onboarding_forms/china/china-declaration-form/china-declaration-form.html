@@ -1,0 +1,177 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title> {{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
+
+    <div ion-fixed class="selectLanguageDiv" *ngIf="showLangPopUp==true">
+        <div class="LanguageDiv">
+          <ion-row text-center class="langHead"><ion-col col-12><h6 no-margin>Please select a language to continue</h6></ion-col></ion-row>
+          <ion-list no-margin radio-group [(ngModel)]="finalselect" padding-horizontal>
+            <ion-row class="radioDiv">
+              <ion-col col-12 *ngFor="let data of language; let j= index;">
+                <ion-item  >
+                  <ion-label class="genderlable">{{data}}</ion-label>
+                  <ion-radio  [value]="data" (ionSelect)="radioChecked(data)"></ion-radio>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-list>
+          <ion-row padding-horizontal>
+            <ion-col col-12 text-center><button ion-button class="btn" tappable (click)="hideLangPopUp('hide')">Done</button></ion-col>
+          </ion-row>
+        </div>
+      </div>
+
+      
+  <div *ngIf="showPage==true">
+    <div  class="btndiv">
+        <button ion-button class="btn" (click)="update1()">Select Language</button>
+    </div>
+
+
+
+
+  <div *ngIf="form_status=='enable'"  class="pageDiv">
+      <div class="customCardDiv">
+    <div *ngFor="let data of newArray; let i=index">
+          <div [innerHTML]="data?.str|safeHtml"></div>
+
+         <div *ngIf="serverRes?.showTextArea==true && data?.str!=''"> 
+            <ion-input class="inputclass" type="text" [(ngModel)]="data.value"></ion-input>
+          </div>
+      </div>
+      </div>
+  </div>
+
+  <div class="padd" *ngIf="form_status!='enable'" [innerHTML]="nationalityData.content" ></div>
+
+      <div class="pageDiv">
+          <div class="customCardDiv">
+        
+            <!-- <p class="innercss" [innerHTML]="message_top"></p> -->
+            <ion-row>
+              <ion-col col-12>
+                <!-- <div class="inputDiv"> -->
+                  <ion-label style="font-weight:bold" *ngIf="finalselect=='English'">Did you have multiple nationalities?
+                    <sup class="redText">*</sup>
+                  </ion-label>
+
+                  <ion-label *ngIf="finalselect=='Chinese'">是否拥有双/多重国籍？
+                      <sup class="redText">*</sup>
+                    </ion-label>
+                  <ion-list no-margin radio-group [(ngModel)]="nationalities">
+                    <ion-row class="radioDiv">
+                      <ion-col col-6>
+                        <ion-item>
+                          <ion-label *ngIf="finalselect=='English'" class="genderlable">yes</ion-label>
+                          <ion-label *ngIf="finalselect=='Chinese'" class="genderlable">是</ion-label>
+                          <ion-radio  [value]="true"></ion-radio>
+                        </ion-item>
+                      </ion-col>
+                      <ion-col col-6>
+                        <ion-item>
+                          <ion-label *ngIf="finalselect=='English'" class="genderlable">No</ion-label>
+                          <ion-label *ngIf="finalselect=='Chinese'" class="genderlable">没有</ion-label>
+                          <ion-radio  [value]="false"></ion-radio>
+                        </ion-item>
+                      </ion-col>
+                    </ion-row>
+                  </ion-list>
+                <!-- </div> -->
+              </ion-col>
+            </ion-row>
+
+            <ion-row *ngIf="nationalities==true">
+                <ion-col col-12>
+                    <ion-label *ngIf="finalselect=='English'">Other Nationalities
+                        <sup class="redText">*</sup>
+                      </ion-label>
+    
+                      <ion-label *ngIf="finalselect=='Chinese'">
+                          其他国籍为
+                          <sup class="redText">*</sup>
+                        </ion-label>
+                    <ion-input class="inputclass" type="text" name="nDetails" [(ngModel)]="nDetails" (ngModelChange)="change($event,nDetails,1)"></ion-input>
+                </ion-col>
+              </ion-row>
+
+            <p class="innercss" *ngIf="finalselect=='English'">Did you have the permanent residency in other countries?</p>
+            <p class="innercss" *ngIf="finalselect=='Chinese'">是否拥有他国永久居留权？</p>
+       
+            <!-- <p class="innercss" [innerHTML]="message_bottom"></p> -->
+            <ion-row>
+              <ion-col col-12>
+                  <!-- <ion-label *ngIf="finalselect=='English'">Select
+                    <sup class="redText">*</sup>
+                  </ion-label> -->
+                  <ion-label *ngIf="finalselect=='Chinese'">选择
+                    <sup class="redText">*</sup>
+                  </ion-label>
+                  <ion-list no-margin radio-group [(ngModel)]="anotherresidency">
+                    <ion-row class="radioDiv">
+                      <ion-col col-6>
+                        <ion-item>
+                    
+                          <ion-label *ngIf="finalselect=='English'" class="genderlable">yes</ion-label>
+                          <ion-label *ngIf="finalselect=='Chinese'" class="genderlable">是</ion-label>
+                          <ion-radio  [value]="true" ></ion-radio>
+                        </ion-item>
+                      </ion-col>
+                      <ion-col col-6>
+                        <ion-item>
+                            <ion-label *ngIf="finalselect=='English'" class="genderlable">No</ion-label>
+                            <ion-label *ngIf="finalselect=='Chinese'" class="genderlable">没有</ion-label>
+                          <ion-radio  [value]="false"></ion-radio>
+                        </ion-item>
+                      </ion-col>
+                    </ion-row>
+                  </ion-list>
+               
+              </ion-col>
+            </ion-row>
+            <ion-row *ngIf="anotherresidency==true">
+              <ion-col col-12>
+            
+                  <ion-label *ngIf="finalselect=='English'">Permanent residency in 
+                    <sup class="redText">*</sup>
+                  </ion-label>
+
+                  <ion-label *ngIf="finalselect=='Chinese'">
+                      其他国家
+                      <sup class="redText">*</sup>
+                    </ion-label>
+                  <ion-input class="inputclass" type="text" name="fDetails" [(ngModel)]="fDetails" (ngModelChange)="change1($event,fDetails,2)"></ion-input>
+                
+              </ion-col>
+            </ion-row>
+
+          </div>
+        </div>
+
+
+      <!-- <button ion-button (click)="seeString()">see full string</button> -->
+    
+      
+      <!-- <div [innerHTML]="finalString" ></div> -->
+
+      <div *ngIf="finalselect=='English' && form_status=='enable' && fillstatus==0"  class="btndiv1">
+          <button ion-button class="btn" (click)="seeString()">Submit</button>
+      </div>
+  
+      <div *ngIf="finalselect=='Chinese' && form_status=='enable' && fillstatus==0"  class="btndiv1">
+          <button ion-button class="btn" (click)="seeString()">提交</button>
+        </div>
+      </div>
+
+
+    <div *ngIf="finalselect=='English' && form_status=='enable' && fillstatus==1"  class="btndiv1">
+        <button ion-button class="btn" (click)="seeString()">Update</button>
+      </div>
+      <div *ngIf="finalselect=='Chinese' && form_status=='enable' && fillstatus==1"  class="btndiv1">
+          <button ion-button class="btn" (click)="seeString()">更新</button>
+        </div>
+</ion-content>

@@ -1,0 +1,213 @@
+page-india-insurance {
+    .newOverlay {
+        position: relative;
+        height: 100%;
+        overflow-y: scroll;
+    }
+
+    .newOverlay::after {
+        content: "";
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.0);
+        z-index: 99999;
+        left: 0px;
+        top: 0px;
+    }
+    
+    .icon ion-icon {
+        font-size: 3rem;
+        color: #4d2748 !important;  
+    }
+
+    .mr_btm {
+        margin-bottom: 5px;
+    }
+
+    .table_head p {
+        font-size : 12px;
+        font-weight: 600;
+        text-align: center;
+        margin: 0;
+    }
+
+    .btn.selected.custom_border {
+        border-radius: 5px;
+        margin: 0 !important;
+    }
+
+    .table_body p {
+        font-size: 12px;
+        font-weight: 400;
+        margin: 0;
+    }
+    .total {
+        padding: 8px 4px;
+        background-color: #36549c;
+        color: #fff;
+        border-radius: 5px;
+        margin: 0.4rem 0;
+        text-align: center;
+    }
+
+    .selected.row {
+        background-color: #e62249 !important;
+        p{
+            color: #fff;
+        }
+    }
+    .selected.btn {
+        background-color: #e62249 !important;
+        color: #fff;
+    }
+
+    .br_btm {
+        border-bottom: 1px soild #c0c0c0;
+    }
+
+    .extra_padd {
+        padding : 5px 8px;
+        margin: 0 -5px;
+    }
+    .customCardDiv {
+        padding-bottom:  0 !important;
+    }
+
+   
+    .bg{
+        background-color: #f7f7f7 !important;
+    }
+    .custon_radio {
+        padding-bottom: 20px;
+        ion-item.item {
+            background-color: #563251;
+            padding: 5px;
+            border-radius: 5px;
+    
+            .item-inner {
+                ion-label {
+                    margin: 0 !important;
+                    font-size: 14px;
+                    color: white;
+                    white-space : normal;
+                }
+            }
+        }
+    
+    }
+
+    .formDiv {
+        // float: left;
+        width: 100%;
+        margin: 15px 0px;
+        padding: 15px 10px;
+        background: #ffffff;
+        border-radius: 10px;
+        box-shadow: 1px 1px 3px 1px #cdcdcd;
+    }
+    // h4{
+    //     font-size: 17px;
+    //     font-weight: 600;
+    //     color: #444;
+    //     margin-bottom: 10px;
+    // }
+ 
+    .mendatFild {
+        color: red;
+    }
+    .error {
+        border-color: red !important;
+    }
+
+    h4{
+        margin-bottom: 0;
+    }
+
+    ion-icon.hint_icon {
+        color: #4d2748;
+        font-size: 16px;
+    }
+    button.hint_button {
+        background-color: transparent;
+        padding-left: 0;
+    }
+    .hint_div {
+        display: inline;
+    }
+
+    .btndiv{
+        width: 100%;text-align: center;
+    }
+    .btn{
+      height: 30px;
+      min-width: 33%;
+      border-radius: 20px;
+      font-size: 10px;
+      background: transparent;
+      border: 1px solid #e62249;
+      color: #000;
+    }
+
+
+    .text-input[disabled],.datetime-disabled{
+        background: #a2a2a2 !important;
+        padding: 10px 10px;
+        width: 100%;
+        margin: 0;
+    }
+    ion-label{
+        margin : 0 !important;
+    }
+    .item{
+        border: 1px solid #684a64;
+        border-radius: 5px;
+        .item-inner {
+            border-bottom: none !important;
+        }
+    }
+    .list {
+        margin-bottom: 0 !important;
+    }
+    input.text-input {
+        padding: 0 10px;
+    }
+
+    ion-input, ion-textarea, ion-datetime, ion-select {
+        border-color: #b3b3b3;
+        border-radius: 5px;max-width:100%;
+        border : 1px solid;
+        // padding: 0 10px;
+    }
+    .item-radio-checked {
+        background: #563251;
+        ion-label {
+            color: #ffffff !important;
+        }
+        .radio-inner {
+            border-color: #ffffff !important;
+        }
+    }
+    
+    .success {
+        border-color: green;
+    }
+    .radioNewDiv{
+        border: 1px solid #b3b3b3;
+        border-radius: 5px;
+        .radio {
+            position: absolute !important;
+            opacity:0;
+            left: 0px;
+            top: 0px;
+            margin: 0px !important;
+            width: 100%;
+            height: 100%;
+        }
+    }
+.table_body{
+    ion-row{
+        border-bottom: 1px solid #c0c0c0;
+    }
+}
+}

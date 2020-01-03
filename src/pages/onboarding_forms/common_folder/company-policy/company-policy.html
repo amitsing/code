@@ -1,0 +1,61 @@
+<!--
+  Generated template for the CompanyPolicyPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{page_title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding >
+    <div ion-fixed class="selectLanguageDiv" *ngIf="showLangPopUp==true">
+        <div class="LanguageDiv">
+          <ion-row text-center class="langHead"><ion-col col-12><h6 no-margin>Please select a language to continue</h6></ion-col></ion-row>
+          <ion-list no-margin radio-group [(ngModel)]="selectedLanguage" padding-horizontal>
+            <ion-row class="radioDiv">
+              <ion-col col-12 *ngFor="let data of language; let j= index;">
+                <ion-item  >
+                  <ion-label class="genderlable">{{data}}</ion-label>
+                  <ion-radio  [value]="data" ></ion-radio>
+                </ion-item>
+              </ion-col>          
+            </ion-row>
+          </ion-list>
+          <ion-row padding-horizontal>
+            <ion-col col-12 text-center><button ion-button class="btn" tappable (click)="hideLangPopUp('hide')">Done</button></ion-col>
+          </ion-row>
+        </div>
+    </div>
+
+  <ion-row *ngIf="allData && allData.length>0">
+    <ion-col *ngIf="language.length>1" col-12 text-right> 
+        <button ion-button class="btn" tappable (click)="hideLangPopUp('show')">Change Language &nbsp;&nbsp;<ion-icon name="ios-arrow-down"></ion-icon></button>
+    </ion-col>
+    <!-- <ion-col col-12 *ngIf="language.length>1">
+        <ion-select [(ngModel)]="selectedLanguage">
+            <ion-option *ngFor="let item of language" [value]="item">{{item}}</ion-option>
+        </ion-select>
+    </ion-col> -->
+    <ion-col col-12 *ngFor="let item of allData">
+      <div *ngIf="item.language == selectedLanguage">
+        <div *ngIf="item.content_type == 'text'">
+          <show-html [htmlData]="item.content" ></show-html>
+        </div>
+        <div *ngIf="item.content_type == 'image'">
+            <customImage [imageSrc]="item.content" [customClass]="['imageCSS']"></customImage>
+        </div>
+      </div>
+    </ion-col>
+    <ion-col col-12>
+        <div text-center class="btndiv" *ngIf="formData.form_status == 'enable'">
+            <button ion-button class="btn" (click)="submit()"> {{ (fill_status == '0') ? 'I Acknowledge' : 'Acknowledged' }}</button>
+        </div>
+        <!-- <div text-center class="btndiv" *ngIf="formData.form_status != 'enable'">
+          <button ion-button class="btn" disabled>Acknowledged</button>
+      </div> -->
+    </ion-col>
+  </ion-row>
+</ion-content>

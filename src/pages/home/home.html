@@ -1,0 +1,485 @@
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title><img src="../../assets/imgs/headerClientLogo.png" class="headerImage"></ion-title>
+      <!-- <ion-buttons end>
+          <button ion-button (click)="goToProfile()" clear>
+          <img *ngIf="allposts?.user_image!=''" srcset="{{allposts?.user_image}}" src="../../assets/watermark/watermark.png" class="userImage"/>
+          <ion-icon *ngIf="allposts?.user_image==''" name="ios-contact" class="userImageIcon"></ion-icon>
+        </button>
+        </ion-buttons> -->
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content class="bghome themeBg">
+      <!-- <button ion-button (click)="goToOnboarding()" >Onboarding</button> -->
+  
+      <ion-refresher (ionRefresh)="doRefresh($event)">
+          <ion-refresher-content
+        pullingIcon="arrow-dropdown"
+        pullingText="Pull to refresh"
+        refreshingSpinner="circles"
+        refreshingText="Your content is refreshing...">
+      </ion-refresher-content>
+        </ion-refresher>
+    <!-- <p (click)="gotoFu()">welcome</p> -->
+  
+  
+    <div *ngIf="welcomeData">
+        <div class="bgClr"></div>
+      <ion-grid class="customCardLayout">
+        <ion-row>
+          <ion-col col-6>
+            <div class="positionRelative">
+              <div class="progress-wrapper">
+                <circle-progress [percent]="upperGraphData[0]?.remain_percentage" [radius]="50" [outerStrokeWidth]="6"
+                  [showTitle]=false [showSubtitle]=false [showUnits]=false [innerStrokeWidth]="3"
+                  [outerStrokeColor]="'#542e56'" [innerStrokeColor]="'#7b4b7d'" [animation]="true"
+                  [animationDuration]="300"></circle-progress>
+              </div>
+              <p> {{upperGraphData[0]?.remain_caption}}</p>
+              <div class="percentageValue">
+                {{upperGraphData[0]?.remain_days}}
+              </div>
+            </div>
+          </ion-col>
+  
+          <ion-col col-6 (click)="goToOnboarding(formdata)">
+            <div class="positionRelative">
+              <div class="progress-wrapper">
+                <circle-progress [percent]="upperGraphData[0]?.progress_percentage" [radius]="50" [outerStrokeWidth]="6"
+                  [showTitle]=false [showSubtitle]=false [showUnits]=false [innerStrokeWidth]="3"
+                  [outerStrokeColor]="'#542e56'" [innerStrokeColor]="'#7b4b7d'" [animation]="true"
+                  [animationDuration]="300"></circle-progress>
+              </div>
+              <p>{{upperGraphData[0]?.progress_caption}}</p>
+              <div class="percentageValue">
+                {{upperGraphData[0]?.progress_percentage}} %
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+  
+      <div *ngIf="survey">
+          <div *ngIf="survey?.length>=1">
+            <ion-row>
+              <ion-slides #countryHeadDataSlides  speed="500" class="asstest" spaceBetween="2" (ionSlideDidChange)="countryHeadSlideChanged()" slidesPerView="1.1">
+            
+                    <ion-slide *ngFor="let data of survey" style="margin-right: 3px;" class="relativeDiv" (click)="gotosurvey(data)">
+                        <ion-card no-margin class="surveyCard">
+                          <ion-row>
+                            <ion-col col-2>
+                              <div>
+                                  <!-- <img class="simgcss" src="../../assets/imgs/survey .png"> -->
+                              </div>
+                               
+                            </ion-col>
+                            <ion-col col-10>
+                              <div>
+                                  <p class="spara">{{data.title}}</p>        
+                                  <p class="spara1">{{data.end_date}}</p> 
+                              </div>
+                              
+                            </ion-col>
+                          </ion-row>
+                     
+                      </ion-card>        
+                         </ion-slide>
+              </ion-slides>
+            </ion-row>
+          </div>
+        </div>
+  
+  
+  
+  
+      <!-- <div>
+        <ion-row>
+          <ion-card style="margin-bottom: 9px;" *ngFor="let data of pendingdata; let pindex=index" (click)="pending(data.flag,data,pindex)">
+            <ion-row >
+              <ion-col col-2><img src="../../assets/watermark/watermark.png" srcset="{{pendingimage}}"></ion-col>
+              <ion-col col-8>
+                <p>{{data.title}}</p>
+                <p *ngIf="data.flag=='33'" class="redText">{{data.end_date}}</p>
+              </ion-col>
+              <ion-col col-2 text-right class="icn"><img src="../../assets/imgs/homePage/icons/arrow.png"></ion-col>
+            </ion-row>
+          </ion-card>
+        </ion-row>
+      </div> -->
+  
+  
+      <div *ngIf="countryHeadData">
+        <div *ngIf="countryHeadData?.length>=1" class="ceoMessage">
+          <ion-row>
+            <ion-slides #countryHeadDataSlides speed="500" class="asstest" spaceBetween="10" (ionSlideDidChange)="countryHeadSlideChanged()" slidesPerView="1.1">
+              <ion-slide *ngFor="let data of countryHeadData" class="relativeDiv" (click)="ceoMessage(data)">
+              
+                <img *ngIf="data?.media_type=='1'" srcset="{{data?.media}}" src="../../assets/watermark/watermark.png"
+                  style="width:100%;height:150px;    object-fit: contain;
+                  object-position: top;background-size:500% 500%;"
+                    [style.background-image]="'url(' +data?.media + ')'">
+
+
+                  <img *ngIf="data?.media_type=='2'" srcset="{{data?.thumbnail_image}}" src="../../assets/watermark/watermark.png"
+                  style="width:100%;height:150px;object-fit:contain;background-size:500% 500%;" 
+                  [style.background-image]="'url(' +data?.thumbnail_image + ')'">
+
+
+<!-- 
+                  <img *ngIf="slide.media_type=='1'" height="180px"  onError="this.src='../../assets/watermark/watermark.png'"  [src]="slide?.image"
+                  [style.background-image]="'url(' +slide?.image+ ')'" style="width:100%;height:180px;object-fit:contain;background-size:500% 500%;"> -->
+        
+                  <div *ngIf="data.media_type=='3'" >
+                      <iframe width="100%" height="150px"  [src]="data?.media|safe" autostart="0" allowfullscreen frameborder="0"></iframe>
+                    </div>
+                    <!-- <div *ngIf="data?.media_type=='2'">
+                      <video [src]="data?.media|safe" height="150px"  width="100%"  poster="{{data?.thumbnail_image}}" controls controlsList="nodownload" type="video/*">
+                      </video>
+                    </div> -->
+
+
+
+                <div text-left padding-horizontal class="absoluteCeoText">
+                  <P>{{data?.title}}</P>
+                </div>
+                <div class="grad1 tintAbso"></div>
+              </ion-slide>
+            </ion-slides>
+          </ion-row><br>
+        </div>
+      </div>
+  
+      <div class="aboutEval">
+        <ion-row>
+          <ion-col col-12>
+            <div class="relativeDiv">
+              <img src="../../assets/imgs/homebanner.png" class="aboutEvalBg">
+              <div class="aboutEvalBTNDiv"><button ion-button round class="aboutEvalBTN" (click)="gotoAbout()">About
+                  Evalueserve</button></div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </div>
+
+      <div class="aboutEval" *ngIf="dynamicModule  && dynamicModule.length > 0">
+        <ion-row *ngFor="let item of dynamicModule" (click)="goToDynamicModule(item)">
+          <ion-col col-12>
+            <div class="relativeDiv">
+              <img [src]="item?.image" onError="this.src='../../assets/watermark/watermark.png'" class="aboutEvalBg">
+              <!-- <div class="childDiv">
+                <p>{{ item?.title }}</p>
+              </div> -->
+          </div>
+        </ion-col>
+      </ion-row>
+    </div>
+  
+  
+      <div *ngIf="formdata" >
+  
+      <div class="joinningDetailsDiv" *ngFor="let data of formdata">
+          <ion-row (click)="goToOnboarding(data)">
+            <ion-col col-12 class="parent">
+              <div >
+                  <!-- class="aboutEvalBg" -->
+                <img  [src]="data?.bg_image">
+                <button ion-button class="btn child" round>{{data.button_text}}</button>
+              </div>
+            </ion-col>
+          </ion-row>
+        </div>
+      </div>
+  
+  
+   
+  
+      <div class="joinningDetailsDiv">
+        <ion-row (click)="seeJoinningInfo()">
+          <ion-col col-12>
+            <div >
+                <!-- class="aboutEvalBg" -->
+              <img  src="../../assets/imgs/joining detailsA.png">
+            </div>
+          </ion-col>
+        </ion-row>
+      </div>
+  
+  <div *ngIf="lifeAtEvaData?.length>=1">
+      <div class="aboutEval div2">
+          <ion-row>
+              <ion-col col-12>
+                <b>Life at Evalueserve</b>
+              </ion-col>
+            </ion-row>
+        <div *ngFor="let lefeVid of lifeAtEvaData; let ind=index">      
+          <ion-row style="border-top: 1.5px solid #dedede;">
+            <ion-col col-12 *ngIf="lefeVid?.type=='1'" (click)="toggleVideo()">
+              <!-- <iframe [src]="lefeVid?.video|safe"  width="100%"></iframe> -->
+  
+              <!-- <iframe width="100%" 
+              [style.backgroundImage]="'url(' + lefeVid?.thumnail_image + ')'" [src]="lefeVid?.video+'?autoplay=0'|safe" autostart="0"
+                allowfullscreen frameborder="0" scrolling="no"></iframe> -->
+  
+                  <video controls controlsList="nodownload" height="160px"  width="100%" poster="{{lefeVid?.thumnail_image }}" [src]="lefeVid?.video|safe" type="video/*">
+                  </video>
+  
+              <!-- <video width="100%"  #videoPlayer  preload="auto" controls muted 
+              controlsList="nodownload noremote foobar" 
+              currentTime poster="{{lefeVid?.thumnail_image}}">
+                  <source [src]="lefeVid?.video|safe" >
+              </video> -->
+            </ion-col>
+            <ion-col col-12 *ngIf="lefeVid?.type=='2'" (click)="toggleVideo()">
+              <!-- <iframe [src]="lefeVid?.video|safe"  width="100%"></iframe> -->
+  
+              <iframe height="160px" width="100%" 
+              [style.backgroundImage]="'url(' + lefeVid?.thumnail_image + ')'" [src]="lefeVid?.video+'?autoplay=0'|safe" autostart="0"
+                allowfullscreen frameborder="0" scrolling="no"></iframe>
+            </ion-col>
+  
+          </ion-row>
+        </div>
+      </div>
+  </div>
+
+
+
+
+<div *ngIf="joinehomedata?.employer_award.length>0">
+  <ion-row  class="marginbottom1">
+    <ion-card class="padd8" style="max-height: 150px; border-radius: 10px;">
+      <ion-row>
+        <ion-col col-9>
+            <b>Awards</b>
+        </ion-col>
+        <ion-col col-3 no-padding (click)="gotojoineeawardetail()">
+          <u>See More</u>
+          </ion-col>
+      </ion-row>
+      <ion-slides class="wellness" speed="500" spaceBetween="10" slidesPerView="1.3">
+        <ion-slide text-center *ngFor="let data of joinehomedata?.employer_award; let x=index" (click)="gotojoineeaward(data.detail_media)">
+          <img class="tcss" onError="this.src='../../assets/watermark/watermark.png'" [src]="data?.media" >
+          <br>
+        </ion-slide>
+      </ion-slides>
+    </ion-card>
+  </ion-row>
+ </div>
+
+
+  <div class="joinningDetailsDiv">
+      <ion-row (click)="gotoquiz()">
+        <ion-col col-12>
+          <div class="relativeDiv">
+            <!-- <img src="../../assets/imgs/quizBanner2.png" class="aboutEvalBg"> -->
+            <img class="aboutEvalBg" srcset="{{quizimg}}" src="assets/watermark/watermark.png">
+          </div>
+        </ion-col>
+      </ion-row>
+    </div>
+  
+      <div *ngIf="homeAlbumData?.length>=1" class="div2">
+        <ion-row>
+          <ion-col col-9>
+            <b>Album</b>
+          </ion-col>
+          <ion-col col-3 (click)="gotoAlbumCat()">
+            <u>See More</u>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-6 *ngFor="let data of homeAlbumData; let alb=index">
+            <div *ngIf="alb<4" class="relativDIV albumDiv" (click)="seeAlbumdetails(data)">
+              <img src="{{data?.album_image}}" height="128" class="set1">
+              <div class="transparentLayer_black"></div>
+              <div class="userName">
+                <ion-row>
+                  <ion-col col-12> <b >{{data?.album_name}} </b></ion-col>
+
+
+                  <!-- <ion-col col-6> <b class="text" float-right>{{data?.img_count}} </b></ion-col> -->
+                </ion-row>
+  
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+        
+      </div>
+  
+  <!--********** following is news view   ***********-->
+      <div *ngIf="newsListData" class="lifeAtEval div2">
+        <ion-row>
+          <ion-col col-12>
+            <b>Know More</b>
+          </ion-col>
+        </ion-row>
+        <div *ngFor="let data of newsListData" (click)="gotoLifeEval(data)">
+          <!-- <news-view
+           [postImage]="data?.image"
+            [postTitle]="data?.title" [postDate]="data?.created_date"
+            [postFlag]="data?.flag"></news-view> -->
+  
+                <news-view
+           [postImage]="data?.image"
+            [postTitle]="data?.title"  [allData]="data"
+           ></news-view>
+  
+        </div>
+        <br>
+      </div>
+  
+  <!--********** above is news view end  ***********-->
+  
+  
+  
+      <!-- <div *ngIf="courseData?.length>=1" class="div2" >
+        <ion-row>
+          <ion-col col-12>
+              <h6 class="learningTitle">Learning Programs</h6>
+          </ion-col>
+  
+        </ion-row>
+   
+        <ion-row >
+          <ion-col col-6 class="modulecol" *ngFor="let learning of courseData;let i = index" (click)="goToLearnngList(learning)">
+           <div class="innerdiv" > 
+             <img class="imageicon" src="{{learning?.course_image}}" />
+            <ion-icon class="checkmark3" *ngIf = "learning?.total_percent>0 && learning?.total_percent<100 " right name="checkmark-circle-outline"></ion-icon>
+             <ion-icon class="checkmark" *ngIf = "learning?.total_percent==100" right name="checkmark-circle-outline"></ion-icon>
+             <p class="parracss">{{learning?.course_name}}</p>
+           </div> 
+          
+          </ion-col>
+          
+        </ion-row>
+        <br>
+      </div> -->
+    </div>
+  
+  <!-- *********following is graph skelton ***********-->
+    <div *ngIf="!welcomeData">
+      <ion-grid class="customCardLayout">
+        <ion-row>
+  
+          <ion-col col-6>
+            <div class="positionRelative">
+              <div class="progress-wrapper">
+                <div class="outerCircleSkelton"></div>
+              </div>
+              <p class="messageSkelton"> </p>
+              <div class="percentageValue percentageValueSkelton">
+                45
+              </div>
+            </div>
+          </ion-col>
+  
+          <ion-col col-6>
+            <div class="positionRelative">
+              <div class="progress-wrapper">
+                <div class="outerCircleSkelton"></div>
+              </div>
+              <p class="messageSkelton"></p>
+              <div class="percentageValue percentageValueSkelton">
+                88 %
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <div class="div2">
+        <ion-row>
+          <h6 class="learningTitle nameSkelton">Learning Programs</h6>
+        </ion-row>
+  
+        <ion-row>
+          <ion-col col-6 class="modulecol" *ngFor="let learning of skeltonCourse;let i = index">
+            <div class="innerdiv">
+              <div class="imageicon blurDataSkelton"></div><br>
+              <p class="messageSkelton"> </p>
+            </div>
+  
+          </ion-col>
+  
+        </ion-row>
+      </div>
+    </div>
+  
+  <!-- *********above is graph skelton end ***********-->
+  
+  
+  <!-- ********* following is countryhead  Ui skelton *********-->
+
+
+
+  <!-- <div *ngIf="!countryHeadData">
+  <ion-row>
+    <ion-col col-11>
+      <div class="textSkelton" style="width:100%;height:120px;background: #d2d2d2"></div>
+    </ion-col>
+    <ion-col col-1>
+        <div class="textSkelton" style="width:100%;height:120px;background: #d2d2d2"></div>
+    </ion-col>
+  </ion-row>
+  </div> -->
+
+
+
+  <!-- *********above is countryhead skelton end ***********-->
+  
+  <!-- ********* following is skelton code of album  Ui  *********-->
+  
+  <div *ngIf="!homeAlbumData" class="div2" >
+      <ion-row>
+          <ion-col col-9>
+            <b class="textSkelton">Album</b>
+          </ion-col>
+          <ion-col col-3 >
+            <u class="textSkelton">See More</u>
+          </ion-col>
+        </ion-row>
+  
+      <ion-row>
+        <ion-col col-6 *ngFor="let data of [0,1,2,3]; let alb=index" >
+          <div class="relativDIV albumDiv">
+            <img src="../../assets/watermark/watermark.png" height="128" class="set1 textSkelton">
+            <div class="transparentLayer_black textSkelton"></div>
+            <div class="userName">
+              <ion-row>
+                  <ion-col col-6> <b class="text textSkelton">test user </b></ion-col>
+                  <ion-col col-6> <b class="text textSkelton" float-right>5 image </b></ion-col>
+              </ion-row>
+              
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+  </div>
+  <!-- ********* above is skelton code of album  Ui end  *********-->
+  
+  <!--********** following is news view skelton  ***********-->
+  <div *ngIf="!newsListData"  class="lifeAtEval div2 ">
+      <ion-row>
+        <ion-col col-12>
+          <b class="textSkelton">What's new?</b>
+        </ion-col>
+      </ion-row>
+      <div *ngFor="let data of [0,1,2]" class="textSkelton">
+        <ion-row>
+            <ion-col col-5><img src="../../assets/watermark/watermark.png" class="textSkelton"> </ion-col>
+            <ion-col col-7><p class="textSkelton">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p> </ion-col>
+        </ion-row>
+      </div>
+      <br>
+    </div>
+  
+  <!--********** above is news view skelton end  ***********-->
+  
+  
+    <br>
+    <br>
+  </ion-content>

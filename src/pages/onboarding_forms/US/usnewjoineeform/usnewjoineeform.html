@@ -1,0 +1,244 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding class="commonFormDiv">
+  <div [ngClass]="{'newOverlay':form_status != 'enable'}">
+    <div class="WebFormDiv">
+      <div class="newCardDiv">
+        <div class="newHeading">
+          <h4 no-margin>{{title}}</h4>
+        </div>
+        <div class="customCardDiv">
+          <ion-row>
+            <ion-col col-12>
+              <div class="headingDiv">
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row [id]="scrollDivId">
+            <ion-col col-12>
+              <div class="inputDiv">
+                <ion-label>First Name
+                  <sup *ngIf="alldata?.first_name.is_mandatory" class="redText">*</sup>
+                  <i *ngIf="alldata?.first_name.hint_applicable" [tooltip]="alldata?.first_name.hint" positionV="top"
+                    arrow='true'>
+                    <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon>
+                  </i>
+                </ion-label>
+                <ion-input [ngClass]="{'redborder':scrollDivId,'overlayDiv':!alldata?.first_name.is_enable}" type="text" [disabled]="!alldata?.first_name.is_enable" name="{{alldata?.first_name.value}}"
+                  [(ngModel)]="alldata?.first_name.value" placeholder=""></ion-input>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row [id]="middle_namescrollDivId">
+            <ion-col col-12>
+              <div class="inputDiv">
+                <ion-label>MIddle Name
+                  <sup *ngIf="alldata?.middle_name.is_mandatory" class="redText">*</sup>
+                  <i *ngIf="alldata?.middle_name.hint_applicable" [tooltip]="alldata?.middle_name.hint" positionV="top"
+                    arrow='true'>
+                    <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon>
+                  </i>
+                </ion-label>
+                <ion-input type="text" [ngClass]="{'redborder':middle_namescrollDivId,'overlayDiv':!alldata?.middle_name.is_enable}" [disabled]="!alldata?.middle_name.is_enable" name="{{alldata?.middle_name.value}}"
+                  [(ngModel)]="alldata?.middle_name.value" placeholder=""></ion-input>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row [id]="last_namescrollDivId">
+            <ion-col col-12>
+              <div class="inputDiv">
+                <ion-label>Last Name
+                  <sup *ngIf="alldata?.last_name.is_mandatory" class="redText">*</sup>
+                  <i *ngIf="alldata?.last_name.hint_applicable" [tooltip]="alldata?.last_name.hint" positionV="top"
+                    arrow='true'>
+                    <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon>
+                  </i>
+                </ion-label>
+                <ion-input type="text" [ngClass]="{'redborder':last_namescrollDivId,'overlayDiv':!alldata?.last_name.is_enable}" [disabled]="!alldata?.last_name.is_enable" name="{{alldata?.last_name.value}}"
+                  [(ngModel)]="alldata?.last_name.value" placeholder=""></ion-input>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row [id]="date_of_birthscrollDivId">
+            <ion-col col-12>
+              <div class="inputDiv">
+                <ion-label>Date of Birth
+                  <sup *ngIf="alldata?.date_of_birth.is_mandatory" class="redText">*</sup>
+                  <i *ngIf="alldata?.date_of_birth.hint_applicable" [tooltip]="alldata?.date_of_birth.hint" positionV="top"
+                    arrow='true'>
+                    <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon>
+                  </i>
+                </ion-label>
+                <ion-datetime type="text" pickerFormat="DD/MMM/YYYY" [ngClass]="{'redborder':date_of_birthscrollDivId,'overlayDiv':!alldata?.date_of_birth.is_enable}" [disabled]="!alldata?.date_of_birth.is_enable"
+                  name="{{alldata?.date_of_birth.value}}" [(ngModel)]="alldata?.date_of_birth.value"></ion-datetime>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row [id]="complete_addressscrollDivId">
+            <ion-col col-12>
+              <div class="inputDiv">
+                <ion-label>Address
+                  <sup *ngIf="alldata?.complete_address.is_mandatory" class="redText">*</sup>
+                  <i *ngIf="alldata?.complete_address.hint_applicable" [tooltip]="alldata?.complete_address.hint"
+                    positionV="top" arrow='true'>
+                    <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon>
+                  </i>
+                </ion-label>
+                <ion-textarea type="text" [ngClass]="{'redborder':complete_addressscrollDivId,'overlayDiv':!alldata?.complete_address.is_enable}" [disabled]="!alldata?.complete_address.is_enable"
+                  name="{{alldata?.complete_address.value}}" [(ngModel)]="alldata?.complete_address.value" placeholder=""></ion-textarea>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row [id]="email_idscrollDivId">
+            <ion-col col-12>
+              <div class="inputDiv">
+                <ion-label>E-mail ID
+                  <sup *ngIf="alldata?.email_id.is_mandatory" class="redText">*</sup>
+                  <i *ngIf="alldata?.email_id.hint_applicable" [tooltip]="alldata?.email_id.hint" positionV="top"
+                    arrow='true'>
+                    <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon>
+                  </i>
+                </ion-label>
+                <ion-input type="text" [ngClass]="{'redborder':email_idscrollDivId,'overlayDiv':!alldata?.email_id.is_enable}" [disabled]="!alldata?.email_id.is_enable" name="{{alldata?.email_id.value}}"
+                  [(ngModel)]="alldata?.email_id.value" placeholder="Enter E-mail Id"></ion-input>
+              </div>
+            </ion-col>
+          </ion-row>
+
+          <ion-row [id]="contactscrollDivId">
+            <ion-col col-12>
+              <div class="inputDiv">
+                <ion-label>Phone No.
+                  <sup *ngIf="alldata?.contact.is_mandatory" class="redText">*</sup>
+                  <i *ngIf="alldata?.contact.hint_applicable" [tooltip]="alldata?.contact.hint" positionV="top" arrow='true'>
+                    <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon>
+                  </i>
+                </ion-label>
+                <ion-input type="text" [ngClass]="{'redborder':contactscrollDivId,'overlayDiv':!alldata?.contact.is_enable}" [disabled]="!alldata?.contact.is_enable" name="{{alldata?.contact.value}}"
+                  [(ngModel)]="alldata?.contact.value" placeholder=""></ion-input>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row [id]="contact_namescrollDivId">
+            <ion-col col-12>
+              <div class="inputDiv">
+                <ion-label>Emergency Contact Name
+                  <sup *ngIf="alldata?.emergency_contact_name.is_mandatory" class="redText">*</sup>
+                  <i *ngIf="alldata?.emergency_contact_name.hint_applicable" [tooltip]="alldata?.emergency_contact_name.hint"
+                    positionV="top" arrow='true'>
+                    <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon>
+                  </i>
+                </ion-label>
+                <ion-input type="text" [ngClass]="{'redborder':contact_namescrollDivId,'overlayDiv':!alldata?.emergency_contact_name.is_enable}" [disabled]="!alldata?.emergency_contact_name.is_enable"
+                  name="{{alldata?.emergency_contact_name.value}}" [(ngModel)]="alldata?.emergency_contact_name.value" placeholder=""></ion-input>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row [id]="emergency_contactscrollDivId">
+            <ion-col col-12>
+              <div class="inputDiv">
+                <ion-label>Emergency Contact Phone Number
+                  <sup *ngIf="alldata?.emergency_contact.is_mandatory" class="redText">*</sup>
+                  <i *ngIf="alldata?.emergency_contact.hint_applicable" [tooltip]="alldata?.emergency_contact.hint"
+                    positionV="top" arrow='true'>
+                    <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon>
+                  </i>
+                </ion-label>
+                <ion-input type="text" [ngClass]="{'redborder':emergency_contactscrollDivId,'overlayDiv':!alldata?.emergency_contact.is_enable}" [disabled]="!alldata?.emergency_contact.is_enable"
+                  name="{{alldata?.emergency_contact.value}}" [(ngModel)]="alldata?.emergency_contact.value" placeholder=""></ion-input>
+              </div>
+            </ion-col>
+          </ion-row>
+
+          <ion-row [id]="work_locationscrollDivId">
+            <ion-col col-12>
+              <div class="inputDiv">
+                <ion-label>Work Location
+                  <sup *ngIf="alldata?.work_location.is_mandatory" class="redText">*</sup>
+                  <i *ngIf="alldata?.work_location.hint_applicable" [tooltip]="alldata?.work_location.hint" positionV="top"
+                    arrow='true'>
+                    <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon>
+                  </i>
+                </ion-label>
+                <ion-input type="text" [ngClass]="{'redborder':work_locationscrollDivId,'overlayDiv':!alldata?.work_location.is_enable}" [disabled]="!alldata?.work_location.is_enable"
+                  name="{{alldata?.work_location.value}}" [(ngModel)]="alldata?.work_location.value" placeholder=""></ion-input>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-12>
+              <div class="headingDiv">
+                <h4 no-margin>Are you authorized to work in {{ previousdata.country_id == '7' ? 'US' : 'Canada' }}?</h4>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row [id]="location_authorized_for_work">
+            <ion-col col-12>
+              <div class="inputDiv">
+                <ion-label>Select
+                  <sup *ngIf="alldata?.location_authorized_for_work.is_mandatory" class="redText">*</sup>
+                  <i *ngIf="alldata?.location_authorized_for_work.hint_applicable" [tooltip]="alldata?.location_authorized_for_work.hint"
+                    positionV="top" arrow='true'>
+                    <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon>
+                  </i>
+                </ion-label>
+
+
+                <div [ngClass]="{'checkBoxDiv':!location_authorized_for_work,'checkBoxDiv1':location_authorized_for_work}">
+                  <ion-list radio-group no-margin [(ngModel)]="usauth">
+                    <ion-row>
+                      <ion-col *ngFor="let item of usAuthArray " col-6>
+                        <div class="customField" [ngClass]="{'backred':item.auto_id==usauth}">
+                            <label>
+                                <ion-radio [disabled]="!alldata?.location_authorized_for_work.is_enable" [value]="item.auto_id"></ion-radio>
+                                <small>{{ item.name }}</small>
+                              </label>
+                        </div>
+                      </ion-col>
+                    </ion-row>
+                  </ion-list>
+                </div>
+              
+                <!-- <ion-row *ngIf="value.userResponse==true" class="AnswerDiv">
+                  <ion-col col-5 (click)=checkfun(true,i,j,data)>
+                    <div text-center class="fillBg">
+                      <span>Yes</span>
+                    </div>
+                  </ion-col>
+                  <ion-col col-2></ion-col>
+                  <ion-col col-5 (click)=checkfun(false,i,j,data)>
+                    <div text-center class="emptyBg">
+                      <span>No</span>
+                    </div>
+                  </ion-col>
+                </ion-row>     -->
+
+              </div>
+            </ion-col>
+          </ion-row>
+        </div>
+      </div>
+      <br>
+      <ion-row *ngIf="form_status == 'enable'">
+        <ion-col col-6 *ngIf="fill_status == '0'">
+          <div class="btndiv">
+            <button ion-button class="btn" (click)="submitform(0)">Save</button>
+          </div>
+        </ion-col>
+        <ion-col [attr.col-12]="fill_status == '1' ? '' : null" [attr.col-6]="fill_status == '0' ? '' : null">
+          <div *ngIf="fill_status=='1'" class="btndiv">
+            <button ion-button class="btn" (click)="submit(1)">Update</button>
+          </div>
+          <div *ngIf="fill_status=='0'" class="btndiv">
+            <button ion-button class="btn" (click)="submit(1)">Submit</button>
+          </div>
+        </ion-col>
+      </ion-row>
+      <br>
+    </div>
+
+  </div>
+</ion-content>

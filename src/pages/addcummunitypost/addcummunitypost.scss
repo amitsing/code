@@ -1,0 +1,67 @@
+page-addcummunitypost {
+    .imgcss{height:50px;width:50px;object-fit: cover;}
+    .textarea.text-input{     padding-left: 11px;}
+    .camPhoto{     height: 100px;
+        width: 100px;
+        background-color: grey;
+    }
+    
+        ion-scroll[scrollX] { white-space: nowrap;
+            .scroll-item { 
+                display: inline-block;
+            } 
+        }
+            .bageScrollImage1234{       
+                width: 200px !important;
+                height: 200px !important;
+                border: 1px solid #0074a6;
+                margin: 10px 0px 10px 10px;
+            }
+            img.bageScrollImage1234.blur{
+                -webkit-filter: blur(5px);
+                filter: blur(5px);
+            }
+            
+                input, textarea {
+                    -webkit-user-select: auto !important;
+                    -khtml-user-select: auto !important;
+                    -moz-user-select: auto !important;
+                    -ms-user-select: auto !important;
+                    -o-user-select: auto !important;
+                    user-select: auto !important;  
+              }
+              .scroldata{
+                  margin: 0px;
+              }
+            ion-spinner.spinnerdesign{
+                position: absolute;
+                top: 95px;
+                margin-left: -115px;
+            }
+            .spinner circle {
+                stroke: #0074a6;
+            }
+            ion-spinner * {
+                width: 50px;
+                height: 50px;
+                stroke: #D01616;
+                fill: #DC0D0D;
+            }
+            ion-icon.retry{
+                font-size: 4.2em;
+                position: absolute;
+                top: 90px;
+    
+                margin-left: -122px;
+                color: green;
+            }
+            p.retrytext {
+                font-size: 20px;
+                margin-top: 0px;
+            } 
+            .user{
+                text-align: left;
+                display: inline-block;
+                margin-top: 8px;
+            }
+}

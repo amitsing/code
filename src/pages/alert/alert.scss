@@ -1,0 +1,29 @@
+page-alert {
+    .margintopbtm2{font-size: 11px;color: red;margin-top: 2px;margin-bottom: 2px;}
+    .btncss{padding-top: 9px;}
+    .paddingcss{padding-left: 5px;
+        font-weight: bold;}
+    .divcss{    padding: 5px;}
+    .margintopbtm{margin-top: 0px;margin-bottom: 0px;}
+    .margintopbtm1{margin-top: 2px;margin-bottom: 2px;}
+    .buttonclass{    text-align: center;
+        border: 1px solid red;
+        padding: 5px;
+        border-radius: 3px;}
+    .colclass1{margin: auto;}
+    .colclass{padding-top: 0px;
+        padding-bottom: 0px;
+        background: rgba(128, 128, 128, 0.239215686274509)}
+    .card-md {
+        margin: 10px;
+        border-radius: 5px;}
+    .font{font-weight: bold;}
+    .para{text-align: end;
+        font-size: 11px;}
+        // .appstylecolor{background: #4d284836;;padding:7px;color:white;font-size: 12px;border-radius: 5px;    min-height: 30px;} 
+        .appstylecolor{background: rgba(77, 40, 72, 0.21176470588235294);padding:7px;color:white;font-size: 12px;border-radius: 5px;    min-height: 30px;}
+
+        // .stylecolorgrey{background: #4d284861;;;padding:7px;color:white;font-size: 12px;border-radius: 5px;    min-height: 30px;}  
+        
+        .stylecolorgrey{background: rgba(77, 40, 72, 0.3803921568627451);padding:7px;color:white;font-size: 12px;border-radius: 5px;    min-height: 30px;}
+}

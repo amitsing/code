@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+      <button ion-button menuToggle >
+          <ion-icon style="color:#4d2748" name="menu"></ion-icon>
+        </button>
+    <ion-title>Menu</ion-title></ion-navbar>
+  </ion-header>
+
+<ion-content padding>
+  <div *ngIf="allmenudata">
+  <ion-row>
+    <ion-col class=colcss col-4 *ngFor="let data of allmenudata;let j=index">
+<div class="center" (click)=gotodeatil(data.module_flag,data.menu_name)>
+  <img class="imgcss" src="assets/watermark/watermark.png" srcset="{{data.menu_icon}}">
+  <p class="paracss">{{data.menu_name}}</p>
+</div>
+    </ion-col>
+  </ion-row>
+</div>
+
+<!-- follwing is skelton of menu -->
+<div *ngIf="!allmenudata">
+  <ion-row>
+    <ion-col col-4 *ngFor="let data of [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14];let j=index">
+      <div class="center">
+        <img class="imgcss textSkelton" src="../../assets/watermark/watermark.png" >
+        <p class="textSkelton" style="margin: 2px;font-size: 13px;" text-center>Module Name</p>
+      </div>
+    </ion-col>
+  </ion-row>
+</div>
+
+</ion-content>

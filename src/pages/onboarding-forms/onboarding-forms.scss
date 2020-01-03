@@ -1,0 +1,93 @@
+page-onboarding-forms {
+.cntr{text-align: -webkit-center;}
+    .paddbottom0{padding-bottom:0px;}
+    .martop{margin-top: -4px;}
+    .mt-10{margin-top:3px;}
+    .mt-3{margin-top:3px;}
+    .padding0{padding-left: 0px;}
+    .fontsize{font-size:9px;}
+    .activityIcon{width:30px;}
+    .pendingIcon{color: #e51d48;font-size: 25px;}
+    .approvedIcon{color:green;font-size: 25px;}
+    .rejectedIcon{color: #ee2653;font-size: 25px;}
+    .marginauto{margin: auto;text-align: end;}
+    .firstpositionRelative{text-align: center;}
+    .firstpositionRelative .progress-wrapper tspan{
+   
+        font-size: 18px !important;
+        }
+        .btndiv{text-align: center;position:absolute;bottom: -17px;left: 0;right: 0;}
+       
+        
+        .btn{background: gray;}
+   
+    .scroll-content {
+        background: #d8d8d8;;
+    }
+    ion-card.card {
+        border-radius: 5px;
+    }
+    .relativeDiv {
+        position: relative;
+    }
+    .absoluteDiv {
+        position: absolute;
+        top: -3px;
+        left: -14px;
+        padding: 0px;
+        width: 47px;
+        height: 47px;
+    }
+    .card .serialNumb {
+        width: 35px;
+        height: 50px;
+        background: #d695bd;
+        text-align: right;
+        margin: 0 auto;
+        float: none;
+        position: relative;
+        font-size: 32px;
+        bottom: 0px;
+    }
+    .card .serialNumb::before {
+        content: "";
+        position: absolute;
+        left: -5px;
+        top: -5px;
+        width: 10px;
+        height: 115%;
+        border: 1px solid black;
+        border-radius: 10px;
+    }
+    .learningList {
+        background: white;
+        border-radius: 5px;
+        box-shadow: -1px 0px 1px 1px #ffffff;
+    }
+    .abslink {
+        text-align: center;
+        margin: 0px 0px -48px 0px;
+        position: relative;
+        width: 100%;
+        display: inline-block;
+    }
+    .abslink button {
+        background: black;
+        background-image: linear-gradient(to bottom, #bf2548 , #e22550);
+        padding: 20px 45px;
+        border-radius: 15px;
+    }
+    .courseTitle{
+        @include line-clamp(2);
+    }
+    .lockIcon{
+        font-size: 30px;color:gray;
+    }
+    .unlockIcon{ font-size: 30px;color:$theme-titlecolor;}
+    .centerData{    display: block; margin: auto;}
+    .progress-wrapper tspan{
+    font-size: 10px !important;
+    }
+
+
+}

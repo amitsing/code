@@ -1,0 +1,44 @@
+page-globalpolicydetail {
+    .item-radio.item-md ion-label,.item-radio.item-ios ion-label {
+        margin-left: 0;
+        white-space: normal;
+    }
+.qcss{font-weight: bold;}
+.inlineUl li{ display: inline;list-style-type: none;padding-right: 10px;float: left;}
+// ul.inlineUl{}
+.imgcss{max-height: 200px;object-fit: contain;width: 100%;}
+.padd{
+    background: #fff;
+    border-radius: 5px;
+    padding: 5px;margin-bottom: 5px;
+    box-shadow: 1px 1px 3px 1px #dcdcdc;  
+}
+.pageDiv{padding:15px 10px;
+    .customCardDiv{
+        // background:#f5f5f5;
+        border-radius:5px;padding: 5px;
+    background: #fff;
+    line-height: 20px;
+        // min-height:450px;
+    }
+   .customCardDiv2{
+    border-radius:5px;padding: 5px;
+    }
+}
+.btndiv{
+    width: 100%;text-align: center;
+}
+.btn{
+  height: 30px;
+  width: 33%;
+  border-radius: 20px;
+  font-size: 10px;
+  background: #e22550;
+}
+
+ion-content{
+    background-color: #f7f7f7 !important;
+
+}
+
+}

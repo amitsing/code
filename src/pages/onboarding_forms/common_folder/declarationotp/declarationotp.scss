@@ -1,0 +1,25 @@
+page-declarationotp {
+    .skipcss{text-align: end;color: #1858a4;font-weight: bold;font-size: 15px;}
+    .bodBottom{border: 1px solid $theme-titlecolor;}
+    .text-input-md,.text-input-ios {margin: 14.7px 8px !important; }
+    .btn{ width: 50%; border-radius: 20px;
+      background: #e22550;
+      // background-image: linear-gradient(to bottom, $theme-titlecolor, #e22550);
+    }
+    .heading{ font-size: 16px; font-weight: 500; }
+    .mobIcon{ max-height: 100px; object-fit: contain;  }
+    .customCardView{padding: 25px 10px; background: #fff; border-radius: 7px;}
+    ion-input {
+        input {
+          text-align: center;
+          font-weight: bold;
+          color: $theme-titlecolor;
+          /* IF YOU ALSO WANT TO PUSH PLACHEHOLDER TO THE RIGHT USE THE FOLLOWING, IF NOT JUST DELETE THE ::-webkit-input-placeholder*/
+          ::-webkit-input-placeholder {
+            text-align: center;
+            font-weight: bold;
+            
+          }
+        }
+      }
+}

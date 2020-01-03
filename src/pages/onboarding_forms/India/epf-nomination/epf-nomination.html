@@ -1,0 +1,617 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>EPF Nomination</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="commonFormDiv">
+
+    <div [ngClass]="{'newOverlay':form_status != 'enable'}"> 
+
+    <!-- <div  *ngIf="allData?.length<3" class="right" (click)=formcreate()>
+        <ion-row>
+          <ion-col col-12 text-right>
+              <button ion-button icon-end round  small class="mybtn">
+                  Add Nominee
+                  <ion-icon name="ios-add-circle-outline"></ion-icon>
+                </button>
+          </ion-col>
+        </ion-row>
+    
+      </div> -->
+
+  <div class="WebFormDiv">
+
+    <div class="newCardDiv">
+      <div class="newHeading" [innerHTML]="part_A?.title">
+   
+      </div>
+      <div class="customCardDiv">
+
+        <ion-row>
+          <ion-col col-12>
+            <div class="headingDiv" [innerHTML]="part_A?.description">
+      
+            </div>
+            <div [innerHTML]="part_A?.footer"></div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+            <div class="inputDiv">
+              <ion-label>Marital Status
+                <sup class="redText">*</sup>
+              </ion-label>
+              <!-- <ion-select placeholder="Select One" interface ="popover">
+                <ion-option value="Married">Married</ion-option>
+                <ion-option value="Unmarried">Unmarried</ion-option>
+                <ion-option value="Widow">Widow</ion-option>
+                <ion-option value="Widower">Widower</ion-option>
+                <ion-option value="Divorcee">Divorcee</ion-option>
+              </ion-select> -->
+              <ion-input  type="text" [disabled]="!userDetail?.marital_status.is_enable" name="{{userDetail?.marital_status.value}}"
+                [(ngModel)]="userDetail?.marital_status.value" placeholder=""></ion-input>
+
+
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row [id]="pfId">
+          <ion-col col-12>
+            <div class="inputDiv">
+              <ion-label>Account No.
+                <sup class="redText">*</sup>
+              </ion-label>
+              <!-- <ion-input type="text" placeholder="Enter Account Number"></ion-input> -->
+              <ion-input [ngClass]="{'redborder':pfId}" type="text" [disabled]="!userDetail?.pf_number.is_enable" name="{{userDetail?.pf_number.value}}"
+                [(ngModel)]="userDetail?.pf_number.value" placeholder=""></ion-input>
+            </div>
+          </ion-col>
+        </ion-row>
+      </div>
+    </div>
+
+    <div  *ngIf="allData?.length<3" class="right" (click)=formcreate()>
+        <ion-row>
+          <ion-col col-12 text-right>
+              <button ion-button icon-end round  small class="mybtn">
+                  Add Nominee
+                  <ion-icon name="ios-add-circle-outline"></ion-icon>
+                </button>
+          </ion-col>
+        </ion-row>
+    
+      </div>
+
+    <div *ngIf="first_attempt!=1">
+      <div class="pageDiv" *ngFor="let data of allData; let k= index;">
+        <ion-row class="numEmrRow">
+          <ion-col col-8 class="numEmrRowText">
+            Nominee Details
+          </ion-col>
+          <ion-col col-2 class="colcss1" *ngIf="form_status=='enable'" (click)="editform(data,k)">
+            <div class="iconcss1">
+              <ion-icon name="ios-create-outline" class="iconcss"></ion-icon>
+            </div>
+          </ion-col>
+          <ion-col col-2 class="colcss1" *ngIf="form_status=='enable'" (click)="showConfirm(data,k)">
+            <div class="iconcss1">
+              <ion-icon name="ios-trash-outline" class="iconcss"></ion-icon>
+            </div>
+          </ion-col>
+        </ion-row>
+        <div class="customCardDiv">
+
+
+          <!-- <p class="para">Emergency Contact</p> -->
+          <ion-row class="bod_bot">
+
+            <ion-col col-6>
+              <p class="para2">Address</p>
+            </ion-col>
+            <ion-col col-6>
+              <p class="para3">{{data.address.value}}</p>
+            </ion-col>
+          </ion-row>
+          <ion-row class="bod_bot">
+            <ion-col col-6>
+              <p class="para2">Date Of Birth</p>
+            </ion-col>
+            <ion-col col-6>
+              <p class="para3">{{data.dob.value}}</p>
+            </ion-col>
+          </ion-row>
+          <ion-row class="bod_bot" *ngIf="data.is_minor=='1'">
+            <ion-col col-6>
+              <p class="para2">Guardian Address</p>
+            </ion-col>
+            <ion-col col-6>
+              <p class="para3">{{data.minor_address.value}}</p>
+            </ion-col>
+          </ion-row>
+          <ion-row class="bod_bot" *ngIf="data.is_minor=='1'">
+            <ion-col col-6>
+              <p class="para2">Guardian Name</p>
+            </ion-col>
+            <ion-col col-6>
+              <p class="para3">{{data.minor_name.value}}</p>
+            </ion-col>
+          </ion-row>
+          <ion-row class="bod_bot" *ngIf="data.is_minor=='1'">
+            <ion-col col-6>
+              <p class="para2">Guardian relation</p>
+            </ion-col>
+            <ion-col col-6>
+              <p class="para3">{{data.minor_rel.value}}</p>
+            </ion-col>
+          </ion-row>
+          <ion-row class="bod_bot">
+            <ion-col col-6>
+              <p class="para2">Nominee Name</p>
+            </ion-col>
+            <ion-col col-6>
+              <p class="para3">{{data.nominee_name.value}}</p>
+            </ion-col>
+          </ion-row>
+          <ion-row class="bod_bot">
+            <ion-col col-6>
+              <p class="para2">Nominee relation</p>
+            </ion-col>
+            <ion-col col-6>
+              <p class="para3">{{data.nominee_relation.value}}</p>
+            </ion-col>
+          </ion-row>
+          <ion-row class="bod_bot">
+            <ion-col col-6>
+              <p class="para2">Share in PF </p>
+            </ion-col>
+            <ion-col col-6>
+              <p class="para3">{{data.provident_fund.value}}&nbsp;%</p>
+            </ion-col>
+          </ion-row>
+        </div>
+      </div>
+
+    </div>
+
+
+
+    <div [id]="'1'" class="pageDiv" *ngFor="let data of editArray; let j= index;">
+      <div class="customCardDiv">
+        <div class="right" (click)="deleteform()">
+          <ion-icon name="ios-close-circle-outline" class="closeBTN"></ion-icon>
+        </div>
+        <p class="para"></p>
+        <!-- <p>{{data.CPersontooltip}}</p> -->
+        <ion-row >
+          <ion-col col-12>
+            <div class="my_relativeDIV">
+              <p> Name Of Nominee 
+                <sup class="redText">*</sup>
+                <i *ngIf="data?.nominee_name_is_mandatory_hint_applicable" [tooltip]="data?.nominee_name_is_mandatory_hint" positionV="top" arrow='true'>  
+                    <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon></i>
+              </p>
+              <ion-item class="onboardingIonItems">
+                <ion-input type="text" class="onboardingInputField"
+                [ngClass]="{'redborder':nomineename}" name="{{data.nominee_name}}" [(ngModel)]="data.nominee_name" ></ion-input>
+              </ion-item>
+            </div>
+          </ion-col>
+        </ion-row>
+
+
+
+        <ion-row>
+          <ion-col col-12>
+            <div class="my_relativeDIV">
+              <p> Address Of Nominee
+                <sup class="redText">*</sup>
+                <i *ngIf="data?.Address_is_mandatory_hint_applicable" [tooltip]="data?.Address_is_mandatory_hint" positionV="top" arrow='true'>  
+                    <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon></i>
+
+              </p>
+              <ion-item class="onboardingIonItems">
+                <ion-input type="text" [ngClass]="{'redborder':nAddress}" name="{{data.Address}}" [(ngModel)]="data.Address" class="onboardingInputField"></ion-input>
+              </ion-item>
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col col-12>
+            <div class="my_relativeDIV">
+              <p>Relation With Nominee
+                <sup class="redText">*</sup>
+                <i *ngIf="data?.nominee_relation_is_mandatory_hint_applicable" [tooltip]="data?.nominee_relation_is_mandatory_hint" positionV="top" arrow='true'>  
+                    <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon></i>
+              </p>
+              <ion-item class="onboardingIonItems">
+                <ion-input type="text" [ngClass]="{'redborder':rnominee_relation}" name="{{data.nominee_relation}}" [(ngModel)]="data.nominee_relation" class="onboardingInputField"></ion-input>
+              </ion-item>
+            </div>
+          </ion-col>
+        </ion-row>
+
+
+        <ion-row>
+          <ion-col col-12>
+            <div class="my_relativeDIV">
+              <p> Date Of Birth
+                <sup class="redText">*</sup>
+                <i *ngIf="data?.dob_is_mandatory_hint_applicable" [tooltip]="data?.dob_is_mandatory_hint" positionV="top" arrow='true'>  
+                    <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon></i>
+              </p>
+              <ion-item class="onboardingIonItems">
+                <ion-datetime type="text" [ngClass]="{'redborder':rdob}" class="onboardingInputField" displayFormat="DD/MMM/YYYY"  name="{{data.dob}}" [(ngModel)]="data.dob"
+                  (ngModelChange)="dateChanged()"></ion-datetime>
+              </ion-item>
+            </div>
+          </ion-col>
+        </ion-row>
+
+
+        <ion-row>
+          <ion-col col-12>
+            <div class="my_relativeDIV">
+              <p> Share in PF
+                <sup class="redText">*</sup>
+                <i *ngIf="data?.provident_fund_is_mandatory_hint_applicable" [tooltip]="data?.provident_fund_is_mandatory_hint" positionV="top" arrow='true'>  
+                    <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon></i>
+              </p>
+              <ion-item class="onboardingIonItems">
+                <ion-input type="text" [ngClass]="{'redborder':rprovident_fund}" name="{{data.provident_fund}}" [(ngModel)]="data.provident_fund" class="onboardingInputField"></ion-input>
+              </ion-item>
+            </div>
+          </ion-col>
+        </ion-row>
+
+
+        <ion-row *ngIf="is_minor=='1' || showgdiv==1">
+          <ion-col col-12>
+            <div class="my_relativeDIV">
+              <p> Guardian Address
+                <sup class="redText">*</sup>
+                <i *ngIf="data?.minor_address_is_mandatory_hint_applicable" [tooltip]="data?.minor_address_is_mandatory_hint" positionV="top" arrow='true'>  
+                    <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon></i>
+              </p>
+              <ion-item class="onboardingIonItems">
+                <ion-input type="text" [ngClass]="{'redborder':rminor_address}" name="{{data.minor_address}}" [(ngModel)]="data.minor_address" class="onboardingInputField"></ion-input>
+              </ion-item>
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <ion-row *ngIf="is_minor=='1' || showgdiv==1">
+          <ion-col col-12>
+            <div class="my_relativeDIV">
+              <p> Guardian Name
+                <sup class="redText">*</sup>
+                <i  *ngIf="data?.minor_name_is_mandatory_hint_applicable" [tooltip]="data?.minor_name_is_mandatory_hint" positionV="top" arrow='true'>  
+                    <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon></i>
+              </p>
+              <ion-item class="onboardingIonItems">
+                <ion-input type="text" [ngClass]="{'redborder':rminor_name}" name="{{data.minor_name}}" [(ngModel)]="data.minor_name" class="onboardingInputField"></ion-input>
+              </ion-item>
+            </div>
+          </ion-col>
+        </ion-row>
+
+
+
+        <ion-row *ngIf="is_minor=='1' || showgdiv==1">
+          <ion-col col-12>
+            <div class="my_relativeDIV">
+              <p> Guardian relation
+                <sup class="redText">*</sup>
+                <i  *ngIf="data?.minor_rel_is_mandatory_hint_applicable" [tooltip]="data?.minor_rel_is_mandatory_hint" positionV="top" arrow='true'>  
+                    <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon></i>
+              </p>
+              <ion-item class="onboardingIonItems">
+                <ion-input type="text" [ngClass]="{'redborder':rminor_rel}" name="{{data.minor_rel}}" [(ngModel)]="data.minor_rel" class="onboardingInputField"></ion-input>
+              </ion-item>
+            </div>
+          </ion-col>
+        </ion-row>
+
+
+
+      </div>
+
+
+      <div class="btndiv" *ngIf="buttomtxtcheck=='1' && form_status=='enable'">
+        <button ion-button class="btn" (click)="fun(1)">Save</button>
+      </div>
+
+      <div class="btndiv" *ngIf="buttomtxtcheck=='2' && form_status=='enable'">
+          <button ion-button class="btn" (click)="fun(0)">Update</button>
+        </div>
+    </div>
+
+
+
+
+    <div class="newCardDiv">
+      <div class="newHeading" [innerHTML]="part_B?.title">
+        <!-- <h4 no-margin [innerHTML]="part_B.title"></h4> -->
+      </div>
+      <div class="customCardDiv">
+
+        <ion-row>
+          <ion-col col-12>
+            <div class="headingDiv">
+              <!-- <p>I hereby nominate the person(s) /cancel the nomination made by me previously and nominate the person(s) mentioned below to receive the amount standing to mycredit in the Employees’ Provident Fund in the event of my death. Please add nominee</p> -->
+              <p [innerHTML]="part_B?.description"></p>
+            </div>
+          </ion-col>
+        </ion-row>
+<!-- ///////for married////// -->
+
+
+
+
+<div>
+    <div class="pageDiv" *ngFor="let data of allData; let k= index;">
+        <div *ngIf="userDetail?.marital_status.value =='Married'">
+            <ion-row class="numEmrRow">
+              <ion-col col-8 class="numEmrRowText">
+                  Nominee Details
+              </ion-col>
+              <ion-col col-2 class="colcss1" *ngIf="form_status=='enable'" (click)="editform(data,k)">
+                <div class="iconcss1">
+                  <!-- <ion-icon name="ios-create-outline" class="iconcss"></ion-icon> -->
+                </div>
+              </ion-col>
+              <ion-col col-2 class="colcss1" *ngIf="form_status=='enable'" (click)="showConfirm(data,k)">
+                <div class="iconcss1">
+                  <!-- <ion-icon name="ios-trash-outline" class="iconcss"></ion-icon> -->
+                </div>
+              </ion-col>
+            </ion-row>
+            <div class="customCardDiv">
+              <!-- <p class="para">Emergency Contact</p> -->
+              <ion-row class="bod_bot">
+
+                <ion-col col-6>
+                  <p class="para2">Address</p>
+                </ion-col>
+                <ion-col col-6>
+                  <p class="para3" *ngIf="userDetail?.marital_status.value=='Married'">{{data.address.value}}</p>
+                </ion-col>
+              </ion-row>
+              <ion-row class="bod_bot">
+                <ion-col col-6>
+                  <p class="para2">Date Of Birth</p>
+                </ion-col>
+                <ion-col col-6>
+                  <p class="para3" *ngIf="userDetail?.marital_status.value=='Married'">{{data.dob.value}}</p>
+                </ion-col>
+              </ion-row>
+          
+              <ion-row class="bod_bot">
+                <ion-col col-6>
+                  <p class="para2">Nominee Name</p>
+                </ion-col>
+                <ion-col col-6>
+                  <p class="para3" *ngIf="userDetail?.marital_status.value=='Married'">{{data.nominee_name.value}}</p>
+                </ion-col>
+              </ion-row>
+              <ion-row class="bod_bot">
+                <ion-col col-6>
+                  <p class="para2">Nominee relation</p>
+                </ion-col>
+                <ion-col col-6>
+                  <p class="para3" *ngIf="userDetail?.marital_status.value=='Married'">{{data.nominee_relation.value}}</p>
+                </ion-col>
+              </ion-row>
+        
+            </div>
+        </div>
+
+        <div style="opacity: 0.5;" *ngIf="userDetail?.marital_status.value !='Married' && k == 0">
+            <ion-row class="numEmrRow">
+              <ion-col col-8 class="numEmrRowText">
+                  Nominee Details
+              </ion-col>
+              <ion-col col-2 class="colcss1" *ngIf="form_status=='enable'" (click)="editform(data,k)">
+                <div class="iconcss1">
+                  <!-- <ion-icon name="ios-create-outline" class="iconcss"></ion-icon> -->
+                </div>
+              </ion-col>
+              <ion-col col-2 class="colcss1" *ngIf="form_status=='enable'" (click)="showConfirm(data,k)">
+                <div class="iconcss1">
+                  <!-- <ion-icon name="ios-trash-outline" class="iconcss"></ion-icon> -->
+                </div>
+              </ion-col>
+            </ion-row>
+            <div class="customCardDiv">
+              <!-- <p class="para">Emergency Contact</p> -->
+              <ion-row class="bod_bot">
+
+                <ion-col col-6>
+                  <p class="para2">Address</p>
+                </ion-col>
+                <ion-col col-6>
+                  <p class="para3" *ngIf="userDetail?.marital_status.value=='Married'">{{data.address.value}}</p>
+                </ion-col>
+              </ion-row>
+              <ion-row class="bod_bot">
+                <ion-col col-6>
+                  <p class="para2">Date Of Birth</p>
+                </ion-col>
+                <ion-col col-6>
+                  <p class="para3" *ngIf="userDetail?.marital_status.value=='Married'">{{data.dob.value}}</p>
+                </ion-col>
+              </ion-row>
+          
+              <ion-row class="bod_bot">
+                <ion-col col-6>
+                  <p class="para2">Nominee Name</p>
+                </ion-col>
+                <ion-col col-6>
+                  <p class="para3" *ngIf="userDetail?.marital_status.value=='Married'">{{data.nominee_name.value}}</p>
+                </ion-col>
+              </ion-row>
+              <ion-row class="bod_bot">
+                <ion-col col-6>
+                  <p class="para2">Nominee relation</p>
+                </ion-col>
+                <ion-col col-6>
+                  <p class="para3" *ngIf="userDetail?.marital_status.value=='Married'">{{data.nominee_relation.value}}</p>
+                </ion-col>
+              </ion-row>
+        
+            </div>
+        </div>
+
+
+
+    </div>
+
+  </div>
+
+
+        <ion-row>
+          <ion-col col-12>
+            <div class="headingDiv">
+              <!-- <p>I hereby nominate the person(s) /cancel the nomination made by me previously and nominate the person(s) mentioned below to receive the amount standing to mycredit in the Employees’ Provident Fund in the event of my death. Please add nominee</p> -->
+              <p [innerHTML]="part_B?.footer"></p>
+            </div>
+          </ion-col>
+        </ion-row>
+
+<!-- //////for unmarried//// -->
+
+<div>
+    <div class="pageDiv" *ngFor="let data of allData; let k= index;">
+      <div *ngIf="userDetail?.marital_status.value!='Married'">
+        <ion-row class="numEmrRow">
+          <ion-col col-8 class="numEmrRowText">
+              Nominee Details
+          </ion-col>
+          <ion-col col-2 class="colcss1" *ngIf="form_status=='enable'">
+            <div class="iconcss1">
+              <!-- <ion-icon name="ios-create-outline" class="iconcss"></ion-icon> -->
+            </div>
+          </ion-col>
+          <ion-col col-2 class="colcss1" *ngIf="form_status=='enable'">
+            <div class="iconcss1">
+              <!-- <ion-icon name="ios-trash-outline" class="iconcss"></ion-icon> -->
+            </div>
+          </ion-col>
+        </ion-row>
+        <div class="customCardDiv">
+          <!-- <p class="para">Emergency Contact</p> -->
+          <ion-row class="bod_bot">
+
+            <ion-col col-6>
+              <p class="para2">Address</p>
+            </ion-col>
+            <ion-col col-6>
+              <p class="para3" *ngIf="userDetail?.marital_status.value!='Married'">{{data.address.value}}</p>
+            </ion-col>
+          </ion-row>
+          <ion-row class="bod_bot">
+            <ion-col col-6>
+              <p class="para2">Date Of Birth</p>
+            </ion-col>
+            <ion-col col-6>
+              <p class="para3" *ngIf="userDetail?.marital_status.value!='Married'">{{data.dob.value}}</p>
+            </ion-col>
+          </ion-row>
+      
+          <ion-row class="bod_bot">
+            <ion-col col-6>
+              <p class="para2">Nominee Name</p>
+            </ion-col>
+            <ion-col col-6>
+              <p class="para3" *ngIf="userDetail?.marital_status.value!='Married'">{{data.nominee_name.value}}</p>
+            </ion-col>
+          </ion-row>
+          <ion-row class="bod_bot">
+            <ion-col col-6>
+              <p class="para2">Nominee relation</p>
+            </ion-col>
+            <ion-col col-6>
+              <p class="para3" *ngIf="userDetail?.marital_status.value!='Married'">{{data.nominee_relation.value}}</p>
+            </ion-col>
+          </ion-row>
+    
+        </div>
+      </div>
+
+      <div style="opacity: 0.5;" *ngIf="userDetail?.marital_status.value =='Married' && k == 0">
+          <ion-row class="numEmrRow">
+            <ion-col col-8 class="numEmrRowText">
+                Nominee Details
+            </ion-col>
+            <ion-col col-2 class="colcss1" *ngIf="form_status=='enable'">
+              <div class="iconcss1">
+                <!-- <ion-icon name="ios-create-outline" class="iconcss"></ion-icon> -->
+              </div>
+            </ion-col>
+            <ion-col col-2 class="colcss1" *ngIf="form_status=='enable'">
+              <div class="iconcss1">
+                <!-- <ion-icon name="ios-trash-outline" class="iconcss"></ion-icon> -->
+              </div>
+            </ion-col>
+          </ion-row>
+          <div class="customCardDiv">
+            <!-- <p class="para">Emergency Contact</p> -->
+            <ion-row class="bod_bot">
+  
+              <ion-col col-6>
+                <p class="para2">Address</p>
+              </ion-col>
+              <ion-col col-6>
+                <p class="para3" *ngIf="userDetail?.marital_status.value!='Married'">{{data.address.value}}</p>
+              </ion-col>
+            </ion-row>
+            <ion-row class="bod_bot">
+              <ion-col col-6>
+                <p class="para2">Date Of Birth</p>
+              </ion-col>
+              <ion-col col-6>
+                <p class="para3" *ngIf="userDetail?.marital_status.value!='Married'">{{data.dob.value}}</p>
+              </ion-col>
+            </ion-row>
+        
+            <ion-row class="bod_bot">
+              <ion-col col-6>
+                <p class="para2">Nominee Name</p>
+              </ion-col>
+              <ion-col col-6>
+                <p class="para3" *ngIf="userDetail?.marital_status.value!='Married'">{{data.nominee_name.value}}</p>
+              </ion-col>
+            </ion-row>
+            <ion-row class="bod_bot">
+              <ion-col col-6>
+                <p class="para2">Nominee relation</p>
+              </ion-col>
+              <ion-col col-6>
+                <p class="para3" *ngIf="userDetail?.marital_status.value!='Married'">{{data.nominee_relation.value}}</p>
+              </ion-col>
+            </ion-row>
+      
+          </div>
+        </div>
+    </div>
+  </div>
+
+
+
+      </div>
+    </div>
+
+    <br>
+
+    <br>
+
+
+    <div class="btndiv" *ngIf="(isSubmit && first_attempt==0) && form_status=='enable'">
+        <button ion-button class="btn" (click)="submit()">{{buttomtxt}}</button>
+      </div>
+
+  </div>
+
+    </div>
+</ion-content>

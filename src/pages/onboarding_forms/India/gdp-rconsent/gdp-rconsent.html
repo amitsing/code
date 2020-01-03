@@ -1,0 +1,50 @@
+  <!--
+  Generated template for the GdpRconsentPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>GDPRconsent</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="pageDiv">
+    <div class="customCardDiv">
+        <p class="paracenter">Part A</p>
+        <p class="paracenter">Consent Acknowledgment Form</p>
+      
+      <p>I confirm that the information provided by me in the application form is accurate and correct 
+        . i understand that in the event of my employeement, if any information provided here by me is found to be 
+      untrue, my employeement could be terminated without notice.  </p>
+
+      <p class="para4">A: I confirm that the information provided by me in the application form is accurate and correct.</p>
+      <div class="borderdiv">
+        <p class="para4">Question 1</p>
+        <p>I confirm that the information provided by me in the application form is accurate and correct 
+            . i understand that in the event of my employeement, if any information provided here by me is found to be 
+          untrue, my employeement could be terminated without notice.  </p>
+
+          <ion-list no-margin radio-group [(ngModel)]="PANcheck">
+              <ion-row class="radioDiv">
+                <ion-col col-4>
+                  <ion-item>
+                    <ion-label class="genderlable">No</ion-label>
+                    <ion-radio value="yes" checked></ion-radio>
+                  </ion-item>
+                </ion-col>
+                <ion-col col-4>
+                  <ion-item>
+                    <ion-label class="genderlable">Yes</ion-label>
+                    <ion-radio value="No"></ion-radio>
+                  </ion-item>
+                </ion-col>
+                <ion-col col-4></ion-col>
+              </ion-row>
+            </ion-list>
+      </div>
+    </div>
+  </div>
+</ion-content>

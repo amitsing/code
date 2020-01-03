@@ -1,0 +1,174 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>HM Revenue & Custom Starter Checklist</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="pageDiv">
+    <div class="customCardDiv">
+      <p class="para4">HM Revenue & Custom Starter Checklist</p>
+      <p class="para3">HM Revenue & Custom Starter Checklist</p>
+      <p>I confirm that the information provided by me in the application form is accurate and correct . i understand that in
+        the event of my employeement, if any information provided here by me is found to be untrue, my employeement could
+        be terminated without notice. </p>
+    </div>
+  </div>
+
+  <div class="pageDiv">
+    <div class="customCardDiv">
+      <p class="para4">Employee's personal details</p>
+      <ion-row>
+        <ion-col col-12>
+          <div class="inputDiv">
+            <ion-label>Last Name
+              <sup class="redText">*</sup>
+            </ion-label>
+            <ion-input type="text" name="lname" [(ngModel)]="lname" placeholder="Enter your name"></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-12>
+          <div class="inputDiv">
+            <ion-label>First Name
+              <sup class="redText">*</sup>
+            </ion-label>
+            <ion-input type="text" name="fname" [(ngModel)]="fname" placeholder="Enter your name"></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+
+
+      <ion-row>
+        <ion-col col-12>
+          <div class="inputDiv">
+            <ion-label>Gender
+              <sup class="redText">*</sup>
+            </ion-label>
+            <ion-list no-margin radio-group [(ngModel)]="relationship">
+              <ion-row class="radioDiv">
+                <ion-col col-6>
+                  <ion-item>
+                    <ion-label class="genderlable">Male</ion-label>
+                    <ion-radio value="Male"></ion-radio>
+                  </ion-item>
+                </ion-col>
+                <ion-col col-6>
+                  <ion-item>
+                    <ion-label class="genderlable">Female</ion-label>
+                    <ion-radio value="female"></ion-radio>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-list>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-12>
+          <div class="inputDiv1">
+            <ion-label>Date of Birth
+              <sup class="redText">*</sup>
+            </ion-label>
+            <ion-item>
+              <ion-label>Date</ion-label>
+              <ion-datetime [(ngModel)]="myDate" displayFormat="MM/DD/YYYY"></ion-datetime>
+            </ion-item>
+
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-12>
+          <div class="inputDiv">
+            <ion-label>Address
+              <sup class="redText">*</sup>
+            </ion-label>
+            <ion-textarea type="text" name="pAddress" [(ngModel)]="pAddress" placeholder="" class="custom-class-text" id="comment" rows="2"></ion-textarea>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-12>
+          <div class="inputDiv">
+            <ion-label>National Insurance Number(if known)
+              <sup class="redText">*</sup>
+            </ion-label>
+            <ion-input type="tel" name="landnum" [(ngModel)]="landnum" placeholder="Enter Text"></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-12>
+          <div class="inputDiv1">
+            <ion-label>Employment Start Date
+              <sup class="redText">*</sup>
+            </ion-label>
+            <ion-item>
+              <ion-label>Date</ion-label>
+              <ion-datetime [(ngModel)]="myDate" displayFormat="MM/DD/YYYY"></ion-datetime>
+            </ion-item>
+
+          </div>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+
+
+  <div class="pageDiv">
+    <div class="customCardDiv">
+      <p class="para4">Employee statment</p>
+      <p class="para3">You need to select only one of the following statments A, B or C:</p>
+
+      <ion-list no-margin radio-group [(ngModel)]="relationship">
+        <ion-row class="radioDiv">
+          <ion-col col-12>
+            <ion-item>
+              <ion-label class="genderlable">A. this is my first job since last 6 April and I have not been receiving taxable jobseekar allowance</ion-label>
+              <ion-radio value="Male"></ion-radio>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row class="radioDiv">
+          <ion-col col-12>
+            <ion-item>
+              <ion-label class="genderlable">B. this is my first job since last 6 April and I have not been receiving taxable jobseekar allowance</ion-label>
+              <ion-radio value="female"></ion-radio>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-list>
+    </div>
+  </div>
+
+  <div class="pageDiv">
+    <div class="customCardDiv">
+      <p class="para4">Student Loan</p>
+      <p class="para3">Do you have any Student loan which is not fully repaid?</p>
+      <ion-list no-margin radio-group [(ngModel)]="relationship">
+        <ion-row class="radioDiv">
+          <ion-col col-6>
+            <ion-item>
+              <ion-label class="genderlable">Yes</ion-label>
+              <ion-radio value="Male"></ion-radio>
+            </ion-item>
+          </ion-col>
+          <ion-col col-6>
+            <ion-item>
+              <ion-label class="genderlable">No</ion-label>
+              <ion-radio value="female"></ion-radio>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-list>
+    </div>
+  </div>
+
+</ion-content>

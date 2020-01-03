@@ -1,0 +1,261 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Declaration Mediclaim</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="commonFormDiv">
+  <div class="WebFormDiv">
+    
+    
+    <!-- <ion-row>
+      <ion-col col-12 text-center><h6 no-margin><b>Group Mediclaim & Accidental Insurance:</b></h6></ion-col>
+    </ion-row> -->
+    <ion-row>
+      <ion-col col-12>
+        <div class="headingDiv" no-margin>
+            <h4 text-center><b>Group Mediclaim & Accidental Insurance:</b></h4>
+          <h6 no-margin>Group Mediclaim and Accidental Insurance policy is compulsory forall employeeof Evalueserve. Given below arethe options for Group Mediclaim & Accidental Insurance Policy.</h6>
+        </div>
+      </ion-col>
+    </ion-row>
+    
+  
+    <div class="newCardDiv">
+      <div class="newHeading"><h4 no-margin>Select a preferred choice</h4></div>
+      <div class="customCardDiv">
+        <!-- <ion-row>
+          <ion-col col-12><h5 no-margin>Select a preferred choice</h5></ion-col>
+        </ion-row> -->
+        <ion-row>
+          <ion-col col-12>
+            <div class="inputDiv">
+              <ion-label>Select Choice <sup class="redText">*</sup></ion-label>
+              <div class="checkBoxDiv">
+                <ion-list radio-group no-margin>
+                  <ion-row>
+                    <ion-col col-4>
+                      <label><ion-radio id="Self" name="preferred" value="Self"></ion-radio><small for="Self">Self</small></label>
+                    </ion-col>
+                    <ion-col col-8>
+                      <label><ion-radio id="SD" name="preferred" value="SD"></ion-radio><small for="SD">Self+Dependents</small></label>
+                    </ion-col>
+                  </ion-row>
+                </ion-list>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </div>
+    </div>
+    
+    
+    <div class="newCardDiv">
+      <div class="newHeading"><h4 no-margin>Select a preferred choice for Self+Dependants</h4></div>
+      <div class="customCardDiv">
+        <!-- <ion-row>
+          <ion-col col-12><h4 no-margin>Select a preferred choice for Self+Dependants</h4></ion-col>
+        </ion-row> -->
+        <ion-list radio-group no-margin>
+          <ion-row>
+            <ion-col col-12>
+              <div class="inputDiv">
+                <ion-label>Option 1 <sup class="redText">*</sup></ion-label>
+                <div class="checkBoxDiv">
+                  <ion-row class="multiRadio">
+                    <ion-col col-12>
+                      <label>
+                        <ion-radio type="radio" id="sum1" name="preferred" value="sum1"></ion-radio>
+                        <!-- <small>Self</small> -->
+                        <p for="sum1"><span>Sum Insured:</span><strong> Rs.200,000/-</strong><br><span>Yearly Premium for Self:</span><strong> Rs.5,951/-</strong></p>
+                      </label>
+                    </ion-col>
+                  </ion-row>
+                </div>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-12>
+              <div class="inputDiv">
+                <ion-label>Option 2 <sup class="redText">*</sup></ion-label>
+                <div class="checkBoxDiv">
+                  <ion-row class="multiRadio">
+                    <ion-col col-12>
+                      <label>
+                        <ion-radio type="radio" id="sum2" name="preferred" value="sum2"></ion-radio>
+                        <!-- <small>Self</small> -->
+                        <p for="sum2"><span>Sum Insured:</span><strong> Rs.300,000/-</strong><br><span>Yearly Premium for Self:</span><strong> Rs.8,992/-</strong></p>
+                      </label>
+                    </ion-col>
+                  </ion-row>
+                </div>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-12>
+              <div class="inputDiv">
+                <ion-label>Option 3 <sup class="redText">*</sup></ion-label>
+                <div class="checkBoxDiv">
+                  <ion-row class="multiRadio">
+                    <ion-col col-12>
+                      <label>
+                        <ion-radio type="radio" id="sum3" name="preferred" value="sum3"></ion-radio>
+                        <!-- <small>Self</small> -->
+                        <p for="sum3"><span>Sum Insured:</span><strong> Rs.500,000/-</strong><br><span>Yearly Premium for Self:</span><strong> Rs.13,458/-</strong></p>
+                      </label>
+                    </ion-col>
+                  </ion-row>
+                </div>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-12>
+              <div class="inputDiv">
+                <ion-label>Option 4 <sup class="redText">*</sup></ion-label>
+                <div class="checkBoxDiv">
+                  <ion-row class="multiRadio">
+                    <ion-col col-12>
+                      <label>
+                        <ion-radio type="radio" id="sum4" name="preferred" value="sum4"></ion-radio>
+                        <!-- <small>Self</small> -->
+                        <p for="sum4"><span>Sum Insured:</span><strong> Rs.600,000/-</strong><br><span>Yearly Premium for Self:</span><strong> Rs.16,134/-</strong></p>
+                      </label>
+                    </ion-col>
+                  </ion-row>
+                </div>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-list>
+      </div>
+    </div>
+    
+    
+    <div class="newCardDiv">
+      <div class="newHeading"><h4 text-center no-margin>Annual Premium for Dependants</h4></div>
+      <div class="customCardDiv">
+        <!-- <ion-row>
+          <ion-col col-12><h6 text-center no-margin>Annual Premium for Dependants</h6></ion-col>
+        </ion-row> -->
+        <ion-row>
+          <ion-col col-12>
+            <div class="inputDiv">
+              <ion-label>Father <sup class="redText">*</sup></ion-label>
+              <div class="checkBoxDiv">
+                <ion-row class="multiRadio">
+                  <ion-col col-12>
+                    <label>
+                      <ion-checkbox></ion-checkbox>
+                      <p><span>Yearly Premium for Father:</span><strong> Rs.5,007/-</strong></p>
+                    </label>
+                  </ion-col>
+                </ion-row>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+            <div class="inputDiv">
+              <ion-label>Mother <sup class="redText">*</sup></ion-label>
+              <div class="checkBoxDiv">
+                <ion-row class="multiRadio">
+                  <ion-col col-12>
+                    <label>
+                      <ion-checkbox></ion-checkbox>
+                      <!-- <small>Self</small> -->
+                      <p><span>Yearly Premium for Mother:</span><strong> Rs.5,007/-</strong></p>
+                    </label>
+                  </ion-col>
+                </ion-row>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+            <div class="inputDiv">
+              <ion-label>Spouse <sup class="redText">*</sup></ion-label>
+              <div class="checkBoxDiv">
+                <ion-row class="multiRadio">
+                  <ion-col col-12>
+                    <label>
+                      <ion-checkbox></ion-checkbox>
+                      <!-- <small>Self</small> -->
+                      <p><span>Yearly Premium for Spouse:</span><strong> Rs.1,403/-</strong></p>
+                    </label>
+                  </ion-col>
+                </ion-row>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+            <div class="inputDiv">
+              <ion-label>Child-1<sup class="redText">*</sup></ion-label>
+              <div class="checkBoxDiv">
+                <ion-row class="multiRadio">
+                  <ion-col col-12>
+                    <label>
+                      <ion-checkbox></ion-checkbox>
+                      <!-- <small>Self</small> -->
+                      <p><span>Yearly Premium for Child-1:</span><strong> Rs.1,403/-</strong></p>
+                    </label>
+                  </ion-col>
+                </ion-row>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+            <div class="inputDiv">
+              <ion-label>Child-2<sup class="redText">*</sup></ion-label>
+              <div class="checkBoxDiv">
+                <ion-row class="multiRadio">
+                  <ion-col col-12>
+                    <label>
+                      <ion-checkbox></ion-checkbox>
+                      <!-- <small>Self</small> -->
+                      <p><span>Yearly Premium for Child-2:</span><strong> Rs.1,403/-</strong></p>
+                    </label>
+                  </ion-col>
+                </ion-row>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12><h6>Total Premium is: <strong>Rs. 5951</strong></h6></ion-col>
+        </ion-row>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <br>
+    <ion-row text-center>
+      <ion-col col-12>
+        <div class="submitBtn">
+          <button ion-button>Submit</button>
+        </div>
+      </ion-col>
+    </ion-row>
+    <br>
+
+
+
+
+  </div>
+</ion-content>

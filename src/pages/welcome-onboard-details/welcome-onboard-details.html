@@ -1,0 +1,220 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{detailsData?.name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="contentHolder">
+  
+  <div class="relative">
+    <div class="customCardView" *ngIf="detailsData">
+        <ion-row>
+          <ion-col col-12 class="absolute">
+              <img *ngIf="detailsData?.image!=''" src="{{detailsData?.image}}"   #myImage (click)="presentImage(myImage)"  />
+              <img *ngIf="detailsData?.image==''" [src]="'assets/a2z/'+detailsData.name[0].toLowerCase()+'.jpg'"   #myImage (click)="presentImage(myImage)"  />
+          </ion-col>
+          <ion-col col-9>
+            <h3 style="    margin-bottom: 2px;">{{detailsData?.name}}</h3>
+            <p class="Wd_Designation">{{detailsData?.designation}}</p>
+          </ion-col>
+          <ion-col col-12>
+              <div [innerHTML]="detailsData?.sentence" (click)="handleClick($event)"></div>
+          </ion-col>
+        </ion-row>
+      
+
+        <ion-row *ngIf="detailsData?.special_achievement!=''">
+            <ion-col col-2>
+                <img style="width:80%" src="assets/imgs/welcomeOnboard/acheivement.png">
+            </ion-col>
+            <ion-col col-10 class="centerDataInDiv">
+                <b class="mrtop" [innerHTML]="detailsData?.special_achievement"></b>
+            </ion-col>
+        </ion-row>
+
+        <ion-row class="likes" padding-top>
+          <ion-col  *ngIf="detailsData?.fav_place!=''"  col-6>
+            <ion-row>
+              <ion-col col-2>
+                  <!-- <ion-icon name="pin"></ion-icon> -->
+                  <!-- <img class="hobbiIcon" src="assets/imgs/welcomeOnboard/location.png"> -->
+                  <img class="hobbiIcon" src="assets/imgs/Travel_Icon.png">
+              </ion-col>
+              <ion-col col-10>
+                <p class="mrtop" [innerHTML]="detailsData?.fav_place"></p>
+                  <!-- {{detailsData?.fav_place}} -->
+              </ion-col>
+            </ion-row>
+            
+          </ion-col>
+          <ion-col  *ngIf="detailsData?.fav_sports!=''" col-6>
+            <ion-row>
+              <ion-col col-2>
+                  <!-- <ion-icon name="game-controller-b"></ion-icon> -->
+                  <img class="hobbiIcon" src="assets/imgs/welcomeOnboard/sports_icon.png">
+              </ion-col>
+              <ion-col col-10>
+                  <p class="mrtop" [innerHTML]="detailsData?.fav_sports"></p>
+                  <!-- {{detailsData?.fav_sports}} -->
+              </ion-col>
+            </ion-row>
+           </ion-col>
+           <ion-col  *ngIf="detailsData?.fav_past_time!=''" col-6>
+              <ion-row>
+                <ion-col col-2>
+                    <!-- <ion-icon name="game-controller-b"></ion-icon> -->
+                    <img class="hobbiIcon" src="assets/imgs/heart_Icon.png">
+                </ion-col>
+                <ion-col col-10>
+                    <p class="mrtop" [innerHTML]="detailsData?.fav_past_time"></p>
+                    <!-- {{detailsData?.fav_past_time}} -->
+                </ion-col>
+              </ion-row>
+             </ion-col>
+          <ion-col *ngIf="detailsData?.fav_cuisine!=''" col-6>
+              <ion-row>
+                <ion-col col-2>
+                    <!-- <ion-icon name="beer"></ion-icon> -->
+
+                    <img class="hobbiIcon" src="assets/imgs/FOOD-Icon.png">
+
+                </ion-col>
+                <ion-col col-10>
+                    <p class="mrtop" [innerHTML]="detailsData?.fav_cuisine"></p>
+                    <!-- {{detailsData?.fav_cuisine}} -->
+                </ion-col>
+              </ion-row>
+              </ion-col>
+        </ion-row>
+
+
+        <ion-row class="margincss">
+          <ion-col col-3 class="bordercss"  (click)="gotolikelist()">
+            <!-- <p *ngIf="totallike==0">Like</p> -->
+            <p *ngIf="totallike==1">{{totallike}}&nbsp;Like</p>
+            <p *ngIf="totallike>1">{{totallike}}&nbsp;Likes</p>
+          </ion-col>
+          <ion-col col-9 class="bordercss">
+            <!-- <p *ngIf="totalcomment==0">Comment</p> -->
+            <p *ngIf="totalcomment==1">{{totalcomment}}&nbsp;Comment</p>
+            <p *ngIf="totalcomment>1">{{totalcomment}}&nbsp;Comments</p>
+            </ion-col>
+        </ion-row>
+
+      
+        <ion-row class="margincss">
+          <ion-col col-6 (click)="goforlike(like_status)">
+            <p *ngIf="like_status==1" ><span> <ion-icon ios="ios-thumbs-up" md="md-thumbs-up"></ion-icon></span>&nbsp;Like</p>
+            <p *ngIf="like_status==0"><span> <ion-icon ios="ios-thumbs-up-outline" md="ios-thumbs-up-outline"></ion-icon></span>&nbsp;Like</p>
+          </ion-col>
+          <ion-col col-6 class="bordercss1" (click)="goforcomment()">
+            <p><span><ion-icon ios="ios-text" md="md-text"></ion-icon></span>&nbsp;Comment</p>
+          </ion-col>
+        </ion-row>
+      <hr> 
+
+<!-- <ion-row class="margincss" >
+  <ion-col col-12 >
+<p *ngIf="totalcomment<=1">{{totalcomment}}&nbsp;Comment</p>
+<p *ngIf="totalcomment>1">{{totalcomment}}&nbsp;Comments</p>
+</ion-col>
+</ion-row> -->
+
+    <ion-row class="margincss" *ngFor="let cmt of commentdata">
+      <ion-col col-2>
+          <div class="commentimg">
+              <!-- <img class="imgcss2"  src="assets/watermark/watermark.png" srcset="{{cmt.comment_by_image}}"  #myImage (click)="presentImage(myImage)" > -->
+
+              <img  class="imgcss2" onerror="this.src='../../assets/watermark/watermark.png'" #myImage
+              src="{{cmt.comment_by_image}}" (click)="presentImage(myImage)"  >
+          </div>
+      </ion-col>
+
+      <ion-col col-10 class="colcolor">
+        <ion-row>
+          <ion-col col-7 no-padding>
+            <p class="mrtop uName">{{cmt.comment_by_name}}</p>
+          </ion-col>
+          <ion-col col-5 no-padding>
+            <p style="font-size: 10px;" class="mrtop1">{{cmt.date_time}}</p>
+          </ion-col>
+        </ion-row>
+
+    <ion-row>
+     <ion-col col-12>
+        <p class="mrtop" [innerHTML]="cmt.comment" (click)="handleClick($event)"></p>
+      </ion-col>
+     
+    </ion-row>
+      </ion-col>
+</ion-row>
+<br><br><br><br><br>
+
+      </div>
+
+<!-- 
+        <div *ngIf="detailsData?.wow_reward?.length>0" class="customCardView">
+          <ion-row>
+            <ion-col>
+              <p class="mod_title">Wow Awards </p>
+              <ion-slides slidesPerView="4">
+                  <ion-slide *ngFor="let waw of detailsData?.wow_reward">
+                      <img class="wowAwards" src="{{waw?.award_icon}}" #myImage1 (click)="presentImage(myImage1)">
+                      <p class="wowBadgename">{{waw?.award_title}}</p>
+                  </ion-slide>
+                </ion-slides>
+            </ion-col>
+          </ion-row>
+        </div>
+
+
+
+        <div *ngIf="detailsData?.award?.length>0" class="customCardView">
+            <ion-row>
+              <ion-col>
+                <p class="mod_title">My Awards </p>
+                <ion-slides slidesPerView="4">
+                    <ion-slide *ngFor="let waw of detailsData?.award">
+                        <img class="wowAwards" [src]="waw?.award_icon" #myImage2 (click)="presentImage(myImage2)">
+                        <p class="wowBadgename">{{waw?.award_title}}</p>
+                    </ion-slide>
+                  </ion-slides>
+              </ion-col>
+            </ion-row>
+          </div> -->
+
+
+
+          <!-- <div  class="customCardView">
+              <ion-row>
+                <ion-col>
+                  <p class="mod_title"> Favourite Quote </p>
+                 <p class="myQuote">{{detailsData?.fav_quote}}</p>
+                </ion-col>
+              </ion-row>
+            </div> -->
+
+            
+          </div>
+  </ion-content>
+  <ion-footer  *ngIf="displayBox==true">
+    <form #f="ngForm" style="background-color: white;">
+      <ion-row class="rowborder">
+        <ion-col col-11>
+          <div class="footerdiv">
+            <ion-item>
+                <ion-textarea msd-elastic style="border-radius:20px;" type="text" class="textButton" [(ngModel)]="mycomment" name="mycomment" placeholder="Write your comments..."
+                required>
+              </ion-textarea>
+            </ion-item>
+      
+          </div>
+        </ion-col>
+        <ion-col col-1 class="sendButtonColCss" *ngIf="mycomment!= null || mycomment!= undefined" (click)="sendComment(f)">
+          <ion-icon class="sendButtonCss" name="send"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-footer>

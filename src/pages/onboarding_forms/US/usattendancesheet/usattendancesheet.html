@@ -1,0 +1,113 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{title}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding class="commonFormDiv">
+  <div [ngClass]="{'newOverlay':form_status != 'enable'}">
+    <div class="WebFormDiv">
+      <div class="newCardDiv">
+        <div class="customCardDiv">
+          <ion-row *ngIf="userNamedata">
+            <ion-col col-12>
+
+              <div class="inputDiv">
+                <ion-label>Employee Name
+                  <sup *ngIf="userNamedata?.is_mandatory" class="redText">*</sup>
+                  <i *ngIf="userNamedata?.hint_applicable" [tooltip]="userNamedata.hint" positionV="top" arrow='true'>
+                    <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon>
+                  </i>
+                </ion-label>
+                <ion-input type="text" [ngClass]="{'redborder':userNamedataId,'overlayDiv':!userNamedata.is_enable}" [disabled]="!userNamedata.is_enable" name="{{userNamedata.value}}"
+                  [(ngModel)]="userNamedata.value" placeholder=""></ion-input>
+              </div>
+            </ion-col>
+          </ion-row>
+          <div class="newHeading">
+            <h4 no-margin>Functional Area</h4>
+          </div>
+          <br>
+          <div class="newHeading">
+            <h4 no-margin>Human Resources</h4>
+          </div>
+          <ion-row [id]="date_of_birthscrollDivId">
+            <ion-col col-12>
+              <div class="inputDiv">
+                <ion-label>Attended On
+                  <sup *ngIf="alldata?.human_resource_date.is_mandatory" class="redText">*</sup>
+                  <i *ngIf="alldata?.human_resource_date.hint_applicable" [tooltip]="alldata?.date_of_birth.hint"
+                    positionV="top" arrow='true'>
+                    <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon>
+                  </i>
+                </ion-label>
+                <ion-datetime type="text" pickerFormat="DD/MMM/YYYY" [ngClass]="{'redborder':HumanResourcesId,'overlayDiv':!alldata?.human_resource_date.is_enable}" [disabled]="!alldata?.human_resource_date.is_enable"
+                  placeholder="DD/MMM/YYYY" name="{{alldata?.human_resource_date.value}}" [(ngModel)]="alldata?.human_resource_date.value"
+                  ></ion-datetime>
+              </div>
+            </ion-col>
+          </ion-row>
+          <div class="newHeading">
+            <h4 no-margin>IT and Information Security</h4>
+          </div>
+          <ion-row [id]="date_of_birthscrollDivId">
+            <ion-col col-12>
+              <div class="inputDiv">
+                <ion-label>Attended On
+                  <sup *ngIf="alldata?.it_information_date.is_mandatory" class="redText">*</sup>
+                  <i *ngIf="alldata?.it_information_date.hint_applicable" [tooltip]="alldata?.it_information_date.hint"
+                    positionV="top" arrow='true'>
+                    <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon>
+                  </i>
+                </ion-label>
+                <ion-datetime type="text" pickerFormat="DD/MMM/YYYY" [ngClass]="{'redborder':InformationDivId,'overlayDiv':!alldata?.it_information_date.is_enable}" [disabled]="!alldata?.it_information_date.is_enable"
+                  placeholder="DD/MMM/YYYY" name="{{alldata?.it_information_date.value}}" [(ngModel)]="alldata?.it_information_date.value"
+                 ></ion-datetime>
+              </div>
+            </ion-col>
+          </ion-row>
+          <div class="newHeading">
+            <h4 no-margin>Administration</h4>
+          </div>
+          <ion-row [id]="date_of_birthscrollDivId">
+            <ion-col col-12>
+              <div class="inputDiv">
+                <ion-label>Attended On
+                  <sup *ngIf="alldata?.administration_date.is_mandatory" class="redText">*</sup>
+                  <i *ngIf="alldata?.administration_date.hint_applicable" [tooltip]="alldata?.administration_date.hint"
+                    positionV="top" arrow='true'>
+                    <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon>
+                  </i>
+                </ion-label>
+                <ion-datetime type="text" pickerFormat="DD/MMM/YYYY" [ngClass]="{'redborder':AdministrationDivId,'overlayDiv':!alldata?.administration_date.is_enable}" [disabled]="!alldata?.administration_date.is_enable"
+                  placeholder="DD/MMM/YYYY" name="{{alldata?.administration_date.value}}" [(ngModel)]="alldata?.administration_date.value"
+                  ></ion-datetime>
+              </div>
+            </ion-col>
+          </ion-row>
+        </div>
+      </div>
+    </div>
+
+
+    <ion-row *ngIf="form_status == 'enable'">
+      <ion-col col-6 *ngIf="fill_status == '0'">
+        <div class="btndiv">
+          <button ion-button class="btn" (click)="submitform(0)">Save</button>
+        </div>
+      </ion-col>
+      <ion-col [attr.col-12]="fill_status == '1' ? '' : null" [attr.col-6]="fill_status == '0' ? '' : null">
+
+        <div *ngIf="fill_status=='1'" class="btndiv">
+          <button ion-button class="btn" (click)="submit(1)">Update</button>
+        </div>
+        <div *ngIf="fill_status=='0'" class="btndiv">
+          <button ion-button class="btn" (click)="submit(1)">Submit</button>
+        </div>
+
+      </ion-col>
+    </ion-row>
+
+  </div>
+</ion-content>

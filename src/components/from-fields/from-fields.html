@@ -1,0 +1,66 @@
+<ion-row>
+  <ion-col col-12 *ngIf="data">
+    <ion-label>
+        {{ label }} 
+        <sup *ngIf="data.is_mandatory" class="mendatFild">*</sup>
+        <div class="hint_div" *ngIf="data.hint_applicable">
+            <button class="hint_button" event='click' duration='3000' [tooltip]="data.hint" positionV="top" arrow='true'>
+                <ion-icon class="hint_icon" ios="ios-information-circle" md="md-information-circle"></ion-icon>
+              </button>
+        </div>
+    </ion-label>
+  </ion-col>
+  <ion-col col-12 *ngIf="data">
+    
+      <ion-input *ngIf="type == 'text' || type == 'number'" 
+        [placeholder]="label"
+        [ngClass]="{'error': ((!data.valueStatus() && otherStatus) || wordCount)}"
+        [type]="type" 
+        [disabled]="!data.is_enable" 
+        [(ngModel)]="data.value" >
+    </ion-input>
+
+    <ion-item class="text_area" *ngIf="type == 'textArea'" >
+        <ion-textarea 
+          [placeholder]="label"
+          [ngClass]="{'error': ((!data.valueStatus() && otherStatus) || wordCount)}"
+          [type]="type" 
+          [disabled]="!data.is_enable" 
+          [(ngModel)]="data.value" >
+        </ion-textarea>
+    </ion-item>
+     
+    
+    <ion-datetime *ngIf="type == 'date'"  
+      [placeholder]="label"
+      [ngClass]="{'error': ((!data.valueStatus() && otherStatus) || wordCount)}"
+      [disabled]="!data.is_enable"
+      [(ngModel)]="data.value" 
+      [max] = "maxDate"
+      [min] = "minDate"
+      [displayFormat]="dateFormat">
+    </ion-datetime>
+
+    <ion-list *ngIf="type == 'radio'" radio-group [(ngModel)]="data.value" [disabled]="!data.is_enable">
+        <ion-row class="radioNewDiv" [ngClass]="{'error': ((!data.valueStatus() && otherStatus) || wordCount)}">
+            <ion-col *ngFor="let item of options; let i = index" 
+              [attr.col-12]="((i == (options?.length - 1)) && options?.length%2 != 0) ? '' : null " 
+              [attr.col-6]="(((i == (options?.length - 1)) && options?.length%2 == 0) || (i != (options?.length - 1))) ? '' : null ">
+                <ion-item text-center>
+                    <ion-label>{{ item?.name }}</ion-label>
+                    <ion-radio [value]="item?.auto_id"></ion-radio>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+    </ion-list>
+    <ion-list class="customSelect" *ngIf="type == 'select' ">
+        <ion-item  [ngClass]="{'error': ((!data.valueStatus() && otherStatus) || wordCount)}">
+            <ion-label >{{ label }}</ion-label>
+            <ion-select [disabled]="!data.is_enable" [placeholder]="label"
+              [(ngModel)]="data.value" (ionChange)="onChange(data.value)">
+                <ion-option *ngFor="let item of options" [value]="item.auto_id">{{item?.name}}</ion-option>
+            </ion-select>
+        </ion-item>
+    </ion-list>
+  </ion-col>
+</ion-row>

@@ -1,0 +1,26 @@
+page-force-update {
+    .imgUp{border-radius: 74px !important; max-height: 192px; border: 1px solid white; }
+    .firstTimeImageUpload{    
+        text-align: center;
+        font-size: 15px;
+        font-weight: 500;
+        color: white;}
+        .crossDiv{    font-size: 30px; float: right;
+            right: 0%;
+            padding-right: 6%;
+            padding-top: 10%;
+           }
+           .forceUpdateCon{
+            background-color: $theme-titlecolor;
+           }
+           .btnFU{
+            border: 2px solid #ffffff;
+            background:  $theme-titlecolor;    text-transform: capitalize;
+            width: 150px;
+            border-radius: 25px;font-size: 19px;
+           }
+           .btnFUDIV{
+            text-align: center;
+            background-color: $theme-titlecolor;
+           }
+}

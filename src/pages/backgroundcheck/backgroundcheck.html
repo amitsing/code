@@ -1,0 +1,106 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+
+<!-- <div ></div> -->
+    <ion-card *ngIf="allData" padding margin-bottom class="relativeDiv overFlowVisible">
+        <ion-row>
+          <ion-col col-3></ion-col>
+          <ion-col col-5></ion-col>
+          <ion-col col-4>
+            <ion-row>
+              <ion-col col-6>
+                <!-- <p class="fontsize">Progress</p> -->
+              </ion-col>
+              <ion-col col-6>
+                <p class="fontsize">
+                  <!-- Admin Approvel -->
+                  <!-- Status -->
+                </p>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+        <div class="learningList">
+          <div>
+            <div *ngFor="let data of allData ; let i = index">
+              <ion-row class="relativeDiv" margin-bottom style="background-image:url('assets/imgs/bg/listbg.png');background-size:cover;"
+                (click)="subcategoryiframe(i,allData)">
+                <ion-col col-3 no-padding class="paddbottom0">
+                  <img src="assets/imgs/quizicon.png" class="absoluteDiv" />
+                </ion-col>
+                <ion-col col-6 class="centerDataInDiv paddbottom0">
+                  <p class="mt-10 courseTitle">{{data.form_name}}</p>
+                </ion-col>
+                <ion-col col-3 class="centerData paddbottom0">
+                  <ion-row>
+                    <ion-col col-6 class="padding0 paddbottom0">
+                      <!-- <div class="positionRelative">
+                        <div style="font-size: 20px;" class="progress-wrapper">
+                          <circle-progress [percent]="24" [unitsFontSize]="8" [radius]="15" [outerStrokeWidth]="2" [showTitle]=true [showSubtitle]=false
+                            [showUnits]=false [innerStrokeWidth]="2" [outerStrokeColor]="'#542e56'" [innerStrokeColor]="'#7b4b7d'"
+                            [animation]="true" [animationDuration]="300"></circle-progress>
+                        </div>
+                      </div>  -->
+    
+                      <!-- <p><ion-icon name="time" class="pendingIcon"></ion-icon></p>   -->
+                    </ion-col>
+                    <ion-col col-6 class="marginauto paddbottom0">
+                      <!-- <p class="martop">
+                        <ion-icon name="time" class="pendingIcon"></ion-icon>
+                      </p>
+                      <p>
+        <ion-icon name="checkmark-circle-outline" class="approvedIcon"></ion-icon>
+         </p>        
+                      <p>
+              <ion-icon name="ios-alert-outline" class="rejectedIcon fw" (tap)="showRejectionResigion(data)" ></ion-icon>         
+          </p>     -->
+
+
+
+           <p *ngIf="data?.admin_status=='pending'" class="martop">
+              <ion-icon name="time" class="pendingIcon" ></ion-icon>
+            </p>
+            <p *ngIf="data?.admin_status=='approved'">
+                <ion-icon  name="checkmark-circle-outline" class="approvedIcon"></ion-icon>
+            </p>        
+            <p  *ngIf="data?.admin_status=='rejected'">
+                <ion-icon name="ios-alert-outline" class="rejectedIcon fw" (tap)="showRejectionResigion(data.remarks)" ></ion-icon>         
+            </p>  
+                    </ion-col>
+                  </ion-row>
+    
+                </ion-col>
+              </ion-row>
+    
+            </div>
+            <!-- {{data[datalength]}} -->
+            <!-- {{allData[datalength].admin_status}} -->
+          </div>
+        <div *ngIf="allData[datalength].admin_status=='approved'" class="btndiv" (click)="gotourllist()">
+          <br>
+          <button ion-button class="btn" round>Next</button>
+        </div>
+        </div>
+        <br>
+        <br>
+        <!-- <div class="btndiv" (click)="gotourllist(data.group_id)">
+          <br>
+          <button ion-button class="btn" round>submit</button>
+        </div> -->
+      </ion-card>
+      <br>
+      <br>
+
+      <div *ngIf="!allData">
+        <ion-row>
+          <ion-col>
+              <img  src="../../assets/imgs/skelton/backcheck.png" class="textSkelton"style="width:100%" />
+          </ion-col>
+        </ion-row>
+      </div>
+</ion-content>

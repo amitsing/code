@@ -1,0 +1,136 @@
+<ion-header>
+
+  <ion-navbar color="themecol" class="centerIt" hideBackButton="true">
+ 
+      <ion-row>
+        <ion-col col-auto>
+          <ion-icon item-left style="color:white;" name="arrow-back" (tap)="editPage()"></ion-icon>
+        </ion-col>
+        <ion-col col-auto>
+          <ion-title class="centerIt">Preview</ion-title>
+        </ion-col>
+      </ion-row>
+   
+  </ion-navbar> 
+</ion-header>
+<ion-content padding class="pulseBG">
+<div class="divTheme">
+  <ion-row>
+    <ion-col col-8 class="usernamecolPadding">
+      <h2 style="font-size:19px;">{{alldata?.joinee_name}}</h2>
+    </ion-col>
+
+    <ion-col col-4 class="rightIt">
+      <img [src]="imagelink" onError="this.src='assets/imgs/profile.png'"
+       class="userRoundImageBig" #myImage>
+    </ion-col>
+  </ion-row>
+<ion-row>
+  <ion-col col-12>
+    <p class="designationTheme" [innerHTML]="alldata?.sentence"></p>
+  </ion-col>
+</ion-row>
+<!-- <ion-row *ngIf="alldata.award!=undefined">
+  <ion-col col-2 class="iconImagesCol">
+    <img class="iconImages" src="assets/imgs/acheivement.png">
+  </ion-col>
+  <ion-col col-10>{{alldata.award}}</ion-col>
+</ion-row> -->
+  <!-- <p class="designationTheme"></p>
+  <p class="emailTheme"></p> -->
+  <span></span>
+  <!-- <a href="tel:{{userDetails?.contact}}"><span><img src="assets/imgs/callAndroidWalaIcon.png" class="callImageTheme"></span></a>
+  <div class="userInfoTheme" [innerHTML]="979902309"></div> -->
+  <hr class="lineColor">
+
+      <!-- ROW1 -->
+      <ion-row>
+
+          <ion-col *ngIf="alldata?.fav_place!=''||alldata?.fav_place!='NA'" col-2 class="iconImagesCol">
+            <div *ngIf="alldata?.fav_place!=''||alldata?.fav_place!='NA'">
+                <img *ngIf="fav_place!=''"
+                 class="iconImages" src="assets/imgs/Travel_Icon.png">
+            </div>
+         
+          </ion-col>
+    
+          <ion-col *ngIf="alldata?.fav_place!=''||alldata?.fav_place!='NA'"col-4  class="iconImagesInfoCol">
+            <span>{{alldata?.fav_place}}</span>
+          </ion-col>
+          
+          <ion-col *ngIf="alldata?.fav_cuisine!=''||alldata?.fav_cuisine!='NA'"col-2 class="iconImagesCol">
+              <!-- <img class="iconImages" src="assets/imgs/sports icon.png"> -->
+              <div *ngIf="alldata?.fav_cuisine!=''||alldata?.fav_cuisine!='NA'">
+                  <img *ngIf="fav_cuisine!=''" class="iconImages" src="assets/imgs/FOOD-Icon.png">
+              </div>
+       
+          </ion-col>
+    
+          <ion-col *ngIf="alldata?.fav_cuisine!=''||alldata?.fav_cuisine!='NA'"col-4 class="iconImagesInfoCol">
+            <!-- <span>{{alldata.fav_sports}}</span> -->
+            <span>{{alldata?.fav_cuisine}}</span>
+          </ion-col>
+
+
+
+          <ion-col *ngIf="pasttime!=''||pasttime!='NA'"col-2 class="iconImagesCol">
+              <!-- <img class="iconImages" src="assets/imgs/sports icon.png"> -->
+              <div *ngIf="pasttime!=''||pasttime!='NA'">
+                  <img *ngIf="pasttime!=''" class="iconImages" src="assets/imgs/heart_Icon.png">
+        
+              </div>
+            
+              </ion-col>
+    
+          <ion-col *ngIf="pasttime!=''||pasttime!='NA'"col-4 class="iconImagesInfoCol">
+            <!-- <span>{{alldata.fav_sports}}</span> -->
+            <span>{{pasttime}}</span>
+          </ion-col>
+    
+      </ion-row>
+      <ion-row>
+          <!-- <ion-col col-2  class="iconImagesCol">
+            <img class="iconImages" src="assets/imgs/food.png">
+          </ion-col>
+    
+          <ion-col col-4  class="iconImagesInfoCol">
+            <span>{{alldata.fav_cuisine}}</span>
+          </ion-col> -->
+          
+          <ion-col col-2  class="iconImagesCol">
+              <!-- <img class="iconImages" src="assets/imgs/hobbies.png"> -->
+          </ion-col>
+    
+          <ion-col col-4  class="iconImagesInfoCol">
+            <!-- <span>{{alldata.fav_cuisine}}</span> -->
+          </ion-col>
+      
+        </ion-row>
+
+        <!-- <hr class="lineColor"> -->
+</div>
+<!-- <div class="divTheme1">
+    <ion-row>
+        <ion-col col-12>
+             <p style="font-size: 16px;font-weight: 600;color: #4d2848;" class="designationTheme">favourite Quote</p>
+          <p class="designationTheme" [innerHTML]="alldata.fav_quote"></p> 
+        </ion-col>
+      </ion-row>
+</div> -->
+
+
+<div class="divTheme1">
+<ion-row>
+  <ion-col col-6 class="centerIt">
+    <button ion-button class="buttonCss" (tap)="editPage()">
+      Edit
+    </button>
+  </ion-col>
+  <ion-col col-6 class="centerIt">
+    <button ion-button class="buttonCss" (tap)="submitAboard()">
+      Submit
+    </button>
+  </ion-col>
+</ion-row>
+</div>
+</ion-content>

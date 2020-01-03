@@ -1,0 +1,53 @@
+<ion-row class="customCardView">
+  <ion-col col-5>
+      <img *ngIf="!allData" [src]="image" height="77px" class="newsImg">
+      <div *ngIf="allData?.media_type=='3' && allData">
+          <div class="relativeDiv">
+          <iframe width="100%" height="80px"  [src]="allData?.media|safe" autostart="0" allowfullscreen frameborder="0"></iframe>
+          <div class="temptransparentVideo"></div>
+        </div>
+      </div>
+      <!-- <div *ngIf="allData?.media_type=='2' && allData">
+          <div class="relativeDiv">
+          <video [src]="allData?.media|safe" height="80px"  width="100%"  poster="{{allData?.thumbnail_image}}" controls controlsList="nodownload" type="video/*">
+          </video>
+          <div class="temptransparentVideo"></div>
+        </div>
+      </div> -->
+
+      <div *ngIf="allData?.media_type=='2' && allData">
+        <img class="imgcss" onerror="this.src='../../assets/watermark/watermark.png'" #myImage
+        src="{{allData?.thumbnail_image}}">
+    </div>
+
+
+
+      <div *ngIf="allData?.media_type=='1' && allData">
+          <img class="imgcss" onerror="this.src='../../assets/watermark/watermark.png'" #myImage
+          src="{{allData?.media}}">
+      </div>
+  </ion-col>
+  <ion-col col-7>
+    <ion-row>
+      <ion-col col-12>
+          <p class="text1"><b>{{title}}</b></p>
+      </ion-col>
+    </ion-row> <br>
+    <ion-row>
+      <ion-col col-12>
+      <ion-footer no-border>
+        <ion-row>
+            <ion-col col-6 >
+                <img *ngIf="flag=='1'" src="../../assets/icon/news_flag.png" class="moduleIcon">
+                <img *ngIf="flag=='2'" src="../../assets/icon/news_flag.png" class="moduleIcon">
+                <img *ngIf="flag=='3'" src="../../assets/icon/news_flag.png" class="moduleIcon">
+                <img *ngIf="flag=='4'" src="../../assets/icon/news_flag.png" class="moduleIcon">
+                <img *ngIf="flag=='5'" src="../../assets/icon/news_flag.png" class="moduleIcon">
+            </ion-col>
+            <ion-col col-6 text-right class="date">{{date}}</ion-col>
+        </ion-row>
+      </ion-footer>
+    </ion-col></ion-row>             
+    
+  </ion-col>
+</ion-row>

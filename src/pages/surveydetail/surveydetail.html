@@ -1,0 +1,173 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{previousepageData?.title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides (ionSlideDidChange)="slideChanged()" #Slides>
+    <ion-slide *ngFor="let data of allData let i = index;">
+
+      <ion-card>
+        <!-- for radio button -->
+        <ion-card-content class="mandatoryContent">
+
+          <ion-row>
+            <ion-col col-2>
+              <!-- <img style="height: 30px;width:30px;" src="{{sadEmoji}}" class="iconcss" /> -->
+
+              <img style="height: 30px;width:30px;" src="../../assets/imgs/surveyicon.png"class="iconcss" />
+            </ion-col>
+            <ion-col col-10 class="bbottom">
+              <p class="question">{{data?.question}} </p>
+            </ion-col>
+          </ion-row>
+
+          <div *ngIf="data?.option_type==1">
+            <ion-row *ngFor="let myOption of data?.options let k=index;" (tap)="myanswer(myOption?.option_id,data,data?.option_type,data?.question_id,i,k)"
+              [ngClass]="{'greenBg': selectedOption==myOption.option_id, 'lightGrayBg':selectedOption!=myOption.option_id }">
+              <ion-col col-12>{{myOption?.options}}</ion-col>
+            </ion-row>
+          </div>
+
+          <!-- for checkbox  -->
+          <div *ngIf="data?.option_type==2">
+            <ion-row *ngFor="let myOption of data?.options let j=index;">
+              <ion-col col-12>
+                <ion-list>
+
+                  <ion-item class="checkboxLabel">
+                    <ion-label>{{myOption?.options}}</ion-label>
+                    <ion-checkbox color="secondary" (ionChange)="myanswer(myOption?.option_id,data,data?.option_type,data?.question_id,i,j)"></ion-checkbox>
+                  </ion-item>
+                </ion-list>
+              </ion-col>
+            </ion-row>
+
+          </div>
+
+          <!-- for emoji  -->
+          <div *ngIf="data?.option_type==3">
+            <ion-row>
+              <ion-col col-12>
+                <ion-row>
+                  <ion-col col-3 class="centerData">
+                    <img src="{{sadEmoji}}" class="emojiIcons" (tap)="mySelectedEmoji(1,'s1',data,data?.option_type,data?.question_id,i)" />
+                  </ion-col>
+                  <ion-col col-3 class="centerData">
+                    <img src="{{normalEmoji}}" class="emojiIcons" (tap)="mySelectedEmoji(2,'a1',data,data?.option_type,data?.question_id,i)"
+                    />
+                  </ion-col>
+                  <ion-col col-3 class="centerData">
+                    <img src="{{happyEmoji}}" class="emojiIcons" (tap)="mySelectedEmoji(3,'h1',data,data?.option_type,data?.question_id,i)" />
+                  </ion-col>
+                  <ion-col col-3 class="centerData">
+                    <img src="{{veryHappyEmoji}}" class="emojiIcons" (tap)="mySelectedEmoji(4,'es1',data,data?.option_type,data?.question_id,i)"
+                    />
+                  </ion-col>
+                </ion-row>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <p [ngClass]="{'center1':emojiId==1, 'center2':emojiId==2, 'center3':emojiId==3, 'center4':emojiId==4 }">{{textEmoji}}</p>
+            </ion-row>
+          </div>
+
+          <!-- for range  -->
+          <div *ngIf="data?.option_type==4">
+            <ion-row>
+              <ion-col col-12>
+
+                <ion-list>
+                  <ion-item style="background-color:white">
+                    <ion-range [(ngModel)]="rangeVal" min="0" max="10" step="1" color="secondary" pin="true" snaps="true" tick="true" (ngModelChange)="myRangeTypeAnswer(rangeVal,data,data?.option_type,data?.question_id,i)">
+                      <img range-left src="{{leftSideRangeIcon}}" class="smallEmojiRange" />
+                      <img range-right src="{{rightSideRangeIcon}}" class="smallEmojiRange" />
+                    </ion-range>
+                  </ion-item>
+               
+                  <ion-row style="width:100%">
+                    <ion-col col-3 style="padding-top: 0px;margin-top: 0px;">
+                      <p style="font-size:12px">{{data?.rangeMin}}</p>
+                    </ion-col>
+                    <ion-col col-6></ion-col>
+                    <ion-col col-3 style="padding-top: 0px;margin-top: 0px;left: 14px;">
+                      <p style="font-size:12px">{{data?.rangeMax}}</p>
+                    </ion-col>
+
+                  </ion-row>
+                </ion-list>
+              </ion-col>
+            </ion-row>
+          </div>
+
+          <!-- for star  -->
+          <div *ngIf="data?.option_type==5">
+            <ion-row align-items-center>
+              <ion-col col-1>
+              </ion-col>
+
+              <ion-col col-2 *ngFor="let star_data of starArray; let x=index" (click)="changeBgColor(x,data,i)">
+
+                <ion-icon name="ios-star-outline" class="starDesign" *ngIf="star_data?.visibleOutlineStar==true"></ion-icon>
+                <ion-icon name="ios-star" class="fillStarDesign" *ngIf="star_data?.visibleOutlineStar==false"></ion-icon>
+              </ion-col>
+
+              <ion-col col-1>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col col-12>
+                <!-- <p class="ratingTitle">{{data?.ratingText[visibleFillStar]}}</p> -->
+              </ion-col>
+            </ion-row>
+          </div>
+
+          <!-- for text area -->
+          <div *ngIf="data?.option_type==6">
+            <ion-row>
+              <ion-col col-12>
+                <p>youn can write your suggestion or point of view.</p>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col col-12>
+                <ion-textarea rows="4" placeholder="Enter a description" style="    border: 1px solid #ccc;
+      border-radius: 3px;" [(ngModel)]="radioAnswer[i].answer" (ngModelChange)="textsubmit(radioAnswer[i].answer,i,data,data?.option_type)"
+                  name="textAnswer1"></ion-textarea>
+              </ion-col>
+            </ion-row>
+
+          </div>
+
+          <div class="roundcircle">
+            <p class="paracolor">{{i+1}}</p>
+          </div>
+
+          <ion-row>
+
+            <ion-col col-6 class="alignleft">
+              <div *ngIf="currentIndex!=0 && totallength>1">
+                <button ion-button round class="btn2" (click)="backslide(i,data)">Back</button>
+              </div>
+            </ion-col>
+            <ion-col col-6 class="alignright">
+              <div *ngIf="showsubmit==false && totallength>1">
+                <button ion-button round class="btn3" (click)="nextslide(i,data)">Next</button>
+              </div>
+            </ion-col>
+
+          </ion-row>
+
+          <div class="centr">
+            <button ion-button round class="btn1" *ngIf="showsubmit==true && employeetype=='Employee'" (click)="submit(i)">Submit</button>
+            <button ion-button round class="btn1" *ngIf="showsubmit==true && employeetype=='Guest'" (click)="joineesubmit(i)">Submit</button>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+
+  </ion-slides>
+
+
+</ion-content>

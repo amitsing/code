@@ -1,0 +1,114 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Car Hire</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div
+    [ngClass]="{'newOverlay':previousPageData && previousPageData.form_status != 'enable'}"
+  >
+    <div>
+      <img
+        class="imgcss"
+        srcset="{{previousPageData?.image}}"
+        src="../../assets/imgs/sodexo.png"
+      />
+    </div>
+    <div padding>
+      <ion-row>
+        <ion-col col-12 class="marginleft">
+          <p [innerHTML]="previousPageData?.description"></p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row
+        (click)="getVal(1)"
+        [ngClass]="{'fillBg' : (i == 1), 'notFill':(i != 1)}"
+      >
+        <ion-col col-1 class="mrauto paddingtb">
+          <img
+            class="imgcss2"
+            *ngIf="i==1"
+            src="../../assets/imgs/icons/radio buttonicon.png"
+          />
+          <img
+            class="imgcss2"
+            *ngIf="i!=1"
+            src="../../assets/imgs/icons/radio buttonemptyicon.png"
+          />
+        </ion-col>
+        <ion-col col-11 class="paddingtb">
+          <p class="title">I do not want to opt for car hire services.</p>
+        </ion-col>
+      </ion-row>
+      <ion-row
+        (click)="getVal(0)"
+        [ngClass]="{'fillBg' : (i == 0), 'notFill':(i != 0)}"
+      >
+        <ion-col col-1 class="mrauto paddingtb">
+          <img
+            class="imgcss2"
+            *ngIf="i==0"
+            src="../../assets/imgs/icons/radio buttonicon.png"
+          />
+          <img
+            class="imgcss2"
+            *ngIf="i!='0'"
+            src="../../assets/imgs/icons/radio buttonemptyicon.png"
+          />
+        </ion-col>
+        <ion-col col-11 class="paddingtb">
+          <p class="title">I would like to opt for car hire services.</p>
+        </ion-col>
+      </ion-row>
+
+      <div *ngIf="radiocheck==0">
+        <div *ngFor="let data of allData ; let i = index">
+          <ion-row *ngIf="radiocheck==0" (click)="selectr(data.auto_id)">
+            <ion-col col-1></ion-col>
+            <ion-col col-1 class="mrauto paddingtb">
+              <img
+                class="imgcss2"
+                *ngIf="f==data.auto_id"
+                src="../../assets/imgs/radio button.png"
+              />
+              <img
+                class="imgcss2"
+                *ngIf="f!=data.auto_id"
+                src="../../assets/imgs/radio buttonempty.png"
+              />
+            </ion-col>
+            <ion-col col-10 class="paddingtb">
+              <p
+                class="titleVale"
+                [ngClass]="{'fillBgSub' : (f == data.auto_id), 'notFill':(f != data.auto_id)}"
+              >
+                {{data.value}}
+              </p>
+            </ion-col>
+          </ion-row>
+        </div>
+      </div>
+    </div>
+
+    <br /><br />
+    <div
+      *ngIf="previousPageData && previousPageData.form_status == 'enable'"
+      class="centr"
+    >
+      <button ion-button round class="btn" *ngIf="showsubmit==false">
+        Submit
+      </button>
+      <button
+        ion-button
+        round
+        class="btn1"
+        *ngIf="showsubmit==true"
+        (click)="sodexosubmit()"
+      >
+        Submit
+      </button>
+    </div>
+  </div>
+</ion-content>

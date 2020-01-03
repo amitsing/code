@@ -1,0 +1,90 @@
+page-quizsummary {
+    .imgclass{height: 200px;width: 100%;object-fit: cover;}
+    .stylecolorgrey{background: rgba(128, 128, 128, 0.27058823529411763);padding:3px;font-size: 12px; border-radius: 5px;}
+    .stylecolorblue ion-label, .stylecolorgrey ion-label{    margin: 6px 8px 6px 0px !important;}
+    .stylecolorblue{background: #1a5c92;padding:3px;color:white;font-size: 12px;border-radius: 5px;}
+    .stylecolorred{background: red;padding:3px;color:white;font-size: 12px;border-radius: 5px;}
+    .stylecolorgreen{background: green;padding:3px;color:white;font-size: 12px;border-radius: 5px;}
+    .bottomcss{position: absolute;bottom: 0px;}
+     
+        .btn{
+            width: 90%;
+            border-radius: 20px;
+            background-image: linear-gradient(to bottom, $theme-titlecolor, #e22550);
+        }
+    
+        .options {
+            float: left;
+        }
+        .main-bg button {
+            background: black;
+            background-image: -webkit-gradient(linear, left top, left bottom, from(#bf2548), to(#e22550));
+            background-image: linear-gradient(to bottom, #bf2548, #e22550);
+            padding: 20px 45px;
+        }
+        .swiper-slide {
+            text-align: center;
+            position: relative;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-flex-shrink: 0;
+            -ms-flex-negative: 0;
+            flex-shrink: 0;
+            -webkit-box-align: unset;
+            -webkit-align-items: unset;
+            -ms-flex-align: unset;
+            align-items: unset;
+            -webkit-box-pack: unset;
+            -webkit-justify-content: unset;
+            -ms-flex-pack: unset;
+            justify-content: unset;
+            width: 100%;
+            height: 100%;
+            font-size: 18px;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        .asstest .card {
+            margin: 0px;
+            background-color: #f3f3f3 !important;
+        }
+        .asstest .item {
+            padding-left: 0px;
+            padding-right: 10px;
+            height: 60px;
+        }
+        .asstest .card h3 {
+            font-size: 21px;
+            font-weight: bold;
+            color: #0074a7;
+        }
+        .asstest .card p {
+            color: #0074a7;
+        }
+        
+        ion-item ion-label {
+            position: absolute;
+            top: 0px;
+            width: 100%;
+            margin: 0px !important;
+            height: 100%;
+            text-align: center;
+            line-height: 50px;
+        }
+        ion-item ion-radio {
+            opacity: 0;
+        }
+        .item-radio.item ion-label {
+            margin-left: 0;
+            background: #acacac;
+            color: #ffffff;
+            line-height: 60px;
+            border-left: 2px solid #003471;
+        }
+        .item-radio-checked.item ion-label {
+            color: #ffffff;
+            background: #003471;
+        }
+}

@@ -1,0 +1,10 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Terms of Use</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<div [innerHTML]="policyData?.content" (click)="handleClick($event)"></div>
+</ion-content>

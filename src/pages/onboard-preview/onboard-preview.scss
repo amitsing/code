@@ -1,0 +1,56 @@
+page-onboard-preview {
+    // .toolbar-background-md {
+    //     border-color: #542e56;
+    //     background: #542e56;
+    // }
+    // .back-button.show-back-button {
+    //     display: inline-block;
+    //     color: #ffffff;
+    // }
+    // .toolbar-title {
+    //     color: #ffffff;
+    // }
+
+    .relative {
+        position: relative;
+        background: #e6e9f5;
+        width: 100%;
+        margin: 70px 0 25px 0;
+        overflow: visible;
+        padding: 16px;
+    }
+    .absolute {
+        position: absolute;
+        top: -50px;
+        right: 0px;
+        width: 110px;
+    }
+    .absolute img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 1px solid $theme-titlecolor;
+    }
+    .relative h3 {
+        font-size: 20px;
+        color: $theme-titlecolor;
+    }
+    .likes {
+        border-top: 1px solid $theme-titlecolor;
+    }
+    .likes img {
+        width: 20px;
+        float: left;
+    }
+    .abslink button {
+        background: #b7b7b7;
+        background-image: linear-gradient(to bottom, $theme-titlecolor, #e22550);
+        padding: 20px 45px;
+        border-radius: 15px;
+    }
+
+    .hobbiIcon{width: 80%;
+        position: absolute;}
+
+}

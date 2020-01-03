@@ -1,0 +1,21 @@
+page-albumslidezoom {
+    div.slideDiv {
+        height: 100%;
+        width: 100%;
+        // display: -webkit-box;
+        justify-content: center;
+        align-items: center;
+      }
+
+.imgcss{    height: 250px;  width: 100%; object-fit: cover;object-position: top;}
+.img_caption{
+    padding-left: 5px;
+    margin-top: 0;
+    color: gray;
+    font-weight: 500;
+    font-size: 14px;
+    text-align: left;
+}
+
+
+}

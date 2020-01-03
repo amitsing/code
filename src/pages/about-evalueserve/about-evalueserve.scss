@@ -1,0 +1,34 @@
+page-about-evalueserve {
+    // .toolbar-background-md {
+    //     border-color: #542e56;
+    //     background: #542e56;
+    // }
+    // .back-button.show-back-button {
+    //     display: inline-block;
+    //     color: #ffffff;
+    // }
+    // .toolbar-title {
+    //     color: #ffffff;
+    // }
+    .paddLR-10{padding:0px 10px;}
+    ion-content.content {
+        background: #ebeaeb;
+    }
+    ion-card.card{
+        width:100%;
+    }
+    ion-card p{
+        color: gray !important;
+        font-size: 12px !important;
+    }
+    .card h5 {
+        margin: 5px 0px !important;
+    }
+    .arrow {
+        font-size: 20px;
+        line-height: 60px;
+        height: 60px;
+        color: $theme-titlecolor;
+    }
+    .aboutBennerSkelton{ height: 160px;    background: #e0e0e0 !important;}
+}

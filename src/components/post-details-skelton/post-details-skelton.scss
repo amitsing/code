@@ -1,0 +1,66 @@
+post-details-skelton {
+.postImage{height:150px;width: 100%;  background: #eee;position:relative;}
+.postImage::before{
+        content: "";
+        position: absolute;
+        top: -10%;
+        width: 50px;
+        height: 113%;
+        -webkit-animation: infinite animation 2.5s;
+        animation: 2.5s infinite animation;
+        -webkit-transform: rotate(-35deg);
+        transform: rotate(-32deg);
+        border: 60px rgba(251, 251, 251, 0.71);
+
+}
+@keyframes animation {
+            0%{left:-50%;background:#e8e8e8;}
+            100%{left:120%;background:#eeeeee;}
+     }
+    
+.blurMe, .postParaSkelton, .postTitleSkelton{
+    color:gray;
+    filter: blur(4px)
+}
+
+// .skeletonBg{height:200px;}
+// .postTitleSkelton{
+//     color:gray;
+//     filter: blur(4px)
+// }
+//     .postTitleSkelton,.skeletonBg{
+//         background:#eeeeee;
+//         position:relative;
+//         overflow:hidden;width:100%;
+//      }
+//     .postTitleSkelton::before, .skeletonBg::before{
+//         content:"";
+//         position:absolute;
+//         top:-100px;
+//         width: 20px;
+//         height:150%;
+//         -webkit-animation: infinite animation 2.5s;
+//         animation: 2.5s infinite animation;
+//         transform: rotate(-35deg);
+//         border: 60px rgba(232, 232, 232, 0.5);
+//      }
+
+//      @keyframes animation {
+//         0%{left:-50%;background:#e8e8e8;}
+//         100%{left:120%;background:#eeeeee;}
+//      }
+
+
+    //  .skeletonBg::after{
+    //     -webkit-animation: infinite after 1.5s;
+    //     animation: 1.5s infinite after;
+    //  }
+    
+
+
+    //  @keyframes after {
+    //     0%{right:-50%;background:#e8e8e8;}
+    //     100%{right:120%;background:#eeeeee;}
+    //  }
+
+}

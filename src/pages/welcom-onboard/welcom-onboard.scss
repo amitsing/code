@@ -1,0 +1,26 @@
+// page-welcom-onboard {
+// .userImage{object-fit: cover}
+// .imageSkelton, h1.nameSkelton,.messageSkelton{
+//     background: rgba(206, 206, 206, 0.76);
+//     filter: blur(2px);
+// }
+// .blurData{ filter: blur(4px);}
+// }
+page-welcom-onboard {
+    .userImage{object-fit: cover}
+    
+    .classTheme{background: rgba(77, 39, 72, 0.04);}
+    .userName{
+        color:$theme-titlecolor;font-weight: 600;
+    }
+    .designation{font-size: 13px;}
+    //skelton codeing*******************
+    .imageSkelton, h1.nameSkelton,.messageSkelton{
+        background: rgba(206, 206, 206, 0.76);
+        filter: blur(2px);
+    }
+    .blurData{ filter: blur(4px);}
+    
+    
+    }
+    

@@ -1,0 +1,128 @@
+<ion-content class="pulseBG" padding>
+  <ion-row>
+    
+    <ion-col>
+      
+      <p class="topText">To proceed, please complete the following details:</p>
+    </ion-col>
+  </ion-row>
+
+  <div class="divTheme">
+    <ion-row>
+      <ion-col col-8 class="usernamecolPadding">
+        <h2 style="font-size: 18px;">Test User</h2>
+      </ion-col>
+
+      <ion-col col-4 class="rightIt" (tap)="addimage()">
+        <img src="{{userpic}}" class="userRoundImageBig" onError="this.src='assets/imgs/profile.png'">
+        <img src="assets/imgs/camera.png"  id="userProfileCameraPik">
+      </ion-col>
+    </ion-row>
+
+     <!-- <form>  -->
+      <ion-list radio-group [(ngModel)]="relationship"  class="EX" >
+        <ion-item class="EXitem" >
+          <ion-label class="input_label fresher">I am a Fresher</ion-label>
+          <ion-radio value="fresher" ></ion-radio>
+
+          <!-- <ion-checkbox name="value2" [(ngModel)]="value2" (ionChange)="getVal2($event, value2)"></ion-checkbox> -->
+        </ion-item>
+
+        <ion-item class="EXitem" >
+          <ion-label class="input_label fresher">I have Work Exprience</ion-label>
+          <ion-radio value="exp" ></ion-radio>
+          <!-- <ion-checkbox name="value3" [(ngModel)]="value3" (ionChange)="getVal3($event, value3)"></ion-checkbox> -->
+        </ion-item>
+      </ion-list>
+
+
+    <ion-list>
+        <ion-item  *ngIf="relationship=='exp'">
+          <ion-label class="input_label" floating>
+            Total Experience (in years)<sup class='star'>*</sup>
+          </ion-label>
+          <ion-input type="number" name="totalexp" [(ngModel)]="totalexp" required></ion-input>
+      </ion-item>
+      <ion-item *ngIf="relationship=='exp'">
+          <ion-label class="input_label" floating>
+            Previous Company<sup class='star'>*</sup>
+          </ion-label>
+          <ion-input type="text" name="pcompany" [(ngModel)]="pcompany" required></ion-input>
+      </ion-item>
+      <ion-item *ngIf="relationship=='exp'">
+          <ion-label class="input_label" floating>
+            Designation in Previous Company<sup class='star'>*</sup>
+          </ion-label>
+          <ion-input type="text" name="pdesignation" [(ngModel)]="pdesignation" required></ion-input>
+      </ion-item>
+      <ion-item *ngIf="relationship=='exp'">
+          <ion-label class="input_label" floating>
+            Highest Education
+          </ion-label>
+          <ion-input type="text" name="Highedu" [(ngModel)]="Highedu" ></ion-input>
+      </ion-item>
+      <ion-item *ngIf="relationship=='exp'">
+          <ion-label class="input_label" floating>
+            Favourite Food/ Cuisine
+          </ion-label>
+          <ion-input type="text" name="food" [(ngModel)]="food" ></ion-input>
+      </ion-item>
+      <ion-item *ngIf="relationship=='exp'">
+          <ion-label class="input_label" floating>
+            Favourite Holiday Destination
+          </ion-label>
+          <ion-input type="text" name="holidaydest" [(ngModel)]="holidaydest" ></ion-input>
+      </ion-item>
+      <ion-item *ngIf="relationship=='exp'">
+          <ion-label class="input_label" floating>
+            Favourite Hobby
+          </ion-label>
+          <ion-input type="text" name="hobby" [(ngModel)]="hobby"></ion-input>
+      </ion-item>
+
+      </ion-list>
+
+      <ion-list>
+   
+      <ion-item *ngIf="relationship=='fresher'">
+          <ion-label class="input_label" floating>
+            Highest Education
+          </ion-label>
+          <ion-input type="text" name="Highedu" [(ngModel)]="Highedu" ></ion-input>
+      </ion-item>
+      <ion-item *ngIf="relationship=='fresher'">
+          <ion-label class="input_label" floating>
+            Favourite Food/ Cuisine
+          </ion-label>
+          <ion-input type="text" name="food" [(ngModel)]="food" ></ion-input>
+      </ion-item>
+      <ion-item *ngIf="relationship=='fresher'">
+          <ion-label class="input_label" floating>
+            Favourite Holiday Destination
+          </ion-label>
+          <ion-input type="text" name="holidaydest" [(ngModel)]="holidaydest" ></ion-input>
+      </ion-item>
+      <ion-item *ngIf="relationship=='fresher'">
+          <ion-label class="input_label" floating>
+            Favourite Hobby
+          </ion-label>
+          <ion-input type="text" name="hobby" [(ngModel)]="hobby"></ion-input>
+      </ion-item>
+
+      </ion-list>
+
+      <ion-item >
+        <ion-label class="fontSize">The details provided above are true to the best of my knowledge.</ion-label>
+        <ion-checkbox [(ngModel)]="value" ></ion-checkbox>
+      </ion-item>
+  
+      <button  ion-button full class="buttonCss" (tap)="previewFunc(relationship,value)">
+        Preview
+      </button>
+
+
+
+     <!-- </form>  -->
+
+  </div>
+</ion-content>

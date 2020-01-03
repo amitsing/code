@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Survey</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <br>
+    <ion-row *ngFor="let data of allData let i=index;" (click)="gotodetail(i,data)" 
+    style="    border-bottom: 1px solid #dadada;
+    margin: 5px; ">
+      <!-- <ion-col col-3>
+        <img class="imgcss" srcset="{{data?.survey_image}}" src="../../assets/imgs/sodexo.png">
+      </ion-col> -->
+      <ion-col col-12>
+        <p class="title">
+          {{data?.title}}
+        </p>
+        <p style="text-align:right; margin: 5px;
+        font-size: 12px;
+        color: #444;">
+          {{data?.daysRemain}}
+        </p>
+      </ion-col>
+    </ion-row>
+
+    <div *ngIf="bgImageViewer">
+        <img src="assets/imgs/No SurveyImage.png"  style="width:100%">
+      </div> 
+
+
+  <ion-infinite-scroll *ngIf="hideInfiniteScroll==false && allData" (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

@@ -1,0 +1,143 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card  *ngIf="apiData">
+    <div class="firstpositionRelative">
+      <div class="progress-wrapper">
+        <!-- <circle-progress [percent]="50" [radius]="50" [outerStrokeWidth]="6" [showTitle]=true [showSubtitle]=false
+         [showUnits]=false [subtitle]='Percent'
+          [innerStrokeWidth]="3" [outerStrokeColor]="'#542e56'" [innerStrokeColor]="'#7b4b7d'" [animation]="true" 
+          [animationDuration]="300"></circle-progress> -->
+          <circle-progress class="formCircle" [percent]="apiData?.over_all_progress" [radius]="50" [outerStrokeWidth]="6"
+                    [showTitle]=true [title]="apiData?.over_all_progress" [showSubtitle]=false [subtitle]='Percent' 
+                     [innerStrokeWidth]="3"
+                    [outerStrokeColor]="'#542e56'" [innerStrokeColor]="'#7b4b7d'" [animation]="true"
+                    [animationDuration]="300"></circle-progress>
+      </div>
+      <p>{{apiData?.title}}</p>
+      <!-- <div class="percentageValue">
+          {{progressGraph?.remaining_days}} 
+        </div> -->
+    </div>
+  </ion-card>
+  <ion-card *ngIf="otherInstruction && otherInstruction.length > 0">
+      <div class="otherInstruction">
+          <show-html [htmlData]="otherInstruction" ></show-html>
+      </div>
+    </ion-card>
+  <ion-card padding margin-bottom *ngIf="apiData" class="relativeDiv overFlowVisible">
+    <ion-row>
+      <ion-col col-3></ion-col>
+      <ion-col col-5></ion-col>
+      <ion-col col-4>
+        <ion-row>
+          <ion-col col-6>
+            <!-- <p class="fontsize">Progress</p> -->
+          </ion-col>
+          <ion-col col-6>
+            <p class="fontsize">
+              <!-- Admin Approvel -->
+              Status
+            </p>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <div class="learningList">
+      <div>
+        <div *ngFor="let data of allData ; let i = index">
+          <ion-row class="relativeDiv" margin-bottom style="background-image:url('assets/imgs/bg/listbg.png');background-size:cover;"
+            (click)="subcategoryiframe(i,allData)">
+            <ion-col col-2 no-padding class="paddbottom0">
+              <!-- <img src="assets/imgs/quizicon.png" class="absoluteDiv" /> -->
+              <img srcset="{{data.icon}}" src="../../assets/watermark/watermark.png" class="absoluteDiv" />
+            </ion-col>
+            <ion-col col-6 class="centerDataInDiv paddbottom0">
+              <p style="font-size: 11px;"  class="mt-10 courseTitle">{{data.form_name}}</p>
+            </ion-col>
+            <!-- <ion-col col-1 class="centerDataInDiv paddbottom0">
+              <ion-icon *ngIf="data?.progress!=100" style="font-size: 20px;" name="ios-lock-outline"></ion-icon>
+               <ion-icon *ngIf="data?.progress==100" style="font-size: 20px;" name="ios-unlock-outline"></ion-icon>
+            </ion-col> -->
+            <ion-col col-4 class="centerData paddbottom0">
+              <ion-row>
+                <ion-col col-6 class="padding0 paddbottom0">
+                  <!-- <div class="positionRelative"> -->
+
+                    
+                    <!-- <div style="font-size: 20px;" class="progress-wrapper">
+                      <circle-progress [percent]="data?.progress" [unitsFontSize]="8" [radius]="15" [outerStrokeWidth]="2" [showTitle]=true [showSubtitle]=false
+                        [showUnits]=false [innerStrokeWidth]="2" [outerStrokeColor]="'#542e56'" [innerStrokeColor]="'#7b4b7d'"
+                        [animation]="true" [animationDuration]="300"></circle-progress>
+                    </div>-->
+
+
+
+                    <!-- <p *ngIf="data?.progress==0" style="    text-align: -webkit-center;" class="martop">
+                     
+                      <img class="inprocess" src="../../assets/imgs/inprocess.png"/>
+                    </p>  
+                    <p *ngIf="data?.progress>0 && data?.progress<=99" class="martop">
+                      <ion-icon name="time" class="pendingIcon" ></ion-icon>
+                    </p>  
+                    <p *ngIf="data?.progress==100">
+                      <ion-icon  name="checkmark-circle-outline" class="approvedIcon"></ion-icon>
+                  </p>
+                  </div> -->
+
+               
+
+
+                  <!-- <p><ion-icon name="time" class="pendingIcon"></ion-icon></p>   -->
+                </ion-col>
+                <ion-col col-6 class="marginauto">
+                  <!-- <p *ngIf="data?.form_status=='pending'" class="martop">
+                    <ion-icon name="time" class="pendingIcon" ></ion-icon>
+                  </p>
+                  <p *ngIf="data?.form_status=='approved'">
+                      <ion-icon  name="checkmark-circle-outline" class="approvedIcon"></ion-icon>
+                  </p>        
+                  <p  *ngIf="data?.form_status=='rejected'">
+                      <ion-icon name="ios-alert-outline" class="rejectedIcon fw" (tap)="showRejectionResigion(data.remarks)" ></ion-icon>         
+                  </p>  -->  
+                  
+                  
+
+                  <!-- <p *ngIf="data?.form_status=='disable'" class="martop">
+                      <ion-icon style="font-size: 25px;color:#4c2648;;" name="ios-lock-outline"></ion-icon>
+                  </p> -->
+                   <div class="lockIcon">
+                      <img srcset="{{data.status_icon}}" src="../../assets/watermark/watermark.png" />
+
+                   </div>
+
+                </ion-col>
+              </ion-row>
+
+            </ion-col>
+          </ion-row>
+
+        </div>
+      </div>
+
+    </div>
+    <br>
+    <br>
+    <!-- <div class="btndiv" (click)="gotourllist(data.group_id)">
+      <br>
+      <button ion-button class="btn" round>submit</button>
+    </div> -->
+  </ion-card>
+  <br>
+  <br>
+
+<div *ngIf="!apiData" >
+  <img style="width:100%;"  src="../../assets/imgs/skelton/urllist.png" class="textSkelton" />
+</div>
+
+
+</ion-content>

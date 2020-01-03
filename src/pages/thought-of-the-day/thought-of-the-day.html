@@ -1,0 +1,33 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Thought of the Day</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding *ngIf="thoughtData && thoughtData.length>0">
+  
+    <ion-slides  [initialSlide]="index12" slidesPerView="1" (ionSlideDidChange)="ionSlideDidChange()" (ionSlideWillChange)="slideChangeDetect()"
+    zoom="true">
+          <ion-slide *ngFor="let data of thoughtData ;let i = index;" >
+              <ion-row>
+                <ion-col text-right class="date"><p class="date">{{data.created_date}}</p></ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col col-12>
+                  <div class="customCardView thotDiv">
+                      <img src="{{data?.media}}"  #myImage (click)="presentImage(myImage)" />      
+                      <p text-center class="instract"> <span *ngIf="i>=1"> <ion-icon name="arrow-round-back"></ion-icon></span> Swipe Across <span *ngIf="i<thoughtData?.length-1"> <ion-icon name="arrow-round-forward"></ion-icon></span></p>                                       
+                  </div>
+                </ion-col>
+              </ion-row>
+              <!-- <div class="outerDiv">
+                      <img src="{{data?.media}}"  #myImage (click)="presentImage(myImage)" />      
+                        <p text-center class="instract"> <span *ngIf="i>=1"> <ion-icon name="arrow-round-back"></ion-icon></span> Swipe Across Thoughts <span *ngIf="i<thoughtData?.length-1"> <ion-icon name="arrow-round-forward"></ion-icon></span></p>                                       
+                </div> -->
+
+          </ion-slide>
+        </ion-slides>
+
+
+</ion-content>

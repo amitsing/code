@@ -1,0 +1,469 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ formData.form_name }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="bg">
+  <div *ngIf="data" [ngClass]="{'newOverlay': formData.form_status != 'enable'}"> 
+  
+    <ion-row #form>
+      <ion-col col-12>
+        <!-------------- userform ------------------>
+  
+        <!-------------- Education Record ------------------>
+        <div class="formDiv">
+            <ion-row class="cardHeader">
+                <ion-col col-12 text-left>
+                  <p class="heading">Personal Information</p>
+                </ion-col>
+            </ion-row>
+  
+          <customInput
+            label="Name"
+            [data]="data.userData.userName"
+            type="text"
+            [otherStatus]="isSubmited"
+          ></customInput>
+  
+          <customInput
+            label="Contact Number"
+            [data]="data.userData.contact"
+            type="number"
+            [otherStatus]="isSubmited"
+          ></customInput>
+  
+          <customInput
+            label="Date of Birth"
+            [data]="data.userData.date_of_birth"
+            type="date"
+            dateFormat = "DD/MMM/YYYY"
+            [otherStatus]="isSubmited"
+          ></customInput>
+  
+          <customInput
+            label="E-mail Id"
+            [data]="data.userData.email_id"
+            type="text"
+            [otherStatus]="isSubmited"
+          ></customInput>
+  
+          <customInput
+            label="Nationality"
+            [data]="data.userData.nationality"
+            type="text"
+            [otherStatus]="isSubmited"
+          ></customInput>
+  
+          <customInput
+            label="Postal Code"
+            [data]="data.address.postal_code"
+            type="text"
+            [otherStatus]="isSubmited"
+          ></customInput>
+  
+          <customInput
+            label="Address"
+            [data]="data.address.address"
+            type="textArea"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+        </div>
+
+        <div class="formDiv">
+            <ion-row class="cardHeader">
+                <ion-col col-12 text-left>
+                  <p class="heading">Emergency Contact</p>
+                </ion-col>
+            </ion-row>
+  
+          <customInput
+            label="Name"
+            [data]="data.emergency.emg_contact_name"
+            type="text"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+          <customInput
+            label="Relationship"
+            [data]="data.emergency.emg_contact_relation"
+            type="text"
+            [otherStatus]="isSubmited"
+          ></customInput>
+  
+          <customInput
+            label="Contact Number"
+            [data]="data.emergency.emg_contact_number"
+            type="number"
+            [otherStatus]="isSubmited"
+          ></customInput>
+  
+          <customInput
+            label="Daytime Contact Number"
+            [data]="data.emergency.emg_contact_daytime_contact"
+            type="text"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+          <customInput
+            label="Postal Code"
+            [data]="data.emergency.emg_contact_zipcode"
+            type="text"
+            [otherStatus]="isSubmited"
+          ></customInput>
+  
+          <customInput
+            label="Address"
+            [data]="data.emergency.emg_contact_address"
+            type="textArea"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+        </div>
+
+        <div class="formDiv">
+            <ion-row class="cardHeader">
+                <ion-col col-12 text-left>
+                  <p class="heading">Benefits</p>
+                </ion-col>
+            </ion-row>
+        
+  
+            <customInput
+              label="Private Medical Insurance"
+              [data]="data.userData.medical_insaurance"
+              type="radio"
+              [options] = "insuranceStatus"
+              [otherStatus]="isSubmited"
+            ></customInput>
+  
+            <customInput
+              label="Dental Insurance"
+              [data]="data.userData.dental_insaurance"
+              type="radio"
+              [options] = "insuranceStatus"
+              [otherStatus]="isSubmited"
+            ></customInput>
+
+        </div>
+  
+        <div class="formDiv" id="maintainer">
+            <ion-row class="cardHeader">
+                <ion-col col-12 text-left>
+                  <p class="heading">Dependants</p>
+                </ion-col>
+            </ion-row>
+        
+          <div
+            class="formDiv clearfix"
+            id="createDiv"
+            *ngFor="let dep of data?.dependents; let i = index"
+          >
+            <div>
+              <div style="height: 30px;
+              margin-top: 10px;">
+                  <label>Dependent {{ i + 1 }}</label>
+                  <span
+                    style="float: right"
+                    *ngIf="i>0"
+                    class="icon"
+                    (click)="data.removeDependents(dep)"
+                    ><ion-icon
+                      ios="ios-close-circle-outline"
+                      md="md-close-circle"
+                    ></ion-icon
+                  ></span>
+              </div>
+  
+              <customInput
+                label="Name"
+                [data]="dep.dependent_name"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+  
+              <customInput
+                label="Date of Birth"
+                [data]="dep.dependent_dob"
+                type="date"
+                dateFormat = "DD/MMM/YYYY"
+                [otherStatus]="isSubmited"
+              ></customInput>
+            </div>
+          </div>
+          <div class="headingDiv element" id="div_0"></div>
+          <div
+            (click)="data.addDependents()"
+            style="text-align: right;"
+            class="icon"
+          >
+            <ion-icon
+              ios="ios-add-circle-outline"
+              md="md-add-circle"
+            ></ion-icon>
+        </div>
+        </div>
+
+        <div class="formDiv">
+            <ion-row class="cardHeader">
+                <ion-col col-12 text-left>
+                  <p class="heading">Bank Details</p>
+                </ion-col>
+            </ion-row>
+  
+          <customInput
+            label="Bank Sort Code"
+            [data]="data.bank_detail.bank_sort_code"
+            type="text"
+            [otherStatus]="isSubmited"
+          ></customInput>
+  
+          <customInput
+            label="Account No"
+            [data]="data.bank_detail.account_number"
+            type="number"
+            [otherStatus]="isSubmited"
+          ></customInput>
+  
+          <customInput
+            label="Bank Name"
+            [data]="data.bank_detail.bank_name"
+            type="text"
+            [otherStatus]="isSubmited"
+          ></customInput>
+  
+          <customInput
+            label="National Insurance Number"
+            [data]="data.userData.nation_insaurance_no"
+            type="text"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+        </div>
+
+        <div class="formDiv" id="maintainer">
+            <ion-row class="cardHeader">
+                <ion-col col-12 text-left>
+                  <p class="heading">Referee Details</p>
+                </ion-col>
+            </ion-row>
+            
+          <div
+            class="formDiv clearfix"
+            id="createDiv"
+            *ngFor="let ref of data?.refree; let i = index"
+          >
+            <div>
+              <div style="height: 30px;
+              margin-top: 10px;">
+                  <label>Reference {{ i + 1 }}</label>
+                  <span
+                    style="float: right"
+                    *ngIf="i>0"
+                    class="icon"
+                    (click)="data.removeReference(ref)"
+                    ><ion-icon
+                      ios="ios-close-circle-outline"
+                      md="md-close-circle"
+                    ></ion-icon
+                  ></span>
+              </div>
+  
+              <customInput
+                label="Referee Name"
+                [data]="ref.referee_name"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+  
+              <customInput
+                label="Referee job title"
+                [data]="ref.referee_job_title"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+  
+              <customInput
+                label="Company"
+                [data]="ref.company_name"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+  
+              <customInput
+                label="Referee email address"
+                [data]="ref.email_id"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+  
+              <customInput
+                label="Referee contact number"
+                [data]="ref.contact"
+                type="number"
+                [otherStatus]="isSubmited"
+              ></customInput>
+  
+              <customInput
+                label="Your job title"
+                [data]="ref.employee_job_title"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+  
+              <customInput
+                label="From"
+                [data]="ref.from_date_of_employeement"
+                type="date"
+                dateFormat = "MM/YYYY"
+                [otherStatus]="isSubmited"
+              ></customInput>
+  
+              <customInput
+                label="To"
+                [data]="ref.to_date_of_employeement"
+                type="date"
+                dateFormat = "MM/YYYY"
+                [otherStatus]="isSubmited"
+              ></customInput>
+  
+            </div>
+          </div>
+          <div class="headingDiv element" id="div_0"></div>
+          <div
+            (click)="data.addReference()"
+            style="text-align: right"
+            class="icon"
+          >
+            <ion-icon
+              ios="ios-add-circle-outline"
+              md="md-add-circle"
+            ></ion-icon>
+        </div>
+        </div>
+  
+        <!-- <div class="formDiv">
+          <show-html [htmlData]="msg"></show-html>
+        </div> -->
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="formData && formData.form_status == 'enable'">
+      <ion-col col-6 *ngIf="fill_status == '0'">
+        <div class="btndiv">
+          <button [ngClass]="{'w-80': (fill_status == 0)}" ion-button class="btn" (click)="save()">Save</button>
+        </div>
+      </ion-col>
+      <ion-col
+        [attr.col-12]="fill_status == '1' ? '' : null"
+        [attr.col-6]="fill_status == '0' ? '' : null"
+      >
+        <div class="btndiv">
+          <button [ngClass]="{'w-80': (fill_status == 0)}" ion-button class="btn" (click)="submit()">{{ fill_status=='1' ? 'Update' : 'Submit'  }}</button>
+        </div>
+      </ion-col>
+    </ion-row>
+  
+  </div>
+</ion-content>
+
+<!-- 
+<div class="pageDiv">
+  <div class="customCardDiv">
+    <p class="fontcss">To</p>
+    <p class="fontcss">HR Manager</p>
+    <p class="fontcss">Reach UK1 here by confirm that i understand it 9 my responsibility to inform the Evalueserve UK HR team </p>
+    <p class="fontcss">Personal address</p>
+    </div>
+</div>
+
+<div class="pageDiv">
+    <div class="customCardDiv">
+        <p text-center class="para">Personal Details</p>
+        <ion-row>
+          <ion-col col-12>
+            <div class="inputDiv">
+              <ion-label>Work Location(City)
+                <sup class="redText">*</sup>
+              </ion-label>
+              <ion-input type="text" name="fname" [(ngModel)]="fname" placeholder=""></ion-input>
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col col-12>
+              <div class="inputDiv">
+                <ion-label>passport Number
+                  <sup class="redText">*</sup>
+                </ion-label>
+                <ion-input type="text" name="fname" [(ngModel)]="fname" placeholder=""></ion-input>
+              </div>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+              <ion-col col-12>
+                <div class="inputDiv">
+                  <ion-label>Visa Type (if applicable)
+                    <sup class="redText">*</sup>
+                  </ion-label>
+                  <ion-input type="text" name="fname" [(ngModel)]="fname" placeholder=""></ion-input>
+                </div>
+              </ion-col>
+            </ion-row>
+              
+              <ion-row>
+                  <ion-col col-12>
+                    <div class="inputDiv1">
+                      <ion-label>Visa Expiry Date
+                        <sup class="redText">*</sup>
+                      </ion-label>
+                      <ion-item>
+                        <ion-label>Date</ion-label>
+                        <ion-datetime [(ngModel)]="myDate" displayFormat="MM/DD/YYYY"></ion-datetime>
+                      </ion-item>
+          
+                    </div>
+                  </ion-col>
+                </ion-row>
+
+              <ion-row>
+                  <ion-col col-12>
+                    <div class="inputDiv">
+                      <ion-label>Right to work Documentation
+                        <sup class="redText">*</sup>
+                      </ion-label>
+                      <ion-input type="text" name="fname" [(ngModel)]="fname" placeholder=""></ion-input>
+                    </div>
+                  </ion-col>
+                </ion-row>  
+                
+                <ion-row>
+                    <ion-col col-12>
+                      <div class="inputDiv">
+                        <ion-label>Contract Type
+                          <sup class="redText">*</sup>
+                        </ion-label>
+                        <ion-input type="text" name="fname" [(ngModel)]="fname" placeholder=""></ion-input>
+                      </div>
+                    </ion-col>
+                  </ion-row>   
+
+                  <ion-row>
+                      <ion-col col-12>
+                        <div class="inputDiv">
+                          <ion-label>Job Title
+                            <sup class="redText">*</sup>
+                          </ion-label>
+                          <ion-input type="text" name="fname" [(ngModel)]="fname" placeholder=""></ion-input>
+                        </div>
+                      </ion-col>
+                    </ion-row>        
+      </div>
+  </div>
+
+  <div class="btndiv">
+      <button ion-button class="btn" (click)="update(pRemark)">Update</button>
+    </div> -->

@@ -1,0 +1,33 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Update Mobile Number</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card style="border-radius:5px;">
+      <ion-row>
+          <ion-col col-3 class="bbottom">
+              <!-- <img srcset="{{userImage}}" src="assets/watermark/watermark.png" class="userImage"/> -->
+
+              <img  class="userImage" onerror="this.src='assets/watermark/watermark.png'" #myImage
+              src="{{update_icon}}" (click)="presentImage(myImage)"  >
+
+          </ion-col>
+          <ion-col col-9 class="bbottom">
+              <p class="userName black">{{userName}}</p>
+              <p class="userName">Mobile Number :  {{number}}</p>
+          </ion-col>
+        </ion-row>
+  
+        <br><br><br><br>
+        <ion-row>
+            <ion-col col-12 text-center>
+              <button ion-button round class="updateBtn" (click)="updateNo()">Update Mobile Number</button>
+            </ion-col>
+           </ion-row>
+           <br><br><br><br>
+  </ion-card>
+
+</ion-content>

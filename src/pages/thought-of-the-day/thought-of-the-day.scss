@@ -1,0 +1,8 @@
+page-thought-of-the-day {
+
+    .outerDiv {        position: relative;    top: 50%;    transform: translateY(-50%);      }
+      .instract{    color: gray;        margin-top: 40px;        font-size: 13px;}
+        .date{ color: gray;  font-size: 12px;}
+        .thotDiv{    padding: 10px 15px;
+            border-radius: 10px;}
+}

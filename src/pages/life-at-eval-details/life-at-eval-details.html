@@ -1,0 +1,107 @@
+<ion-header>
+  <ion-navbar>
+    <!-- <ion-title>{{previousePageData.title}}</ion-title> -->
+
+    <ion-title>Know More</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
+    <div *ngIf="!details">
+      <post-details-skelton></post-details-skelton>
+    </div>
+
+  <div *ngIf="details">
+
+ 
+        <div *ngIf="previousePageData?.media_type=='1'">
+                <img class="imgcss" onError="this.src='../../assets/watermark/watermark.png'" #myImage
+                src="{{previousePageData?.media}}" (click)="presentImage(myImage)">
+            </div>
+             <div  *ngIf="previousePageData?.media_type=='3'">
+                <iframe  width="100%" style="height:180px;"
+                [src]="previousePageData?.media+'?autoplay=0'|safe" autostart="0"
+                allowfullscreen frameborder="0" scrolling="no"></iframe>
+             </div>
+             <div *ngIf="previousePageData?.media_type=='2'">
+                 <video [src]="previousePageData?.media|safe" height="180px"  width="100%"  poster="{{previousePageData?.thumbnail_image}}" controls controlsList="nodownload" type="video/*">
+                 </video>
+              </div>
+
+<div padding>
+<ion-row>
+    <ion-col col-12>
+        <div class="post-title">{{previousePageData.title}}</div>
+    </ion-col>
+    <ion-col col-12>
+        <div [innerHTML]="previousePageData.content" (click)="handleClick($event)"></div>
+    </ion-col>
+
+    <!-- <ion-col col-12 class="bottom-line">
+        <button ion-button color="theme" small clear>3 Likes</button>
+        <button ion-button color="theme" small clear>2 Comments</button>
+    </ion-col> -->
+
+
+
+
+</ion-row>
+
+<!-- <ion-row class="themeShadow">
+    <ion-col col-6>
+        <button ion-button color="theme" clear> <ion-icon name="md-thumbs-up"></ion-icon>&nbsp;&nbsp; Like</button>
+    </ion-col>
+
+    <ion-col col-6>
+        <button ion-button color="theme" clear> <ion-icon name="md-chatboxes"></ion-icon>&nbsp;&nbsp; Comment</button>
+    </ion-col>
+</ion-row>
+
+
+<ion-row >
+    <ion-col col-12>
+        <p>2 Comments</p>
+    </ion-col>
+</ion-row> -->
+<!-- this is comment view -->
+<!-- <ion-row *ngFor="let data of [0,1]">
+    <ion-col col-2>
+      <img [src]="previousePageData.userImage" class="commentedUserImage" imageViewer/>
+    </ion-col>
+    <ion-col col-10>
+      <div class="commentHolder">
+        <p class="commentedUserName">Test</p>
+        <p class="commentedUserLocation">Pune</p>
+        <p class="commentedUserDate">02 May, 2019</p>
+        <p class="comment">Very nice article</p>
+      </div>
+      <ion-row>
+          <ion-col col-12 >
+              <button ion-button color="theme" small clear><ion-icon name="md-thumbs-up"></ion-icon>.&nbsp;&nbsp; 3 Likes</button>
+            |  <button ion-button color="theme" small clear><ion-icon name="md-chatboxes"></ion-icon>.&nbsp;&nbsp;2 Comments</button>
+          </ion-col>
+      </ion-row>
+    </ion-col>
+
+</ion-row> -->
+
+
+
+
+</div>
+
+</div>
+</ion-content>
+<!-- <ion-footer>
+    <ion-row>
+        <ion-col col-9 >
+          <ion-input type="text" placeholder="Write a comment..." [(ngModel)]="comment" class="commentField" (ngModelChange)="commentDetect($events, comment)"></ion-input>
+        </ion-col>
+        <ion-col col-1 > 
+            <button ion-button small color="theme" clear><ion-icon name="images"></ion-icon></button>
+        </ion-col>
+        <ion-col col-2 >
+            <button [disabled]="showSendBtn==false" small ion-button color="theme" clear><ion-icon name="send"></ion-icon></button>
+          </ion-col>
+    </ion-row>
+  </ion-footer> -->

@@ -1,0 +1,96 @@
+page-comments {
+    .text-input-md {
+        margin: 3px 8px;
+        padding: 0;
+        width: calc(100% - 8px - 8px);
+    }
+
+    .dialogbox .body {
+        position: relative;
+        max-width: 100%;
+        height: auto;
+        margin: 10px 3px;
+        padding: 5px;
+        background-color: $theme-titlecolor;
+        border-radius: 6px;
+      }
+
+      .body .message {
+        min-height: 30px;
+        border-radius: 3px;
+        font-family: Arial;
+        font-size: 14px;
+        line-height: 1.5;
+        color: #fff;
+      }
+
+      .tip {
+        width: 0px;
+        height: 0px;
+        position: absolute;
+        background: transparent;
+        border: 26px solid $theme-titlecolor;
+      }
+
+
+.tip-down {
+    bottom: -52px;
+    right: 10px;
+    border-right-color: transparent;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+  }
+.fromUserImage,  .userImage {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 1px solid #4d2748;
+}
+.userImage{
+    display: block;
+    margin: auto;object-fit: cover
+}
+.fromUserImage{
+float: right;margin-right: 5px;object-fit: cover
+}
+.title{
+
+    font-weight: 600;
+    color: #444;padding-left: 5px;padding-right: 5px;
+}
+.customCardView {
+    margin-bottom: 2px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+
+.margincss{margin: 8px;}
+.bordercss1{text-align: left;}
+.imgcss2{    height: 50px;
+       width: 50px;
+       border-radius: 50%;
+       object-fit: cover;}
+.colcolor{    background: lightgray;
+   border-radius: 4px;}
+.mrtop{margin-top: 0px;margin-bottom: 0px;}
+   .mrtop1{margin-top: 0px;font-size: 10px; margin-bottom: 0px;}
+.sendButtonCss{
+       font-size: 24px;
+       margin-top: 1px;
+       color: black;
+       padding-left: 1px;
+       position: absolute;
+   }
+.userName{
+    margin:0px;
+    font-weight: 600;
+    color: #444;
+}
+.date{color:gray;font-size: 12px;margin: 0px;}
+.m0{margin: 0px;}
+
+.borderb{border-bottom: 1px solid #e8e7e7;}
+}

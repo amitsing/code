@@ -1,0 +1,66 @@
+<!--
+  Generated template for the EmployeeConsentFormPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{page_title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="bg">
+    <div [ngClass]="{'newOverlay':formData.form_status != 'enable'}"> 
+    <div class="row" *ngIf="allData">
+        <div class="col-md-12 col-xs-12 col-sm-12" id="formDiv" style="display: block;">
+            <div >
+                <div style="float: right; margin: -9px -7px 0px 0px; display: none" id="editBtn">
+                    <i class="fa fa-edit fa-2x" style="color:cadetblue" aria-hidden="true" title="edit" id="edit" onclick="edit();"></i>
+                </div>
+                <show-html [htmlData]="partA.description" ></show-html>
+            </div>
+            <div  *ngFor="let item of allData; let j = index;">
+                <p class="theme-color" *ngIf="j==0"><show-html [htmlData]="partA.data_A" ></show-html></p>
+                <p class="theme-color" *ngIf="j==1"><show-html [htmlData]="partA.data_B" ></show-html></p>
+                <div style="margin-top: 20px; display: inline-block;" *ngIf="j==2"><show-html [htmlData]="partB.description" ></show-html></div>
+                <div class="card formDiv" *ngFor="let data of item; let i = index" 
+                    style="border: 1px solid silver; margin: 5px 0"
+                    [ngClass]="{'mendatory': j==0 && isSubmited && (data.userAnswer == '' || data.userAnswer == '0'), 'error': data.userAnswer == '' && isSubmited }"
+                    >
+                    <div class="card-body" >
+                        <strong class="card-title">Question {{ i + 1 }}</strong>
+                        <p class="card-text" [innerHTML]="data.question"></p>
+                        <ion-list radio-group [(ngModel)]="data.userAnswer">
+                            <ion-row class="radioNewDiv">
+                                <ion-col col-6>
+                                    <ion-item>
+                                        <ion-label>Yes</ion-label>
+                                        <ion-radio value="1"></ion-radio>
+                                    </ion-item>
+                                </ion-col>
+                                <ion-col col-6>
+                                    <ion-item>0
+                                        <ion-label>No</ion-label>
+                                        <ion-radio value="0"></ion-radio>
+                                    </ion-item>
+                                </ion-col>
+                            </ion-row>
+                        </ion-list>
+                    </div>
+                </div>
+                <div style="margin-top: 20px; display: inline-block;" *ngIf="j==2"><show-html [htmlData]="partB.end_description" ></show-html></div>
+            </div>
+            <div style="margin: 10px 0;" class="formDiv">
+                <show-html [htmlData]="partC.description" ></show-html>
+            </div> 
+            <div class="btndiv" *ngIf="formData && formData.form_status == 'enable'">
+                <button ion-button class="btn" (click)="submit()">{{ fill_status=='1' ? 'Update' : 'Submit' }}</button>
+            </div>
+            <!-- <div text-center class="submitBtn" id="submit"> 
+                <button type="submit" id="submitFinal" name="submitFinal" (click)="submit()">Submit</button>    
+            </div>  -->
+        </div>
+    </div>
+        </div>
+</ion-content>

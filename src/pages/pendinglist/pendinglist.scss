@@ -1,0 +1,180 @@
+page-pendinglist {
+    ion-select {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        overflow: hidden;
+        max-width: 100%;
+    }
+    .mrbottom:nth-last-child(1) {
+        margin-bottom: 50px !important;
+    }
+    .btn{
+        // width: 40%;
+        // border-radius: 20px;
+        font-size: 10px;
+        background: #e22550;
+        // background-image: linear-gradient(to bottom, $theme-titlecolor, #e22550);
+    }
+.nominateclass{
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: -5px;
+    z-index: 1;
+}
+
+    .centerIt{text-align: center;}
+    .font{color:#4d2848;font-size: 12px}
+    .imgcss2{height: 80px;
+        width: 80px;
+        border: 1px solid;
+        border-radius: 50%;overflow:hidden;}
+    // .btn{
+    //     width: 20%;
+    //     border-radius: 20px;
+    //     background-image: linear-gradient(to bottom, $theme-titlecolor, #e22550);
+    // }
+    .bold{font-weight: bold;}
+    .marginpx1{text-align: center;font-weight: bold;}
+    .marginpx2{text-align: center;font-weight: bold;}
+    .marginpx3{text-align: left;font-size: 12px;}
+    .marginpx{margin: 5px;}
+    .mrbottom{    margin-bottom: 0px;}
+    .fontsize{font-size: 11px;font-weight: bold;margin-bottom: 0px;}
+    .centerclass1{font-weight: bold;text-align: -webkit-center;}
+    .centergreen{font-weight: bold;text-align: -webkit-center;color:green;}
+    .divcss{border: 1px solid lightgrey;margin: 6px;border-radius: 5px;}
+    .marginleft{margin-left: 8px;}
+    .imgcss1{    height: 90px;
+        width: 90px;
+        border-radius: 50%;
+        object-fit: cover;}
+    .centerclass{text-align: -webkit-center;}
+    .imgcss{height: 80px;width: 80px;border-radius: 50%;object-fit: cover;}
+    .colargeimg{
+            float: left;
+        img {
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    .colargeimg:nth-child(odd) {
+        width: 26%;
+        height: 50%;
+    }
+    .colargeimg:nth-child(even) {
+        width: 48%;
+        height: 50%;
+    }
+    .colargeimg:nth-last-child(1) {
+        width: 52%;
+        height: 69%;
+    }
+
+    .awardDiv {position:relative;margin:0px 0px 70px 0px;
+        img{width:100px;margin:0 auto 60px;}
+        .awardOverDiv{position:absolute;background:#dadada;min-height:80px;
+            left:0px;top:80%;width:90%;right:0;margin:0 auto;
+        }
+    }
+
+
+    .colargeimg2{
+        float: left;
+        img {
+            height: 100%;
+            object-fit: cover;
+            width: 100%;
+        }
+    }
+
+    .colargeimg2:nth-child(odd) {
+        width: 100%;
+        height: 50%;
+    }
+    .colargeimg2:nth-child(even) {
+        width: 100%;
+        height: 50%;
+    }
+
+    .colargeimg4{
+        float: left;
+        img {
+            height: 100%;
+            object-fit: cover;
+            width: 100%;
+        }
+    }
+    .colargeimg4:nth-child(odd) {
+        width: 50%;
+        height: 50%;
+    }
+    .colargeimg4:nth-child(even) {
+        width: 50%;
+        height: 50%;
+    }
+
+    .colargeimg6{
+        float: left;
+        img {
+            height: 100%;
+            object-fit: cover;
+            width: 100%;
+        }  
+    }
+    .colargeimg6:nth-child(odd) {
+        width: 50%;
+        height: 33%;
+    }
+    .colargeimg6:nth-child(even) {
+        width: 50%;
+        height: 33%;
+    }
+.colargeimg3{
+    float: left;
+    img {
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
+    }   
+}
+.colargeimg3:nth-child(odd) {
+    width: 50%;
+    height: 50%;
+}
+.colargeimg3:nth-child(even) {
+    width: 50%;
+    height: 50%;
+}
+.colargeimg3:nth-last-child(1) {
+    width: 100%;
+    height: 50%;
+}
+.card-md h2 {
+    font-weight: bold;
+    color: #222;
+}
+.datecss{text-align: end;font-size: 10px;}
+.proimage {
+    position: relative;
+    .badgeimg {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
+        bottom: 0px;
+        left: 7px;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+.bar-button-default-md, .bar-button-default-ios {
+    color: #654561 !important;
+}
+
+}

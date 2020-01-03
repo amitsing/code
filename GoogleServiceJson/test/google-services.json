@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "472431275110",
+    "firebase_url": "https://reach-c4239.firebaseio.com",
+    "project_id": "reach-c4239",
+    "storage_bucket": "reach-c4239.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:472431275110:android:8ba918f0f71f4c98e991a7",
+        "android_client_info": {
+          "package_name": "connect.myeval"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "472431275110-lu9hopsddis3dc2b8lbh3nkvt4bmf44d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAT-TKNUHhTejK7QRrFRyLHyvgXlWTiQjI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "472431275110-lu9hopsddis3dc2b8lbh3nkvt4bmf44d.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "472431275110-p3dahi45lh6f1vuuo1dt8clpe12l3f0a.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "connect.myeval"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

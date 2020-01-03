@@ -1,0 +1,34 @@
+page-newquizlist {
+    .paddtop{padding-top:0px;}
+    .date{margin: auto;font-size: 13px;}
+    .title{font-weight: bold;}
+    .fillclass{border: 1px solid red;padding: 1px; border-radius: 12px;margin-left: 10px;margin-right: 10px;}
+    .paracss{text-align: center;font-size: 11px;color:red;}
+    .leftbdr ion-card {
+        border-radius: 5px;
+    }    
+    .leftbdr .cardcontent {
+        position: relative;
+    }
+    .leftbdr ion-card-content::before {
+        content: "";
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        height: 100%;
+        width: 7px;
+        background: black;
+        border-radius: 10px;
+    }
+    .leftbdr.red ion-card-content::before {
+        background: red;
+    }
+    .leftbdr.themecolor ion-card-content::before {
+        background: rgb(77, 39, 72);
+    }
+    .leftbdr.skyblue ion-card-content::before {
+        background: rgba(72, 138, 255, 0.5490196078431373);
+    }
+    .leftbdr button{padding:3px 5px 1px 5px;height:auto;font-size:10px;border-color:red;
+        color:red;}
+}

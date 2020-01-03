@@ -1,0 +1,58 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{previousePagedata?.album_name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
+
+  <div *ngIf="albumData" class="div2" >
+      <!-- *ngIf="loginemp=='employee'" -->
+    <ion-row >
+      <ion-col col-12 *ngFor="let data of albumData; let alb=index" >
+        <div class="relativDIV albumDiv" (click)="seeDetails(data,alb,myImage)">
+         <div class="postTitleDiv"> <p *ngIf="alb==0" class="postTitle">
+              {{previousePagedata?.album_name}}
+          </p>
+        </div>
+
+          <img src="{{data?.image}}" class="set1"  #myImage    onerror='this.src="../../assets/watermark/watermark.png"' >
+          <div class="transparentLayer_black" ></div>
+          <div class="userName">
+            <ion-row>
+                <ion-col col-12> <b class="text">{{data?.created_date}} </b></ion-col>
+            </ion-row>
+            
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+
+  
+</div>
+
+
+<!-- this is skelton -->
+<div *ngIf="!albumData"class="div2" >
+    <ion-row>
+      <ion-col col-12 *ngFor="let data of [0,2,3,4]; let alb=index" >
+        <div class="relativDIV albumDiv ">
+          <img src="../../assets/watermark/watermark.png" class="set1 textSkelton"  #myImage style="object-fit: contain;" >
+          <div class="transparentLayer_black textSkelton"></div>
+          <div class="userName">
+            <ion-row>
+                <ion-col col-12> <b class="text textSkelton">Test user </b></ion-col>
+            </ion-row>
+            
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+</div>
+
+<ion-infinite-scroll *ngIf="hideInfiniteScroll==false && albumData" (ionInfinite)="doInfinite($event)">
+<ion-infinite-scroll-content></ion-infinite-scroll-content>
+</ion-infinite-scroll>
+
+</ion-content>

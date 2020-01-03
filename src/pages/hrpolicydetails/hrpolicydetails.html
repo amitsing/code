@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar color="themecol" class="leftIt" hideBackButton="false">
+    <ion-title>{{navTitle}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
+<div class="HRpolicyHeading">
+  <ion-row>
+    <ion-col>
+     <p class="titleCss">{{navTitle}}</p>
+    </ion-col>
+  </ion-row>
+</div>
+<div class="divFrame">
+  <!-- <iframe [src]="fileName " frameborder="0" class="framecss"></iframe> -->
+  <div [innerHTML]="fileName" class="framecss"></div>
+</div>
+</ion-content>

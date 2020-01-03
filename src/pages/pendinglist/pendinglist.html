@@ -1,0 +1,155 @@
+
+<ion-header>
+  <!-- <ion-navbar>
+    <ion-title>Dashboard</ion-title>
+  </ion-navbar> -->
+
+  <ion-toolbar color="headColor">
+      <ion-title text-center>
+          Dashboard
+      </ion-title>
+      <ion-buttons left>
+        <button ion-button (click)="dismiss()">
+          <!-- <ion-icon name="close" class="iconClose" style="color:white;"></ion-icon> -->
+          <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-buttons end>
+        <button ion-button (click) = "open()">
+          Status
+            <!-- <ion-icon ios="ios-settings" md="md-settings" class="iconClose" style="color:white;"></ion-icon> -->
+        </button>
+      </ion-buttons>
+    </ion-toolbar>
+
+
+</ion-header>
+
+<ion-content>
+<br>
+    <div class="centerIt">
+        <!-- <select style="    width: 95%;
+        border-radius: 11px;" class="mySuggestionSelectBox centerIt" [(ngModel)]="selectValue">
+       
+            <option *ngFor="let areaData of dropdownarray"  [selected]="true">{{areaData.key}}</option>
+        </select> -->
+
+        <!-- <ion-select style="    background: #4d284842;
+        border-radius: 26px;" [ngModel]="area" (ngModelChange)="companyFormSelected($event)">
+         
+
+
+            <ion-option style="    width: 95%;
+            border-radius: 11px;" *ngFor="let areaData of dropdownarray"
+            [selected]="areaData.key==area">{{areaData.key}}</ion-option>
+          </ion-select> -->
+
+      </div>
+
+
+
+
+  <div *ngIf="succ==1">
+  <ion-card class="mrbottom" *ngFor="let pendingdata of alldata; let i=index">
+<ion-row (click)="awarddetail(pendingdata.nomination_id,i,pendingdata.nomination_status)">
+  <ion-col col-4>
+    <div class="proimage"  *ngIf="pendingdata.user?.length==1">
+      <div *ngFor="let data of pendingdata.user;">
+        <ion-row>
+          <ion-col col-12>
+            <div class=centerclass>
+                <img class="imgcss" src="../../assets/watermark/watermark.png" srcset="{{data.user_image}}">
+              </div>
+          </ion-col>
+        </ion-row>
+      </div>
+      <div class="badgeimg"> <img class="imgcss" src="../../assets/watermark/watermark.png" srcset="{{pendingdata.award_image}}">
+       
+      </div>
+  
+    </div>
+     
+    <div   *ngIf="pendingdata.user?.length==5" class="centerclass proimage">
+        <div class="imgcss2">
+    <div *ngFor="let data of pendingdata.user;" class="colargeimg">
+       <img src="../../assets/watermark/watermark.png" srcset="{{data.user_image}}">
+    </div>
+    
+        </div>
+
+        <div class="badgeimg"> <img class="imgcss" src="../../assets/watermark/watermark.png" srcset="{{pendingdata.award_image}}"></div>
+
+      </div>
+    
+      <div   *ngIf="pendingdata.user?.length==2" class="centerclass proimage">
+          <div class="imgcss2"  >
+      <div *ngFor="let data of pendingdata.user;" class="colargeimg2">
+         <img src="../../assets/watermark/watermark.png" srcset="{{data.user_image}}">
+      </div>
+      
+          </div>
+          <div class="badgeimg"> <img class="imgcss" src="../../assets/watermark/watermark.png" srcset="{{pendingdata.award_image}}"></div>
+
+        </div>
+    
+        <div   *ngIf="pendingdata.user?.length==4" class="centerclass proimage">
+            <div class="imgcss2" 
+            >
+        <div *ngFor="let data of pendingdata.user;" class="colargeimg4">
+           <img src="../../assets/watermark/watermark.png" srcset="{{data.user_image}}">
+        </div>
+        
+            </div>
+            <div class="badgeimg"> <img class="imgcss" src="../../assets/watermark/watermark.png" srcset="{{pendingdata.award_image}}"></div>
+       
+          </div>
+    
+          <div   *ngIf="pendingdata.user?.length>=6" class="centerclass proimage">
+              <div class="imgcss2"  >
+          <div *ngFor="let data of pendingdata.user;" class="colargeimg6">
+             <img src="../../assets/watermark/watermark.png" srcset="{{data.user_image}}">
+          </div>
+              </div>
+              <div class="badgeimg"> <img class="imgcss" src="../../assets/watermark/watermark.png" srcset="{{pendingdata.award_image}}"></div>
+    
+            </div>
+    
+            <div   *ngIf="pendingdata.user?.length==3" class="centerclass proimage">
+                <div class="imgcss2">
+            <div *ngFor="let data of pendingdata.user;" class="colargeimg3">
+               <img src="../../assets/watermark/watermark.png" srcset="{{data.user_image}}">
+            </div>
+                </div>
+                <div class="badgeimg"> <img class="imgcss" src="../../assets/watermark/watermark.png" srcset="{{pendingdata.award_image}}"></div>
+  
+              </div> 
+
+              <p text-center class="font"><b>{{pendingdata.award_name}}</b></p>
+
+  </ion-col>
+  <ion-col col-8>
+    
+          <h2>{{pendingdata.name}}</h2>
+          <p style="font-size: 13px;">{{pendingdata.nomination_status}}</p>
+          <p class="datecss">{{pendingdata.nominated_date}}</p>
+   
+  </ion-col>
+</ion-row>
+</ion-card>
+
+ </div>
+
+
+
+
+ <div *ngIf="succ==0">
+  <h1 style="text-align:center">{{msg}}</h1>
+</div>  
+ 
+
+
+
+</ion-content>
+<ion-row *ngIf="authoritykey=='n'" class="nominateclass" (click)="gotosearch()">
+  <ion-col no-padding><button ion-button full class="btn">Nominate Now</button></ion-col>
+</ion-row>

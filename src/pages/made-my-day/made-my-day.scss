@@ -1,0 +1,70 @@
+page-made-my-day {
+    .topHeading {
+        float: left;
+        width: auto;
+        background: #ee2553;
+        position: relative;
+        left: -5px;
+        top: 5px;
+        padding: 5px 20px 5px 60px;
+        img {
+            width: 60px;
+            position: absolute;
+            top: -30px;
+            left: -7px;
+        }
+        p{
+            position: absolute;
+            left: 2px;
+            text-align: center;
+            color: #fff;
+            font-size: 14px;
+            line-height: 15px;
+            font-weight: bold;
+            top: 0;
+            text-shadow: 0px 2px 5px black;
+        }
+        h2{color:#ffffff;}
+
+    }
+    .topHeading::before {
+        content: "";
+        position: absolute;
+        right: -25px;
+        width: 5px;
+        background: #ee2553;
+        height: 100%;
+        top: 0;
+        transform: skew(25deg);
+    }    
+    .topHeading::after {
+        content: "";
+        position: absolute;
+        right: -10px;
+        width: 20px;
+        background: #ee2553;
+        height: 100%;
+        top: 0;
+        transform: skew(25deg);
+    }
+
+
+    .silverRela {
+        position: relative;
+        .dashedborder{
+            border: 2px dashed gray;
+        }
+        .silverAbso {
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            max-width: 50px;
+            max-height: 50px;
+            height: 50px;
+            width: 50px;
+        }
+    }
+
+    .bgRed{background:#ee2553;}
+
+}

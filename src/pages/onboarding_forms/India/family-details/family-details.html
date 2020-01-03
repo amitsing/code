@@ -1,0 +1,153 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title *ngIf="formData">{{ formData.form_name }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="bg" #content>
+
+    <div [ngClass]="{'newOverlay':formData.form_status != 'enable'}"> 
+
+ <div *ngIf="data">
+    <div class="right"  (click)=addMember()>
+        <ion-row>
+          <ion-col *ngIf="formData && formData.form_status == 'enable'" col-12 text-right>
+              <button ion-button icon-end round  small class="mybtn">
+                  Add Family Member 
+                  <ion-icon name="ios-add-circle-outline"></ion-icon>
+                </button>
+          </ion-col>
+          <!-- <ion-col col-2></ion-col>
+          <ion-col col-8> <p class="add">Add Emergency Contact  <ion-icon name="ios-add-circle-outline" class="iconcss"></ion-icon></p></ion-col>
+          <ion-col col-2>   <ion-icon name="ios-add-circle-outline" class="iconcss"></ion-icon></ion-col> -->
+        </ion-row>
+    </div>
+    <div *ngFor="let item of data; let i = index;">
+        <div class="formDiv" *ngIf="item.layout == 'FORM'">
+    
+            <ion-row class="cardHeader">
+              <ion-col col-10 text-left>
+                <p class="heading">{{ item.firstEdit ? (i+1) + '. Member' : item.familyDetails.member_relation.value }}</p>
+              </ion-col>
+              <ion-col *ngIf="item.firstEdit && data.length > 1 " col-2 text-right class="icon" (click)="closeForm(item)">
+                <ion-icon ios="ios-close-circle" md="md-close-circle"></ion-icon>
+              </ion-col>
+              <ion-col *ngIf="!item.firstEdit" col-2 text-right class="icon" (click)="changeToCard(item)">
+                <ion-icon ios="ios-close-circle" md="md-close-circle"></ion-icon>
+              </ion-col>
+            </ion-row>
+    
+            <customInput
+              label="Name"
+              [data]="item.familyDetails.member_name"
+              type="text"
+              [otherStatus]="isSubmited"
+            ></customInput>
+
+            <customInput
+              label="Gender"
+              [data]="item.familyDetails.gender"
+              type="select"
+              [options] = "genderOptions"
+              [otherStatus]="isSubmited"
+            ></customInput>
+
+            <customInput
+              label="Relation"
+              [data]="item.familyDetails.member_relation"
+              type="select"
+              [options] = "blood_group"
+              [otherStatus]="isSubmited"
+            ></customInput>
+    
+            <customInput
+              label="Occupation"
+              [data]="item.familyDetails.member_occupation"
+              type="text"
+              [otherStatus]="isSubmited"
+            ></customInput>
+    
+            <customInput
+              label="Date of birth (DD/MM/YYYY)"
+              [data]="item.familyDetails.member_dob"
+              type="date"
+              dateFormat = "DD/MMM/YYYY"
+              [otherStatus]="isSubmited"
+            ></customInput>
+    
+            <customInput
+              label="Contact number"
+              [data]="item.familyDetails.contact_number"
+              type="number"
+              [otherStatus]="isSubmited"
+            ></customInput>
+    
+            <div text-center class="btndiv">
+                <button ion-button class="btn" (click)="submit(item)">{{ item.firstEdit ? 'Save' : 'Update' }}</button>
+            </div>
+    
+        </div>
+        <div class="formDiv" *ngIf="item.layout == 'CARD'">
+            <ion-row class="cardHeader">
+                <ion-col col-8 text-left>
+                  <p class="heading">{{ item.familyDetails.member_relation.value }}</p>
+                </ion-col>
+                <ion-col *ngIf="formData && formData.form_status == 'enable'" col-2 text-right class="icon" (click)="editFamilyDetails(item)">
+                    <ion-icon name="ios-create-outline" class="iconcss"></ion-icon>
+                </ion-col>
+                <ion-col *ngIf="formData && formData.form_status == 'enable'" col-2 text-right class="icon" (click)="showConfirm(item)" >
+                    <ion-icon name="ios-trash-outline" class="iconcss"></ion-icon>
+                </ion-col>
+            </ion-row>
+           
+            <div class="customCardDiv">
+                <!-- <p class="para">Emergency Contact</p> -->
+                <ion-row class="bod_bot">
+                  
+                    <ion-col col-6> <p class="para2">Name</p></ion-col>
+                    <ion-col col-6><p class="para3">{{item.familyDetails.member_name.value}}</p></ion-col>
+                </ion-row>
+                <ion-row class="bod_bot">
+                  
+                    <ion-col col-6> <p class="para2">Gender</p></ion-col>
+                    <ion-col col-6><p class="para3">{{item.familyDetails.gender.value}}</p></ion-col>
+                </ion-row>
+                <ion-row class="bod_bot">
+                    <ion-col col-6> <p class="para2">Date of birth</p></ion-col>
+                    <ion-col col-6> <p class="para3">{{item.familyDetails.member_dob.value | date}}</p></ion-col>
+                </ion-row>
+                <ion-row class="bod_bot">
+                    <ion-col col-6><p class="para2">Occupation</p></ion-col>
+                    <ion-col col-6> <p class="para3">{{item.familyDetails.member_occupation.value}}</p></ion-col>
+                </ion-row>
+                <ion-row class="bod_bot">
+                    <ion-col col-6><p class="para2">Relationship</p></ion-col>
+                    <ion-col col-6> <p class="para3">{{item.familyDetails.member_relation.value}}</p></ion-col>
+                </ion-row>
+                <ion-row class="bod_bot">
+                  
+                  <ion-col col-6> <p class="para2">Contact Number</p></ion-col>
+                  <ion-col col-6><p class="para3">{{item.familyDetails.contact_number.value}}</p></ion-col>
+              </ion-row>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="formData && formData.form_status == 'enable'">
+      <div class="right" *ngIf="data && data.length>0 && data[data.length - 1].layout == 'CARD'" (click)="submit_all()">
+        <ion-row *ngIf="data[0].layout == 'CARD'">
+          <ion-col col-12 text-center>
+              <button ion-button icon-end round  small class="mybtn">
+                  Submit
+                </button>
+          </ion-col>
+          <!-- <ion-col col-2></ion-col>
+          <ion-col col-8> <p class="add">Add Emergency Contact  <ion-icon name="ios-add-circle-outline" class="iconcss"></ion-icon></p></ion-col>
+          <ion-col col-2>   <ion-icon name="ios-add-circle-outline" class="iconcss"></ion-icon></ion-col> -->
+        </ion-row>
+    </div>
+    </div>
+   
+ </div>
+
+    </div>
+</ion-content>

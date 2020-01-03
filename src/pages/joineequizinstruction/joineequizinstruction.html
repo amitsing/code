@@ -1,0 +1,105 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{allData?.quiz_title}}</ion-title>
+
+    <ion-buttons right *ngIf="succ==0" >
+        <button ion-button (click) = "goHome()">
+            <img class="home_icon" src="../../assets/icon/Home_icon.png" alt="">
+        </button>
+      </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+<div *ngIf="succ==1">
+
+
+
+<ion-row>
+  <ion-col col-12>
+    <img class="aboutEvalBg" srcset="{{allData?.quiz_image}}" src="assets/watermark/watermark.png">
+  </ion-col>
+</ion-row>
+
+<ion-card>
+    <ion-row>
+  <ion-col col-12>
+    <p class="inst">Instructions</p>
+  </ion-col>
+</ion-row>
+
+<ion-row>
+    <ion-col col-12>
+      <p [innerHTML]="allData?.instruction"></p>
+      <div class="btndiv"> 
+         <button ion-button  class="btn" (click)="start(allData?.reward_applicable)">Start</button>
+        </div>
+    </ion-col>
+  </ion-row>
+</ion-card>
+
+<ion-card>
+    <ion-row>
+  <ion-col col-12>
+    <!-- <img class="aboutEvalBg" srcset="{{quizimg}}" src="assets/watermark/watermark.png"> -->
+    <p class="inst">My Score</p>
+  </ion-col>
+</ion-row>
+
+<ion-row>
+    <ion-col col-6>
+  <ion-row>
+    <!-- <ion-col col-1></ion-col> -->
+    <ion-col col-10>
+      <p class="font">Total Questions</p>
+      <p class="font"> Questions Attempted</p>
+      <p class="font">Correct Answers</p>
+    </ion-col>
+    <ion-col col-2>
+        <p>{{reward_earned?.total_question}}</p>
+        <p> {{reward_earned?.total_attempted}}</p>
+        <p>{{reward_earned?.total_correct_answer}}</p>
+    </ion-col>
+  </ion-row>
+    </ion-col>
+    <ion-col col-6 class="paddtop">
+      <p *ngIf="allData?.reward_applicable=='1'" class="mrtop">My Points</p>
+        <div *ngIf="allData?.reward_applicable=='1'" class="progress-wrapper">
+              <circle-progress class="formCircle" [percent]="reward_earned?.total_percent" [radius]="40" [outerStrokeWidth]="6" 
+                        [showTitle]="false" [showSubtitle]="true" [title]="test" [subtitle]=reward_earned?.total_point
+                         [innerStrokeWidth]="3" [showUnits] = "false" subtitleFontSize = '12'
+                        [outerStrokeColor]="'#542e56'" [innerStrokeColor]="'#7b4b7d'" [animation]="true"
+                        [animationDuration]="300"></circle-progress>
+          </div>
+      </ion-col>
+  </ion-row>
+</ion-card>
+</div>
+
+
+    <div *ngIf="succ==0">
+        <div class="massage">
+            <h2 class="massage_heading">Congratulation!</h2>
+            <p class="massage_desc">You have Sucessfully completed the quiz</p>
+        </div>
+        <div class="sucess">
+            <ion-icon ios="ios-checkmark" md="md-checkmark" class="sucess_icon"></ion-icon>
+        </div>
+        <div class="points">
+          <p class="points_details">{{total_point}}</p>
+        </div>
+        <div class="result">
+          <div class="result_correct">
+            <img class="result_correct_image" src="../../assets/icon/bluetick.png" alt="">{{total_correct_answer}}</div>
+          <div class="result_incorrect">
+            <img class="result_incorrect_image" src="../../assets/icon/wrongIcon.png" alt=""> {{total_incorrect_ans}}</div>
+        </div>
+        <div class="action" (click)="gotohostory()">
+          <button ion-button round class="action_answers">See Answers</button>
+        </div>
+      </div>
+
+
+</ion-content>

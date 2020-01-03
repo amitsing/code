@@ -1,0 +1,35 @@
+page-album-details {
+// .set1{width:100%;max-height: 150px;object-fit: cover}
+.albumDiv{
+    position:relative;
+    .transparentLayer_black{
+        position: absolute;z-index: 1;top:0;bottom: 0;left:0;right:0;
+        background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.29), rgba(102, 102, 102, 0), rgba(60, 60, 60, 0.44), rgba(0, 0, 0, 0.52), #000);
+        
+    }
+    img{width:100%;object-fit: cover; height: 150px;}
+    .userName {
+        position: absolute;
+        z-index: 2;
+        bottom: 0px;
+        left: 0;
+        padding: 0 5px;color:#fff;
+        width: 100%;font-size:12px;
+       
+        .text{
+            @include line-clamp(4);float: right;
+        }
+    }
+}
+.postTitle{
+    color: #211f1f;
+    font-weight: bold;
+    text-align: center;
+    width: fit-content;
+    display: block;
+    margin: 10px auto;
+    padding: 5px 10px;
+    border-bottom: 1.2px solid #4d2848;
+}
+
+}

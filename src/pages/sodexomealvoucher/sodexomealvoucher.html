@@ -1,0 +1,102 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div [ngClass]="{'newOverlay':previousPageData && previousPageData.form_status != 'enable'}">
+  <div>
+    <img
+      class="imgcss"
+      srcset="{{previousPageData?.image}}"
+      src="../../assets/imgs/sodexo.png"
+    />
+    <!-- <p>
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.  
+    </p> -->
+  </div>
+  <div padding>
+    <ion-row>
+      <ion-col col-12 class="marginleft">
+        <!-- <p>
+     You will recieve sodexo meal voucher upto INR 2000/- every month
+    </p> -->
+        <p [innerHTML]="previousPageData?.description">
+          <!-- Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.   -->
+        </p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row
+      [ngClass]="{'fillBg' : (radiocheck == 1), 'notFill':(radiocheck != 1)}"
+    >
+      <ion-col col-1 class="centr">
+        <input
+          type="radio"
+          id="okValsupearth1"
+          value="1"
+          name="sodexo"
+          [(ngModel)]="sodexo"
+          (change)="getVal($event, sodexo)"
+        />
+      </ion-col>
+      <ion-col col-11>
+        <label
+          class="radio-inline title"
+          for="okValsupearth1"
+          style="margin-right:15px"
+          >I do not want to opt for sodexo</label
+        >
+      </ion-col>
+    </ion-row>
+
+    <ion-row
+      [ngClass]="{'fillBg' : (radiocheck == 0), 'notFill':(radiocheck != 0)}"
+    >
+      <ion-col col-1 class="centr">
+        <input
+          type="radio"
+          id="okValsupearth"
+          value="0"
+          name="sodexo"
+          [(ngModel)]="sodexo"
+          (change)="getVal($event, sodexo)"
+        />
+      </ion-col>
+      <ion-col col-11>
+        <label
+          class="radio-inline title"
+          for="okValsupearth"
+          style="margin-right:15px"
+          >I would like to opt for sodexo</label
+        >
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="radiocheck==0">
+      <ion-col col-12 class="centr">
+        <p>Your have opted for sodexo meal voucher worth Rs 2200 per month</p>
+      </ion-col>
+    </ion-row>
+  </div>
+  <br /><br />
+  <div
+    *ngIf="previousPageData && previousPageData.form_status == 'enable'"
+    class="centr"
+  >
+    <button ion-button round class="btn" *ngIf="radiocheck==undefined">
+      Submit
+    </button>
+    <button
+      ion-button
+      round
+      class="btn1"
+      *ngIf="radiocheck!=undefined"
+      (click)="sodexosubmit()"
+    >
+      Submit
+    </button>
+  </div>
+  </div>
+</ion-content>

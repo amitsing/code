@@ -1,0 +1,72 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Leadership Connect</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <!-- <div *ngIf="succ==1"> -->
+  <ion-row *ngFor="let data of leaderdata">
+<ion-col col-12 > 
+<!-- <div class="relativeDiv dropShadow" (click)="gotodetail(data)" >
+    <img *ngIf="data.media_type=='1'" class="imgcss" src="../../assets/watermark/watermark.png" srcset="{{data?.media}}">
+   
+    <img *ngIf="data.media_type=='2' || data.media_type=='3'" class="imgcss" style="border-radius: 18px;" src="../../assets/watermark/watermark.png" srcset="{{data?.thumbnail_image}}">
+
+    <div *ngIf="data.media_type=='3'">
+        <iframe  width="100%" height="150px;"
+        [src]="data?.media+'?autoplay=0'|safe" autostart="0"
+        allowfullscreen frameborder="0" scrolling="no"></iframe>
+    </div>
+      
+    <div class="absoluteDiv">
+        <p style="margin-bottom: 0px;">{{data?.publish_date}}</p>
+        <p style="margin-top: 0px;">{{data?.leader_name}}</p>
+      </div>
+</div> -->
+<!-- <div *ngIf="data?.description?.length<150" [innerHTML]="data?.description" class="postContent" (click)="seeDetails(data,i)"></div>
+<div *ngIf="data?.description?.length>=150"[innerHTML]="data?.description?.substring(0, 150)+'<b> ...Read more </b>'" class="postContent" (click)="seeDetails(data,i)"></div> -->
+
+
+<div style="position: relative;">
+ <div class="gradientLayer" (click)="gotodetail(data)">
+   <div style="position: absolute;width:95%;bottom:5px;
+   left: 10px;">
+
+   <p style="    margin-bottom: 4px;
+   font-size: 16px;color:#fff;
+   font-weight: 600;" [innerHTML]="data?.title"></p>
+
+   <p style="margin-top: 0px;font-size: 15px;color:#fff;">{{data?.leader_name}}</p>
+
+ </div>
+ </div>
+
+ <img *ngIf="data.media_type=='1'" class="imgcss" onError="this.src='../../assets/watermark/watermark.png';" [src]="data?.media" >
+ 
+ <img *ngIf="data.media_type=='2'" class="imgcss"  onError="this.src='../../assets/watermark/watermark.png';" [src]="data?.thumbnail_image">
+
+<!-- 
+ <img *ngIf="data.media_type=='1'" class="imgcss" onError="this.src='../../assets/watermark/watermark.png';" [src]="data?.media"   
+ [style.background-image]="'url(' +data?.media+ ')'">
+ 
+ <img *ngIf="data.media_type=='2'" class="imgcss"  onError="this.src='../../assets/watermark/watermark.png';" [src]="data?.thumbnail_image"  
+  [style.background-image]="'url(' +data?.thumbnail_image+ ')'"> -->
+  
+ <iframe *ngIf="data.media_type=='3'"  width="100%" style="    min-height: 200px;"
+     [src]="data?.media+'?autoplay=0'|safe" autostart="0"
+     allowfullscreen frameborder="0" scrolling="no" style="z-index:1 !important;"></iframe>
+
+    </div>
+
+    </ion-col>
+  </ion-row>
+<!-- </div> -->
+
+  <ion-infinite-scroll *ngIf="hideInfiniteScroll==false && leaderdata" (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+
+</ion-content>

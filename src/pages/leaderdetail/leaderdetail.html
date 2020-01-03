@@ -1,0 +1,35 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <br><br> <br> <br>
+<div class="divborder">
+  <br> <br> <br> <br><br> <br> <br>
+  <p class="paracss2">{{name}}</p>
+  <p class="paracss1">{{designation}}</p>
+  <hr style="background-color: red;">
+  <ion-row>
+    <ion-col>
+      <div [innerHTML]="about"> </div>
+    </ion-col>
+  </ion-row>
+  <!-- <ion-row *ngFor="let Data of leaderdata let i=index">
+    <ion-col col-12>
+
+        <section>    
+            <ul class="my-nav">
+              <li>{{Data.details}}</li>
+            
+            </ul>
+          </section>
+    </ion-col>
+  </ion-row> -->
+</div>
+<div class="absolutecss">
+    <img  class="img"  margin-top margin-bottom src="{{userimage}}">
+</div>
+</ion-content>

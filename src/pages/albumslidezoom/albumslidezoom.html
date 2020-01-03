@@ -1,0 +1,21 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+
+  <div *ngIf="albumdata?.length>=1" class="slideDiv">
+    <ion-row>
+      <ion-slides #countryHeadDataSlides speed="500" class="asstest" [initialSlide]="index" spaceBetween="10"  slidesPerView="1" (ionSlideDidChange)="slideChanged()">
+        <ion-slide *ngFor="let data of albumdata" style="height:350px;" class="relativeDiv" (click)="presentImage(myImage)">
+        
+          <img class="imgcss" src="{{data?.image}}"  #myImage    onerror='this.src="../../assets/watermark/watermark.png"' > 
+          <p  class="img_caption">{{data?.title}}</p>
+          <p  style="text-align: right;font-size:13px">{{index+1}}/{{albumdata.length}}</p>
+        </ion-slide>
+      </ion-slides>
+    </ion-row><br>
+  </div>
+</ion-content>

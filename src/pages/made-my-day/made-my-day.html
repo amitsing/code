@@ -1,0 +1,71 @@
+<ion-header>
+    <ion-navbar><ion-title>Made My Day</ion-title></ion-navbar>
+  </ion-header>
+
+  
+
+  
+  <ion-content>
+    <div *ngIf="!topImage"><team-awesome></team-awesome></div>
+    
+    <div *ngIf="topImage">
+      <ion-row>
+        <ion-col *ngFor="let data of topImage">
+          <img src="../../assets/watermark/watermark.png" srcset="{{data?.image}}">
+        </ion-col>
+      </ion-row><br>
+    
+      <ion-row>
+        <ion-card class="visibleOverflow">
+          <ion-row *ngFor="let data of awardHead">
+            <ion-col col-12 margin-bottom>
+              <div class="topHeading">
+                <img src="../../assets/watermark/watermark.png" srcset="{{data?.image}}"><p>{{data.points}}<br>Points</p><h2>{{data.title}}</h2>
+              </div>
+            </ion-col>
+            <ion-col col-12>
+              <p class="headerTextColor">{{data.discription}}</p>
+            </ion-col>
+            <ion-col col-12 text-center>
+              <circle-progress
+                [percent]="55"
+                [radius]="50"
+                [outerStrokeWidth]="6"
+                [showTitle]=true
+                [showSubtitle]=false
+                [innerStrokeWidth]="3"
+                [outerStrokeColor]="'#542e56'"
+                [innerStrokeColor]="'#7b4b7d'"
+                [animation]="true"
+                [animationDuration]="300"
+              ></circle-progress>
+            </ion-col>
+            <ion-col col-12 text-center><p>Individual Awards</p></ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-row><br>
+    
+      <ion-row>
+        <ion-card class="padd8">
+          <h2><b>People Rewarded Recently</b></h2><p>12 People have been awarded in last 6 days</p><br>
+          <ion-slides speed="500" spaceBetween="10" slidesPerView="2.5">
+            <ion-slide *ngFor="let data of peopleRewarded">
+              <div class="silverRela" margin-bottom>
+                <img class="padd5 dashedborder" src="../../assets/watermark/watermark.png" srcset="{{data?.image}}">
+                <img class="silverAbso" src="../../assets/watermark/watermark.png" srcset="{{data?.absimg}}">
+              </div>
+              <div text-left>
+                <h4><b>{{data.title}}</b></h4><p class="font12">{{data.subtitle}}</p>
+              </div>
+            </ion-slide>
+          </ion-slides>
+        </ion-card>
+      </ion-row><br>
+    
+      <ion-row>
+        <ion-col no-padding><button ion-button full class="bgRed">Nominate Now</button></ion-col>
+      </ion-row>
+    </div>
+  
+  </ion-content>
+  

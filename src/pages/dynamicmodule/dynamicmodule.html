@@ -1,0 +1,175 @@
+<!--
+  Generated template for the DynamicmodulePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="themecol">
+    <ion-title [innerHTML]="pageTitle"></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+<div *ngIf="allData">
+    <ion-row *ngFor="let responseData of allData">
+        <ion-col col-12>
+            <div class="title" [innerHTML]="responseData?.title" (click)="handleClick($event)"></div>
+        </ion-col>
+      
+        <ion-col col-12>
+            <div *ngIf="responseData?.media_type==1" [style.background-image]="'url(' +responseData?.media+ ')'" class="fullImageBg">
+                <img [src]="responseData?.media" class="image_posted" #myImage1 (tap)="pp(myImage1)"/>  
+            </div> 
+            <div *ngIf="responseData?.media_type==2">
+                <video width="100%"  controls [poster]="responseData?.thumbnail_image" 
+                controls  controlsList="nodownload" preload>
+                    <source [src]="responseData?.media" type="video/mp4">
+                    <source [src]="responseData?.media" type="video/ogg">
+                  </video>
+            </div> 
+            <div *ngIf="responseData?.media_type==3 ">
+                <iframe allowfullscreen style="width: 100%;" [src]= "responseData?.media|safe"></iframe>
+            </div> 
+        </ion-col>
+        <ion-col col-12>
+            <div [innerHTML]="responseData?.content" (click)="handleClick($event)"></div>
+          </ion-col>    
+      </ion-row>
+</div>
+
+  <!-- <div>
+    <ion-row >
+      <ion-col col-3>
+        <img src="{{responseData?.userImage}}" class="userRoundImage" #myImage (tap)="pp(myImage)" onError="this.src='assets/img/default.png'">
+      </ion-col>
+      <ion-col>
+        <div class="userName" style="margin-top: 10px;">{{responseData?.user_name}}</div>
+        <div class="datefont">{{createdDate}}</div>
+      </ion-col>
+    </ion-row>
+  
+    <ion-row>
+        <ion-col col-12>
+            <div style="font-weight: 600;text-transform: capitalize;" class="justForBold">{{responseData?.post_title}}</div>
+          </ion-col>
+      <ion-col col-12>
+  
+        <div *ngIf="responseData?.media_type==1">
+            <img [src]="responseData?.media" class="image_posted" #myImage1 (tap)="pp(myImage1)"/>  
+        </div> 
+        <div *ngIf="responseData?.media_type==2">
+            <video width="100%" height="240" controls [poster]="responseData?.thumbnail_image" 
+            controls  controlsList="nodownload" preload>
+                <source [src]="responseData?.media" type="video/mp4">
+                <source [src]="responseData?.media" type="video/ogg">
+              </video>
+        </div> 
+        <div *ngIf="responseData?.media_type==3 ">
+            <iframe allowfullscreen style="min-height:250px; width: 100%;" [src]= "responseData?.media|safe"></iframe>
+        </div> 
+  </ion-col>
+  
+  <ion-col col-12>
+    <div [innerHTML]="responseData?.post_content"></div>
+  </ion-col>
+  
+  
+    </ion-row>
+  </div> -->
+  
+  
+  
+  <!-- <ion-row>
+      <ion-col class="rightIt">
+        
+        <span class="commentLiterals" *ngIf="responseData?.likeSetting=='LIKE_YES'" (tap)="goToLikePage()">
+          {{likeNumbers}}
+          <ion-icon class="likeCommentColor" name="thumbs-up"></ion-icon>
+        </span>
+  
+        <span class="commentLiterals" *ngIf="responseData?.comment=='COMMENT_YES'">
+          {{commentNumbers}}
+          <ion-icon class="likeCommentColor" name="text"></ion-icon>
+        </span>
+  
+      </ion-col>
+    </ion-row> -->
+  
+  
+     <!-- Do Like and Comment Click -->
+     <!-- <ion-row>
+  
+        <ion-col col-3 *ngIf="responseData?.likeSetting=='LIKE_YES'" (tap)="getLike()">
+            <ion-icon class="likeCommentColor" name="thumbs-up"></ion-icon>
+            <span class="commentLiterals">
+              Like
+            </span>
+        </ion-col>
+  
+        <ion-col col-4 *ngIf="responseData?.comment=='COMMENT_YES'" (tap)="displayCommentBox()">
+            <ion-icon class="likeCommentColor" name="text"></ion-icon>
+            <span class="commentLiterals">
+              Comment
+            </span>
+        </ion-col>
+      </ion-row> -->
+  
+  <!-- <div *ngIf="commentsData">
+      <div *ngFor="let comment of commentsData">
+          <ion-row>
+            <ion-col col-2>
+              <img class="commentUserImages" *ngIf="comment?.userImage!=''" src="{{comment.userImage || ImageTextBaseURL+makeMeLower(comment.name[0])+'.jpg'}}"  #myImage (tap)="pp(myImage)">
+              <img class="commentUserImages" *ngIf="comment?.userImage==''" src="{{ImageTextBaseURL+makeMeLower(comment.name[0])+'.jpg'}}"  #myImage (tap)="pp(myImage)">
+            </ion-col>
+  
+            <ion-col col-10 class="commentCssFix">
+              <ion-row>
+                <ion-col col-6 style="padding-bottom:0px">
+                    <span class="userNameComment">{{comment.firstname}} {{comment.lastname}} {{comment.name}}</span>
+                </ion-col>
+                <ion-col col-6 style="padding-bottom:0px">
+                    <span class="commentDate">{{comment.cdate}} {{comment.commentDate}}</span>
+                </ion-col>
+  
+                <ion-row>
+                  <ion-col class="commentCssClass">
+                    <div *ngIf="comment?.comment!=''" class="commentCss" [innerHTML]="comment?.comment"></div>
+                  </ion-col>
+                </ion-row>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+          <hr class="lineColor">
+        </div>
+  </div> -->
+  
+  
+          <!-- COMMENT BOX -->
+          <!-- <div *ngIf="displayBox==true" ion-fixed style="width:100%;bottom: 0px;">
+              <ion-row class="rowCommentCss">
+                <ion-col class="commentBoxTheme">
+                 
+                      <textarea placeholder="Write your comment..." #myInput id="myInput"
+                          name="mycomment"  [(ngModel)]="mycomment" (ngModelChange)="detectWhiteSpace($event,mycomment)"    rows="2"></textarea>
+                 
+                </ion-col>
+          
+                <ion-col col-2  *ngIf=" mycomment.trim()!= ''" (tap)="sendComment(mycomment)"style="display: block;margin:auto">
+                  <div class="sendButtonColCss">
+                    <ion-icon class="sendButtonCss"name="send"></ion-icon>
+                  </div>  
+                  
+                </ion-col>
+              </ion-row>
+            </div> -->
+
+
+
+
+
+</ion-content>

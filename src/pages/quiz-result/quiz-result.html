@@ -1,0 +1,141 @@
+<!--
+  Generated template for the QuizResultPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-title>Result</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
+    <!-- *ngIf="allData" -->
+  <div *ngIf="quizResult">
+    <ion-card>
+        <ion-card-content>
+    
+<ion-row>
+    <ion-col col-12 class="centerData">
+      <!-- <p class="scoreText" >Your score is : {{quizResult?.userscore}}</p> -->
+      <div class="relativeDIV">
+        
+      <circle-progress
+                [percent]="percentage"
+                [radius]="70"
+                [outerStrokeWidth]="6"            
+                [showTitle]=true
+                [showSubtitle]=false
+                [innerStrokeWidth]="3"
+                [outerStrokeColor]="'#542e56'"
+                [innerStrokeColor]="'#7b4b7d'"
+                [animation]="true"
+                [animationDuration]="300"
+                [subtitle]='Percent' 
+              ></circle-progress>
+
+
+      <!-- <p class="scoreText numScore"  > {{quizResult?.userscore}}/ {{quizResult?.quizquestion}} </p> -->
+    </div>
+      <p class="scoreText" >Score</p>
+    </ion-col>
+  </ion-row>
+  
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-card-content>
+            <div class="redBg">
+            <ion-row>
+                <ion-col col-2 class="centerData2 centerData">1.  </ion-col>
+                <ion-col col-8 class="centerData2">Total Questions- </ion-col>
+                <ion-col col-2 class="centerData2 centerData">{{alldata?.total}} </ion-col>
+            </ion-row>
+          </div>
+          <div class="blueBg">
+          <ion-row>
+              <ion-col col-2 class="centerData2 centerData">2.  </ion-col>
+              <ion-col col-8 class="centerData2">Wrong- </ion-col>
+              <ion-col col-2 class="centerData2 centerData">{{alldata?.wrong}} </ion-col>
+          </ion-row>
+        </div>
+        <div class="greenBg">
+           <ion-row>
+            <ion-col col-2 class="centerData2 centerData">3.  </ion-col>
+            <ion-col col-8 class="centerData2">Correct- </ion-col>
+            <ion-col col-2 class="centerData2 centerData">{{alldata?.right}} </ion-col>
+           </ion-row>
+         </div>
+
+         <br>
+         <br>
+
+      </ion-card-content>
+    </ion-card>
+     <button ion-button *ngIf="alldata?.passingStatus=='1'"  class="btn" (click)="go()">Done</button>
+     <button ion-button *ngIf="alldata?.passingStatus=='0'" class="btn" (click)="go()">Retake Quiz</button>
+    <!-- <button ion-button *ngIf="quizResult?.quiz_clear==1" class="btn" (click)="retakeQuiz('1')">Done</button>
+    <button ion-button *ngIf="quizResult?.quiz_clear!=1" class="btn" (click)="retakeQuiz('2')">Retake Quiz</button> -->
+  </div>
+
+
+
+
+
+  <div *ngIf="!quizResult">
+      <ion-card>
+          <ion-card-content>
+      
+  <ion-row>
+      <ion-col col-12 class="centerData">
+        <p class="scoreText skeltonText" >Your score is : {{quizResult?.userscore}}</p>
+        <div class="relativeDIV">
+          <div class="circleDIV"></div>
+
+  
+        <p class="scoreText numScore skeltonText"  > {{22}}/ {{50}} </p>
+      </div>
+        <p class="scoreText skeltonText" >Score</p>
+      </ion-col>
+    </ion-row>
+    
+    
+        </ion-card-content>
+      </ion-card>
+      <ion-card>
+          <ion-card-content>
+              <div class="grayBg skeltonText">
+              <ion-row>
+                  <ion-col col-2 class="centerData2 centerData">1.  </ion-col>
+                  <ion-col col-8 class="centerData2">Total Questions- </ion-col>
+                  <ion-col col-2 class="centerData2 centerData">{{quizResult?.quizquestion}} </ion-col>
+              </ion-row>
+            </div>
+            <div class="grayBg skeltonText">
+            <ion-row>
+                <ion-col col-2 class="centerData2 centerData">2.  </ion-col>
+                <ion-col col-8 class="centerData2">Wrong- </ion-col>
+                <ion-col col-2 class="centerData2 centerData">{{quizResult?.wrongAns}} </ion-col>
+            </ion-row>
+          </div>
+          <div class="grayBg skeltonText  ">
+             <ion-row>
+              <ion-col col-2 class="centerData2 centerData">3.  </ion-col>
+              <ion-col col-8 class="centerData2">Correct- </ion-col>
+              <ion-col col-2 class="centerData2 centerData">{{quizResult?.userscore}} </ion-col>
+             </ion-row>
+           </div> 
+  
+            <br>
+           <br>
+  
+         </ion-card-content>
+      </ion-card>
+      
+      <button ion-button class="btnSkelton skeltonText" >Quiz result</button>
+    </div>
+  
+
+
+</ion-content>

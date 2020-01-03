@@ -1,0 +1,94 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ceoMessage.title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content style="background:url('assets/imgs/bg/ceoBG.png');background-size:cover;">
+
+  <div *ngIf="ceoMessage" >
+  <ion-row>
+
+    <ion-col col-12 no-padding> 
+        <div text-center *ngIf="ceoMessage?.media_type==1">
+            <img [src]="ceoMessage.media" class="ceoBanner" imageViewer/>
+        </div>
+      <div *ngIf="ceoMessage?.media_type==2">   
+        
+          <video width="100%" height="180px"   preload="auto" controls muted currentTime poster="{{ceoMessage?.thumnail_image}}">
+              <source [src]="ceoMessage?.media|safe" >
+          </video>  
+          <!-- <iframe width="100%" height="250" [src]="ceoMessage?.media|safe" class="ceoVideo" frameborder="0"></iframe> -->
+      </div>
+
+      <div  *ngIf="ceoMessage?.media_type==3"> 
+        <iframe  width="100%" style="height:180px;"
+        [src]="ceoMessage?.media+'?autoplay=0'|safe" autostart="0"
+        allowfullscreen frameborder="0" scrolling="no"></iframe>
+     </div>
+         
+     <!-- <div *ngIf="mediatype=='2'">
+         <video [src]="pramotedimage|safe" height="180px"  width="100%"  poster="{{thumbnail_image}}" controls controlsList="nodownload" type="video/*">
+         </video>
+     
+      </div> -->
+
+
+
+    </ion-col>
+  </ion-row>
+  <!-- <ion-row class="rowimage">
+    <ion-col col-3>
+        <img srcset="{{ceoMessage?.ceoImage}}" class="ceoImage" src="../../assets/watermark/watermark.png" >
+
+    </ion-col>
+    <ion-col col-9>
+      <h5 style="margin-top: 0px;">{{ceoMessage.ceoName}}</h5>
+      <p style="margin-top: 0px;">{{ceoMessage.ceoDesignation}}<br></p>
+    </ion-col>
+  </ion-row> -->
+  <ion-row style="margin-bottom: 24px;">
+    <ion-col col-12>
+      <h4 no-margin>{{ceoMessage.title}}</h4>
+    </ion-col>
+      <ion-col padding-horizontal col-12 text-left>
+          <p [innerHTML]="ceoMessage.message" (click)="handleClick($event)"></p>
+       </ion-col>
+    
+     
+  </ion-row>
+ 
+      <!-- <div class="abslink"><button ion-button text-capitalize class="btnnn" (click)="learningList()">Continue</button></div> -->
+   
+</div>
+<div *ngIf="!ceoMessage" >
+
+    <ion-row padding text-center>
+      <ion-col col-12><div class="imageSkelton"></div></ion-col>
+     
+          <ion-col col-3>
+              <div class="ceoImageSkelton"></div>
+          </ion-col>
+          <ion-col col-9>
+              <h1 class="nameSkelton"></h1>
+              <p class="messageSkelton messageShortSkelton"></p>
+          </ion-col>
+
+      <ion-col col-12>
+        <h1 class="nameSkelton"></h1>
+        <p class="messageSkelton"></p>
+        <p class="messageSkelton"></p>
+        <p class="messageSkelton"></p>
+        <p class="messageSkelton"></p>
+        <p class="messageSkelton"></p>
+        <p class="messageSkelton"></p>
+        <p class="messageSkelton messageShortSkelton"></p>
+      </ion-col>
+      <ion-col col-12>
+        <div class=" messageSkelton btnSkelton"></div>
+      </ion-col>
+    </ion-row> 
+  </div>
+
+</ion-content>

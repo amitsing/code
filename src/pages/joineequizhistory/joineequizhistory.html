@@ -1,0 +1,72 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Quiz History</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+    <div *ngIf="success!=0">
+
+    <ion-slides #slides speed="500" shouldLockSwipes=true; class="asstest" spaceBetween="10" slidesPerView="1"  (ionSlideDidChange)="slideChanged()">
+
+        <ion-slide *ngFor="let attendant of quizdata;let j=index" style="overflow-y:scroll;">
+     
+     
+          <ion-row><ion-col col-6></ion-col><ion-col col-6><p style="margin: 0px;
+            font-size: 15px;    text-align: end;
+            ">Question {{attendant?.serial_number}} out of {{quizdata.length}}</p></ion-col></ion-row> 
+
+
+
+          <ion-row>
+            <ion-col col-12>
+              <!-- <h6 margin-top >{{attendant.question}}</h6> -->
+
+              <ion-card style="width:100%;">
+                  <div class="marg">
+                      <h6 margin-top >{{attendant.question}}</h6>
+                  </div>
+                   
+                </ion-card> 
+
+
+            </ion-col>
+            <!-- <ion-col  col-12><img  (click)="zoomImage(attendant?.file,attendant.question)" class="imgclass"  margin-top margin-bottom src="{{attendant?.question_image}}"></ion-col> -->
+            <ion-col col-12 no-padding>
+              <ion-row>
+              <ion-col *ngFor="let answer of attendant?.option let i = index" 
+               class="options" col-6  >
+              <div [ngClass]="{'stylecolorgrey':(attendant.user_ans!=answer.option_id && attendant.right_ans_id!=answer.option_id),
+              'stylecolorred':(attendant.user_ans==answer.option_id),'stylecolorgreen':(attendant.right_ans_id==answer.option_id)}">
+              <ion-label style="white-space: normal;">{{answer?.options}}</ion-label> 
+               </div>
+    
+              </ion-col>
+            </ion-row>
+            </ion-col>
+          </ion-row>
+          <div > <br><br> <br><br>
+              <button ion-button round class="btn" *ngIf="currentIndex==false" (click)="nextslide(j)">Next</button>
+              <!-- <button ion-button round class="btn3" *ngIf="showsubmit==true || totallength==1" (click)="submit(j)">Submit</button> -->
+              <button ion-button round class="btn" *ngIf="currentIndex==true" (click)="done()">Done</button>
+           
+            </div>
+          <br><br>
+    
+             
+        </ion-slide>
+      </ion-slides>
+    </div>
+      <div *ngIf="success==0">
+          <br><br><br><br>
+      <p style="font-size:20px;font-weight: bold;text-align:center"> 
+                 {{msg}}
+      </p>
+      
+        </div>
+
+
+
+</ion-content>

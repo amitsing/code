@@ -1,0 +1,102 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{previousePageData?.form_name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <div *ngIf="previousePageData?.form_group_status=='submit' || previousePageData?.form_group_status=='complete'">
+    <!-- <ion-row>
+      <ion-col>
+        <img
+          src="{{userImage}}"
+          #myImage
+          (click)="zoomImage(myImage)"
+          onerror="this.src='../../assets/watermark/watermark.png'"
+          class="userPreviouseImage"
+        />
+
+        <div style="text-align: center;" (click)="gotosamplepassport()">
+          <br />
+          <button ion-button class="btn_change" round>Edit</button>
+        </div>
+      </ion-col>
+    </ion-row> -->
+    <ion-row class="mrleft">
+      <ion-col col-5>
+        <h1 class="mrbottom">You look</h1>
+        <h1 class="mrtop">Fabulous!</h1>
+      </ion-col>
+      <ion-col col-auto> </ion-col>
+    </ion-row>
+
+    <ion-row margin-bottom>
+      <ion-col>
+        <div class="relativeDiv">
+          <img src="assets/imgs/youlookfabolous.png" />
+          <div class="absoluteDiv uploadimage">
+            <div class="imageDiv">
+              <!-- <img  src="assets/imgs/instruction.png"/> -->
+
+              <img
+                src="{{userImage}}"
+                #myImage
+                (click)="zoomImage(myImage)"
+                onerror="this.src='../../assets/watermark/watermark.png'"
+              />
+              <!-- <div class="uploadIcon" (click)="addimage()">
+              <img src="assets/imgs/uploadImg.png">
+
+            </div> -->
+            </div>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="previousePageData && previousePageData.form_status == 'enable'">
+      <ion-col>
+        <div style="text-align: center;" (click)="gotosamplepassport()">
+          <button ion-button class="btn_change" round>Edit</button>
+        </div></ion-col
+      >
+    </ion-row>
+  </div>
+
+  <div *ngIf="previousePageData?.form_group_status!='submit' && previousePageData?.form_group_status!='complete'">
+    <ion-row>
+      <ion-col col-1>
+        <ion-icon class="iconcss" ios="ios-star" md="md-star"></ion-icon>
+      </ion-col>
+      <ion-col col-11>
+        <p>Please take a picture of your passport size photo and upload</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12>
+        <img src="assets/imgs/instruction.png" />
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-1 class="padding0">
+        <ion-icon class="iconcss" ios="ios-star" md="md-star"></ion-icon>
+      </ion-col>
+      <ion-col col-11 class="padding0">
+        <p>
+          Please upload a professional picture, as this will be used in all
+          official documents such as ID Card , PF Forms etc.
+        </p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-1 class="padding0">
+        <ion-icon class="iconcss" ios="ios-star" md="md-star"></ion-icon>
+      </ion-col>
+      <ion-col col-11 class="padding0">
+        <p>Picture must be on a white background</p>
+      </ion-col>
+    </ion-row>
+    <div style="text-align: center;" (click)="gotosamplepassport()">
+      <br />
+      <button ion-button class="btn" round>Next</button>
+    </div>
+  </div>
+</ion-content>

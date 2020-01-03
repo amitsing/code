@@ -1,0 +1,580 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ formData.form_name }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="commonFormDiv">
+    <div [ngClass]="{'newOverlay':formData.form_status != 'enable'}"> 
+  <div class="WebFormDiv" *ngIf="data">
+    <div class="newCardDiv">
+      <div class="newHeading"><h4 no-margin>Composite Declaration Form 11</h4></div>
+      <div class="customCardDiv">
+        <ion-row><ion-col col-12><div class="headingDiv"><h4 no-margin>Basic Details</h4></div></ion-col></ion-row>
+        <ion-row>
+          <ion-col col-12>
+              <customInput
+                label="Name of the Member"
+                [data]="data.personal_info.first_name"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+              <customInput
+                label="Choose Relationship"
+                [data]="data.personal_info.relationship_selected"
+                type="radio"
+                [options] = "relationshipStatus"
+                [otherStatus]="isSubmited && data.personal_info.relationShipStatus()"
+              ></customInput>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="data.personal_info.relationship_selected.value == '1'">
+          <ion-col col-12>
+              <customInput 
+                label="Father's Name"
+                [data]="data.personal_info.father_name"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="data.personal_info.relationship_selected.value == '2'">
+          <ion-col col-12>
+              <customInput 
+                label="Spouse's Name"
+                [data]="data.personal_info.spouse_name"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+              <customInput 
+                label="Date of Birth"
+                [data]="data.personal_info.date_of_birth"
+                type="date"
+                dateFormat = "DD/MMM/YYYY"
+                [otherStatus]="isSubmited"
+             ></customInput>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+              <customInput 
+                label="Gender"
+                [data]="data.personal_info.gender"
+                type="radio"
+                [options] = "genderOptions"
+                [otherStatus]="isSubmited"
+              ></customInput>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+              <customInput 
+                label="Martial Status"
+                [data]="data.personal_info.marital_status"
+                type="select"
+                [options] = "martialOptions"
+                [otherStatus]="isSubmited"
+              ></customInput>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+              <customInput 
+                label="E-mail Id"
+                [data]="data.personal_info.email_id"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+              <customInput 
+                label="Mobile No."
+                [data]="data.personal_info.contact_no"
+                type="number"
+                [otherStatus]="isSubmited"
+              ></customInput>
+          </ion-col>
+        </ion-row>
+      </div>
+    </div>
+
+
+    <div class="newCardDiv">
+      <div class="newHeading"><h4 no-margin>Present Employment Detail</h4><small>(Date of Joining in the Current Establishment)</small></div>
+      <div class="customCardDiv">
+        <ion-row>
+          <ion-col col-12>
+              <customInput 
+                label="Date of Joining"
+                [data]="data.personal_info.date_of_joining"
+                type="date"
+                dateFormat = "DD/MMM/YYYY"
+                [otherStatus]="isSubmited"
+              ></customInput>
+          </ion-col>
+        </ion-row>
+      </div>
+    </div>
+
+    <div class=" newCardDiv">
+        <div class="newHeading"><h4 no-margin>Experience Details</h4></div>
+        <div class="customCardDiv">
+          <ion-row><ion-col col-12><div class="headingDiv">
+              <h4 no-margin>Are you a fresher or do you have prior experience?</h4>
+          </div></ion-col></ion-row>
+          <ion-row>
+            <ion-col col-12>
+                <ion-label>
+                    Select
+                    <sup class="mendatFild">*</sup>
+                </ion-label>
+            </ion-col>
+            <ion-col col-12>
+                <ion-list radio-group [(ngModel)]="data.kyc_info.is_fresher" >
+                    <ion-row class="radioNewDiv" >
+                        <ion-col  col-6>
+                            <ion-item text-center>
+                                <ion-label>Fresher</ion-label>
+                                <ion-radio [value]="true"></ion-radio>
+                            </ion-item>
+                        </ion-col>
+                        <ion-col  col-6>
+                            <ion-item text-center>
+                                <ion-label>Experience</ion-label>
+                                <ion-radio [value]="false"></ion-radio>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
+                </ion-list>
+            </ion-col>
+          </ion-row>
+        </div>
+    </div>
+
+    <div class="newCardDiv" *ngIf="!data.kyc_info.is_fresher">
+      <div class="newHeading"><h4 no-margin>KYC Details</h4></div>
+      <div class="customCardDiv">
+        <ion-row>
+          <ion-col col-12>
+              <customInput 
+                label="Bank Name"
+                [data]="data.kyc_info.bank_name"
+                type="text"
+                [otherStatus]="isSubmited && !data.kyc_info.is_fresher"
+              ></customInput>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+              <customInput 
+                label="Bank Account No."
+                [data]="data.kyc_info.bank_account"
+                type="text"
+                [otherStatus]="isSubmited && !data.kyc_info.is_fresher"
+              ></customInput>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+              <customInput 
+                label="IFSC Code"
+                [data]="data.kyc_info.bank_ifs"
+                type="text"
+                [otherStatus]="isSubmited && !data.kyc_info.is_fresher"
+              ></customInput>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+              <customInput 
+                label="Aadhar Number"
+                [data]="data.personal_info.aadhar"
+                type="number"
+                [otherStatus]="isSubmited && !data.kyc_info.is_fresher"
+              ></customInput>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+              <customInput 
+                label="Permanent Account Number(PAN)"
+                [data]="data.personal_info.pan_number"
+                type="text"
+                [otherStatus]="isSubmited && !data.kyc_info.is_fresher"
+              ></customInput>
+          </ion-col>
+        </ion-row>
+      </div>
+    </div>
+
+
+    <div class="newCardDiv">
+      <div class="newHeading"><h4 no-margin>Past Pension Enrollment</h4></div>
+      <div class="customCardDiv">
+        <ion-row><ion-col col-12><div class="headingDiv">
+          <h4 no-margin>Whether earlier a member of Employees' Provident Fund Scheme, 1952</h4>
+        </div></ion-col></ion-row>
+        <customInput 
+          label="select"
+          [data]="data.pension_info.mem_of_provident"
+          type="radio"
+          [options] = "yesNoOption"
+          [otherStatus]="isSubmited"
+        ></customInput>
+      </div>
+    </div>
+
+
+    <div class="newCardDiv" *ngIf="data.pension_info.mem_of_provident.value == 'true'">
+      <div class="newHeading"><h4 no-margin>Member of Employees' Pension Scheme</h4></div>
+      <div class="customCardDiv">
+        <ion-row><ion-col col-12><div class="headingDiv">
+          <h4 no-margin>Whether earlier a Member of Employees' Pension Scheme, 1995</h4>
+        </div></ion-col></ion-row>
+        <ion-row>
+          <ion-col col-12>
+              <customInput 
+              label="select"
+              [data]="data.pension_info.mem_of_pension"
+              type="radio"
+              [options] = "yesNoOption"
+              [otherStatus]="isSubmited && data.pension_info.mem_of_provident.value == 'true'"
+            ></customInput>
+
+          </ion-col>
+        </ion-row>
+      </div>
+    </div>
+
+    <div class="newCardDiv" *ngIf="data.pension_info.mem_of_provident.value == 'true'">
+        <div class="newHeading"><h4 no-margin>Previous Employment Details</h4></div>
+        <div class="customCardDiv">
+          <ion-row><ion-col col-12><div class="headingDiv">
+            <h4 no-margin>Please select previous employment details:</h4>
+          </div></ion-col></ion-row>
+          <ion-row>
+            <ion-col col-12>
+                <customInput 
+                label="select"
+                [data]="data.pension_info.is_exempted_member"
+                type="radio"
+                [options] = "employeementOptions"
+                [otherStatus]="isSubmited && data.pension_info.mem_of_provident.value == 'true'"
+              ></customInput>
+  
+            </ion-col>
+          </ion-row>
+        </div>
+    </div>
+
+
+    <div class="newCardDiv" *ngIf="data.pension_info.mem_of_provident.value == 'true' && data.pension_info.is_exempted_member.value == 'false'">
+      <div class="newHeading"><h4 no-margin>Previous Employment Details</h4><small>(Un-Exempted)</small></div>
+      <div class="customCardDiv">
+        <ion-row>
+          <ion-col col-12>
+              <customInput 
+                label="Establishment Name"
+                [data]="data.pension_info.establishment_name"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+              <customInput 
+                label="Establishment Address"
+                [data]="data.pension_info.establishment_address"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+              <customInput 
+                label="Universal Account Number"
+                [data]="data.pension_info.past_uan"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+              <customInput 
+                label="Permanent Account Number(PAN)"
+                [data]="data.personal_info.pan_number"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+              <customInput 
+                label="PF Account Number"
+                [data]="data.pension_info.pf_account_number"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+              <customInput 
+                label="Date of Joining"
+                [data]="data.pension_info.past_doj"
+                type="date"
+                dateFormat = "DD/MMM/YYYY"
+                [otherStatus]="isSubmited"
+              ></customInput>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+              <customInput 
+                label="Date of Exit"
+                [data]="data.pension_info.past_doe"
+                type="date"
+                dateFormat = "DD/MMM/YYYY"
+                [otherStatus]="isSubmited"
+              ></customInput>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+              <customInput 
+                label="Scheme Certificate No.(if issued)"
+                [data]="data.pension_info.past_scheme_certificate_no"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+              <customInput 
+                label="PPO No.(if issued)"
+                [data]="data.pension_info.ppo_number"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+              <customInput 
+                label="Non Contributory Period Days"
+                [data]="data.pension_info.non_contributory_period"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+          </ion-col>
+        </ion-row>
+      </div>
+    </div>
+
+
+    <div class="newCardDiv" *ngIf="data.pension_info.mem_of_provident.value == 'true' && data.pension_info.is_exempted_member.value == 'true'">
+      <div class="newHeading"><h4 no-margin>Previous Employment Details</h4><small>(For Exempted Trusts)</small></div>
+      <div class="customCardDiv">
+        <ion-row>
+          <ion-col col-12>
+              <customInput 
+                label="Trust Name"
+                [data]="data.pension_info.trust_name"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+              <customInput 
+                label="Trust Address"
+                [data]="data.pension_info.trust_address"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+              <customInput 
+                label="Universal Account Number"
+                [data]="data.pension_info.trust_uan"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+              <customInput 
+                label="Member EPS Account No."
+                [data]="data.pension_info.member_eps_ac_no"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+              <customInput 
+                label="Date of Joining"
+                [data]="data.pension_info.trust_doj"
+                type="date"
+                dateFormat = "DD/MMM/YYYY"
+                [otherStatus]="isSubmited"
+              ></customInput>
+          </ion-col> 
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+              <customInput 
+                label="Date of Exit"
+                [data]="data.pension_info.trust_doe"
+                type="date"
+                dateFormat = "DD/MMM/YYYY"
+                [otherStatus]="isSubmited"
+              ></customInput>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+              <customInput 
+                label="Scheme Certificate No.(if issued)"
+                [data]="data.pension_info.trust_scheme_certificate_no"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+              <customInput 
+                label="Non Contributory Period Days"
+                [data]="data.pension_info.trust_non_contributory_period_days"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+          </ion-col>
+        </ion-row> 
+      </div>
+    </div>
+
+    <div class="newCardDiv">
+        <div class="newHeading"><h4 no-margin>International Worker</h4></div>
+        <div class="customCardDiv">
+            <ion-row>
+                <ion-col col-12>
+                    <customInput 
+                      label="International Worker"
+                      [data]="data.pension_info.is_international_worker"
+                      type="radio"
+                      [options] = "yesNoOption"
+                      [otherStatus]="isSubmited"
+                    ></customInput>
+                </ion-col>
+              </ion-row>
+              <div *ngIf="data.pension_info.is_international_worker.value == 'true'">
+                <!-- <ion-row><ion-col col-12><div class="headingDiv">
+                  <h4 no-margin>If Yes, Select Country of Origin </h4>
+                  <span>e.g.: India/Name of other Country</span>
+                </div></ion-col></ion-row> -->
+                <ion-row>
+                  <ion-col col-12>
+                      <customInput 
+                        label="Country"
+                        [data]="data.pension_info.country"
+                        type="text"
+                     
+                        [otherStatus]="isSubmited"
+                        (selectionChange) = "getCityOptions($event)"
+                      ></customInput>
+                  </ion-col>
+                </ion-row>
+                <ion-row >
+                  <ion-col col-12>
+                      <customInput 
+                        label="City"
+                        [data]="data.pension_info.city"
+                        type="text"
+                        
+                        [otherStatus]="isSubmited"
+                      ></customInput>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col col-12>
+                      <customInput 
+                        label="Passport No."
+                        [data]="data.personal_info.passport"
+                        type="text"
+                        [otherStatus]="isSubmited"
+                      ></customInput>
+                  </ion-col>
+                </ion-row>
+                <ion-row><ion-col col-12><div class="headingDiv">
+                  <h4 no-margin>Validity of Passport </h4>
+                </div></ion-col></ion-row>
+                <ion-row>
+                  <ion-col col-12>
+                      <customInput 
+                        label="From."
+                        [data]="data.personal_info.passpost_issue_date"
+                        type="date"
+                        [maxDate] = "getCutrrentDate()"
+                        dateFormat = "DD/MM/YYYY"
+                        [otherStatus]="isSubmited"
+                      ></customInput>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col col-12>
+                      <customInput 
+                        label="To."
+                        [data]="data.personal_info.passport_expiery_date"
+                        type="date"
+                        [maxDate] = "getFutureDate()"
+                        [minDate] = "getCutrrentDate()"
+                        dateFormat = "DD/MM/YYYY"
+                        [otherStatus]="isSubmited"
+                      ></customInput>
+                  </ion-col>
+                </ion-row>
+              </div>
+        </div>
+    </div>
+
+
+    <ion-row *ngIf="formData && formData.form_status == 'enable'">
+        <ion-col text-center col-6 *ngIf="fill_status == '0'">
+                <div class="btndiv">
+                        <button ion-button class="btn" (click)=" save()">Save</button>
+                </div>
+        </ion-col>
+        <ion-col [attr.col-12]="fill_status == '1' ? '' : null"
+                 [attr.col-6]="fill_status == '0' ? '' : null">
+      
+          <div class="btndiv">
+                <button ion-button class="btn" (click)="submit()">{{ fill_status=='1' ? 'Update' : 'Submit'  }}</button>
+          </div>
+        </ion-col>
+      </ion-row>
+
+  </div>
+    </div>
+</ion-content>

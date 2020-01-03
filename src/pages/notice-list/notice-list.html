@@ -1,0 +1,47 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Notice</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
+
+  <ion-card *ngFor="let data of noticeListData">  
+    <ion-card-content >
+      <ion-row  (click)="seeDetails(data)">
+        <ion-col col-12>
+          <h4 class="data_title">{{data?.title}}</h4>
+        </ion-col>
+      </ion-row>
+      <!-- <ion-row (click)="seeDetails(data)">
+        <ion-col col-12>
+            <div class="data_constent" [innerHTML]="data?.content"></div>
+        </ion-col>
+      </ion-row> -->
+      <ion-row>
+          <ion-col col-5 class="centerDataInDiv" (click)="seeDetails(data)">
+             <p class="data_status"> {{data?.notice_date}} </p> 
+          </ion-col>
+          <ion-col col-5 class="centerDataInDiv" (click)="seeDetails(data)">
+              <p class="data_name"> {{data?.name}} </p> 
+              
+          </ion-col>
+          <ion-col col-2 class="centerDataInDiv">
+              <img *ngIf="data?.user_image!=''" [src]="data?.user_image"  #myImage (click)="presentImage(myImage)" class="userImage"/> 
+              <img *ngIf="data?.user_image==''" [src]="'assets/a2z/'+data.name[0].toLowerCase()+'.jpg'"   #myImage (click)="presentImage(myImage)" class="userImage"/> 
+          </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+<div *ngIf="hideinfinite!=1">
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" >
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+</div>
+
+<div *ngIf="bgImageViewer">
+    <img src="assets/imgs/No NoticeImage.png"  style="width:100%">
+  </div>     
+
+</ion-content>

@@ -1,0 +1,40 @@
+page-alreadyacountform {
+    .imgcss{height: 100px;width: 100%;object-fit:cover}
+    .star{
+        color:red;
+    }
+    .input_label{
+        // color:#005aab !important;
+      font-size: 15px !important;
+     padding-bottom: 7px;
+    }
+
+    .btndiv{text-align: center;}
+    .btn{
+        width: 31%;
+        border-radius: 12px;
+        font-size: 10px;
+        background: #e22550;
+        // background-image: linear-gradient(to bottom, $theme-titlecolor, #e22550);
+    }
+    .item-input .label-md, .item-select .label-md, .item-datetime .label-md {
+        color: #130e0e;
+    }
+   .attachDivpadding{
+    padding:10px;text-align: -webkit-center;
+    }
+
+    .input-cover{
+      border: 1px solid gainsboro !important;
+    }
+
+    .item-input-has-focus .input-cover {
+      border: 1px solid gainsboro !important;
+      display: inherit !important;
+    }
+
+   .input-has-focus .input-cover{
+      border: 1px solid gainsboro !important;
+      display: inherit !important;
+    }
+}

@@ -1,0 +1,103 @@
+page-catgories {
+    .redBG,.greenBG,.yellowBG,.pinkBG,.skyBG,.blueBG,.bringleBG,.lgreenBG,.dyellowBG,.dgreebBG{color:#fff}
+    .redBG{background: #c33a3a;}
+    .greenBG{background: #02742A;}
+    .yellowBG{background: #F7AE02;}
+    .pinkBG{background: #a539e8;}
+    .skyBG{background: #0088FF;}
+    .blueBG{background: #0B00FF;}
+    .bringleBG{background: #4A00FF;}
+    .lgreenBG{background: #13b37f;}
+    .dyellowBG{background: #FF6900;}
+    .dgreebBG{background: #247E4E;}
+    .whitebg{
+      background: white;
+    }
+    .form-check-label{
+      color:#fff
+    }
+    .choicePara{
+      border: 1px solid #C5C2C2;border-radius: 33px;padding: 10px 19px;
+      // background: #6d4e6a;rgba(109, 78, 106, 0.6588235294117647)
+
+
+      // background: #6d4e6aa8 !important;
+      background: rgba(109, 78, 106, 0.6) !important;
+      // #6d4e6aa8;
+
+    }
+    .choiceParaSelected{
+      border: 1px solid #C5C2C2;border-radius: 33px;padding: 10px 19px;
+      background: #6d4e6a;
+    }
+
+    .fedpara{
+      border: 1px solid #C5C2C2;border-radius: 33px;padding: 10px 19px;
+      background: #6d4e6aa8;
+
+      // #6d4e6aa8;
+
+    }
+.fedpara1{ border: 1px solid #C5C2C2;border-radius: 33px;padding: 10px 19px;
+  background: #6d4e6aa8;}
+    .choicePg{border: 1px solid #C5C2C2;border-radius: 33px;padding: 10px 19px;}
+.row.rowmain{
+    flex-wrap: wrap;
+}
+span.button-inner {
+    font-size: 1.3em;
+    padding-right: 5px;
+}
+ion-icon.forward.icon.icon-md.ion-ios-arrow-forward {
+    margin-left: 10px;
+}
+label input {
+    display: none;/* <-- hide the default checkbox */
+  }
+  label span {/* <-- style the artificial checkbox */
+    height: 10px;
+    width: 10px;
+    // border: 1px solid grey;
+    font-size: 30px;
+    display: inline-block;
+    position: relative;
+  }
+  [type=checkbox].tag:checked + span:before {/* <-- style its checked state..with a ticked icon */
+    content: '\2714';
+    position: absolute;
+    top: -15px;
+    left: 0;
+  }
+ 
+  [type=checkbox].commu:checked + span:before {/* <-- style its checked state..with a ticked icon */
+    content: '\00BB' !important;
+    position: absolute;
+    top: -15px;
+    left: 0;
+  }
+
+  @keyframes fivePhasesFadeIn {
+    from {
+      -webkit-transform: translate3d(-100%, 0, 0);
+      transform: translate3d(-100%, 0, 0);
+      visibility: visible;
+    }
+   
+    to {
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+   }
+   
+   .fivePhasesFadeIn {
+   animation-name: fivePhasesFadeIn;
+   animation-duration: 2s;
+   }
+
+   h2.areatag {
+    text-align: center;
+    font-size: 2.0rem;
+    color: #6d4e6a;
+ }
+
+}

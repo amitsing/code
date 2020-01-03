@@ -1,0 +1,36 @@
+<ion-header>
+    <ion-navbar color="headColor">
+      <ion-title>Areas of interest</ion-title>
+      <ion-buttons end>
+        <button ion-button (tap)="nextPage()" style="color:#4d2748 !important;">Next  &nbsp;
+            <ion-icon class="forward" name="ios-arrow-forward"></ion-icon> 
+        </button>
+      </ion-buttons>
+    </ion-navbar>  
+  </ion-header>
+  <ion-content>
+    <div class="categoryclass">
+      <h2 class="areatag">
+        {{select_msg}}
+      </h2>
+    </div>
+   <ion-grid>
+     <ion-row class="rowmain" >
+       <ion-col col-auto *ngFor="let data of APIdata; let i = index" class="fivePhasesFadeIn">
+        <p [ngClass]="{'choicePara':(data.flag==0||data.flag=='0'),'choiceParaSelected':(data.flag==1||data.flag=='1')}">
+          <label *ngIf="data.aliasName!=undefined"  class="form-check-label">
+            <input  type="checkbox" class="form-check-input tag" [(ngModel)]="data.checked"
+            [value]="data" (click)="passdata($event,data,i)">{{data.aliasName}}
+            <span></span>
+          </label>
+          <!-- <label *ngIf="data.tag!=undefined" class="form-check-label">
+            <input  type="checkbox" class="form-check-input tag" [(ngModel)]="data.checked"
+            [value]="data" (click)="passdata($event,data,i)">{{data.tag}}
+            <span></span>
+          </label> -->
+          </p>
+       </ion-col>
+     </ion-row>
+   </ion-grid>
+  </ion-content>
+  

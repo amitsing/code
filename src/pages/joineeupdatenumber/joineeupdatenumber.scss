@@ -1,0 +1,20 @@
+page-joineeupdatenumber {
+    .bbottom{border-bottom: 1px solid lightgray}
+    .userImage{    height: 65px;
+        width: 65px;object-fit: cover;
+        border-radius: 50%;}
+    .userName{
+        margin-top: 0px;
+        font-size: 15px;
+        margin-bottom: 0px;
+        color: #333;
+      }
+      .black{color: #000 !important;}
+      button.updateBtn {
+        background-color: #e22250;;
+        color: white;
+        width: 60%;
+        border-radius: 5px;
+        box-shadow: none;
+       }
+}

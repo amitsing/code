@@ -1,0 +1,808 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{page_title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding class="bg">
+  <div *ngIf="formData" [ngClass]="{'newOverlay':formD.form_status != 'enable'}">
+    <ion-row  #form>
+      <ion-col col-12>
+        <!-------------- userform ------------------>
+        <div class="formDiv">
+          <ion-row class="cardHeader">
+            <ion-col col-12 text-left>
+              <p class="heading">Personal Details</p>
+            </ion-col>
+          </ion-row>
+
+          <customInput
+            label="First Name"
+            [data]="formData.joinee_info.first_name"
+            type="text"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+          <customInput
+            label="Middle Name"
+            [data]="formData.joinee_info.middle_name"
+            type="text"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+          <customInput
+            label="Last Name"
+            [data]="formData.joinee_info.last_name"
+            type="text"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+          <customInput
+            label="Date of Birth"
+            [data]="formData.joinee_info.date_of_birth"
+            type="date"
+            dateFormat="DD/MMM/YYYY"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+          <customInput
+            label="Are you authorized to work in {{ formD.country_id == '7' ? 'US' : 'Canada' }}?"
+            [data]="formData.joinee_info.location_authorized_for_work"
+            type="radio"
+            [options]="yesNoOption"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+          <customInput
+            label="Passport number"
+            [data]="formData.joinee_info.passport_number"
+            type="text"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+          <customInput
+            label="SSN number"
+            [data]="formData.joinee_info.sin_no"
+            type="text"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+          <customInput
+            label="Have you ever been convicted of a criminal offense?"
+            [data]="formData.joinee_info.is_convicted_law"
+            type="radio"
+            [options]="yesNoOption"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+          <customInput
+            label="Home Phone"
+            [data]="formData.joinee_info.home_phone"
+            type="number"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+          <customInput
+            label="Mobile Phone"
+            [data]="formData.joinee_info.contact"
+            type="number"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+          <customInput
+            label="E-mail Id"
+            [data]="formData.joinee_info.first_name"
+            type="text"
+            [otherStatus]="isSubmited"
+          ></customInput>
+        </div>
+
+        <div class="formDiv">
+          <ion-row class="cardHeader">
+            <ion-col col-12 text-left>
+              <p class="heading">Residential Address (local)</p>
+            </ion-col>
+          </ion-row>
+
+          <customInput
+            label="Residential Address"
+            [data]="formData.present_add.complete_address"
+            type="textArea"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+          <customInput
+            label="Residing Since"
+            [data]="formData.present_add.start_date"
+            type="date"
+            dateFormat="MM/YYYY"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+          <!-- <customInput
+            label="Residing Since To"
+            [data]="formData.present_add.end_date"
+            type="date"
+            dateFormat="MM/YYYY"
+            [otherStatus]="isSubmited"
+          ></customInput> -->
+        </div>
+        <div class="formDiv">
+          <ion-row class="cardHeader">
+            <ion-col col-12 text-left>
+              <p class="heading">Permanent Address</p>
+            </ion-col>
+          </ion-row>
+
+          <customInput
+            label="Permanent Address"
+            [data]="formData.permanent_add.complete_address"
+            type="textArea"
+            [otherStatus]="isSubmited"
+          ></customInput>
+          
+
+          <customInput
+            label="City"
+            [data]="formData.permanent_add.city"
+            type="text"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+          <customInput
+            label="State"
+            [data]="formData.permanent_add.state"
+            type="text"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+          <customInput
+            label="Country"
+            [data]="formData.permanent_add.country"
+            type="text"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+          <customInput
+            label="Zip code"
+            [data]="formData.permanent_add.zipcode"
+            type="text"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+          <customInput
+            label="Country Area Code"
+            [data]="formData.permanent_add.country_area_code"
+            type="text"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+          <customInput
+            label="Residing Since"
+            [data]="formData.permanent_add.start_date"
+            type="date"
+            dateFormat="MM/YYYY"
+            [otherStatus]="isSubmited"
+          ></customInput>
+        </div>
+
+        <div class="formDiv">
+          <ion-row class="cardHeader">
+            <ion-col col-12 text-left>
+              <p class="heading">Previous Address</p>
+            </ion-col>
+          </ion-row>
+          <p>Please provide previous addresses going back 7 years along with dates of residence (in mm/yyyy format)</p>
+          <div *ngFor="let add of formData?.previous_add; let i = index">
+            <div style="height: 30px;margin-top: 10px;">
+              <label>Address {{ i + 1 }} </label>
+              <span
+                class="icon"
+                style="float: right"
+                *ngIf="i>0"
+                (click)="formData.removeAddress(add)"
+                ><ion-icon
+                  ios="ios-close-circle-outline"
+                  md="md-close-circle"
+                ></ion-icon
+              ></span>
+            </div>
+
+            <customInput
+              label="Previous Address"
+              [data]="add.complete_address"
+              type="textArea"
+              [otherStatus]="isSubmited"
+            ></customInput>
+
+            <customInput
+              label="Resided Since"
+              [data]="add.start_date"
+              type="date"
+              dateFormat="MM/YYYY"
+              [otherStatus]="isSubmited"
+            ></customInput>
+
+            <customInput
+              label="Resided Till"
+              [data]="add.end_date"
+              type="date"
+              dateFormat="MM/YYYY"
+              [otherStatus]="isSubmited"
+            ></customInput>
+          </div>
+          <div text-right (click)="formData.addAddress()" class="icon">
+            <ion-icon
+              ios="ios-add-circle-outline"
+              md="md-add-circle"
+            ></ion-icon>
+          </div>
+        </div>
+
+        <!-------------- Education Record ------------------>
+        <div class="formDiv">
+          <ion-row class="cardHeader">
+            <ion-col col-12 text-left>
+              <p class="heading">Education Record</p>
+            </ion-col>
+          </ion-row>
+          <div>
+            <h6 style="margin: 15px 0 0 0;">High School Details</h6>
+          </div>
+
+          <customInput
+            label="Name of Institution"
+            [data]="formData.highschool.data.institution_name"
+            type="text"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+          <customInput
+            label="Degree ( in original language )"
+            [data]="formData.highschool.data.education_specialization_id"
+            type="text"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+          <customInput
+            label="Attended From"
+            [data]="formData.highschool.data.education_from_date"
+            type="date"
+            dateFormat="MM/YYYY"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+          <customInput
+            label="Attended To"
+            [data]="formData.highschool.data.education_end_date"
+            type="date"
+            dateFormat="MM/YYYY"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+          <customInput
+            label="Date Degree Received (mm/yyyy)"
+            [data]="formData.highschool.data.expected_month_for_latest_marksheet"
+            type="date"
+            dateFormat="MM/YYYY"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+          <customInput
+            label="Address"
+            [data]="formData.highschool.data.address"
+            type="textArea"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+          <customInput
+            label="Telephone"
+            [data]="formData.highschool.data.contact_number"
+            type="number"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+          <customInput
+            label="Website"
+            [data]="formData.highschool.data.website_link"
+            type="text"
+            [otherStatus]="isSubmited"
+          ></customInput>
+
+          <div class="addDeatils">
+            <ion-item>
+              <ion-label>Add Graduation Details (if applicable)</ion-label>
+              <ion-checkbox
+                color="dark"
+                (click)="formData.chanegGraduationMandatoryStatus();"
+                [checked]="formData.graduation.is_mandatory"
+              ></ion-checkbox>
+            </ion-item>
+          </div>
+
+          <div *ngIf="formData.graduation.is_mandatory">
+            <div>
+              <h6 style="margin: 15px 0 0 0;">Graduation Details</h6>
+            </div>
+
+            <customInput
+              label="Name of Institution"
+              [data]="formData.graduation.data.institution_name"
+              type="text"
+              [otherStatus]="isSubmited && formData.graduation.is_mandatory"
+            ></customInput>
+
+            <customInput
+              label="Degree ( in original language )"
+              [data]="formData.graduation.data.education_specialization_id"
+              type="text"
+              [otherStatus]="isSubmited && formData.graduation.is_mandatory"
+            ></customInput>
+
+            <customInput
+              label="Attended From"
+              [data]="formData.graduation.data.education_from_date"
+              type="date"
+              dateFormat="MM/YYYY"
+              [otherStatus]="isSubmited && formData.graduation.is_mandatory"
+            ></customInput>
+
+            <customInput
+              label="Attended To"
+              [data]="formData.graduation.data.education_end_date"
+              type="date"
+              dateFormat="MM/YYYY"
+              [otherStatus]="isSubmited && formData.graduation.is_mandatory"
+            ></customInput>
+
+            <customInput
+              label="Date Degree Received"
+              [data]="formData.graduation.data.expected_month_for_latest_marksheet"
+              type="date"
+              dateFormat="MM/YYYY"
+              [otherStatus]="isSubmited && formData.graduation.is_mandatory"
+            ></customInput>
+
+            <customInput
+              label="Address"
+              [data]="formData.graduation.data.address"
+              type="textArea"
+              [otherStatus]="isSubmited && formData.graduation.is_mandatory"
+            ></customInput>
+
+            <customInput
+              label="Telephone"
+              [data]="formData.graduation.data.contact_number"
+              type="number"
+              [otherStatus]="isSubmited && formData.graduation.is_mandatory"
+            ></customInput>
+
+            <customInput
+              label="Website"
+              [data]="formData.graduation.data.website_link"
+              type="text"
+              [otherStatus]="isSubmited && formData.graduation.is_mandatory"
+            ></customInput>
+          </div>
+
+          <div class="addDeatils" *ngIf="formData.graduation.is_mandatory">
+            <ion-item>
+              <ion-label>Post-Graduation Details (if applicable)</ion-label>
+              <ion-checkbox
+                color="dark"
+                (click)="formData.chanegPostGraduationMandatoryStatus()"
+                [checked]="formData.postgraduation.is_mandatory"
+              ></ion-checkbox>
+            </ion-item>
+          </div>
+
+          <div
+            *ngIf="formData.postgraduation.is_mandatory && formData.graduation.is_mandatory"
+          >
+            <div>
+              <h6 style="margin: 15px 0 0 0;">
+                Post Graduation Details
+              </h6>
+            </div>
+
+            <customInput
+              label="Name of Institution"
+              [data]="formData.postgraduation.data.institution_name"
+              type="text"
+              [otherStatus]="isSubmited  && formData.postgraduation.is_mandatory"
+            ></customInput>
+
+            <customInput
+              label="Degree ( in original language )"
+              [data]="formData.postgraduation.data.education_specialization_id"
+              type="text"
+              [otherStatus]="isSubmited && formData.postgraduation.is_mandatory"
+            ></customInput>
+
+            <customInput
+              label="Attended From"
+              [data]="formData.postgraduation.data.education_from_date"
+              type="date"
+              dateFormat="MM/YYYY"
+              [otherStatus]="isSubmited && formData.postgraduation.is_mandatory"
+            ></customInput>
+
+            <customInput
+              label="Attended To"
+              [data]="formData.postgraduation.data.education_end_date"
+              type="date"
+              dateFormat="MM/YYYY"
+              [otherStatus]="isSubmited && formData.postgraduation.is_mandatory"
+            ></customInput>
+
+            <customInput
+              label="Date Degree Received"
+              [data]="formData.postgraduation.data.expected_month_for_latest_marksheet"
+              type="date"
+              dateFormat="MM/YYYY"
+              [otherStatus]="isSubmited && formData.postgraduation.is_mandatory"
+            ></customInput>
+
+            <customInput
+              label="Address"
+              [data]="formData.postgraduation.data.address"
+              type="textArea"
+              [otherStatus]="isSubmited && formData.postgraduation.is_mandatory"
+            ></customInput>
+
+            <customInput
+              label="Telephone"
+              [data]="formData.postgraduation.data.contact_number"
+              type="number"
+              [otherStatus]="isSubmited && formData.postgraduation.is_mandatory"
+            ></customInput>
+
+            <customInput
+              label="Website"
+              [data]="formData.postgraduation.data.website_link"
+              type="text"
+              [otherStatus]="isSubmited && formData.postgraduation.is_mandatory"
+            ></customInput>
+          </div>
+        </div>
+
+        <div class="formDiv" id="maintainer">
+          <ion-row class="cardHeader">
+            <ion-col col-12 text-left>
+              <p class="heading">Previous Employment Record</p>
+            </ion-col>
+          </ion-row>
+          <p>Please begin with the most recent employer and continue with all past employment history for the last <strong>5 years</strong></p>
+          <div
+            class="formDiv clearfix"
+            id="createDiv"
+            *ngFor="let exp of formData?.experience; let i = index"
+          >
+            <div>
+              <div
+                style="height: 30px;
+              margin-top: 10px;"
+              >
+                <label>Employer {{ i + 1 }}</label>
+                <span
+                  style="float: right"
+                  *ngIf="i>0"
+                  class="icon"
+                  (click)="formData.removeExperirnceDetail(exp)"
+                  ><ion-icon
+                    ios="ios-close-circle-outline"
+                    md="md-close-circle"
+                  ></ion-icon
+                ></span>
+              </div>
+
+              <customInput
+                label="Company's Name"
+                [data]="exp.employer_name"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+
+              <customInput
+                label="From (mm / yyyy)"
+                [data]="exp.pre_start_date"
+                type="date"
+                dateFormat="MM/YYYY"
+                [otherStatus]="isSubmited"
+              ></customInput>
+
+              <customInput
+                label="To (mm / yyyy)"
+                [data]="exp.pre_end_date"
+                type="date"
+                dateFormat="MM/YYYY"
+                [otherStatus]="isSubmited"
+              ></customInput>
+
+              <customInput
+                label="Company's Address"
+                [data]="exp.employer_address"
+                type="textArea"
+                [otherStatus]="isSubmited"
+              ></customInput>
+
+              <customInput
+                label="Company's Phone Number"
+                [data]="exp.company_phone_number"
+                type="number"
+                [otherStatus]="isSubmited"
+              ></customInput>
+
+              <customInput
+                label="Company's Website"
+                [data]="exp.company_url"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+
+              <customInput
+                label="City"
+                [data]="exp.city"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+
+              <customInput
+                label="State"
+                [data]="exp.state"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+
+              <customInput
+                label="Country"
+                [data]="exp.country_id"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+
+              <customInput
+                label="Postal Code"
+                [data]="exp.zip_code"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+
+              <!-- <customInput
+                label="Responsibilities &amp; Nature of Work"
+                [data]="exp.responsibilities"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput> -->
+
+              <customInput
+                label="Designation"
+                [data]="exp.job_title"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+
+              <customInput
+                label="Employee Code ( if applicable )"
+                [data]="exp.employee_code"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+
+              <customInput
+                label="Part Time/Full Time"
+                [data]="exp.part_time"
+                type="radio"
+                [options] = "partTimeOptions"
+                [otherStatus]="isSubmited"
+              ></customInput>
+
+              <customInput *ngIf="i == 0"
+                label="Do you authorize us to contact the current Employer for verification?"
+                [data]="exp.contact_auth"
+                type="radio"
+                [options] = "yesNoOption"
+                [otherStatus]="isSubmited"
+              ></customInput>
+
+              <!-- <customInput
+                label="Process / Business Unit "
+                [data]="exp.business_unit"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput> -->
+
+              <customInput
+                label="Reason for leaving"
+                [data]="exp.reason_of_leaving"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+            </div>
+
+            <!-- <div>
+              <label>Supervisor's Details</label>
+              <span style="float: right"></span>
+
+              <customInput
+                label="Name"
+                [data]="exp.reporting_manager.supervisorname"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+
+              <customInput
+                label="Designation"
+                [data]="exp.reporting_manager.supervisordesignation"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+
+              <customInput
+                label="Mobile"
+                [data]="exp.reporting_manager.supervisorcontact"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+
+              <customInput
+                label="Phone Number"
+                [data]="exp.reporting_manager.supervisorphonenumber"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+
+              <customInput
+                label="E- Mail"
+                [data]="exp.reporting_manager.supervisoremailid"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+            </div> -->
+            <div>
+              <label>HR Department Details</label>
+              <span style="float: right"></span>
+
+              <customInput
+                label="Name"
+                [data]="exp.hr_department.hrname"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+
+              <customInput
+                label="Designation"
+                [data]="exp.hr_department.hrdesignation"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+
+              <customInput
+                label="Mobile"
+                [data]="exp.hr_department.hrmobile"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+
+              <customInput
+                label="Phone Number"
+                [data]="exp.hr_department.hrphone"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+
+              <customInput
+                label="E- Mail"
+                [data]="exp.hr_department.hremailid"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+            </div>
+          </div>
+          <div class="headingDiv element" id="div_0"></div>
+          <div text-right (click)="formData.addExperirnceDetail()" class="icon">
+            <ion-icon
+              ios="ios-add-circle-outline"
+              md="md-add-circle"
+            ></ion-icon>
+          </div>
+        </div>
+
+        <div class="formDiv" id="createDiv">
+          <ion-row class="cardHeader">
+            <ion-col col-12 text-left>
+              <p class="heading">Professional References</p>
+            </ion-col>
+          </ion-row>
+
+          <div *ngFor="let ref of formData?.refrence; let i = index">
+            <div
+              style="height: 30px;
+            margin-top: 10px;"
+            >
+              <label>Reference {{ i + 1 }} </label>
+              <span
+                class="icon"
+                style="float: right"
+                *ngIf="i>0"
+                (click)="formData.removeReference(ref)"
+                ><ion-icon
+                  ios="ios-close-circle-outline"
+                  md="md-close-circle"
+                ></ion-icon
+              ></span>
+            </div>
+
+            <customInput
+              label="Name"
+              [data]="ref.name"
+              type="text"
+              [otherStatus]="isSubmited"
+            ></customInput>
+
+            <customInput
+              label="Phone Number"
+              [data]="ref.contact_number"
+              type="number"
+              [otherStatus]="isSubmited"
+            ></customInput>
+
+            <!-- <customInput
+              label="Present Designation"
+              [data]="ref.designation"
+              type="text"
+              [otherStatus]="isSubmited"
+            ></customInput> -->
+
+            <customInput
+              label="Company Name"
+              [data]="ref.company_name"
+              type="text"
+              [otherStatus]="isSubmited"
+            ></customInput>
+
+            <customInput
+              label="Relationship"
+              [data]="ref.relationship"
+              type="text"
+              [otherStatus]="isSubmited"
+            ></customInput>
+
+            <customInput
+              label="Corporate E-mail"
+              [data]="ref.company_email"
+              type="text"
+              [otherStatus]="isSubmited"
+            ></customInput>
+          </div>
+          <div class="headingDiv element1" id="div_ref_0"></div>
+          <div text-right class="icon" (click)="formData.addReference()">
+            <ion-icon
+              ios="ios-add-circle-outline"
+              md="md-add-circle"
+            ></ion-icon>
+          </div>
+        </div>
+        <div *ngIf="msg" class="formDiv">
+          <show-html [htmlData]="msg"></show-html>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="formD && formD.form_status == 'enable'">
+      <ion-col col-6 *ngIf="fill_status == '0'">
+        <div class="btndiv">
+          <button [ngClass]="{'w-80': (fill_status == 0)}" ion-button class="btn" (click)="save()">Save</button>
+        </div>
+      </ion-col>
+      <ion-col
+        [attr.col-12]="fill_status == '1' ? '' : null"
+        [attr.col-6]="fill_status == '0' ? '' : null"
+      >
+        <div class="btndiv">
+          <button [ngClass]="{'w-80': (fill_status == 0)}" ion-button class="btn" (click)="submit()">
+            {{ fill_status=='1' ? 'Update' : 'Submit' }}
+          </button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

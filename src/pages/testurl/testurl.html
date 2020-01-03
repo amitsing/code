@@ -1,0 +1,28 @@
+<!--
+  Generated template for the TesturlPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div *ngIf="url" style="height:100%;">
+
+<!-- {{sessiionurl}} -->
+    <iframe [src]="sanitizer.bypassSecurityTrustResourceUrl(url)" frameborder="0"
+     width="100%" height="100%" allowfullscreen class="holds-the-iframe"></iframe>
+
+  </div>
+
+  <!-- <div *ngIf="!url">
+  please wait... 
+  </div> -->
+
+
+</ion-content>

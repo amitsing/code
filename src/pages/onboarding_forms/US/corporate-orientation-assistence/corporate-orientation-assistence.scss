@@ -1,0 +1,76 @@
+page-corporate-orientation-assistence {
+    .inputDiv {
+        float: left;
+        position: relative;
+        width: 100%;
+        border: 2px solid #4d2748;
+        padding: 0px 0px;
+        border-radius: 5px;
+        margin: 15px 0px;
+    }
+    .formDiv {
+        float: left;
+        width: 100%;
+        margin: 15px 0px;
+        padding: 15px 10px;
+        background: #f3f3f3;
+        box-shadow: 0px 1px 5px #4d2748;
+        border-radius: 10px;
+    }
+    .genderDiv {
+        float: left;
+        width: 50%;
+        margin: 10px 0px;
+        padding: 0px 15px;
+    }
+    .inputDiv label {
+        float: left;
+        color: #000000;
+        background: #f3f2f3;
+        padding: 0px 0px;
+        position: absolute;
+        top: -10px;
+        left: 5px;
+        font-weight: 700;
+        font-size: 13px;
+    }
+    .inputDiv input, .inputDiv textarea, .inputDiv select {
+        float: left;
+        width: 100%;
+        background: transparent;
+        border: 0px solid black;
+        padding: 10px 15px;
+        margin: 0;
+    }
+    .submitBtn button {
+        background: #4d2748;
+        border: 0px;
+        padding: 10px 30px;
+        margin: 0px 10px;
+        color: #ffffff;
+        text-transform: uppercase;
+        font-size: 18px;
+    }
+    p {
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size: 14px;
+        line-height: 1.42857143;
+        color: #333;
+        margin-top : 0;
+    }
+    .genderDiv label {
+        position: static;
+        padding: 0px;
+        margin: 0;
+        font-weight: normal;
+    }
+    .genderDiv input {
+        float: left;
+        width: auto;
+        margin: 4px 10px;
+        height: 15px;
+    }
+    .mendatFild {
+        color: red;
+    }
+}

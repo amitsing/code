@@ -1,0 +1,73 @@
+page-testsurvey {
+    .valclass{    margin: auto;
+        text-align: -webkit-center;
+        height: 30px;
+        width: 30px;
+        border: 1px solid;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        border-radius: 50%;}
+    // ion-header.transparent ion-navbar .toolbar-background{background: rgba(0, 115, 166, 0.52) !important;}
+    // ion-header.hiddenHeader~ion-content div.scroll-content,ion-header.transparent~ion-content div.scroll-content{margin-top:0px !important;padding:0px !important}
+    // ion-header.hiddenHeader ion-navbar .toolbar-background{display: none !important;}
+    // .toolbar-title{color: #fff}
+    .recUserName{color: #fff; font-weight: bold; font-size: 16px; margin-top: 70px;}
+    .userImage{width: 60px;height: 60px;border-radius: 50%; border: 1px solid #cdcdcd; margin-top: 50px;
+        margin-left: 20px;object-fit: cover; object-position: center;}
+    .customRadioBTN{ background: #9E9E9E;}
+    .customRadioBTNblue{background: #a0859d;}
+    .customRadioBTNblue,.customRadioBTN{border-radius: 6px; margin-bottom: 7px; color: #fff; font-size: 17px;}
+    .feedbackQuestion{font-weight: 600; font-size: 17px;}
+    #myInput { width: calc(100% - 10px); border: 1px solid #888; border-radius: 5px; background: transparent;padding:5px;min-height: 100px; }
+    .smallEmojiRange{width:30px;}
+    ion-list.range ion-item,  ion-list.range, ion-list.range ion-item div.item-inner{
+    padding:0px !important;
+    // ion-range{
+    //     padding: 20px 0px !important;
+    //     .range-bar {
+    //         top: 13px;border-radius: 5px;
+    //         height: 18px;
+    //     }
+    // }
+}
+.radioTypeQuestions{
+    margin-top:25px;
+}
+.commonButton1{background:#e22550;color:white;text-transform: capitalize;float:left;border-radius: 5px; }
+.commonButton2{background:#e22550;color:white;text-transform: capitalize;float:right;border-radius: 5px; }
+.surveyNotation{font-size: 18px;font-weight: bold;float:right;color:#fff; margin: 0px 5px;}
+
+// .range-knob{ width: 48px; height: 48px;background-color:white; top: 0px;margin-top: -14px;}
+
+.starDesign{font-size: 33px;text-align: center}
+.fillStarDesign{color: rgb(48, 94, 165);text-align: center;font-size: 35px;}
+
+
+.mandatoryContent{
+    background-color: #c3b9c2;
+}
+.centerData{
+    display: block;
+    margin: auto;border-radius: 5px;
+}
+.btnmy{background:#e22550;}
+
+.fullOptionShow{  white-space: normal !important;}
+ion-item.item-checkbox{
+    background: #9E9E9E;
+    margin-bottom: 5px;
+    border-radius: 25px;
+}
+
+ion-item.item-checkbox-checked{
+    background: #a0859d;
+    margin-bottom: 5px;
+    border-radius: 25px;
+}
+
+
+
+
+
+
+}

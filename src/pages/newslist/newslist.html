@@ -1,0 +1,56 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>News</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let data of List" (click)="gotodetail(data)">
+<ion-row>
+  <ion-col col-4>
+    <div *ngIf="data.media[0]?.media_type=='3'">
+        <div class="relativeDiv">
+        <iframe width="100%" height="80px"  [src]="data.media[0]?.media|safe" autostart="0" allowfullscreen frameborder="0"></iframe>
+        <div class="temptransparentVideo"></div>
+      </div>
+      </div>
+    <div *ngIf="data.media[0]?.media_type=='2'">
+        <div class="relativeDiv">
+        <video [src]="data.media[0]?.media|safe" height="80px"  width="100%"  poster="{{data.media[0]?.thumb}}" controls controlsList="nodownload" type="video/*">
+        </video>
+        <div class="temptransparentVideo"></div>
+      </div>
+    </div>
+    <div *ngIf="data.media[0]?.media_type=='1'">
+        <img class="imgcss" onerror="this.src='../../assets/watermark/watermark.png'" #myImage
+        src="{{data.media[0]?.media}}">
+    </div>
+
+  </ion-col>
+  <ion-col col-8>
+    <ion-row>
+      <ion-col col-12>
+        <!-- <p>{{data.title}}</p> -->
+        <P class="para" *ngIf="data.title.length<50" [innerHTML]="data.title"></P>
+        <P class="para" *ngIf="data.title.length>=50" [innerHTML]="data.title.substring(0, 50)+'...'"></P>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6>
+          <!-- <img class="imgcss1" src="assets/imgs/news_flag.png"> -->
+      </ion-col>
+      <ion-col col-6 text-right>
+
+          <p  class="datepara" [innerHTML]="data.publish_date"></p>
+      </ion-col>
+    </ion-row>
+  </ion-col>
+</ion-row>
+</ion-card>
+
+<ion-infinite-scroll *ngIf="hideInfiniteScroll==false && List" (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

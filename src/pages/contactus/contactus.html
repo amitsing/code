@@ -1,0 +1,41 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Contact us</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+
+<ion-content >
+  <div class="contactDiv">
+    <ion-card class="myCard">
+        <div class="containerContactUs">
+      
+            <form #f= ngForm>
+                <p style="font-weight: bold;">If you have any queries or would like to get in touch with HR, please fill the form below.</p><br>
+                  <ion-input type="text" name="subject" [(ngModel)]="subject" required class="nameInp" placeholder="Subject" (ngModelChange)="getTitleLegth(subject)"></ion-input>
+                  <ion-textarea rows="6"   id="myInput" cols="10" placeholder="Comment" name="msg" [(ngModel)]="msg" required #sugg="ngModel" class="contactUsCommentBox" (ngModelChange)="getCommentLegth(msg)"></ion-textarea>
+            </form>
+    
+             <div>
+              <div class="rightIt attachDivpadding">
+                <img class="attachWidth" src="../../assets/imgs/attach.png" (tap)="takePhotoFrom()">
+              </div>
+            </div> 
+            <div style="padding:10px 0;" class="preview" *ngIf="base64Image">
+                <img class="preview_Image" [src]="base64Image" />
+                <!-- <img src="../../assets/watermark/watermark.png" alt=""> -->
+                <ion-icon (click)="removePreview()" class="closeIcon" ios="ios-close" md="md-close"></ion-icon>
+              </div>
+    
+              <div class="centerIt">
+                <button  ion-button round [disabled]="enableSubmitButton==false" class="centerBtn" (tap)="submitToHelpDesk(f, subject, msg)">{{submitBtnText}}</button>
+              </div>
+          
+        </div>
+    </ion-card>
+  </div>
+</ion-content>

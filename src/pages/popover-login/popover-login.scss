@@ -1,0 +1,25 @@
+page-popover-login {
+.centerp{color:red}
+.btn{
+    width: 40%;
+    border-radius: 20px;display: block;
+    margin: auto;
+    background: #e22550;
+    // background-image: linear-gradient(to bottom, $theme-titlecolor, #e22550);
+}
+.ulData{
+    padding: 0px 5px 0px 16px !important;
+}
+.ulData li{margin-bottom:10px; font-size: 15px;}
+.titleInc{text-align: center;font-weight: bold;border-bottom: 1px solid #cecece; padding-bottom: 4px;font-size: 16px;}
+// .popover-content{
+//     left: 2% !important;
+//     width: 96% !important;
+// }
+
+
+}
+.popover-content > .instructionPopoverContent{
+    left: 2% !important;
+    width: 96% !important;
+}

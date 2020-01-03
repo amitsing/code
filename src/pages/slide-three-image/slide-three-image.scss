@@ -1,0 +1,23 @@
+page-slide-three-image {
+    .swiper-pagination-bullet-active {
+        background: white;
+        opacity: 1;
+    }
+    .btn{
+        width: 30%;
+        border-radius: 10px; 
+        font-size: 10px; 
+        background: #e22550;
+        // background-image: linear-gradient(to bottom, $theme-titlecolor, #e22550);
+    }
+    .absoDiv{
+    position: absolute;
+    z-index: 22;
+    bottom: 30px;
+    width: 100%;
+    }
+    .slideImage{
+        width: 100%;
+        height: -webkit-fill-available;    object-fit: cover;
+    }
+}

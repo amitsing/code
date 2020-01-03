@@ -1,0 +1,68 @@
+<!-- <ion-header>
+    <ion-toolbar>
+      <ion-title>Enter address</ion-title>
+      <ion-searchbar [(ngModel)]="autocomplete.query" [showCancelButton]="true"   (ionInput)="updateSearch()" (ionCancel)="dismiss()"></ion-searchbar>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-list>
+      <ion-item *ngFor="let item of autocompleteItems" tappable   (click)="chooseItem(item)">
+        {{ item }}
+      </ion-item>
+    </ion-list>
+  </ion-content> -->
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Search address 
+      <ion-icon style="font-size: 3rem; font-weight: bold;" float-right name="close" tapable (click)="goBack()"></ion-icon>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content> 
+
+  <div class="SearchDiv">
+
+   
+   
+    <ion-searchbar [(ngModel)]="autocomplete.query" [showCancelButton]="true" class="autoSearchDiv" 
+      (ionInput)="updateSearch()" (ionCancel)="dismiss()" placeholder="Start typing and select ...">
+    </ion-searchbar>
+    <ion-list>
+      <ion-item *ngFor="let item of autocompleteItems" (click)="chooseItem(item)">{{ item.description }}</ion-item>
+    </ion-list>
+
+
+
+    <div class="divideRowDiv"><hr><p> OR </p></div>
+
+    
+
+    <ion-row class="tapLocationDiv">
+      <ion-col col-12>
+          <!-- <button ion-button round (click)="showloc()"> -->
+          <button ion-button round (click)="getGeolocatonData()">
+          <ion-row class="tapBtn">
+            <ion-col col-2><ion-icon name="md-locate" class="iconClose"></ion-icon></ion-col>
+            <ion-col col-10><h2>Tap to auto-detect current location</h2></ion-col>
+          </ion-row>
+        </button>
+      </ion-col>
+    </ion-row>
+
+
+
+    
+    <ion-row *ngIf="previewImage">
+      <ion-col>
+        <div>
+          <img [src]="previewImage" onError="this.src='../../assets/watermark/watermark.png';" alt="">
+        </div>
+      </ion-col>
+    </ion-row>
+
+  </div>
+</ion-content>

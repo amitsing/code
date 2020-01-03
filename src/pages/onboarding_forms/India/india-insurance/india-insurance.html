@@ -1,0 +1,177 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ formData.form_name }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="commonFormDiv">
+    <div [ngClass]="{'newOverlay':formData.form_status != 'enable'}"> 
+    <div class="WebFormDiv" *ngIf="data">
+        <div class="newCardDiv">
+          <div class="newHeading"><h4 no-margin>Choose Accidental Insurance Plan</h4></div>
+          <div class="customCardDiv">
+            <div class="table_head">
+              <ion-row>
+                <ion-col col-4></ion-col>
+                <ion-col col-4>
+                  <p>Sum Insured</p>
+                </ion-col>
+                <ion-col col-4>
+                  <p>Annual Premium</p>
+                </ion-col>
+              </ion-row>
+            </div>
+            <div class="table_body">
+                <ion-row class="br_btm extra_padd" *ngFor="let item of data.accidental" [ngClass]="{'selected': item?.is_selected}" (click)="selectAccidental(item)" style="border-bottom: 1px soild #c0c0c0 !important;">
+                    <ion-col col-4>
+                      <p> {{ item?.option_name }} </p>
+                    </ion-col>
+                    <ion-col col-4>
+                       <p> {{ 'Rs. ' + item?.sum_assured + '/-' }} </p>
+                    </ion-col>
+                    <ion-col col-4>
+                      <p> {{ 'Rs. ' + item?.annual_premium + '/-' }} </p>
+                    </ion-col>
+                </ion-row>
+            </div>
+          </div>
+        </div>
+
+        <div class="newCardDiv">
+            <div class="newHeading"><h4 no-margin>Choose Mediclaim Insurance Plan</h4></div>
+            <div class="customCardDiv">
+              <div class="buttons_head">
+                <ion-row>
+                  <ion-col col-6>
+                      <div class="btndiv">
+                          <button style="min-width: 80%;" ion-button class="btn" [ngClass]="{'selected': data.mediclaim?.self_selected}" (click)="changeMediclaimStatus(1)">Self</button>
+                    </div>
+                  </ion-col>
+                  <ion-col col-6>
+                      <div class="btndiv">
+                          <button style="min-width: 80%;" ion-button class="btn" [ngClass]="{'selected': !data.mediclaim?.self_selected}" (click)="changeMediclaimStatus(2)">self + dependents</button>
+                    </div>
+                  </ion-col>
+                </ion-row>
+              </div>
+              <div class="table_head">
+                <ion-row>
+                  <ion-col col-4></ion-col>
+                  <ion-col col-4>
+                    <p>Sum Insured</p>
+                  </ion-col>
+                  <ion-col col-4>
+                    <p>Annual Premium</p>
+                  </ion-col>
+                </ion-row>
+              </div>
+              <div class="table_body" *ngIf="data.mediclaim?.self_selected">
+                  <ion-row class="br_btm extra_padd" *ngFor="let item of data.mediclaim.self" [ngClass]="{'selected': item?.is_selected}" (click)="selectSelf(item)">
+                      <ion-col col-4>
+                        <p> {{ item?.option_name }} </p>
+                      </ion-col>
+                      <ion-col col-4>
+                         <p> {{ 'Rs. ' + item?.sum_assured + '/-' }} </p>
+                      </ion-col>
+                      <ion-col col-4>
+                        <p> {{ 'Rs. ' + item?.annual_premium + '/-' }} </p>
+                      </ion-col>
+                  </ion-row>
+              </div>
+              <div class="table_body" *ngIf="!data.mediclaim?.self_selected">
+                  <ion-row class="br_btm extra_padd" *ngFor="let item of data.mediclaim.self_dependent" [ngClass]="{'selected': item?.is_selected}" (click)="selectSelfDependent(item)">
+                      <ion-col col-4>
+                        <p> {{ item?.option_name }} </p>
+                      </ion-col>
+                      <ion-col col-4>
+                         <p> {{ 'Rs. ' + item?.sum_assured + '/-' }} </p>
+                      </ion-col>
+                      <ion-col col-4>
+                        <p> {{ 'Rs. ' + item?.annual_premium + '/-' }} </p>
+                      </ion-col>
+                  </ion-row>
+              </div>
+            </div>
+        </div>
+
+        <div class="newCardDiv" *ngIf="!data.mediclaim?.self_selected && familyPremium.length > 0">
+            <div class="newHeading mr_btm"><h4 no-margin>Select Dependants To Cover</h4></div>
+            <div class="customCardDiv">
+              <div class="table_body">
+                  <ion-row class="br_btm extra_padd" *ngFor="let item of familyPremium" [ngClass]="{'selected': item?.is_selected}" (click)="selectFamilyMember(item)" style="border-bottom: 1px soild #c0c0c0 !important;">
+                      <ion-col col-6 text-left>
+                        <p> {{ item?.relation_name }} </p>
+                      </ion-col>
+                      <ion-col col-6 text-right>
+                         <p> {{ 'Rs. ' + item?.annual_premium + '/-' }} </p>
+                      </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col col-6>
+                      <p class="total">{{ 'Total : ' + 'Rs. ' + getTotal() + '/-' }}</p>
+                    </ion-col>
+                    <ion-col col-6>
+                        <div class="btndiv">
+                            <button style="min-width: 80%;" ion-button class="btn selected custom_border" (click)="showForms()">{{ (showForm && familyFormFields.length > 0) ? 'Hide Member' : 'Add Members' }}</button>
+                      </div>
+                    </ion-col>
+                  </ion-row>
+              </div>
+            </div>
+        </div>
+
+        <div *ngIf="showForm">
+          <div class="newCardDiv" *ngFor="let item of familyFormFields">
+            <div class="newHeading mr_btm"><h4 no-margin>{{ item?.member_relation.value }}</h4></div>
+            <div class="customCardDiv">
+              
+              <customInput
+                label="Name"
+                [data]="item.member_name"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+
+              <customInput
+                label="Gender"
+                [data]="item.gender"
+                type="select"
+                [options] = "genderOption"
+                [otherStatus]="isSubmited"
+              ></customInput>
+
+              <customInput
+                label="Relationship"
+                [data]="item.member_relation"
+                type="text"
+                [otherStatus]="isSubmited"
+              ></customInput>
+
+              <customInput
+                label="Date of birth"
+                [data]="item.member_dob"
+                type="date"
+                dateFormat = "DD/MMM/YYYY"
+                [otherStatus]="isSubmited"
+              ></customInput>
+            </div>
+          </div>
+        </div>  
+
+        <ion-row *ngIf="formData && formData.form_status == 'enable' && (showForm || data.mediclaim?.self_selected)">
+          <!-- <ion-col text-center col-6 *ngIf="fill_status == '0'">
+                  <div class="btndiv">
+                          <button ion-button class="btn selected" (click)=" save()">Save</button>
+                  </div>
+          </ion-col> -->
+          <ion-col col-12>
+        
+            <div class="btndiv">
+                  <button ion-button class="btn selected" (click)="submit()">{{ fill_status=='1' ? 'Update' : 'Submit'  }}</button>
+            </div>
+          </ion-col>
+        </ion-row>
+    </div>
+    </div>
+</ion-content>

@@ -1,0 +1,125 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<!-- class="backcolor" -->
+
+<ion-content [ngClass]="{'popupDiv':showCustomActionSheet==true,'backcolor':hideshow==0}">
+  <div *ngIf="hideshow==0">
+    <ion-row>
+      <ion-col col-12>
+        <img src="assets/imgs/profile photo .png" />
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <div class="btndiv" (click)="addimage()">
+          <button ion-button class="btn" round>Upload</button>
+        </div>
+      </ion-col>
+    </ion-row>
+    <div *ngIf="showCustomActionSheet==true">
+      <div class="transparentLayerActionsheet" (tap)="hideActionsheet()"></div>
+      <div class="customActionsheetDIV">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <h2>Profile Picture</h2>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-6 class="centerData" (click)="usingCamera('camera')">
+              <img src="assets/imgs/camera.png" class="actionSheetIcon" />
+              <h4>Camera</h4>
+            </ion-col>
+            <ion-col col-6 class="centerData" (click)="usingCamera('gallery')">
+              <img src="assets/imgs/gallery.png" class="actionSheetIcon" />
+              <h4>Gallery</h4>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+  </div>
+  <!-- second div -->
+
+  <div *ngIf="hideshow==1">
+    <ion-row class="mrleft">
+      <ion-col col-5>
+        <h1 class="mrbottom">You look</h1>
+        <h1 class="mrtop">Fabulous!</h1>
+      </ion-col>
+      <ion-col col-auto>
+      </ion-col>
+    </ion-row>
+
+    <ion-row margin-bottom>
+      <ion-col>
+        <div class="relativeDiv">
+          <img src="assets/imgs/youlookfabolous.png" />
+          <div class="absoluteDiv uploadimage">
+            <div class="imageDiv">
+              <!-- <img  src="assets/imgs/instruction.png"/> -->
+
+              <img src="assets/imgs/profile.png" srcset="{{userImage}}">
+              <div class="uploadIcon" (click)="addimage()">
+                <img src="assets/imgs/uploadImg.png">
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="showdone==1">
+      <ion-col col-12>
+        <p class="paracss">{{successmsg}}</p>
+      </ion-col>
+    </ion-row>
+
+    <!-- <ion-row *ngIf="showdone==1">
+      <ion-col col-12>
+        <div class="cntr" (click)="gotolist()">
+          <button ion-button class="btn" round>Done</button>
+        </div>
+      </ion-col>
+    </ion-row> -->
+
+    <ion-row *ngIf="buttonshow==1">
+      <ion-col col-12>
+        <div class="cntr" (click)="submit()">
+          <button ion-button class="btn" round>Submit</button>
+        </div>
+      </ion-col>
+    </ion-row>
+
+
+    <div *ngIf="showCustomActionSheet==true">
+      <div class="transparentLayerActionsheet" (tap)="hideActionsheet()"></div>
+      <div class="customActionsheetDIV">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <h2>Profile Picture</h2>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-6 class="centerData" (click)="usingCamera('camera')">
+              <img src="assets/imgs/camera.png" class="actionSheetIcon" />
+              <h4>Camera</h4>
+            </ion-col>
+            <ion-col col-6 class="centerData" (click)="usingCamera('gallery')">
+              <img src="assets/imgs/gallery.png" class="actionSheetIcon" />
+              <h4>Gallery</h4>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+
+  </div>
+
+</ion-content>

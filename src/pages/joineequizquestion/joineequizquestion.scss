@@ -1,0 +1,147 @@
+page-joineequizquestion {
+
+.back-button{
+    display: none !important;
+}
+
+    p ul li::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #e22550;
+        position: absolute;
+        left: -25px;
+        top: 5px;
+    }
+    
+    p ul li {
+        list-style: none;
+        position: relative;
+    }
+
+    .instcss{font-size:20px;text-align:right;color: #e22250;margin-right: 14px;}
+    .aboutEvalBg{width: 100%;
+        height: 210px;
+        object-fit: cover;}
+     .inst{    font-size: 16px;text-align: left;
+        font-weight: bold;} 
+        
+        .card-md {
+            margin: 10px;
+            border-radius: 7px;
+            width: calc(100% - 20px);
+            font-size: 1.4rem;
+            background: #fff;
+            -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+        }   
+        .btn{
+            width: 40%;
+            border-radius: 20px;
+            font-size: 10px;
+            background: #e22550;
+            // background-image: linear-gradient(to bottom, $theme-titlecolor, #e22550);
+        }
+      .btndiv{text-align: center;}  
+      .font{font-size: 13px;    text-align: left;}
+      .paddtop{padding-top: 0px;text-align: -webkit-center; }
+      .mrtop{    margin-top: -10px;}
+    .rowgray{background: lightgray}
+    .headerimg{height:30px;    background: transparent;}
+    .marg{margin:35px;}
+    .imgclass{height: 200px;width: 100%;object-fit: cover;}
+    .stylecolorred{background: #e22550;padding:7px;color:white;font-size: 12px;border-radius: 5px;    min-height: 30px;}
+    .stylecolorgreen{background: green !important;padding:7px;color:white;font-size: 12px;border-radius: 5px;min-height: 30px;}
+    .stylecolorgrey{background: rgba(128, 128, 128, 0.27058823529411763);padding:7px;font-size: 12px; border-radius: 5px;min-height: 30px;}
+    .stylecolorblue ion-label, .stylecolorgrey ion-label{    margin: 6px 8px 6px 0px !important;}
+    .stylecolorblue{background: #a0859d;padding:7px;color:white;font-size: 12px;border-radius: 5px;min-height: 30px;    min-height: 30px;}
+    
+    .bottomcss{position: absolute;bottom: 0px;}
+     
+        .btn{
+            // width: 45%;
+            border-radius: 20px;
+            background: #e22550;
+            // background-image: linear-gradient(to bottom, $theme-titlecolor, #e22550);
+        }
+        .btn1{  border-radius: 20px; background: gray;}
+
+        .options {
+            float: left;
+        }
+        .main-bg button {
+            background: black;
+            background-image: -webkit-gradient(linear, left top, left bottom, from(#bf2548), to(#e22550));
+            background-image: linear-gradient(to bottom, #bf2548, #e22550);
+            padding: 20px 45px;
+        }
+        .swiper-slide {
+            text-align: center;
+            position: relative;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-flex-shrink: 0;
+            -ms-flex-negative: 0;
+            flex-shrink: 0;
+            -webkit-box-align: unset;
+            -webkit-align-items: unset;
+            -ms-flex-align: unset;
+            align-items: unset;
+            -webkit-box-pack: unset;
+            -webkit-justify-content: unset;
+            -ms-flex-pack: unset;
+            justify-content: unset;
+            width: 100%;
+            height: 100%;
+            font-size: 18px;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        .asstest .card {
+            margin: 0px;
+            background-color: #f3f3f3 !important;
+        }
+        .asstest .item {
+            padding-left: 0px;
+            padding-right: 10px;
+            height: 60px;
+        }
+        // .asstest .card h3 {
+        //     font-size: 21px;
+        //     font-weight: bold;
+        //     color: #0074a7;
+        // }
+        // .asstest .card p {
+        //     color: #0074a7;
+        // }
+        
+        ion-item ion-label {
+            position: absolute;
+            top: 0px;
+            width: 100%;
+            margin: 0px !important;
+            height: 100%;
+            text-align: center;
+            line-height: 50px;
+        }
+        ion-item ion-radio {
+            opacity: 0;
+        }
+        .item-radio.item ion-label {
+            margin-left: 0;
+            background: #acacac;
+            color: #ffffff;
+            line-height: 60px;
+            border-left: 2px solid #003471;
+        }
+        .item-radio-checked.item ion-label {
+            color: #ffffff;
+            background: #003471;
+        }
+
+
+        
+}

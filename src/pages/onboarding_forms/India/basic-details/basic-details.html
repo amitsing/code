@@ -1,0 +1,265 @@
+<!--
+  Generated template for the BasicDetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title *ngIf="formData">{{ formData.form_name }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="bg">
+    <div [ngClass]="{'newOverlay':formData.form_status != 'enable'}"> 
+    <ion-row *ngIf="data" #form>
+        <ion-col col-12>
+            <div class="formDiv">
+                <div>
+                    <h4> Personal Information </h4>
+                  </div>
+                  <customInput
+                    label="First Name"
+                    [data]="data.personal_info.first_name"
+                    type="text"
+                    [otherStatus]="isSubmited"
+                  ></customInput>
+
+                  <customInput
+                    label="Middle Name"
+                    [data]="data.personal_info.middle_name"
+                    type="text"
+                    [otherStatus]="isSubmited"
+                  ></customInput>
+
+                  <customInput
+                    label="Last Name"
+                    [data]="data.personal_info.last_name"
+                    type="text"
+                    [otherStatus]="isSubmited"
+                  ></customInput>
+
+                  <customInput
+                    label="Gender"
+                    [data]="data.personal_info.gender"
+                    type="radio"
+                    [options] = "genderOptions"
+                    [otherStatus]="isSubmited"
+                  ></customInput>
+
+                  <customInput
+                    label="Date of Birth ( dd/mm/yyyy)"
+                    [data]="data.personal_info.date_of_birth"
+                    type="date"
+                    dateFormat = "DD/MMM/YYYY"
+                    [otherStatus]="isSubmited"
+                  ></customInput>
+
+                  <customInput
+                    label="Father's Name"
+                    [data]="data.personal_info.father_name"
+                    type="text"
+                    [otherStatus]="isSubmited"
+                  ></customInput>
+
+                  <customInput
+                    label="Marital Status"
+                    [data]="data.personal_info.marital_status"
+                    type="select"
+                    [options] = "martial_status"
+                    [otherStatus]="isSubmited"
+                  ></customInput>
+
+                  <customInput
+                    label="Department"
+                    [data]="data.personal_info.department"
+                    type="text"
+                    [otherStatus]="isSubmited"
+                  ></customInput>
+
+                  <customInput
+                    label="Designation"
+                    [data]="data.personal_info.designation"
+                    type="text"
+                    [otherStatus]="isSubmited"
+                  ></customInput>
+
+                  <customInput
+                    label="Date of Joining ( dd/mm/yyyy)"
+                    [data]="data.personal_info.date_of_joining"
+                    type="date"
+                    dateFormat = "DD/MMM/YYYY"
+                    [otherStatus]="isSubmited"
+                  ></customInput>
+
+                  <customInput
+                    label="Present Address"
+                    [data]="data.personal_info.present_address"
+                    type="textArea"
+                    [otherStatus]="isSubmited"
+                  ></customInput>
+
+                  <customInput
+                    label="Permanent Address"
+                    [data]="data.personal_info.permanent_address"
+                    type="textArea"
+                    [otherStatus]="isSubmited"
+                  ></customInput>
+
+                  <customInput
+                    label="Contact Detail (Landline)"
+                    [data]="data.personal_info.landline"
+                    type="number"
+                    [otherStatus]="isSubmited"
+                  ></customInput>
+
+                  <customInput
+                    label="Contact Detail (Mobile)"
+                    [data]="data.personal_info.contact"
+                    type="number"
+                    [otherStatus]="isSubmited"
+                  ></customInput>
+
+                  <customInput
+                    label="Emergency Contact (Mobile)"
+                    [data]="data.personal_info.emergency_contact"
+                    type="number"
+                    [otherStatus]="isSubmited"
+                  ></customInput>
+
+                  <customInput
+                    label="E-mail"
+                    [data]="data.personal_info.email_id"
+                    type="text"
+                    [otherStatus]="isSubmited"
+                  ></customInput>
+
+                  <customInput
+                    label="Blood Group"
+                    [data]="data.personal_info.blood_group"
+                    type="select"
+                    [options] = "blood_group"
+                    [otherStatus]="isSubmited"
+                  ></customInput>
+
+                  <customInput
+                  label="Passport Number"
+                  [data]="data.personal_info.passport_number"
+                  type="text"
+                  [otherStatus]="isSubmited"
+                ></customInput>
+
+                  <customInput
+                    label="PAN Card Available"
+                    [data]="data.personal_info.available"
+                    type="radio"
+                    [options] = "yesNoOption"
+                    [otherStatus]="isSubmited"
+                  ></customInput>
+
+
+                  <customInput
+                    *ngIf="data.personal_info.available.value == '1'"
+                    label="PAN Card Number"
+                    [data]="data.personal_info.PAN_number"
+                    type="text"
+                    [otherStatus]="isSubmited && data.personal_info.available.value == '1'"
+                  ></customInput>
+
+                  <customInput
+                    *ngIf="data.personal_info.available.value == '0'"
+                    label="PAN Card Receipt Number"
+                    [data]="data.personal_info.reciept_number"
+                    type="text"
+                    [otherStatus]="isSubmited && data.personal_info.available.value == '0'"
+                  ></customInput>
+
+                  <customInput
+                    label="Aadhar Number"
+                    [data]="data.personal_info.aadhaar_number"
+                    type="number"
+                    [otherStatus]="isSubmited"
+                  ></customInput>
+
+                  <customInput
+                    label="Nationality"
+                    [data]="data.personal_info.nationality_citizen_1"
+                    type="text"
+                    [otherStatus]="isSubmited"
+                  ></customInput>
+
+                  <customInput
+                    label="Differently Abled"
+                    [data]="data.personal_info.physically_challanged"
+                    type="radio"
+                    [options] = "yesNoOption"
+                    [otherStatus]="isSubmited"
+                  ></customInput>
+
+                  <customInput
+                    *ngIf="data.personal_info.physically_challanged.value == '1'"
+                    label="Differently Abled Type"
+                    [data]="data.personal_info.physically_challanged_remark"
+                    type="text"
+                    [otherStatus]="isSubmited && data.personal_info.physically_challanged.value == '1'"
+                  ></customInput>
+            </div>
+
+
+          <div class="formDiv">
+                <div>
+                    <h4> Other Details </h4>
+                  </div>
+
+                  <customInput
+                    label="Have you ever been convicted in any court of law?"
+                    [data]="data.other_info.is_convicted_law"
+                    type="radio"
+                    [options] = "yesNoOption"
+                    [otherStatus]="isSubmited"
+                  ></customInput> 
+
+                  <customInput
+                      *ngIf="data.other_info.is_convicted_law.value == '1'"
+                      label="Share Details"
+                      [data]="data.other_info.convicted_detail"
+                      type="text"
+                      [otherStatus]="isSubmited && data.other_info.is_convicted_law.value == '1'"
+                  ></customInput> 
+
+                  <customInput
+                    label="Do you have any location constraint? "
+                    [data]="data.other_info.is_location_constraint"
+                    type="radio"
+                    [options] = "yesNoOption"
+                    [otherStatus]="isSubmited"
+                  ></customInput> 
+
+                  <customInput
+                      *ngIf="data.other_info.is_location_constraint.value == '1'"
+                      label="Share Details"
+                      [data]="data.other_info.about_location_constraint"
+                      type="text"
+                      [otherStatus]="isSubmited && data.other_info.is_location_constraint.value == '1'"
+                  ></customInput> 
+          </div>
+
+        </ion-col>
+    </ion-row>
+ 
+    <ion-row *ngIf="formData && formData.form_status == 'enable'">
+        <ion-col text-center col-6 *ngIf="fill_status == '0'">
+                <div class="btndiv">
+                        <button ion-button class="btn" (click)=" save()">Save</button>
+                </div>
+        </ion-col>
+        <ion-col [attr.col-12]="fill_status == '1' ? '' : null"
+                 [attr.col-6]="fill_status == '0' ? '' : null">
+      
+          <div class="btndiv">
+                <button ion-button class="btn" (click)="submit()">{{ fill_status=='1' ? 'Update' : 'Submit'  }}</button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </div>
+</ion-content>

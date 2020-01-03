@@ -1,0 +1,54 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Album</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
+
+    <div *ngIf="albumData" class="div2" >
+        <ion-row>
+          <ion-col col-6 *ngFor="let data of albumData; let alb=index" (click)="seeDetails(data)">
+            <div class="relativDIV albumDiv">
+              <img src="{{data?.album_image}}" height="128" class="set1">
+              <div class="transparentLayer_black"></div>
+              <div class="userName">
+                <ion-row>
+                    <ion-col col-12> <b class="text">{{data?.album_name}} </b>
+                      <b class="text">{{data?.img_count}} </b>
+                    </ion-col>
+                    <!-- <ion-col col-6> <b class="text" float-right>{{data?.img_count}} </b></ion-col> -->
+                </ion-row>
+                
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+  </div>
+
+  <!-- following is skelton code of album  Ui -->
+
+  <div *ngIf="!albumData" class="div2" >
+      <ion-row>
+        <ion-col col-6 *ngFor="let data of [0,1,2,3,4]; let alb=index" >
+          <div class="relativDIV albumDiv">
+            <img src="../../assets/watermark/watermark.png" height="128" class="set1 textSkelton">
+            <div class="transparentLayer_black textSkelton"></div>
+            <div class="userName">
+              <ion-row>
+                  <ion-col col-6> <b class="text textSkelton">test user </b></ion-col>
+                  <ion-col col-6> <b class="text textSkelton" float-right>5 image </b></ion-col>
+              </ion-row>
+              
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+</div>
+  <!-- above is skelton code of album  Ui end -->
+  
+  <ion-infinite-scroll *ngIf="hideInfiniteScroll==false && albumData" (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

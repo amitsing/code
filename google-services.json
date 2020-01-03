@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "67239561553",
+    "firebase_url": "https://reach-d4607.firebaseio.com",
+    "project_id": "reach-d4607",
+    "storage_bucket": "reach-d4607.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:67239561553:android:f1234fad19daaf9f68eb70",
+        "android_client_info": {
+          "package_name": "connect.myevalonboarding"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "67239561553-qmgbe0honm0s6qnluum5as695vjq2sms.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXq8I7Cyf3BBhXuxxpC87djG7uwuUntnA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "67239561553-qmgbe0honm0s6qnluum5as695vjq2sms.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

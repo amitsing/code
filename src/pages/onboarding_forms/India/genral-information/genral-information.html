@@ -1,0 +1,437 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Genral Information</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div class="pageDiv">
+    <div class="customCardDiv">
+      <p class="para">General Information</p>
+      <ion-row>
+        <ion-col col-12>
+          <div class="inputDiv">
+            <ion-label>First Name
+              <sup class="redText">*</sup>
+            </ion-label>
+            <ion-input type="text" name="fname" [(ngModel)]="fname" placeholder="Enter your name"></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <div class="inputDiv1">
+            <ion-label>Middle Name</ion-label>
+            <ion-input type="text" name="mname" [(ngModel)]="mname" placeholder="Enter your name"></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <div class="inputDiv">
+            <ion-label>Last Name
+              <sup class="redText">*</sup>
+            </ion-label>
+            <ion-input type="text" name="lname" [(ngModel)]="lname" placeholder="Enter your name"></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <div class="inputDiv">
+            <ion-label>Father,s Name
+              <sup class="redText">*</sup>
+            </ion-label>
+            <ion-input type="text" name="fathername" [(ngModel)]="fathername" placeholder="Enter your name"></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <div class="inputDiv">
+            <ion-label>Gender
+              <sup class="redText">*</sup>
+            </ion-label>
+            <ion-list no-margin radio-group [(ngModel)]="relationship">
+              <ion-row class="radioDiv">
+                <ion-col col-6>
+                  <ion-item>
+                    <ion-label class="genderlable">Male</ion-label>
+                    <ion-radio value="Male"></ion-radio>
+                  </ion-item>
+                </ion-col>
+                <ion-col col-6>
+                  <ion-item>
+                    <ion-label class="genderlable">Female</ion-label>
+                    <ion-radio value="female"></ion-radio>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-list>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <div class="inputDiv1">
+            <ion-label>Marital Status
+              <sup class="redText">*</sup>
+            </ion-label>
+            <ion-item style="background-color: transparent;">
+              <ion-label stacked>--Select Status--
+                <sup>*</sup>
+              </ion-label>
+              <ion-select [(ngModel)]="MaritalStatus" placeholder="--Select Status--">
+                <ion-option>Married</ion-option>
+                <ion-option>Never Married</ion-option>
+                <ion-option>Widowed</ion-option>
+                <ion-option>Divorced/Separated</ion-option>
+              </ion-select>
+            </ion-item>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <div class="inputDiv">
+            <ion-label>Department
+              <sup class="redText">*</sup>
+            </ion-label>
+            <ion-input type="text" name="Department" [(ngModel)]="Department" placeholder="Enter Text"></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <div class="inputDiv">
+            <ion-label>Designation
+              <sup class="redText">*</sup>
+            </ion-label>
+            <ion-input type="text" name="Designation" [(ngModel)]="Designation" placeholder="Enter Text"></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <div class="inputDiv">
+            <ion-label>Date of Joining
+              <sup class="redText">*</sup>
+            </ion-label>
+            <ion-input type="text" name="dJoining" [(ngModel)]="dJoining" placeholder="Enter Text"></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <p class="paracss">Parmanent Address
+            <sup class="redText">*</sup>
+          </p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <div class="inputDiv">
+            <ion-label>Parmanent Address
+              <sup class="redText">*</sup>
+            </ion-label>
+            <ion-textarea type="text" name="pAddress" [(ngModel)]="pAddress" placeholder="" class="custom-class-text" id="comment" rows="2"></ion-textarea>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12 class="pad0">
+          <ion-list>
+            <ion-item style="margin: -1px 0 0px;" class="itemclass">
+              <ion-label class="fontcss">Present Address same as Permanent Address</ion-label>
+              <ion-checkbox [(checked)]="addresscheck" [(ngModel)]="addresscheck" (ionChange)="updatecheck()"></ion-checkbox>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <div class="inputDiv">
+            <ion-label>Present Address
+              <sup class="redText">*</sup>
+            </ion-label>
+            <span *ngIf="addresscheck==false">
+              <ion-textarea type="text" name="preAddress" [(ngModel)]="preAddress" placeholder="" class="custom-class-text" id="comment"
+                rows="2"></ion-textarea>
+            </span>
+            <span *ngIf="addresscheck==true">
+              <ion-textarea type="text" name="pAddress" [(ngModel)]="pAddress" placeholder="" class="custom-class-text" id="comment" rows="2"></ion-textarea>
+            </span>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <div class="inputDiv">
+            <ion-label>Contact Details Landline
+              <sup class="redText">*</sup>
+            </ion-label>
+            <ion-input type="tel" name="landnum" [(ngModel)]="landnum" placeholder="Enter Text"></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <div class="inputDiv">
+            <ion-label>Contact Details Mobile
+              <sup class="redText">*</sup>
+            </ion-label>
+            <ion-input type="tel" name="mobilenum" [(ngModel)]="mobilenum" placeholder="Enter Text"></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <div class="inputDiv">
+            <ion-label>Emergency Contact Numbers
+              <sup class="redText">*</sup>
+            </ion-label>
+            <ion-input type="tel" name="Emobilenum" [(ngModel)]="Emobilenum" placeholder="Enter Text"></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <div class="inputDiv">
+            <ion-label>Email Address (Personal)
+              <sup class="redText">*</sup>
+            </ion-label>
+            <ion-input type="text" name="Email" [(ngModel)]="Email" placeholder="Enter Text"></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <div class="inputDiv">
+            <ion-label>Official date of Birth
+              <sup class="redText">*</sup>
+            </ion-label>
+            <ion-input type="text" name="dob" [(ngModel)]="dob" placeholder="Enter Text"></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <div class="inputDiv1">
+            <ion-label>Blood Group
+              <sup class="redText">*</sup>
+            </ion-label>
+            <ion-item style="background-color: transparent;">
+              <ion-label stacked>--Select Blood group--<sup>*</sup>
+              </ion-label>
+              <ion-select [(ngModel)]="bloodgrp" placeholder="--Select Blood group--">
+                <ion-option>o+</ion-option>
+                <ion-option>o-</ion-option>
+                <ion-option>A+</ion-option>
+                <ion-option>A-</ion-option>
+                <ion-option>B+</ion-option>
+                <ion-option>B-</ion-option>
+                <ion-option>AB+</ion-option>
+                <ion-option>AB-</ion-option>
+              </ion-select>
+            </ion-item>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <div class="inputDiv">
+            <ion-label>PAN Card available
+              <sup class="redText">*</sup>
+            </ion-label>
+            <ion-list no-margin radio-group [(ngModel)]="PANcheck">
+              <ion-row class="radioDiv">
+                <ion-col col-6>
+                  <ion-item>
+                    <ion-label class="genderlable">yes</ion-label>
+                    <ion-radio value="yes" checked></ion-radio>
+                  </ion-item>
+                </ion-col>
+                <ion-col col-6>
+                  <ion-item>
+                    <ion-label class="genderlable">No</ion-label>
+                    <ion-radio value="No"></ion-radio>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-list>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="PANcheck=='yes'">
+        <ion-col col-12>
+          <div class="inputDiv">
+            <ion-label>Parmanent Account Number(PAN)
+              <sup class="redText">*</sup>
+            </ion-label>
+            <ion-input type="text" name="PPAN" [(ngModel)]="PPAN" placeholder="Enter Text"></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="PANcheck=='No'">
+        <ion-col col-12>
+          <div class="inputDiv">
+            <ion-label>Parmanent Account Number Receipt
+              <sup class="redText">*</sup>
+            </ion-label>
+            <ion-input type="text" name="RPAN" [(ngModel)]="RPAN" placeholder="Enter Text"></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <div class="inputDiv">
+            <ion-label>Aadhar Number
+            </ion-label>
+            <ion-input type="text" name="adharnum" [(ngModel)]="adharnum" placeholder="Enter Text"></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <div autofocus  class="inputDiv">
+            <ion-label>Nationality
+            </ion-label>
+            <ion-input type="text"  name="Nationality" [(ngModel)]="Nationality" placeholder="Enter Text"></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <div class="inputDiv">
+            <ion-label>Passport Number
+              <sup class="redText">*</sup>
+            </ion-label>
+            <ion-input type="text" name="passnum" [(ngModel)]="passnum" placeholder="Enter Text"></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <div class="inputDiv">
+            <ion-label>Physically Challenged
+              <sup class="redText">*</sup>
+            </ion-label>
+            <ion-list no-margin radio-group [(ngModel)]="PhysicallyChallenged">
+              <ion-row class="radioDiv">
+                <ion-col col-6>
+                  <ion-item>
+                    <ion-label class="genderlable">yes</ion-label>
+                    <ion-radio value="friends" checked></ion-radio>
+                  </ion-item>
+                </ion-col>
+                <ion-col col-6>
+                  <ion-item>
+                    <ion-label class="genderlable">No</ion-label>
+                    <ion-radio value="family"></ion-radio>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-list>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <div class="inputDiv">
+            <ion-label>Physically Challenged Remark
+            </ion-label>
+            <input type="text"  id="pRemark"  name="pRemark" [(ngModel)]="pRemark" placeholder="Enter Text">
+            <!-- <ion-input  id="pRemark" type="text" name="pRemark" [(ngModel)]="pRemark" placeholder="Enter Text"></ion-input> -->
+          </div>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+  <div class="pageDiv">
+    <div class="customCardDiv">
+      <div class="right">
+        <span *ngIf="isDisabled==true" (click)=enable()>
+          <ion-icon name="ios-create-outline" class="iconcss"></ion-icon>
+        </span>
+        <span *ngIf="isDisabled==false" (click)=enable()>
+          <ion-icon name="ios-close-circle-outline" class="iconcss"></ion-icon>
+        </span>
+      </div>
+      <p class="para">Other Information</p>
+      <p>Have you ever convicted in any court of law</p>
+      <ion-row>
+        <ion-col col-12>
+          <div class="inputDiv">
+            <ion-label>Select
+              <sup class="redText">*</sup>
+            </ion-label>
+            <ion-list no-margin radio-group [(ngModel)]="lawcheck">
+              <ion-row class="radioDiv">
+                <ion-col col-6>
+                  <ion-item>
+                    <ion-label class="genderlable">yes</ion-label>
+                    <ion-radio [disabled]="isDisabled" value="friends"></ion-radio>
+                  </ion-item>
+                </ion-col>
+                <ion-col col-6>
+                  <ion-item>
+                    <ion-label class="genderlable">No</ion-label>
+                    <ion-radio [disabled]="isDisabled" value="family"></ion-radio>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-list>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <div class="inputDiv">
+            <ion-label>Share Details
+              <sup class="redText">*</sup>
+            </ion-label>
+            <ion-input type="text" name="SDetails" [(ngModel)]="SDetails" [disabled]="isDisabled" placeholder="Enter Text"></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+      <p>Do you have any location constraint? </p>
+      <ion-row>
+        <ion-col col-12>
+          <div class="inputDiv">
+            <ion-label>Select
+              <sup class="redText">*</sup>
+            </ion-label>
+            <ion-list no-margin radio-group [(ngModel)]="lconstraint">
+              <ion-row class="radioDiv">
+                <ion-col col-6>
+                  <ion-item>
+                    <ion-label class="genderlable">yes</ion-label>
+                    <ion-radio [disabled]="isDisabled" value="friends" checked></ion-radio>
+                  </ion-item>
+                </ion-col>
+                <ion-col col-6>
+                  <ion-item>
+                    <ion-label class="genderlable">No</ion-label>
+                    <ion-radio [disabled]="isDisabled" value="family"></ion-radio>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-list>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <div class="inputDiv">
+            <ion-label>Share Details
+              <sup class="redText">*</sup>
+            </ion-label>
+            <ion-input type="text" name="S2Details" [(ngModel)]="S2Details" [disabled]="isDisabled" placeholder="Enter Text"></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+  <div class="btndiv">
+    <button ion-button class="btn" (click)="update(pRemark)">Update</button>
+  </div>
+</ion-content>

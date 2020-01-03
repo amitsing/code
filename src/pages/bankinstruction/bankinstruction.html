@@ -1,0 +1,30 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>New Account Details</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+<ion-row *ngFor="let data of allData ; let i = index">
+  <ion-col col-2>
+    <p>{{data[i]}}</p>
+    <img *ngIf="data.text" class="imgcss" src="../../assets/imgs/bullet.png">
+  </ion-col>
+  <ion-col col-10>
+    <p [innerHTML]="data.text">
+       <!-- {{data.text}} -->
+    </p>
+    <div *ngIf="data.image" class="imgcenter">
+        <img  class="imgcss1" src="{{data?.image}}">
+    </div>
+  
+  </ion-col>
+</ion-row>
+
+
+<div class="btndiv">
+    <button ion-button  class="btn" (click)="submit()">Confirm</button>
+   </div>
+
+</ion-content>

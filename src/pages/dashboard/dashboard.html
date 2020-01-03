@@ -1,0 +1,298 @@
+
+<ion-header>
+    <ion-navbar>
+      <ion-title>Award Dashboard</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content >
+  
+  <div  class="ion-padding"  >
+  
+      <!-- <ion-row class="myrow">
+          <ion-col col-4>
+              <button ion-button *ngIf="firstshowhide==true"  color="danger"  small round  (click)="dash(true)">Dashboard</button>
+              <button ion-button class="stylebtn" *ngIf="firstshowhide==false" small round outline  (click)="dash(false)">Dashboard</button>
+          </ion-col>
+          <ion-col col-4>
+              <button ion-button *ngIf="secondshowhide==true && nominationathority==1"  color="danger" small round   (click)="noninate(true)">Nominate</button>
+              <button ion-button class="stylebtn" *ngIf="secondshowhide==false && nominationathority==1" small round outline  (click)="noninate(false)">Nominate</button>
+          </ion-col>
+          <ion-col col-4>
+              <button ion-button *ngIf="thirdshowhide==true && approvalathority==1" color="danger" small round   (click)="approve(true)">Approve</button>
+              <button ion-button class="stylebtn" *ngIf="thirdshowhide==false && approvalathority==1" small round outline  (click)="approve(false)">Approve</button>
+          </ion-col>
+        </ion-row> -->
+
+
+        <ion-row class="myrow">
+          <ion-col col-4>
+              <button ion-button *ngIf="firstshowhide==true"  color="danger"  small round  (click)="dash(true)">Dashboard</button>
+              <button ion-button class="stylebtn" *ngIf="firstshowhide==false" small round outline  (click)="dash(false)">Dashboard</button>
+          </ion-col>
+          <ion-col col-4>
+              <button ion-button *ngIf="secondshowhide==true && nominationathority==1"  color="danger" small round   (click)="noninate(true)">Nominate</button>
+              <button ion-button class="stylebtn" *ngIf="secondshowhide==false && nominationathority==1" small round outline  (click)="noninate(false)">Nominate</button>
+          </ion-col>
+          <ion-col col-4>
+              <button ion-button *ngIf="thirdshowhide==true && approvalathority==1" color="danger" small round   (click)="approve(true)">Approve</button>
+              <button ion-button class="stylebtn" *ngIf="thirdshowhide==false && approvalathority==1" small round outline  (click)="approve(false)">Approve</button>
+          </ion-col>
+        </ion-row>
+
+        <div *ngIf="firstshowhide==true">
+  
+      <!-- <ion-row class="myrow" *ngFor="let data of [1,2]; let i = index">
+        <ion-col class="colcustom"  col-12 >
+          <div  *ngIf="i==0">
+              <p style="font-weight: bold;" text-center>Budget Allocation</p>
+              <canvas class="mR-20" id="mychart{{i}}" #mycharts>{{charts[i].chart}}</canvas>
+              <p>Anual Awards</p>
+              <p>Outgoing Awards</p>
+              <p>Monthly Awards</p>
+          </div>
+          <div  *ngIf="i==1">
+              <p style="font-weight: bold;" text-center>Award Approved</p>
+              <div style="    text-align: center;" class="parent">
+                <div class="outer">
+                  <div class="inner" [style.backgroundColor]="clr[0]" [style.height.%]="75">  
+                  </div>
+                </div>
+                <div class="outer">
+                    <div class="inner" [style.backgroundColor]="clr[1]" [style.height.%]="58">  
+                    </div>
+                </div>
+                <div class="outer">
+                    <div class="inner" [style.backgroundColor]="clr[2]" [style.height.%]="23">  
+                    </div>
+                </div>
+              </div>
+              <p [style.color]="clr[0]">Ongoing 30/100</p>
+              <p [style.color]="clr[1]">Monthly 40/100</p>
+              <p [style.color]="clr[2]">Anual 40/100</p>
+          </div>
+        </ion-col>
+     
+      </ion-row> -->
+      <ion-row class="myrow"  *ngIf="nominationDeshboardContent">
+        <ion-col col-12 >
+          <ion-card>
+            <ion-card-header>
+                <p style="font-weight: bold;" text-center>{{nominationDeshboardContent.title}}</p>
+                <!-- <p>13 Employee Nominated</p> -->
+                <!-- <p>12 Team Nominated</p> -->
+            </ion-card-header>
+            <ion-card-content>
+              <div *ngFor="let data of nominationGraphs; let i = index">
+                  <canvas  class="mR-20" id="mychart{{i}}" #mycharts>{{data.charts}}</canvas>
+                  <!-- show extra info about graph -->
+              </div>
+                <p style="color:blue;" (click)="gotodetail()">View Detail</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="myrow"  *ngIf="awardDeshboardContent">
+          <ion-col col-12 >
+            <ion-card>
+              <ion-card-header>
+                  <p style="font-weight: bold;" text-center>{{awardDeshboardContent.title}}</p>
+                  <!-- <p>13 Employee Nominated</p> -->
+                  <!-- <p>12 Team Nominated</p> -->
+              </ion-card-header>
+              <ion-card-content>
+                <div *ngFor="let data of awardGraphs; let i = index">
+                    <canvas  class="mR-20" id="mychart{{i}}" #mycharts2>{{data.charts}}</canvas>
+                    <!-- show extra info about graph -->
+                </div>
+                  <p style="color:blue;" (click)="gotodetail()">View Detail</p>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+  
+  
+  
+      <!-- <ion-row class="myrow">
+        <ion-col col-12 >
+          <p text-center>My Nominations</p>
+          <p>13 Employee Nominated</p>
+          <p>12 Team Nominated</p>
+        </ion-col>
+   
+        <ion-col col-12>
+            <canvas class="mR-20" id="mychart{{3}}" #mycharts>{{charts[3].chart}}</canvas>
+            <p [style.color]="clr[0]">Accepted Nomination 7</p>
+            <p [style.color]="clr[1]">Rejected Nomination 8</p>
+            <p [style.color]="clr[2]">Pending Nomination 10</p>
+        </ion-col>
+        <p style="color:blue;" (click)="gotodetail()">View Detail</p>
+      </ion-row> -->
+  
+
+  
+        <!-- <ion-row class="myrow">
+          <ion-col col-12 >
+            <p text-center>My Approval</p>
+            <p>13 Employee Award Approved</p>
+            <p>12 Team Award Approved</p>
+          </ion-col>
+          <ion-col col-12>
+              <canvas class="mR-20" id="mychart{{4}}" #mycharts>{{charts[4].chart}}</canvas>
+              <p [style.color]="clr[0]">Anual Awards 10</p>
+              <p [style.color]="clr[1]">Outgoing Awards 5</p>
+              <p [style.color]="clr[2]">Monthly Awards 5</p>
+          </ion-col>
+          <ion-col col-6>
+              <canvas class="mR-20" id="mychart{{5}}" #mycharts>{{charts[5].chart}}</canvas>
+              <p [style.color]="clr[0]">Request Accepted 7</p>
+              <p [style.color]="clr[1]">Request Rejected 8</p>
+              <p [style.color]="clr[2]">Request Pending 8</p>
+          </ion-col>
+          <p style="color:blue;" (click)="gotodetail()">View Detail</p>
+        </ion-row>  -->
+      </div>
+    </div>
+  
+  
+  
+  
+    <div *ngIf="allData && secondshowhide==true">
+      <ion-card class="padd8" *ngFor="let data of allData">
+          <h2><b>{{data.title}}</b></h2><br>
+       <ion-row>
+         <ion-col col-6 *ngFor="let award of data.data let i=index;" (click)="awardsdetail(award.award_id,award.award_name)">
+          <img class="imgcss" src="../../assets/watermark/watermark.png" srcset="{{award?.award_image}}">
+          <div class="martopbot-10" text-left><h4><b>{{award.award_name}}</b></h4></div>
+         </ion-col>
+       </ion-row>
+      </ion-card>
+    </div>
+    
+  <!--   
+    <div *ngIf="!allData" >
+      <img style="width:100%;"  src="../../assets/imgs/skelton/ncategory.png" class="textSkelton" />
+    </div> -->
+  
+  
+  
+  
+  
+  
+    <!-- <div class="ion-padding">
+  
+      <ion-card>
+        <ion-card-header>
+          Bar Chart
+        </ion-card-header>
+        <ion-card-content>
+      
+  <ion-row>
+   
+  </ion-row>
+  
+          <canvas *ngFor="let chart of charts; let i = index" id="mychart{{i}}" #mycharts>{{chart.chart}}</canvas>
+       
+        </ion-card-content>
+      </ion-card>
+    </div> -->
+  
+    <div *ngIf="thirdshowhide==true" >
+      <ion-card class="mrbottom" *ngFor="let pendingdata of alldata; let i=index">
+        <ion-row (click)="awarddetail(pendingdata.nomination_id,i,pendingdata.nomination_status)">
+          <ion-col col-3>
+            <div class="proimage"  *ngIf="pendingdata.user?.length==1">
+              <div *ngFor="let data of pendingdata.user;">
+                <ion-row>
+                  <ion-col col-12>
+                    <div class=centerclass>
+                        <img class="imgcss" src="../../assets/watermark/watermark.png" srcset="{{data.user_image}}">
+                      </div>
+                  </ion-col>
+                </ion-row>
+              </div>
+               <!-- <div class="badgeimg"> <img class="imgcss" src="../../assets/watermark/watermark.png" srcset="{{pendingdata.award_image}}">
+               
+              </div>  -->
+          
+            </div>
+             
+            <div   *ngIf="pendingdata.user?.length==5" class="centerclass proimage">
+                <div class="imgcss2">
+            <div *ngFor="let data of pendingdata.user;" class="colargeimg">
+               <img src="../../assets/watermark/watermark.png" srcset="{{data.user_image}}">
+            </div>
+            
+                </div>
+        
+                 <!-- <div class="badgeimg"> <img class="imgcss" src="../../assets/watermark/watermark.png" srcset="{{pendingdata.award_image}}"></div> -->
+        
+              </div> 
+            
+              <div   *ngIf="pendingdata.user?.length==2" class="centerclass proimage">
+                  <div class="imgcss2"  >
+              <div *ngFor="let data of pendingdata.user;" class="colargeimg2">
+                 <img src="../../assets/watermark/watermark.png" srcset="{{data.user_image}}">
+              </div>
+              
+                  </div>
+                  <!-- <div class="badgeimg"> <img class="imgcss" src="../../assets/watermark/watermark.png" srcset="{{pendingdata.award_image}}"></div> -->
+        
+                </div>
+            
+                <div   *ngIf="pendingdata.user?.length==4" class="centerclass proimage">
+                    <div class="imgcss2" 
+                    >
+                <div *ngFor="let data of pendingdata.user;" class="colargeimg4">
+                   <img src="../../assets/watermark/watermark.png" srcset="{{data.user_image}}">
+                </div>
+                
+                    </div>
+                    <!-- <div class="badgeimg"> <img class="imgcss" src="../../assets/watermark/watermark.png" srcset="{{pendingdata.award_image}}"></div> -->
+               
+                  </div>
+            
+                  <div   *ngIf="pendingdata.user?.length>=6" class="centerclass proimage">
+                      <div class="imgcss2"  >
+                  <div *ngFor="let data of pendingdata.user;" class="colargeimg6">
+                     <img src="../../assets/watermark/watermark.png" srcset="{{data.user_image}}">
+                  </div>
+                      </div>
+                      <!-- <div class="badgeimg"> <img class="imgcss" src="../../assets/watermark/watermark.png" srcset="{{pendingdata.award_image}}"></div> -->
+            
+                    </div>
+            
+                    <div   *ngIf="pendingdata.user?.length==3" class="centerclass proimage">
+                        <div class="imgcss2">
+                    <div *ngFor="let data of pendingdata.user;" class="colargeimg3">
+                       <img src="../../assets/watermark/watermark.png" srcset="{{data.user_image}}">
+                    </div>
+                        </div>
+                        <!-- <div class="badgeimg"> <img class="imgcss" src="../../assets/watermark/watermark.png" srcset="{{pendingdata.award_image}}"></div> -->
+          
+                      </div> 
+        
+                      <!-- <p text-center class="font"><b>{{pendingdata.award_name}}</b></p> -->
+        
+          </ion-col>
+          <ion-col col-6>
+            
+                  <h2>{{pendingdata.nomination_name}}</h2>
+                  <!-- <p style="font-size: 13px;">{{pendingdata.nomination_status}}</p> -->
+                  <p class="date">{{pendingdata.nomination_date}}</p>
+                  <!-- <p class="datecss">{{pendingdata.nomination_date}}</p> -->
+           
+          </ion-col>
+          <ion-col col-3>
+            <div style="text-align: -webkit-center;"> 
+              <img class="awardsimgcss" src="../../assets/watermark/watermark.png" srcset="{{pendingdata.award_image}}">
+            </div>
+            <p text-center class="font2"><b>{{pendingdata.award_name}}</b></p> 
+            <p text-center class="font3"><b>{{pendingdata.level_of_approval_title}}</b></p> 
+          </ion-col>
+        </ion-row>
+        </ion-card>
+    </div>
+  </ion-content>
+  

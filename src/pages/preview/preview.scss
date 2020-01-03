@@ -1,0 +1,115 @@
+page-preview {
+    .centerIt{text-align: center;}
+    .buttonCss{
+        // margin-top: 22px;
+        // width: 50%;
+        // border-radius: 20px;
+        // background-image: linear-gradient(to bottom, #bf2548, #e22550);
+        // background-color: #155aab;
+
+
+        margin-top: 22px;
+        /* width: 50%; */
+        /* font-size: 12px; */
+        height: 30px;
+        /* border-radius: 20px; */
+        /* background-image: -webkit-gradient(linear, left top, left bottom, from(#bf2548), to(#e22550)); */
+        /* background-image: linear-gradient(to bottom, #bf2548, #e22550); */
+        width: 33%;
+        border-radius: 20px;
+        font-size: 10px;
+        background: #e22550;
+
+    }
+    // buttonCss1{}
+    .divTheme{
+        background-color: white;
+        margin-top:30px;
+        padding:10px;
+        border-radius: 6px;
+    }
+    .divTheme1{
+        background-color: white;
+        margin-top:10px;
+        padding:10px; 
+    }
+    .usernamecolPadding{
+        padding-left: 0px;
+        padding-bottom:0px;
+    }
+
+    .designationTheme{
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .userRoundImageBig{
+        object-fit: cover;
+        border-radius: 100%; 
+        border: 1px solid #005aab;
+        margin-right: 2%;
+        margin-top: -40px;
+        height: 70px;
+        width: 70px;
+    }
+
+    .emailTheme{
+        margin-top: 3px;
+        color: #005aab;
+        margin-bottom: 4px;
+    }
+
+    .callImageTheme{
+        width:7%;
+        margin-left:10px;
+    }
+
+    .userInfoTheme{
+        margin-top:15px;
+    }
+
+    .lineColor{background-color: black}
+
+    .iconImages{
+        width:50%;
+    }
+.ion-icon {
+    display: inline-block;
+    /* font-size: 1.2em; */
+    font-size: 22px;
+}
+
+    .pulseBG{
+        //  background-image:url('../assets/imgs/homeBG.jpg');
+        // width: 100%; 
+        // padding-bottom: 10px;  
+        // background-repeat: no-repeat; 
+        // background-size: 100% 100%;
+        // height: 100% !important;
+        // background-attachment:fixed;
+
+        background: #d3d3d373;
+        }
+
+    .iconImagesCol{
+        padding-top:0px;
+        padding-right: 0px
+    }
+
+    .buttonCol{
+        // background-color: #155aab;
+        // margin-top: 22px;
+      
+       
+        background-image: linear-gradient(to bottom, #bf2548, #e22550);
+    }
+    
+
+    .iconImagesInfoCol{
+        padding-left: 0px
+    }
+
+    .iconsImageRow{
+        margin-top:15px
+    }
+}

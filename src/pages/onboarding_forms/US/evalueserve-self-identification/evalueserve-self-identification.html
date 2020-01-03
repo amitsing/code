@@ -1,0 +1,120 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="commonFormDiv">
+    <div [ngClass]="{'newOverlay':form_status != 'enable'}"> 
+  <div class="WebFormDiv">
+    <div class="newCardDiv">
+      <div class="newHeading">
+        <h4 no-margin [innerHTML]="alldata?.title"></h4>
+      </div>
+      <div class="customCardDiv">
+
+        <ion-row>
+          <ion-col col-12>
+            <div class="contentDiv" [innerHTML]="alldata?.description">
+
+            </div>
+          </ion-col>
+        </ion-row>
+      </div>
+    </div>
+    <div class="newCardDiv">
+      <div class="newHeading">
+        <h4 no-margin [innerHTML]="alldata?.gender.title"></h4>
+      </div>
+      <div class="customCardDiv">
+
+        <ion-row [id]="scrolldiv">
+          <ion-col col-12>
+            <div class="inputDiv">
+              <ion-label>Gender
+                <sup class="redText">*</sup>
+              </ion-label>
+              <!-- <div [ngClass]="{'checkBoxDiv':scrollDivId!=scrolldiv,'checkBoxDiv1':scrollDivId==scrolldiv}">
+                <ion-list radio-group no-margin radio-group [(ngModel)]="gender">
+
+                  <ion-row>
+                    <ion-col col-6 *ngFor="let radiodata of genderdata; let j= index;">
+                       
+                        <ion-item>
+                          <ion-label class="genderlable">{{radiodata.option}}</ion-label>
+                          <ion-radio [value]="radiodata.option" (ionSelect)="genderChecked(radiodata,j)"></ion-radio>
+                        </ion-item>
+                  
+                    </ion-col>
+                  </ion-row>
+                </ion-list>
+              </div> -->
+
+
+              <div  [ngClass]="{'checkBoxDiv':scrollDivId!=scrolldiv,'checkBoxDiv1':scrollDivId==scrolldiv
+            ,'overlayDiv':!alldata?.gender.enable}">
+              
+                  <ion-list radio-group no-margin [(ngModel)]="gender" >
+                    <ion-row>
+                      <ion-col *ngFor="let radiodata of genderdata; " col-6>
+                          <!-- <button  > -->
+                        <div class="customField" [ngClass]="{'backred':radiodata.option==gender}">
+                            <label>
+                                <ion-radio  [value]="radiodata.option"></ion-radio>
+                                <small>{{ radiodata.option }}</small>
+                              </label>
+                        </div>
+                      <!-- </button> -->
+                      </ion-col>
+                    </ion-row>
+                  </ion-list>
+
+            
+                </div>
+
+            </div>
+
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+            <div class="contentDiv" [innerHTML]="alldata?.ethnicity.title">
+            </div>
+          </ion-col>
+
+        </ion-row>
+        <ion-row [id]="scrolldiv1">
+          <ion-col col-12>
+            <div class="inputDiv">
+              <ion-list radio-group no-margin [(ngModel)]="ethinicity" class="paddd">
+                <div [ngClass]="{'checkBoxDiv':scrollDivId1!=scrolldiv1,'checkBoxDiv1':scrollDivId1==scrolldiv1}">
+                  <ion-row class="multiRadio" *ngFor="let radioethinicitydata of ethinicitydata; let k= index;">
+                    <ion-col col-12>
+                      <ion-item no-padding>
+                        <ion-label>
+                          <ion-radio class="mar" [value]="radioethinicitydata.option" (ionSelect)="radioChecked(radioethinicitydata,k)"></ion-radio>
+                          <small class="genderlable wspace" [innerHTML]="radioethinicitydata.option"></small>
+                        </ion-label>
+                      </ion-item>
+                    </ion-col>
+                  </ion-row>
+                </div>
+              </ion-list>
+            </div>
+          </ion-col>
+        </ion-row>
+
+      </div>
+    </div>
+    <br>
+    <br>
+
+    <div class="btndiv" *ngIf="form_status=='enable'">
+      <button ion-button class="btn" (click)="submit()">{{ fill_status=='1' ? 'Update' : 'Submit' }}</button>
+    </div>
+
+    <br>
+    <br>
+  </div>
+    </div>
+</ion-content>

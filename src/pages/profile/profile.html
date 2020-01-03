@@ -1,0 +1,174 @@
+
+<ion-header>
+    <ion-navbar>
+            <ion-title>Profile</ion-title>
+            <!-- <ion-buttons start >
+              <button ion-button (click) = "openPushSettinpage()">
+                  <ion-icon ios="ios-settings" md="md-settings" class="iconClose" style="color:#4d2748"></ion-icon>
+              </button>
+            </ion-buttons> -->
+    </ion-navbar>
+   </ion-header>
+
+
+<ion-content class="backgroundclass">
+    <div class="relativeDIV">
+      <div class="profileBGImage" [style.background-image]="'url(' +userImageBg+ ')'" >
+          <div class="maindiv">
+              <!-- <ion-icon class="seticon" (click)="showlog(log)" name="more"></ion-icon> -->
+              <!-- <div *ngIf="log==true" class="setlog" (click)="signOut()">
+                <p>Sign out</p>
+              </div> -->
+            </div>
+
+      </div>
+      <div class="blackTransparent"></div>
+      <!-- <img src=" " class="userImage"/> -->
+      <div class="absoDIV">
+          <ion-row (click)="addimage()">
+            <ion-col col-12 style="text-align: -webkit-center;">
+                <div class="profileImage">
+                    <img srcset="{{userImage}}" src="assets/watermark/watermark.png" class="userImage"/>
+                  <div class="camImage">
+                      <img class="camIcon" src="assets/imgs/uploadImg.png">
+                  </div>
+                </div>
+                <!-- <img srcset="{{userImage}}" src="assets/watermark/watermark.png" class="userImage"/>
+                <img class="camIcon" src="assets/imgs/uploadImg.png"> -->
+            </ion-col>
+            <!-- <ion-col>
+              <h6 class="userName">{{userName}}</h6>
+              <p class="userDesignation">{{designation}} <span *ngIf="userlocation!=''">|</span> {{userlocation}}</p>
+            </ion-col> -->
+          </ion-row>
+
+          <p style="    font-size: 17px;
+          font-weight: bold;" class="userName black">{{userName}}</p>
+          <p class="userName">{{department}}</p>
+          <p class="userName">{{designation}}</p>
+          <!-- <p class="userName">{{userlocation}}</p> -->
+          <p class="userName">{{country_name}}</p>
+          <p class="userName">Mobile Number :  {{number}}</p>
+          <br><br>
+          <ion-row>
+              <ion-col col-12 text-center>
+                <button ion-button round class="updateBtn" (click)="updateNo()">Update Mobile Number</button>
+              </ion-col>
+             </ion-row>
+
+<!-- <p class="userName">{{userName}}</p> -->
+<!-- <ion-row>
+  <ion-col col-2 >
+    <img  src="assets/imgs/Untitled-4_0001_Ellipse-3-copy.png" class="iconcss"/>
+  </ion-col>
+  <ion-col col-10 class="borderbottom">
+<p>{{department}}</p>
+  </ion-col>
+</ion-row>
+<ion-row>
+  <ion-col col-2 >
+    <img  src="assets/imgs/Untitled-4_0002_conversation.png" class="iconcss"/>
+  </ion-col>
+  <ion-col col-10 class="borderbottom">
+    <p>{{designation}}</p>
+  </ion-col>
+</ion-row>
+<ion-row>
+  <ion-col col-2>
+    <img  src="assets/imgs/Untitled-4_0000_location_joining.png" class="iconcss"/>
+  </ion-col>
+  <ion-col col-10 class="borderbottom">
+    <p>{{userlocation}}</p>
+  </ion-col>
+</ion-row> -->
+        </div>
+    </div>
+
+<!-- <div class="resetPasswordDiv">
+  <ion-row (click)="showResetPasswordDiv(showResetPass)">
+    <ion-col col-auto class="removePadding lockCol">   <ion-icon name="lock" class="threeDot"></ion-icon> </ion-col>
+    <ion-col class="removePadding"> <p class="textremovePadding">Reset password</p></ion-col>
+  </ion-row>
+  <div *ngIf="showResetPass==true">
+    <hr class="lineborder">
+
+      <div class="inputclsDiv">
+      <ion-row>
+        <ion-col col-10>
+          <ion-item class="resetPass">
+            <ion-input *ngIf="oldpasswordIsShowing==false" clearOnEdit="false" type="password" placeholder="Old password" [(ngModel)]="oldpassword" class="inputcls" (ngModelChange)="oldpassChange(oldpassword)"></ion-input>
+            <ion-input *ngIf="oldpasswordIsShowing==true" type="text" placeholder="Old password" [(ngModel)]="oldpassword" class="inputcls" (ngModelChange)="oldpassChange(oldpassword)"></ion-input>
+          </ion-item>
+          </ion-col>
+        <ion-col col-2 class="centerDataInDiv" (click)="viewoldPass(oldpasswordIsShowing)">            
+            <ion-icon *ngIf="oldpasswordIsShowing==false" clearOnEdit="false" name="ios-eye-off-outline" class="eyeIcon"></ion-icon>
+            <ion-icon *ngIf="oldpasswordIsShowing==true" name="ios-eye-outline" class="eyeIcon"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <div class="inputclsDiv">
+      <ion-row>
+          <ion-col col-10>
+              <ion-item class="resetPass">
+              <ion-input  *ngIf="newpasswordIsShowing==false"  clearOnEdit="false" type="password" placeholder="New password" [(ngModel)]="newpassword" class="inputcls"(ngModelChange)="newpassChange(newpassword)"></ion-input>
+              <ion-input *ngIf="newpasswordIsShowing==true" type="text" placeholder="New password" [(ngModel)]="newpassword" class="inputcls"(ngModelChange)="newpassChange(newpassword)"></ion-input>
+            </ion-item>
+            </ion-col>
+          <ion-col col-2 class="centerDataInDiv" (click)="viewnewPass(newpasswordIsShowing)">
+              <ion-icon *ngIf="newpasswordIsShowing==false" name="ios-eye-off-outline" class="eyeIcon"></ion-icon>
+              <ion-icon *ngIf="newpasswordIsShowing==true" name="ios-eye-outline" class="eyeIcon"></ion-icon>               
+          </ion-col>
+      </ion-row>
+    </div>
+
+    <div class="inputclsDiv">
+      <ion-row>
+          <ion-col col-10>
+              <ion-item class="resetPass">
+              <ion-input *ngIf="confpasswordIsShowing==false" type="password" [disabled]="newPassHaveVal==false"  placeholder="Confirm password" [(ngModel)]="confpassword" class="inputcls"(ngModelChange)="confpassChange(confpassword)"></ion-input>
+              <ion-input *ngIf="confpasswordIsShowing==true"  type="text" [disabled]="newPassHaveVal==false"  placeholder="Confirm password" [(ngModel)]="confpassword" class="inputcls"(ngModelChange)="confpassChange(confpassword)"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col col-2 class="centerDataInDiv" (click)="viewconfPass(confpasswordIsShowing)">
+              <ion-icon *ngIf="confpasswordIsShowing==false"name="ios-eye-off-outline" class="eyeIcon"></ion-icon>
+              <ion-icon *ngIf="confpasswordIsShowing==true" name="ios-eye-outline" class="eyeIcon"></ion-icon>            
+          </ion-col>
+        </ion-row>
+        </div>
+        <ion-row>
+            <ion-col col-12><p class="redText">{{errorMessage}}</p>
+            </ion-col>
+          </ion-row>
+      <ion-row>
+        <ion-col col-12 >
+            <button ion-button [disabled]="errorMessage!=''" class="btn" (click)="resetPassword(oldpassword,newpassword)">{{btnText}}</button>
+          </ion-col>
+        </ion-row>
+
+  </div>
+
+</div> -->
+
+
+<div *ngIf="showCustomActionSheet==true">
+  <div class="transparentLayerActionsheet" (tap)="hideActionsheet()"></div>
+  <div class="customActionsheetDIV">
+    <ion-grid>
+      <ion-row><ion-col><h2>Profile Picture</h2></ion-col></ion-row>
+      <ion-row>
+        <ion-col col-6 class="centerData" (click)="usingCamera('camera')">
+          <img src="assets/imgs/camera.png" class="actionSheetIcon"/>
+            <h4>Camera</h4>
+        </ion-col>
+        <ion-col col-6 class="centerData" (click)="usingCamera('gallery')">
+          <img src="assets/imgs/album.png"class="actionSheetIcon"/>
+          <h4>Gallery</h4>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</div>
+
+  </ion-content>
+   

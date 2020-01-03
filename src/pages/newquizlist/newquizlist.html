@@ -1,0 +1,93 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Quiz</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <!-- <ion-card class="maincard" *ngFor="let q of quiz ">
+    <ion-card-content class="cardcontent">
+      <h2 class="title">{{q.quiz_name}}</h2>
+      <p class="noquestion" *ngIf="q.totalQuestion==1" >{{q.totalQuestion}} Question</p>
+      <p class="noquestion" *ngIf="q.totalQuestion>1" >{{q.totalQuestion}} Questions</p>
+    <ion-row *ngIf="q.fillStatus==0"> 
+      <ion-col col-6 class="colfirst">
+          <p class="date">Valid till:</p>
+          <p class="date">{{q.end_date}} </p><br>
+      
+      </ion-col>
+    </ion-row>
+    <ion-row> 
+      <ion-col col-6 class="colfirst">
+ 
+          <button ion-button color="danger" *ngIf="q.fillStatus==0" style="text-transform: none;" clear>{{q.days}}</button>
+      </ion-col>
+      <ion-col col-6 class="align"  *ngIf="q.fillStatus==0">
+        <button ion-button color="themecol" style="color: #155aab" clear (click)="gotoquestions(q)">Fill Now</button>
+    </ion-col>
+
+    <ion-col col-6 class="align" *ngIf="q.fillStatus==2 && q.quizStatus==1">
+      <button ion-button color="danger" clear (click)="gotoquestions(q)">Complete Now</button>
+  </ion-col>
+
+    </ion-row>
+    <ion-row *ngIf="q.fillStatus==1 && q.quizStatus==0 "> 
+      <ion-col col-6 class="colfirst"> 
+      <p class="date1"> Expired</p></ion-col>
+    </ion-row>
+    <ion-row *ngIf="q.fillStatus==1"> 
+      <ion-col col-6 class="colsecond">
+        <p class="date1"> Completed</p>
+      </ion-col>
+      <ion-col col-6 class="align" *ngIf="q.fillStatus==1 && q.releaseAnswerKey==1"> 
+        <button ion-button color="danger" clear (click)="review(q)" >Review Your Answers</button></ion-col>
+     </ion-row>
+  </ion-card-content>
+ 
+</ion-card> -->
+
+<ion-row *ngFor="let q of quiz let i=index;">
+  <ion-col col-12 class="leftbdr" [ngClass]="{'themecolor': i%3==0, 'skyblue':i%3==1,'red':i%3==2 }"  >
+      <ion-card class="maincard" >
+          <ion-card-content class="cardcontent">
+      <ion-row>
+        <ion-col col-3 class="paddtop">
+            <p *ngIf="q.fillStatus==0" class="date">Valid till:</p>
+            <p *ngIf="q.fillStatus==0" class="date">{{q.end_date}} </p>
+        </ion-col>
+        <ion-col col-5>
+            <h2 class="title">{{q.quiz_name}}</h2>
+            <p class="noquestion" *ngIf="q.totalQuestion==1" >{{q.totalQuestion}} Question</p>
+            <p class="noquestion" *ngIf="q.totalQuestion>1" >{{q.totalQuestion}} Questions</p>
+          </ion-col>
+       
+      </ion-row>
+      
+      <ion-row>
+        <ion-col col-12 no-margin no-padding text-right>
+          <!-- <div *ngIf="q.fillStatus==0" class="fillclass" (click)="gotoquestions(q)">
+            <p class="paracss">Fill Now</p>
+            
+          </div> -->
+          <!-- <button ion-button round outline>Outline + Round</button> -->
+            <button ion-button round outline  *ngIf="q.fillStatus==0" (click)="gotoquestions(q.quiz_id,q.quiz_type,q.quiz_timing)">Fill Now</button>
+
+            <button ion-button round outline  *ngIf="q.release_result_status=='2' && q.fillStatus==1" (click)="gotoseeanswer(q.quiz_id)">Review Your answer</button>
+          </ion-col>
+      </ion-row>
+          </ion-card-content>
+      </ion-card>
+  </ion-col>
+</ion-row>
+
+
+<ion-infinite-scroll *ngIf="hideInfiniteScroll==false && quiz" (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+  <div *ngIf="succ==0" style="text-align:center;">
+    <p>{{msg}}</p>
+  </div>
+
+</ion-content>

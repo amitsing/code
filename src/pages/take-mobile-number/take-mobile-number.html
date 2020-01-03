@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Mobile Number</ion-title>
+  </ion-navbar>
+ </ion-header>
+ <ion-content padding class="themeBg">
+  <div class="customCardView">
+    <ion-row>
+      <ion-col>
+        <img src="../../assets/icon/phone.png"class="mobIcon centerDataInDiv"/>
+          <p class="heading" text-center>Please enter your mobile number to continue.</p>
+        </ion-col>
+    </ion-row>
+    <!-- <ion-row>
+      <ion-col col-3>
+        <ion-row no-padding>
+            <p class="label">Country Code <sup style="color:#e22550"> *</sup> </p>
+          <ion-col col-3 no-padding> <p class="plus">+</p></ion-col>
+        <ion-col col-9 no-padding><ion-input type="number" [value]="contry_Code"  class="bodBottom" [(ngModel)]="contry_Code"  (ngModelChange)="checkcode(contry_Code)"></ion-input> </ion-col>
+        </ion-row>
+      </ion-col>
+          <ion-col col-9>
+              <p class="label">Enter your Mobile Number</p>
+             <ion-input #phoneNUmber type="number" [value]="contactNum" [(ngModel)]="contactNum" (ngModelChange)="checkContact(contactNum)" class="bodBottom"></ion-input>
+            </ion-col>
+            <ion-col col-12>
+                <p class="advice"> <sup style="color:#e22550"> *</sup>`Do not add "+" or "00" before country code. </p>
+            </ion-col>
+    </ion-row> -->
+ <ion-row>
+  <ion-col col-12>
+ <!-- this is for label -->
+ <ion-row>
+  <ion-col col-4>
+    <p class="label">Country Code <sup style="color:#e22550"> *</sup> </p>
+  </ion-col>
+  <ion-col col-8>
+    <p class="label">Enter your Mobile Number</p>
+  </ion-col>
+ </ion-row>
+ <!-- this is for textfield -->
+ <ion-row>
+  <ion-col col-1>
+    <p class="plus">+</p>
+  </ion-col>
+  <ion-col col-3>
+    <ion-input type="number" [value]="contry_Code"  class="bodBottom" [(ngModel)]="contry_Code"  (ngModelChange)="checkcode(contry_Code)"></ion-input>
+  </ion-col>
+  <ion-col col-8>
+    <ion-input #phoneNUmber type="number" [value]="contactNum" [(ngModel)]="contactNum" (ngModelChange)="checkContact(contactNum)" class="bodBottom"></ion-input>
+  </ion-col>
+ </ion-row>
+ <ion-row>
+  <ion-col col-12>
+    <p class="advice"> <sup style="color:#e22550"> *</sup>Do not add "+" or "00" before country code. </p><br>
+    <p class="advice">
+      <sup style="color:#e22550"> *</sup>Charges may apply for incoming messages as per your telecom service provider
+    </p>
+ </ion-col>
+ </ion-row>
+  </ion-col>
+ </ion-row>
+    <ion-row>
+      <!-- <ion-col col-6 style="text-align:end;"><br>
+
+        <div *ngIf="profilekey=='0' && employee_type=='Employee'">
+          <button ion-button  class="btn centerDataInDiv"  tappable (click)="skiptc()">{{skipbtnText}}</button>
+        </div>
+
+
+      
+      </ion-col> -->
+
+      <ion-col><br>
+        <div>
+          <button ion-button  [disabled]="btnEnable==false" class="btn centerDataInDiv" [ngClass]="{'diabaleBtn': btnEnable==false}" tappable (click)="submitNumber()">{{btnText}}</button>
+        </div>
+      </ion-col>
+
+    </ion-row> <br><br><br>
+
+  <div *ngIf="profilekey=='0' && show_skip==1" >
+    <!-- *ngIf="profilekey=='0' && employee_type=='Employee'"  <button ion-button  class="btn centerDataInDiv"  tappable (click)="skiptc()">{{skipbtnText}}</button> -->
+
+    <p class="skipcss" (click)="showeAlert()">{{skipbtnText}}</p>
+  </div>
+  </div>
+ 
+
+
+  <!-- <div *ngIf="!countryCodeList" >
+    <img style="width:100%;"  src="../../assets/imgs/skelton/mobileno.png" class="textSkelton" />
+  </div> -->
+ </ion-content>

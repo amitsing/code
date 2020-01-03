@@ -1,0 +1,89 @@
+
+<!-- <ion-header>
+  <ion-navbar>
+    <ion-title>Rewards Statement</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
+
+</ion-content> -->
+<ion-header>
+  <ion-navbar hideBackButton="false" color="themecol" class="centerIt">
+    <ion-title>Points Statement</ion-title>
+  </ion-navbar>
+
+  <ion-row style="height: 117px;">
+        <ion-col col-6>
+                <ion-row >
+                        <ion-col  style="text-align:center;">
+                    
+                      
+                            <img style="height: 35px;width: 35px;" src="assets/imgs/credit-card.png" >
+                            <p style="text-align:center;margin-top:5px;">Total credited</p>
+                            <p style="text-align:center;margin-top: 17px;line-height: 0px;">{{totalcredit}}</p> 
+                        </ion-col>
+                      
+                    </ion-row>
+        
+        </ion-col>
+        <ion-col col-6 >
+            <ion-row>
+                    <ion-col style="text-align:center;" >
+                        
+                            <img style="height: 35px;width: 35px;" src="assets/imgs/debitcard.png">
+                            <p style="text-align:center;margin-top:5px;">Total debited</p>
+                            <p style="text-align:center;margin-top: 17px;line-height: 0px;">{{totaldebit}}</p>
+                        </ion-col>
+            </ion-row>
+              
+        </ion-col>
+        
+        </ion-row>
+        <table *ngIf="msg==undefined"  class=" table accountSummaryTable" style="font-size: 15px;    border: 1px solid #294a70;">
+                <tbody>
+                    <tr class="pointRowBackgroundColor">
+                        <td class="tableTd" style="padding: 5px;width:21% !important">Date</td>
+                        <td class="tableTd" style="padding: 5px;width:61% !important">Description</td>
+                        <td class="tableTd" style="padding: 5px;width:9% !important">Credit</td>
+                        <td class="tableTd" style="padding: 5px;width:9% !important">Debit</td>
+                        
+                    </tr>
+                </tbody>
+                </table>
+
+
+</ion-header>
+
+
+<ion-content>
+
+ 
+
+    <table  class=" table accountSummaryTable" style="font-size: 15px;    border: 1px solid #294a70;">
+   
+        <tbody>
+
+            <tr *ngFor="let number of numbers">
+                <td style="padding: 5px;width:19% !important">{{number?.transaction_date}}</td>
+                <td style="text-align: left !important;padding: 5px;width:58% !important">{{number?.description}}</td>
+                <td style="padding: 5px;width:12% !important"><span *ngIf="number.flag==0">{{number?.amount}}</span></td>
+                <td style="padding: 5px;width:11% !important"><span *ngIf="number.flag==1">{{number?.amount}}</span>
+            </tr>
+
+          
+        </tbody>
+    </table>
+
+    <!-- <div *ngIf="arrlength>=20">
+
+    
+    <button ion-button  *ngIf="loadingval<numbers?.length" (click)="loadMoreData()" full block large style="background-color: transparent;
+    font-size: 15px;text-transform: capitalize;  color: gray;" >Show more items
+   <span style="    float: right;" *ngIf="showSpinner"  >  
+        <ion-spinner name="ios-small" style="      width: 29px;
+       height: 59px;"></ion-spinner></span></button>
+    </div> -->
+
+   
+<p style="text-align: center;" *ngIf="msg!=undefined" style="text-align:center">{{msg}}</p>

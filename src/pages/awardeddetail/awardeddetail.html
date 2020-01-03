@@ -1,0 +1,197 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Award Detail</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+<ion-card>
+  <div  *ngIf="user?.length==1">
+  <div *ngFor="let data of user;">
+    <ion-row>
+      <ion-col col-12>
+        <div class=centerclass>
+            <img class="imgcss" src="../../assets/watermark/watermark.png" srcset="{{data.user_image}}">
+        </div>
+      </ion-col>
+    </ion-row>
+  </div>
+  <p class="centerclass1">{{unit_name}}</p>
+<p class="centergreen">Approval Status:{{nomnistatus}}</p>
+</div>
+
+<div   *ngIf="user?.length==5" class=centerclass>
+    <div style="height: 140px;
+    width: 140px;
+    border: 1px solid;
+    border-radius: 50%;overflow:hidden;" >
+<div *ngFor="let data of user;" class="colargeimg">
+   <img src="../../assets/watermark/watermark.png" srcset="{{data.user_image}}">
+</div>
+
+    </div>
+    <p class="centerclass1">{{unit_name}}</p>
+<p class="centergreen">Approval Status:{{nomnistatus}}</p>
+  </div>
+
+  <div   *ngIf="user?.length==2" class=centerclass>
+      <div style="height: 140px;
+      width: 140px;
+      border: 1px solid;
+      border-radius: 50%;overflow:hidden;" >
+  <div *ngFor="let data of user;" class="colargeimg2">
+     <img src="../../assets/watermark/watermark.png" srcset="{{data.user_image}}">
+  </div>
+  
+      </div>
+      <p class="centerclass1">{{unit_name}}</p>
+  <p class="centergreen">Approval Status:{{nomnistatus}}</p>
+    </div>
+
+    <div   *ngIf="user?.length==4" class=centerclass>
+        <div style="height: 140px;
+        width: 140px;
+        border: 1px solid;
+        border-radius: 50%;overflow:hidden;" >
+    <div *ngFor="let data of user;" class="colargeimg4">
+       <img src="../../assets/watermark/watermark.png" srcset="{{data.user_image}}">
+    </div>
+    
+        </div>
+        <p class="centerclass1">{{unit_name}}</p>
+    <p class="centergreen">Approval Status:{{nomnistatus}}</p>
+      </div>
+
+      <div   *ngIf="user?.length>=6" class=centerclass>
+          <div style="height: 140px;
+          width: 140px;
+          border: 1px solid;
+          border-radius: 50%;overflow:hidden;" >
+      <div *ngFor="let data of user;" class="colargeimg6">
+         <img src="../../assets/watermark/watermark.png" srcset="{{data.user_image}}">
+      </div>
+          </div>
+          <p class="centerclass1">{{unit_name}}</p>
+      <p class="centergreen">Approval Status:{{nomnistatus}}</p>
+        </div>
+
+        <div   *ngIf="user?.length==3" class=centerclass>
+            <div style="height: 140px;
+            width: 140px;
+            border: 1px solid;
+            border-radius: 50%;overflow:hidden;" >
+        <div *ngFor="let data of user;" class="colargeimg3">
+           <img src="../../assets/watermark/watermark.png" srcset="{{data.user_image}}">
+        </div>
+            </div>
+            <p class="centerclass1">{{unit_name}}</p>
+        <p class="centergreen">Approval Status:{{nomnistatus}}</p>
+          </div>
+
+</ion-card>
+<ion-card>
+<ion-row>
+  <ion-col col-6> <p class="marginleft bold">Nominated by:</p></ion-col>
+  <ion-col col-6 style="    text-align: -webkit-right;">
+     <!-- <p class="margin bold">Nominated by:</p> -->
+
+    <!-- <img class="imgcss8" src="../../assets/watermark/watermark.png">  -->
+  </ion-col>
+</ion-row>
+
+  <!-- <p class="marginleft bold">Nominated by:</p> -->
+  <ion-row>
+      <ion-col col-2></ion-col>
+    <ion-col col-6 class="">
+        <p class="nominateclass">{{nominatedby}}</p>
+        <p class="nominateclass">{{nomnidesignation}}</p>
+       
+    </ion-col>
+    <ion-col col-4>
+        <img class="imgcss7" src="../../assets/watermark/watermark.png" srcset="{{nominated_by_image}}"> 
+    </ion-col>
+  </ion-row>
+  
+</ion-card>
+
+
+
+
+<ion-card *ngIf="user?.length>1">
+  <!-- <p class="marginleft">Team Members</p> -->
+
+  <ion-row>
+      <ion-col col-6> <p class="marginleft bold">Team Members</p></ion-col>
+      <ion-col col-6 *ngIf="AandNkey=='a'" style="    text-align: -webkit-right;" (click)="gotosearchlist(user)">
+         <!-- <p class="margin bold">Nominated by:</p> -->
+    
+        <img class="imgcss8" src="../../assets/imgs/edit icon .png"> 
+      </ion-col>
+    </ion-row>
+
+
+    <ion-slides speed="500" spaceBetween="0" slidesPerView="2.8" class="visibleOverflow">
+        <ion-slide class="slidecss" *ngFor="let data of user; let i=index">
+          <div class="divcss">
+            <ion-row>
+              <ion-col col-12 class="centerclass">
+                  <img class="imgcss1" src="../../assets/watermark/watermark.png" srcset="{{data.user_image}}"> 
+              </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col col-12>
+                   <P class="fontsize">{{data.user_name}}</P>
+                   <P class="mrbottom">{{data.designation}}</P>
+                   <P>{{data.country}}</P>
+                </ion-col>
+              </ion-row>
+          </div>
+        </ion-slide>
+    </ion-slides>
+</ion-card>
+
+<div class="awardDiv">
+  <ion-card>
+    <ion-row>
+      <ion-col col-12><p class="bold">Awards Nominated for</p></ion-col>
+      <ion-col col-12><img src="../../assets/watermark/watermark.png" srcset="{{awardsimage}}"></ion-col>
+    </ion-row>
+    <div class="awardOverDiv">
+      <ion-row>
+        <ion-col col-12>
+          <p class="marginpx">{{awardsdiscription}}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-7></ion-col>
+          <ion-col col-5>
+            <!-- <p class="marginpx1">{{nominatedby}}</p>
+            <p class="marginpx2">{{nomnidesignation}}</p> -->
+            <p class="marginpx3">{{nominateddate}}</p>
+          </ion-col>
+        </ion-row>
+    </div>
+  </ion-card>
+</div><br><br>
+
+<div *ngIf="AandNkey=='n'"  style="text-align: center;" (click)="submit()" ><br>
+  <button ion-button class="btn" round>Ok</button>
+ </div> 
+
+<ion-row>
+  <ion-col col-6>
+    <div *ngIf="AandNkey=='a'"  style="text-align: center;" (click)="acceptreject('a')" ><br>
+      <button ion-button class="btn" round>Accept</button>
+     </div>
+  </ion-col>
+  <ion-col col-6>
+    <div *ngIf="AandNkey=='a'"  style="text-align: center;" (click)="presentPrompt('r')" ><br>
+      <button ion-button class="btn" round>reject</button>
+     </div> 
+  </ion-col>
+</ion-row>
+
+ 
+
+</ion-content>

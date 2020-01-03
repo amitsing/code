@@ -1,0 +1,65 @@
+
+<ion-header>
+  <ion-navbar color="headColor">
+      <ion-title>{{title}}</ion-title>
+      <ion-buttons right *ngIf="value=='image'">
+       </ion-buttons>
+  </ion-navbar>   
+</ion-header>
+<ion-content>
+  <div class="contnt" [ngClass]="{yellowBg:(bgChnageIndex%5==0 && value == 'text'),pinkBg:(bgChnageIndex%5==1 && value == 'text'),blueBg:(bgChnageIndex%5==2 && value == 'text'),redBg:(bgChnageIndex%5==3 && value == 'text'),grayBg:(bgChnageIndex%5==4 && value == 'text')}">
+    <div *ngIf="value=='text'">
+      <div class="textar">
+        <textarea name="comment" form="usrform" [(ngModel)]="statusvalue" rows="8" class="textareaProperty {{changeImageClass1}}" placeholder="Type some text..." autofocus></textarea>
+      </div>
+      <div class="icons">
+        <ion-icon name="logo-tumblr" class="myicon" (tap)="changeTextFamily()"></ion-icon>
+        <ion-icon name="color-palette" class="myicon" (tap)="changeBgColor()"></ion-icon>
+        <ion-icon name="ios-send-outline" class="mylargeicon"(tap)="sendData(1)"></ion-icon>
+      </div>
+    </div>
+    <div *ngIf="value=='image'" class="profileBGImage">
+        <div *ngIf="show != true">
+          <ion-row>
+            <ion-col>
+              <div class="cameraicon">
+                  <img src="assets/imgs/camera1.png" (click)="usingCamera('camera')" style="height:70px;width:90px;"/>
+                  <p class="takephoto">Take a photo now</p>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-col>
+                <div class="oricon">
+                    <img src="assets/imgs/or.png"  style="height: 50px;width:50px;" />
+                </div>
+              </ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-col>
+                <div class="galleryicon">
+                    <img src="assets/imgs/gallery.png" (click)="usingCamera('gallery')" style="height:70px;width:90px;"/>
+                    <p class="takephoto">Select photo from library</p>
+                </div>
+              </ion-col>
+          </ion-row>
+        </div>    
+        <div class="scroll-item" *ngFor="let li of showImagesonFront let i=index;" >
+          <img class="{{changeImageClass}} {{changeImageClass1}}" [src]="li.link" imageViewer [ngClass]="{'normal':(li.status),'blur':(!li.status)}"/>
+          <ion-spinner *ngIf="!li.status && !li.showRetry " class="spinnerdesign" name="crescent"></ion-spinner>
+          <ion-icon class="retry" (tap)="retry(i)" *ngIf="li.showRetry" name="cloud-upload">
+            <p class="retrytext">
+              Retry  
+            </p>      
+          </ion-icon>
+        </div>
+    </div>  
+</div>
+</ion-content>
+<ion-footer>
+    <div class="icons" *ngIf="showImagesonFront?.length>0">
+        <ion-icon name="color-palette" class="myicon" (click)="imageFilter()"></ion-icon>
+        <ion-icon name="refresh-circle"class="myicon" (click)="rotateImage()"></ion-icon> 
+        <ion-icon name="ios-send-outline" class="mylargeicon"(click)="sendData(2)"></ion-icon>
+    </div>
+</ion-footer>

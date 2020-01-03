@@ -1,0 +1,149 @@
+page-login {
+    .label-md {
+        margin: 13px 8px -1px 0;
+    }
+
+    .list-md .item-input:last-child {
+        border-bottom: 0px solid #dedede;
+    }
+    .item_place{ background-color:  transparent; padding-left: 29px; padding-right: 35px;font-size: 1.9rem;}
+    .scroll-content {
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        position: absolute;
+        z-index: 1;
+        display: block;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
+        will-change: scroll-position;
+        contain: size style layout;
+        padding: 0 !important;
+    }
+    .item-md, .item-ios {
+        padding-left: 16px;
+        padding-right: 0;
+        position: relative;
+        font-size: 1.6rem;
+        font-weight: normal;
+        text-transform: none;
+        color: #000;
+        background-color: transparent;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        -webkit-transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+        transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    ion-item.passwordField{
+        padding: 0px !important;
+    }
+    ion-item.passwordField .item-inner{
+        border-bottom-color: transparent !important;   
+        box-shadow: inset 0 0px 0 0 transparent !important;
+    }
+    ion-row,ion-col{
+        padding-left: 0px !important;
+    }
+    .imgss{ width: 30%;float: left;margin-right: 4% }
+    .clientLogo{ width: 35%; padding-left: 4%; margin-bottom: 6%;}
+    .bg{
+        background-image: url('../../assets/imgs/loginbanner.png');
+        background-position: right;
+        // background-size: contain;
+        background-size: 100% 100%;
+        background-attachment: fixed;
+    }
+
+    .bg1{
+        background-image: url('../../assets/imgs/loginbanner.png');
+        background-position: top right;
+        // background-size: contain;
+        background-size: 100% auto;
+        background-attachment: fixed;
+    }
+
+    .benepikCopyRight{
+        width: 33%;display: block;margin: auto;
+    }
+    .powered_by{width:100%;margin-top:20%;}
+
+    .forgotPasswordText{
+    float: right; color: $theme-titlecolor;
+    font-weight: 500;font-size: 12px;
+    }
+    .bottomLine{
+    border-bottom: 1px solid #9e9898;
+    }
+.iconeval{
+    height: 90px;
+    padding-top:30px;
+    padding-left: 14px;
+    width: 100%;
+}
+.welcome{
+    padding: 14px;
+}
+.logintxt{
+    font-size: 20px;
+    margin: 0px;
+    font-weight: 400;
+    margin-top: 3px;
+}
+.wlcmtxt{
+   margin:0px;
+}
+.inputcls{
+  
+        margin:0px;
+        padding: 0;
+        width: calc(100% - 8px - 8px);
+        // border-bottom: 1px solid #9e9898;
+}
+.labelcls{
+    margin:0px;
+}
+.text-input-md {
+    margin: 14px 2px;
+    margin-bottom: 0px;
+    padding: 0;
+    width: calc(100% - 8px - 8px);
+}
+.btndiv{
+    width: 100%;text-align: center;
+    margin-top: 52px;
+}
+.btn{
+    // width: 40%;
+    // border-radius: 20px;
+    // font-size: 10px;
+    // background: #e22550;
+    // background-image: linear-gradient(to bottom, $theme-titlecolor, #e22550);
+
+
+    // margin-top: 22px;
+  /* width: 50%; */
+  /* font-size: 12px; */
+  height: 30px;
+  /* border-radius: 20px; */
+  /* background-image: -webkit-gradient(linear, left top, left bottom, from(#bf2548), to(#e22550)); */
+  /* background-image: linear-gradient(to bottom, #bf2548, #e22550); */
+  width: 33%;
+  border-radius: 20px;
+  font-size: 10px;
+  background: #e22550;
+}
+.eyeIcon{
+    font-size: 30px;color:#444;text-align: center;
+}
+
+.bottomLine .list .item-input:focus, .bottomLine .list .item-input:active, .bottomLine .list-md .item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus):last-child, .bottomLine .list-md .item-input.item-input-has-focus:last-child {
+    box-shadow: 0px 0px 0px black;
+    border-color: transparent;
+}
+
+
+
+}

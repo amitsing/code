@@ -1,0 +1,48 @@
+page-oprationdetail {
+.paracss{font-weight: bold;margin-top: 0px;}
+.paracss1{font-size: 10px;text-align: end;}
+.imgcss {width: 100%;height: 200px;object-fit: cover;object-position: top;}
+hr {    height: 1px;border-width: 0.5px;-webkit-box-sizing: content-box;box-sizing: content-box;}
+img.mycircle{
+    text-align: center; line-height: 55px; font-size: 44px;
+    width: 50px;height: 50px;border-radius: 50%;object-fit: cover;
+    object-position: top;    border: 1px solid #3f5aab;
+  
+ }
+ .uName{
+    color: #444;
+    font-weight: 600;
+ }
+ .sendButtonColCss{margin: auto;}
+ .footerdiv{background-color: white;
+    // margin-bottom: 12px!important;
+    border-radius: 15px;
+    // margin-top: 11px;
+}
+ .rowborder{border-top: 1px solid grey;}
+ .mrtop{margin-top: 0px;margin-bottom: 0px;} 
+ .mrtop1{margin-top: 0px;font-size: 10px; margin-bottom: 0px;}
+ .imgcss2{    height: 45px;
+    width: 45px;
+    border: 1px solid #b1b1b1;
+    border-radius: 50%;
+    object-fit: cover;}
+    .colcolor{    background: lightgray;
+        border-radius: 4px;}
+ .margincss{margin: 8px;}
+ .bordercss1{text-align: left;}
+ .bordercss{border-bottom: 1px solid lightgray;}
+ 
+ .mycirclenamemore1{
+    width: 50px;
+    border: 1px solid #3f5aab;
+    border-radius: 100%;
+    height: 50px;
+    margin-top: 1px;
+    text-align: center;
+    font-size: 20px;
+    line-height: 48px;
+    background: #FF335B;
+    color: white;
+}
+}

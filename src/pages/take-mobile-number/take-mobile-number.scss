@@ -1,0 +1,38 @@
+page-take-mobile-number {
+    ion-select{max-width: 100% !important;}
+    .skipcss{text-align: end;color: #1858a4;font-weight: bold;font-size: 15px;}
+    .select-md, .select-md { padding: 13px 0px 13px 0px !important; width: 100%;}
+    .bodBottom{border: 1px solid #cdcdcd;
+        // background: rgba(77, 40, 72, 0.16);
+    }
+    .text-input-md,.text-input-ios {margin: 8.7px 8px !important; }
+    .btn{ width: 65%; border-radius: 20px;
+        background: #e22550;
+        // background-image: linear-gradient(to bottom, $theme-titlecolor, #e22550);
+    }
+    .heading{ font-size: 16px; font-weight: 500; }
+    .mobIcon{ max-height: 100px; object-fit: contain;  }
+    .customCardView{
+        padding: 25px 10px;
+        background: #fff;
+        border-radius: 7px;}
+
+        .plus {
+            margin: 8px 0 !important;
+            text-align: center;
+        }
+        p.label {
+            margin: 0;
+            font-size: 1rem;
+            color: #999;
+            margin-bottom: 5px;
+        }
+        .advice{
+            font-size: 1.2rem;
+            color: #e22550;
+            margin: 0;
+        }
+        .diabaleBtn{
+            background-color: #999;
+        }
+}

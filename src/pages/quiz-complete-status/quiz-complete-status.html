@@ -1,0 +1,34 @@
+
+<ion-header>
+  <ion-navbar>
+      <ion-buttons right >
+          <button ion-button (click) = "goHome()">
+              <img class="home_icon" src="../../assets/icon/Home_icon.png" alt="">
+          </button>
+        </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div>
+    <div class="massage">
+        <h2 class="massage_heading">Congratulation!</h2>
+        <p class="massage_desc">You have Sucessfully completed the quiz</p>
+    </div>
+    <div class="sucess">
+        <ion-icon ios="ios-checkmark" md="md-checkmark" class="sucess_icon"></ion-icon>
+    </div>
+    <div *ngIf="rewardsapplicable==1" class="points">
+      <p class="points_details">{{total_point}}</p>
+    </div>
+    <div class="result">
+      <div class="result_correct">
+        <img class="result_correct_image" src="../../assets/icon/bluetick.png" alt="">{{total_correct_answer}}</div>
+      <div class="result_incorrect">
+        <img class="result_incorrect_image" src="../../assets/icon/wrongIcon.png" alt=""> {{total_incorrect_ans}}</div>
+    </div>
+    <div class="action" (click)="gotohostory()">
+      <button ion-button round class="action_answers">See Answers</button>
+    </div>
+  </div>
+</ion-content>

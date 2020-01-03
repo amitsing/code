@@ -1,0 +1,104 @@
+page-joineequizinstruction {
+
+.aboutEvalBg{width: 100%;
+    height: 210px;
+    object-fit: cover;}
+ .inst{    font-size: 16px;
+    font-weight: bold;} 
+    
+    .card-md {
+        margin: 10px;
+        border-radius: 7px;
+        width: calc(100% - 20px);
+        font-size: 1.4rem;
+        background: #fff;
+        -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    }   
+    .btn{
+        width: 40%;
+        border-radius: 20px;
+        font-size: 10px;
+        background: #e22550;
+        // background-image: linear-gradient(to bottom, $theme-titlecolor, #e22550);
+    }
+  .btndiv{text-align: center;}  
+  .font{font-size: 13px;}
+  .paddtop{padding-top: 0px;text-align: -webkit-center; }
+  .mrtop{    margin-top: -10px;}
+
+  .massage{
+    margin-top: 20px;
+    text-align: center;
+    &_heading{
+        font-size: 3.0rem;
+        font-weight: 600;
+        margin-bottom: 0;
+    }
+    &_desc{
+        font-size: 1.6rem;
+        font-weight: 600;
+        margin-top: 5px;
+    }
+}
+.sucess{
+    margin: 35px 0;
+    text-align: center;
+    &_icon{
+        font-size: 7rem;
+        padding: -3px;
+        border-radius: 50%;
+        background-color: #2a58a4;
+        color: #fff;
+        width: 90px;
+        height: 90px;
+        border: 12px solid #8babd1;
+    }
+}
+.points{
+    text-align: center;
+    &_details{
+        font-size: 1.6rem;
+        color: #48254a;
+        font-weight: 600;
+    }
+}
+.result{
+    text-align: center;
+    &_correct{
+        display: inline-block;
+        padding: 0 15px;
+        font-size: 1.6rem;
+        &_image{
+            height: 16px;
+            width: auto;
+            padding-right: 5px;
+        }
+    }
+    &_incorrect{
+        display: inline-block;
+        padding: 0 15px;
+        font-size: 1.6rem;
+        &_image{
+            height: 16px;
+            width: auto;
+            padding-right: 5px;
+        }
+    }
+}
+.action{
+    margin-top: 10px;
+    text-align: center;
+    &_answers{
+        background-color: #df213c;
+    }
+}
+// .back-button{
+//     display: none !important;
+// }
+.home_icon{
+    width: 30px;
+    height: 30px;
+}
+
+}

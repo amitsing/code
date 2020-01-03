@@ -1,0 +1,21 @@
+page-dynamicmodule {
+
+    .image_posted{   width:100%;max-height: 200px; display: block; margin: auto; object-fit: contain;}
+   .fullImageBg{  background-size: 700% 700%;object-position: center;   }
+
+
+    video::-internal-media-controls-download-button {
+        display:none;
+    }
+    
+    video::-webkit-media-controls-enclosure {
+        overflow:hidden;
+    }
+    
+    video::-webkit-media-controls-panel {
+        width: calc(100% + 30px); /* Adjust as needed */
+    }
+    
+    
+    }
+    

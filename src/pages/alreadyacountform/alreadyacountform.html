@@ -1,0 +1,75 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Existing Account Details</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<ion-card>
+    <ion-item >
+        <ion-label class="input_label" floating>
+          Bank Name<sup class='star'>*</sup>
+        </ion-label>
+        <ion-input type="text" name="Bname" [(ngModel)]="Bname" required></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label class="input_label" floating>
+          Bank Account Number<sup class='star'>*</sup>
+        </ion-label>
+        <ion-input type="password" name="bAcountNumber" [(ngModel)]="bAcountNumber" required></ion-input>
+    </ion-item>
+    <ion-item >
+        <ion-label class="input_label" floating>
+        Confirm Bank Account Number<sup class='star'>*</sup>
+        </ion-label>
+        <ion-input type="password" name="cAcountNumber" [(ngModel)]="cAcountNumber" required></ion-input>
+    </ion-item>
+
+    <ion-item >
+        <ion-label class="input_label" floating>
+       IFSC Code<sup class='star'>*</sup>
+        </ion-label>
+        <ion-input type="text" name="IFScode" [(ngModel)]="IFScode" required></ion-input>
+    </ion-item>
+    <ion-item >
+        <ion-label class="input_label" floating>
+       Branch Address<sup class='star'>*</sup>
+        </ion-label>
+        <ion-input type="text" name="BranchAddress" [(ngModel)]="BranchAddress" required></ion-input>
+    </ion-item>
+
+    <ion-item >
+        <ion-label class="input_label" floating>
+      Mobile Number<sup class='star'>*</sup>
+        </ion-label>
+        <ion-input type="number" name="MobileNumber" [(ngModel)]="MobileNumber" required></ion-input>
+    </ion-item>
+
+  
+
+         <div (click)="takePhotoFrom()">
+              <div class="rightIt attachDivpadding">
+                <img style="height: 46px;width: 78%;" class="attachWidth" src="../../assets/imgs/bankattach.png">
+              </div>
+            </div> 
+       <ion-row>
+         <ion-col>
+           <p style="font-size: 12px; color : red;">{{ previous_bank_detail[0].image_description }}</p>
+         </ion-col>
+       </ion-row>     
+   
+<ion-row *ngIf="userImage">
+    <ion-col col-12>
+            <img class="imgcss"  class="attachWidth" [src]="userImage">
+    </ion-col>
+</ion-row>
+
+<div *ngIf="buttonshow==1" class="btndiv">
+        <button ion-button  class="btn" (click)="submit()">Submit</button>
+       </div>
+</ion-card>
+
+
+
+</ion-content>

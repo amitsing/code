@@ -1,0 +1,95 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{previousePageData?.category_name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
+  <div *ngIf="show==0">
+      <img [src]="previousePageData?.image" class="aboutImage" imageViewer onerror='this.src="../../assets/watermark/watermark.png"'/>
+  </div>
+
+<div *ngIf="show==1"> 
+  <div *ngIf="leaderdata">
+      <ion-row > 
+          <ion-col col-6 style="text-align: center;"  *ngFor="let Data of leaderdata; let i=index"  (click)="gotodetail(Data)">
+              <img  class="img"  margin-top margin-bottom src="{{Data?.image}}">
+              <p class="fweight"> {{Data.name}}</p>
+              <p class="fsize">{{Data.designation}}</p>
+          </ion-col>
+        </ion-row>
+  </div>
+   
+  <div *ngIf="!leaderdata">
+
+      <ion-row > 
+          <ion-col col-6 style="text-align: center;"  *ngFor="let Data of [0,1,2,3,4,5,6]"  >
+              <img  class="img textSkelton"  margin-top margin-bottom src="../../assets/watermark/watermark.png">
+              <p class="fweight textSkelton"> Test user </p>
+              <p class="fsize textSkelton">Test designation</p>
+          </ion-col>
+        </ion-row>
+
+    </div>
+
+</div>
+<!-- <ion-row *ngIf="!leaderdata"> 
+  <ion-col col-6 style="text-align: center;">
+      <img  class="circleSkelton"  margin-top margin-bottom src="../../assets/imgs/usericon.png">
+      <p class="Skeltonname"> name</p>
+      <p class="Skeltondesignation">designation</p>
+  </ion-col>
+  <ion-col col-6 style="text-align: center;">
+    <img  class="circleSkelton"  margin-top margin-bottom src="../../assets/imgs/usericon.png">
+    <p class="Skeltonname"> name</p>
+      <p class="Skeltondesignation">designation</p>
+</ion-col>
+
+</ion-row>
+
+<ion-row *ngIf="!leaderdata"> 
+  <ion-col col-6 style="text-align: center;">
+      <img  class="circleSkelton"  margin-top margin-bottom src="../../assets/imgs/usericon.png">
+      <p class="Skeltonname"> name</p>
+      <p class="Skeltondesignation">designation</p>
+  </ion-col>
+  <ion-col col-6 style="text-align: center;">
+    <img  class="circleSkelton"  margin-top margin-bottom src="../../assets/imgs/usericon.png">
+    <p class="Skeltonname"> name</p>
+      <p class="Skeltondesignation">designation</p>
+</ion-col>
+
+</ion-row>
+<ion-row *ngIf="!leaderdata"> 
+  <ion-col col-6 style="text-align: center;">
+      <img  class="circleSkelton"  margin-top margin-bottom src="../../assets/imgs/usericon.png">
+      <p class="Skeltonname"> name</p>
+      <p class="Skeltondesignation">designation</p>
+  </ion-col>
+  <ion-col col-6 style="text-align: center;">
+    <img  class="circleSkelton"  margin-top margin-bottom src="../../assets/imgs/usericon.png">
+    <p class="Skeltonname"> name</p>
+      <p class="Skeltondesignation">designation</p>
+</ion-col>
+
+</ion-row>
+
+<ion-row *ngIf="!leaderdata"> 
+  <ion-col col-6 style="text-align: center;">
+      <img  class="circleSkelton"  margin-top margin-bottom src="../../assets/imgs/usericon.png">
+      <p class="Skeltonname"> name</p>
+      <p class="Skeltondesignation">designation</p>
+  </ion-col>
+  <ion-col col-6 style="text-align: center;">
+    <img  class="circleSkelton"  margin-top margin-bottom src="../../assets/imgs/usericon.png">
+
+    <p class="Skeltonname"> name</p>
+      <p class="Skeltondesignation">designation</p>
+</ion-col>
+
+</ion-row> -->
+
+
+
+</ion-content>

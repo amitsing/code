@@ -1,0 +1,33 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
+  <div *ngIf="alldata">
+    <ion-list>
+          <ion-item *ngFor="let data of alldata; let i=index" [ngClass]="{'classTheme' : (i%2 == 0), 'classwhite':(i%2 != 0)}" (click)="seeDetails(data)">
+<ion-row>
+  <ion-col col-10>
+    <h2 class="title" [innerHTML]="data?.title"></h2>
+  </ion-col>
+  <ion-col col-2>
+
+      <img style="width: 24px;
+      height: 24px;" srcset="{{data.icon}}" src="../../assets/watermark/watermark.png" class="iconcss" />
+
+    <!-- <ion-icon *ngIf="data.index_status=='locked'" style="font-size: 25px;color:#4c2648;" name="ios-lock-outline"></ion-icon>
+    <ion-icon *ngIf="data.index_status=='unlocked'" style="font-size: 25px;color:#4c2648;" ios="ios-unlock-outline" md="ios-unlock-outline"></ion-icon>
+    <ion-icon *ngIf="data.index_status=='complete'" style="font-size: 25px;color:#4c2648;" ios="ios-checkmark-circle-outline" md="md-checkmark-circle-outline"></ion-icon> -->
+ 
+  </ion-col>
+</ion-row>
+          </ion-item>
+        
+      </ion-list>
+</div> 
+
+
+</ion-content>

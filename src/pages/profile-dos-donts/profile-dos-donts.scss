@@ -1,0 +1,15 @@
+page-profile-dos-donts {
+    ion-modal {
+        left: 35px;
+        top: 74px;
+        position: absolute;
+        display: block;
+        width: 80%;
+        height: 100%;
+        contain: strict;
+    }
+    .closeBTN{
+        position: absolute;  font-size: 32px;
+        z-index: 22;  color:black;
+    }
+}

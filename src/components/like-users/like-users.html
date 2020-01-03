@@ -1,0 +1,13 @@
+<!-- Generated template for the LikeUsersComponent component -->
+<div class="customCardView">
+  <!-- {{text}} -->
+  <ion-list class="comList">
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="{{image}}"  #myImage (click)="presentImage(myImage)" class="userImage" onerror="this.src='../../assets/watermark/watermark.png'">
+        </ion-avatar>
+        <h2 class="userName">{{name}}</h2>
+        <p>{{date}}</p>
+      </ion-item>
+    </ion-list>
+</div>

@@ -1,0 +1,47 @@
+<!--
+  Generated template for the OnboardingDynamicModuleListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{page_title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-card *ngFor="let data of allData" >
+        <ion-row>
+          <ion-col col-4>
+            <div >
+              <customImage [imageSrc]="data?.image" [customClass]="['imgcss']"></customImage>
+                <!-- <img class="imgcss" onerror="this.src='../../assets/watermark/watermark.png'" #myImage
+                src="{{data.media[0]?.media}}"> -->
+            </div>        
+          </ion-col>
+          <ion-col col-8 (click)="gotodetail(data)">
+            <ion-row>
+              <ion-col col-12>
+                <!-- <p>{{data.title}}</p> -->
+                <P class="para" *ngIf="data?.title.length<50" [innerHTML]="data.title"></P>
+                <P class="para" *ngIf="data?.title.length>=50" [innerHTML]="data.title.substring(0, 50)+'...'"></P>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+
+      <ion-row *ngIf=" !allData">
+          <ion-col col-12>
+            <img [src]="error_image" alt="" srcset="">
+          </ion-col>
+      </ion-row>
+        
+        
+      <ion-infinite-scroll *ngIf="hideInfiniteScroll==false && allData" (ionInfinite)="doInfinite($event)">
+          <ion-infinite-scroll-content></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+
+</ion-content>

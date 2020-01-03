@@ -1,0 +1,139 @@
+
+<ion-header>
+    <!-- <ion-toolbar>
+        <ion-buttons left>
+          <button ion-button swipeEnabled>
+            <ion-icon name="menu"></ion-icon>
+            <img style="height:40px;width:40px;" src="assets/imgs/icon-small.png" class="imgss"/>
+          </button>
+        </ion-buttons>
+        <ion-title text-center>Image Upload</ion-title>
+      </ion-toolbar> -->
+  <ion-navbar>
+      <ion-title text-center>Image Upload</ion-title>
+      <!-- <div class="iconeval">
+          <img src="assets/imgs/logologin.png" class="imgss"/>
+        </div> -->
+</ion-navbar>
+</ion-header>
+
+<ion-content padding class="bg">
+  <ion-row>
+    <ion-col col-12 text-center><p style="font-size:18px;">We would like to know more about you</p></ion-col>
+  </ion-row>
+  <ion-card margin-vertical>
+    <ion-row text-center>
+      <ion-col col-12 no-padding><div class="relative">
+        <img class="imgcss" srcset="{{userImage}}" src="assets/imgs/icons/usericon.png">
+        <img class="absolute" src="assets/imgs/icons/uploadImg.png"
+         (tap)="addimage()"></div></ion-col>
+      <ion-col text-right margin-top><p style="font-size:18px;text-align:center;">Upload your Profile picture here:</p></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col  col-12 col-sm-6>
+        <!-- <label class="left">Native Place (where you originally belong to)<span class="redColor">*</span></label> -->
+
+        <p class="labelfield">Native Place (where you originally belong to)<span class="redColor">*</span></p>
+        <ion-item>
+          <ion-input type="text" [(ngModel)]="nativeplace"></ion-input>
+        </ion-item>
+      </ion-col>
+      <!-- <ion-col col-12 col-sm-6>
+        <label class="left">Highest Qualification<span class="redColor">*</span></label>
+        <ion-item>
+        <ion-input type="text" [(ngModel)]="qualification"></ion-input>
+        </ion-item>
+      
+      </ion-col>
+      <ion-col  col-12 col-sm-6>
+        <label class="left">College/ Institute Name<span class="redColor">*</span></label>
+        <ion-item>
+            <ion-input type="text" [(ngModel)]="college"></ion-input>
+        </ion-item>
+      
+        <p class="redColor" *ngIf="isCollege == true">*Enter your College</p>
+      </ion-col> -->
+      <ion-col  col-12 col-sm-6>
+        <!-- <label class="left">Internship Organization (if any)</label> -->
+
+        <p class="labelfield">
+          Internship Organization (if any)
+        </p>
+        <ion-item>
+            <ion-input type="text" placeholder="Leave it blank if not relevant" [(ngModel)]="internorganigation"></ion-input>
+        </ion-item>
+    
+      </ion-col>
+      <ion-col  col-12 col-sm-6>
+        <!-- <label class="left">Topic of Internship</label> -->
+        <p class="labelfield">
+          Topic of Internship 
+        </p>
+        <ion-item>
+            <ion-input type="text" placeholder="Leave it blank if not relevant" [(ngModel)]="interntopic"></ion-input>
+        </ion-item>
+     
+      </ion-col>
+      <ion-col  col-12 col-sm-6>
+        <!-- <label class="left">Favourite cuisine<span class="redColor">*</span></label> -->
+
+        <p class="labelfield">
+          Favourite cuisine<span class="redColor">*</span>   
+        </p>
+        <ion-item>
+            <ion-input type="text" [(ngModel)]="cuisine"></ion-input>
+        </ion-item>
+     
+        <!-- <p class="redColor" *ngIf="isCuisine == true">*Enter your Favourite cuisine</p> -->
+      </ion-col>
+      <ion-col  col-12 col-sm-6>
+        <!-- <label class="left">Favourite holiday destination<span class="redColor">*</span></label> -->
+
+        <p class="labelfield">
+          Favourite holiday destination<span class="redColor">*</span>
+        </p>
+        <ion-item>
+            <ion-input type="text" [(ngModel)]="destination"></ion-input>
+        </ion-item>
+        <!-- <p class="redColor" *ngIf="isDestination == true">*Enter your pastime</p> -->
+      </ion-col>
+      <ion-col  col-12 col-sm-6>
+        <!-- <label class="left">Favourite pastime<span class="redColor">*</span></label> -->
+
+        <p class="labelfield">
+          Favourite pastime<span class="redColor">*</span>
+        </p>
+        <ion-item>
+            <ion-input type="text" [(ngModel)]="pastime"></ion-input>
+        </ion-item>
+      
+        <!-- <p class="redColor" *ngIf="isPastime == true">*Enter your Pastime</p> -->
+      </ion-col>
+      <ion-col col-12 padding>
+        <div class="abslink"><button type="submit" ion-button [disabled]="previewBtnEnale==false" full text-capitalize
+           (click)="gotoOnboardPreviewPage(nativeplace,qualification,college,internorganigation,
+           interntopic,cuisine,destination,pastime)">{{previewText}}</button></div>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+  <div *ngIf="showCustomActionSheet==true">
+    <div class="transparentLayerActionsheet" (tap)="hideActionsheet()"></div>
+    <div class="customActionsheetDIV">
+      <ion-grid>
+        <ion-row><ion-col><h2>Profile Picture</h2></ion-col></ion-row>
+        <ion-row>
+          <ion-col col-6 class="centerData" (click)="usingCamera('camera')">
+            <img src="assets/imgs/icons/camera.png" class="actionSheetIcon"/>
+            <h4>Camera</h4>
+          </ion-col>
+          <ion-col col-6 class="centerData" (click)="usingCamera('gallery')">
+            <img src="assets/imgs/icons/gallery.png"class="actionSheetIcon"/>
+            <h4>Gallery</h4>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+
+</ion-content>
